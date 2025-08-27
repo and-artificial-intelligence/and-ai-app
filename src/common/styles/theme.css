@@ -45,8 +45,10 @@
 
 /* CUSTOM FONT SIZES */
 @theme {
-  --text-5/.5xl: 3.25rem;
-  --text-5/.5xl--line-height: 3.625rem;
+  --text-4\.5xl: 2.5rem;
+  --text-4\.5xl--line-height: 2.8125rem;
+  --text-5\.5xl: 3.25rem;
+  --text-5\.5xl--line-height: 3.625rem;
   --text-6\.5xl: 4rem;
   --text-6\.5xl--line-height: 4rem;
 }

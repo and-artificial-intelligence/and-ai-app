@@ -9,6 +9,7 @@ import {
   YCombinatorIcon,
 } from '@/common/components/icon';
 import Image from 'next/image';
+import { SubHeader } from '@/common/components/subheader';
 
 export default function Home() {
   const isTablet = useMediaQuery('(min-width: 768px)'); // md
@@ -18,10 +19,6 @@ export default function Home() {
       {/* HEADER */}
       <div className="border-b-element-sketch h-16 border-b" />
 
-      <div className="flex items-center gap-2">
-        <div className="bg-brand-primary h-1 w-3" />
-        <p className="text-element-mid-em text-sm font-medium">Workflows</p>
-      </div>
       {/* HERO SECTION */}
       <section className="flex flex-col items-center gap-12 px-4 pt-8 md:gap-16 md:px-6 md:pt-24 lg:mx-auto lg:flex-row lg:items-end lg:pt-14 xl:px-8 xl:pt-10">
         <div className="flex flex-col items-center justify-center lg:max-w-[22.5rem] lg:min-w-[22.5rem] xl:max-w-[37.625rem] xl:min-w-[37.625rem]">
@@ -70,6 +67,29 @@ export default function Home() {
           />
         </div>
       </section>
+
+      {/* WORKFLOW SECTION */}
+      <section className="mx-auto flex flex-col gap-12 px-4 py-12 md:px-6 md:py-20 xl:max-w-[1280px] xl:px-8 xl:py-24">
+        <div className="flex flex-col items-end gap-6 md:flex-row lg:items-stretch lg:gap-8">
+          <div className="space-y-3 md:min-w-[316px] lg:min-w-[400px] xl:min-w-[704px]">
+            <SubHeader brand="primary" title="Workflows" />
+            <h2 className="font-martina text-element-high-em text-4.5xl xl:text-5xl">
+              Your workflow, powered by Andy
+            </h2>
+          </div>
+          <p className="text-element-mid-em lg:pt-10">
+            Automate frequent tasks with end-to-end workflows that mirror your
+            process. Andy executes exactly how you would, in the format you
+            need.
+          </p>
+        </div>
+        <div>
+          <div className="border-element-sketch h-[166px] w-full rounded border bg-gray-300 md:h-[331px] lg:h-[449px] xl:h-[560px]" />
+        </div>
+      </section>
+
+      {/* BUILT-FOR-PATENTS SECTION */}
+      <section className="flex flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:gap-20 xl:px-8 xl:py-24"></section>
     </main>
   );
 }
