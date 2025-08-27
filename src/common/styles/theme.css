@@ -1,0 +1,52 @@
+/* FONTS */
+@theme {
+  --font-geist: var(--font-geist);
+  --font-martina: var(--font-martina);
+  --font-mono: var(--font-mono);
+}
+
+/* COLORS */
+@theme {
+  --color-brand-primary: #f2690d;
+  --color-brand-accent-blue: #c4d8dc;
+  --color-brand-accent-blue-dark: #47a8b8;
+  --color-brand-accent-purple: #928fbc;
+  --color-primary: #000000;
+  --color-white: #ffffff;
+  --color-element-high-em: #2a2823;
+  --color-element-mid-em: #5b554a;
+  --color-element-low-em: #aca69a;
+  --color-element-sketch: #7d7667;
+  --color-gray-300: #dcd6cb;
+  --color-gray-800: #2a2823;
+  --color-gray-950: #0c0b09;
+  --color-background: #f2efe9;
+  --color-transparent: transparent;
+}
+
+/* CUSTOM EASING FUNCTIONS */
+@theme {
+  --ease-in-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --ease-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --ease-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --ease-in-bounce: cubic-bezier(0.64, 0, 0.78, 0);
+  --ease-out-bounce: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-bounce: cubic-bezier(0.64, 0, 0.36, 1);
+  --ease-in-elastic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --ease-out-elastic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-out-elastic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-anticipate: cubic-bezier(0.8, 0, 1, 1);
+  --ease-overshoot: cubic-bezier(0, 0, 0.2, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --ease-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+}
+
+/* CUSTOM FONT SIZES */
+@theme {
+  --text-5/.5xl: 3.25rem;
+  --text-5/.5xl--line-height: 3.625rem;
+  --text-6\.5xl: 4rem;
+  --text-6\.5xl--line-height: 4rem;
+}
