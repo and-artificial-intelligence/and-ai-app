@@ -84,12 +84,31 @@ export default function Home() {
           </p>
         </div>
         <div>
+          {/* video placeholder */}
           <div className="border-element-sketch h-[166px] w-full rounded border bg-gray-300 md:h-[331px] lg:h-[449px] xl:h-[560px]" />
         </div>
       </section>
 
       {/* BUILT-FOR-PATENTS SECTION */}
-      <section className="flex flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:gap-20 xl:px-8 xl:py-24"></section>
+      <section className="mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:gap-20 xl:max-w-[1280px] xl:px-8 xl:py-24">
+        <div className="flex flex-col items-center gap-6 xl:gap-8">
+          <div className="flex flex-col items-center gap-3">
+            <SubHeader brand="primary" title="Built for Patents" />
+            <h2 className="font-martina text-element-high-em text-4.5xl text-center xl:text-5xl">
+              All the context in one place, accessible
+            </h2>
+          </div>
+          <p className="text-element-mid-em text-center md:max-w-[640px]">
+            Specialized processing across patent types and jurisdictions. Full
+            context from the patent family, prosecution history, and prior
+            cases.
+          </p>
+        </div>
+        <div>
+          {/* image placeholder */}
+          <div className="border-gray-dark/5 h-[332px] w-full rounded-xs border bg-gray-200 lg:h-[441px] xl:h-[519px]" />
+        </div>
+      </section>
     </main>
   );
 }
