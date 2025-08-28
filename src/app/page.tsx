@@ -3,16 +3,51 @@ import { useMediaQuery } from 'usehooks-ts';
 
 import { Button } from '@/common/components/button';
 import {
+  AnonymousIcon,
+  ArrowTopRightIcon,
   BoxGroupIcon,
+  DatabaseSlashIcon,
   FirstRoundIcon,
+  Shield2CheckIcon,
   SvaIcon,
   YCombinatorIcon,
 } from '@/common/components/icon';
 import Image from 'next/image';
 import { SubHeader } from '@/common/components/subheader';
+import {
+  FeatureCard,
+  FeatureCardProps,
+} from '@/module/privacy/components/feature-card';
+import { FeatureLogo1 } from '@/module/privacy/components/logo-1';
+import { FeatureLogo3 } from '@/module/privacy/components/logo-3';
+import { FeatureLogo2 } from '@/module/privacy/components/logo-2';
 
 export default function Home() {
   const isTablet = useMediaQuery('(min-width: 768px)'); // md
+
+  const features: FeatureCardProps[] = [
+    {
+      featureIcon: <FeatureLogo1 />,
+      title: 'No training',
+      description:
+        'AndAI does not train models on your data. Zero-retention with configured model providers.',
+      icon: <AnonymousIcon />,
+    },
+    {
+      featureIcon: <FeatureLogo2 />,
+      title: 'Access and Encryption',
+      description:
+        'SAML SSO, role-based access controls, and encryption in transit and at rest.',
+      icon: <Shield2CheckIcon />,
+    },
+    {
+      icon: <DatabaseSlashIcon />,
+      featureIcon: <FeatureLogo3 />,
+      title: 'Data control',
+      description:
+        'On request, AndAI deletes organization, user, or project data.',
+    },
+  ];
 
   return (
     <main className="flex min-h-screen flex-col">
@@ -65,6 +100,32 @@ export default function Home() {
             src="/illustration.png"
             fill
           />
+        </div>
+      </section>
+
+      {/* PRIVACY SECTION */}
+      <section className="relative mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:flex-row lg:justify-between lg:gap-8 lg:py-0 xl:max-w-[1280px] xl:px-8">
+        <div className="flex flex-col gap-12 md:max-w-[400px] lg:sticky lg:top-1/2 lg:self-start lg:pt-24 xl:max-w-[480px]">
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <SubHeader brand="primary" title="Privacy" />
+              <h2 className="font-martina text-element-high-em text-4.5xl xl:text-5xl">
+                Your data, your rules
+              </h2>
+            </div>
+            <p className="text-element-mid-em lg:pt-10">
+              &AI is built on the leading security standards and best practices
+              to ensure your data is safe and secure.
+            </p>
+          </div>
+          <Button className="w-fit" iconRight={<ArrowTopRightIcon />}>
+            Trust center
+          </Button>
+        </div>
+        <div className="space-y-12 md:space-y-16 lg:pt-20">
+          {features.map((feature) => (
+            <FeatureCard key={feature.title} {...feature} />
+          ))}
         </div>
       </section>
 
