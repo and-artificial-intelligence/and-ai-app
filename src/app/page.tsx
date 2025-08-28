@@ -105,8 +105,14 @@ export default function Home() {
           </p>
         </div>
         <div>
-          {/* image placeholder */}
-          <div className="border-gray-dark/5 h-[332px] w-full rounded-xs border bg-gray-200 lg:h-[441px] xl:h-[519px]" />
+          <div className="border-gray-dark/5 relative h-[332px] w-full rounded-xs border bg-gray-200 lg:h-[441px] xl:h-[519px]">
+            <Image
+              alt="built-for-patents-illustration"
+              src="/built-for-patents-illustration.png"
+              fill
+              className="object-cover object-center md:object-contain"
+            />
+          </div>
         </div>
       </section>
     </main>
