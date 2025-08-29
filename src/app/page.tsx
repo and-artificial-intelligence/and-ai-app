@@ -15,10 +15,8 @@ import {
 } from '@/common/components/icon';
 import { SubHeader } from '@/common/components/subheader';
 
-import {
-  FeatureCard,
-  FeatureCardProps,
-} from '@/module/privacy/components/feature-card';
+import { FeatureCard, FeatureCardProps } from '@/module/privacy';
+import { BackgroundArt } from '@/module/cta';
 
 export default function Home() {
   const isTablet = useMediaQuery('(min-width: 768px)'); // md
@@ -50,7 +48,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
       {/* HEADER */}
-      <div className="border-b-element-sketch h-16 border-b" />
+      <div className="h-16" />
 
       {/* HERO SECTION */}
       <section className="flex flex-col items-center gap-12 px-4 pt-8 md:gap-16 md:px-6 md:pt-24 lg:mx-auto lg:flex-row lg:items-end lg:pt-14 xl:px-8 xl:pt-10">
@@ -101,32 +99,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRIVACY SECTION */}
-      <section className="relative mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:flex-row lg:justify-between lg:gap-8 lg:py-0 xl:max-w-[1280px] xl:px-8">
-        <div className="flex flex-col gap-12 md:max-w-[400px] lg:sticky lg:top-1/2 lg:self-start lg:pt-24 xl:max-w-[480px]">
-          <div className="space-y-6">
-            <div className="space-y-3">
-              <SubHeader brand="primary" title="Privacy" />
-              <h2 className="font-martina text-element-high-em text-4.5xl xl:text-5xl">
-                Your data, your rules
-              </h2>
-            </div>
-            <p className="text-element-mid-em lg:pt-10">
-              &AI is built on the leading security standards and best practices
-              to ensure your data is safe and secure.
-            </p>
-          </div>
-          <Button className="w-fit" iconRight={<ArrowTopRightIcon />}>
-            Trust center
-          </Button>
-        </div>
-        <div className="space-y-12 md:space-y-16 lg:pt-20">
-          {features.map((feature) => (
-            <FeatureCard key={feature.title} {...feature} />
-          ))}
-        </div>
-      </section>
-
       {/* WORKFLOW SECTION */}
       <section className="mx-auto flex flex-col gap-12 px-4 py-12 md:px-6 md:py-20 xl:max-w-[1280px] xl:px-8 xl:py-24">
         <div className="flex flex-col items-end gap-6 md:flex-row lg:items-stretch lg:gap-8">
@@ -174,6 +146,57 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* PRIVACY SECTION */}
+      <section className="relative mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:flex-row lg:justify-between lg:gap-8 lg:py-0 xl:max-w-[1280px] xl:px-8">
+        <div className="flex flex-col gap-12 md:max-w-[400px] lg:sticky lg:top-1/2 lg:self-start lg:pt-24 lg:pb-24 xl:max-w-[480px]">
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <SubHeader brand="primary" title="Privacy" />
+              <h2 className="font-martina text-element-high-em text-4.5xl xl:text-5xl">
+                Your data, your rules
+              </h2>
+            </div>
+            <p className="text-element-mid-em lg:pt-10">
+              &AI is built on the leading security standards and best practices
+              to ensure your data is safe and secure.
+            </p>
+          </div>
+          <Button className="w-fit" iconRight={<ArrowTopRightIcon />}>
+            Trust center
+          </Button>
+        </div>
+        <div className="space-y-12 md:space-y-16 lg:pt-20 lg:pb-24">
+          {features.map((feature) => (
+            <FeatureCard key={feature.title} {...feature} />
+          ))}
+        </div>
+      </section>
+
+      {/* CTA SECTION */}
+      <section className="mx-auto w-full px-4 md:px-6 xl:max-w-[1280px] xl:px-0">
+        <div className="bg-brand-accent-blue border-gray-dark/5 relative w-full overflow-hidden border px-4 pt-24 pb-16 md:px-6 md:pb-16 xl:px-8 xl:pt-[120px] xl:pb-20">
+          <BackgroundArt className="absolute top-1/2 left-1/2 size-[614px] -translate-x-1/2 -translate-y-1/2 md:size-[943px]" />
+          <div className="flex flex-col items-center gap-12">
+            <div className="space-y-6 text-center xl:space-y-8">
+              <h2 className="text-element-high-em text-5.5xl md:text-7xl">
+                Scale your
+                <br />
+                <span className="font-martina">patent expertise</span>
+              </h2>
+              <p className="text-element-high-em max-w-[329px] text-center md:max-w-[480px] xl:max-w-[560px] xl:text-lg">
+                Engineered for patents, AndAI executes litigation-grade work at
+                machine scale. You set strategy; AndAI delivers the work.
+              </p>
+            </div>
+
+            <Button>Book demo</Button>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <div className="h-16" />
     </main>
   );
 }
