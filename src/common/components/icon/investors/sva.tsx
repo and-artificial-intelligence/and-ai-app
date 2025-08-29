@@ -21,10 +21,10 @@ export const SvaIcon = ({ className }: CustomIconProps) => {
       <defs>
         <clipPath id="clip0_6330_1081">
           <rect
-            width="50.7674"
-            height="40"
             fill="white"
+            height="40"
             transform="translate(0.518555)"
+            width="50.7674"
           />
         </clipPath>
       </defs>

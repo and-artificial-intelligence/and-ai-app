@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useMediaQuery } from 'usehooks-ts';
 
 import { Button } from '@/common/components/button';
@@ -12,15 +13,15 @@ import {
   SvaIcon,
   YCombinatorIcon,
 } from '@/common/components/icon';
-import Image from 'next/image';
 import { SubHeader } from '@/common/components/subheader';
+
 import {
   FeatureCard,
   FeatureCardProps,
 } from '@/module/privacy/components/feature-card';
 import { FeatureLogo1 } from '@/module/privacy/components/logo-1';
-import { FeatureLogo3 } from '@/module/privacy/components/logo-3';
 import { FeatureLogo2 } from '@/module/privacy/components/logo-2';
+import { FeatureLogo3 } from '@/module/privacy/components/logo-3';
 
 export default function Home() {
   const isTablet = useMediaQuery('(min-width: 768px)'); // md
@@ -95,10 +96,10 @@ export default function Home() {
         {/* LANDING IMAGE */}
         <div className="relative h-[361px] w-[375px] rounded-2xl md:h-[536px] md:w-[557px] xl:h-[560px] xl:w-[582px]">
           <Image
-            className="absolute scale-110"
-            alt="landing-page-bg"
-            src="/illustration.png"
             fill
+            alt="landing-page-bg"
+            className="absolute scale-110"
+            src="/illustration.png"
           />
         </div>
       </section>
@@ -168,10 +169,10 @@ export default function Home() {
         <div>
           <div className="border-gray-dark/5 relative h-[332px] w-full rounded-xs border bg-gray-200 lg:h-[441px] xl:h-[519px]">
             <Image
-              alt="built-for-patents-illustration"
-              src="/built-for-patents-illustration.png"
               fill
+              alt="built-for-patents-illustration"
               className="object-cover object-center md:object-contain"
+              src="/built-for-patents-illustration.png"
             />
           </div>
         </div>

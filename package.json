@@ -9,6 +9,7 @@
     "start": "next start",
     "next:lint": "next lint",
     "lint": "pnpm run next:lint && eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "next lint --fix && eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
     "prettier": "prettier --write 'src/**/*.{js,jsx,ts,tsx,scss}'",
     "check-types": "tsc",
     "validate": "pnpm run prettier & pnpm run lint & pnpm run check-types && pnpm run build"
