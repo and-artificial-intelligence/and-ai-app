@@ -38,6 +38,9 @@ const buttonVariants = tv({
       tertiary: {
         base: ['bg-transparent', 'border-transparent', 'text-element-high-em'],
       },
+      unstyled: {
+        base: [],
+      },
     },
     size: {
       sm: {

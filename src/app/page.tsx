@@ -17,9 +17,12 @@ import { SubHeader } from '@/common/components/subheader';
 
 import { FeatureCard, FeatureCardProps } from '@/module/privacy';
 import { BackgroundArt } from '@/module/cta';
+import { Logo } from '@/common/components/logo';
 
 export default function Home() {
-  const isTablet = useMediaQuery('(min-width: 768px)'); // md
+  const currentYear = new Date().getFullYear();
+
+  const isTablet = useMediaQuery('(min-width: 48rem)'); // md
 
   const features: FeatureCardProps[] = [
     {
@@ -48,11 +51,17 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
       {/* HEADER */}
-      <div className="h-16" />
+      <nav className="mx-auto flex h-16 w-full items-center justify-between px-6 py-3 md:max-w-[592px] md:px-0 lg:max-w-[976px] xl:max-w-[1280px]">
+        <Logo andText className="h-[18px]" />
+        <div className="flex items-center gap-3">
+          <Button variant="tertiary">Login</Button>
+          <Button>Book demo</Button>
+        </div>
+      </nav>
 
       {/* HERO SECTION */}
       <section className="flex flex-col items-center gap-12 px-4 pt-8 md:gap-16 md:px-6 md:pt-24 lg:mx-auto lg:flex-row lg:items-end lg:pt-14 xl:px-8 xl:pt-10">
-        <div className="flex flex-col items-center justify-center lg:max-w-[22.5rem] lg:min-w-[22.5rem] xl:max-w-[37.625rem] xl:min-w-[37.625rem]">
+        <div className="flex flex-col items-center justify-center lg:max-w-[360px] lg:min-w-[360px] xl:max-w-[602px] xl:min-w-[602px]">
           <div className="space-y-14 pt-8 md:space-y-20 md:pt-0 lg:space-y-24">
             <div className="space-y-8 md:space-y-10 lg:space-y-12">
               <div className="space-y-6 md:space-y-8">
@@ -61,7 +70,7 @@ export default function Home() {
                   <br className="block md:hidden lg:block" />
                   <span className="font-martina italic"> patent expertise</span>
                 </h1>
-                <p className="text-element-mid-em text-center text-base md:max-w-[37rem] lg:max-w-[360px] lg:text-left xl:max-w-[480px] xl:text-lg">
+                <p className="text-element-mid-em text-center text-base md:max-w-[592px] lg:max-w-[22.5rem] lg:text-left xl:max-w-[30rem] xl:text-lg">
                   Engineered for patents, AndAI executes litigation-
                   {!isTablet && <br />}
                   grade work at machine scale. You set strategy;
@@ -89,7 +98,7 @@ export default function Home() {
         </div>
 
         {/* LANDING IMAGE */}
-        <div className="relative h-[361px] w-[375px] rounded-2xl md:h-[536px] md:w-[557px] xl:h-[560px] xl:w-[582px]">
+        <div className="relative h-[22.5625rem] w-[23.4375rem] rounded-2xl md:h-[33.5rem] md:w-[34.8125rem] xl:h-[35rem] xl:w-[36.375rem]">
           <Image
             fill
             alt="landing-page-bg"
@@ -100,9 +109,9 @@ export default function Home() {
       </section>
 
       {/* WORKFLOW SECTION */}
-      <section className="mx-auto flex flex-col gap-12 px-4 py-12 md:px-6 md:py-20 xl:max-w-[1280px] xl:px-8 xl:py-24">
+      <section className="mx-auto flex flex-col gap-12 px-4 py-12 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="flex flex-col items-end gap-6 md:flex-row lg:items-stretch lg:gap-8">
-          <div className="space-y-3 md:min-w-[316px] lg:min-w-[400px] xl:min-w-[704px]">
+          <div className="space-y-3 md:min-w-[19.75rem] lg:min-w-[25rem] xl:min-w-[44rem]">
             <SubHeader brand="primary" title="Workflows" />
             <h2 className="font-martina text-element-high-em text-4.5xl xl:text-5xl">
               Your workflow, powered by Andy
@@ -116,12 +125,12 @@ export default function Home() {
         </div>
         <div>
           {/* video placeholder */}
-          <div className="border-element-sketch h-[166px] w-full rounded border bg-gray-300 md:h-[331px] lg:h-[449px] xl:h-[560px]" />
+          <div className="border-element-sketch h-[10.375rem] w-full rounded border bg-gray-300 md:h-[20.6875rem] lg:h-[28.0625rem] xl:h-[35rem]" />
         </div>
       </section>
 
       {/* BUILT-FOR-PATENTS SECTION */}
-      <section className="mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:gap-20 xl:max-w-[1280px] xl:px-8 xl:py-24">
+      <section className="mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:gap-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="flex flex-col items-center gap-6 xl:gap-8">
           <div className="flex flex-col items-center gap-3">
             <SubHeader brand="primary" title="Built for Patents" />
@@ -129,14 +138,14 @@ export default function Home() {
               All the context in one place, accessible
             </h2>
           </div>
-          <p className="text-element-mid-em text-center md:max-w-[640px]">
+          <p className="text-element-mid-em text-center md:max-w-[40rem]">
             Specialized processing across patent types and jurisdictions. Full
             context from the patent family, prosecution history, and prior
             cases.
           </p>
         </div>
         <div>
-          <div className="border-gray-dark/5 relative h-[332px] w-full rounded-xs border bg-gray-200 lg:h-[441px] xl:h-[519px]">
+          <div className="border-gray-dark/5 relative h-[20.75rem] w-full rounded-xs border bg-gray-200 lg:h-[27.5625rem] xl:h-[32.4375rem]">
             <Image
               fill
               alt="built-for-patents-illustration"
@@ -148,8 +157,8 @@ export default function Home() {
       </section>
 
       {/* PRIVACY SECTION */}
-      <section className="relative mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:flex-row lg:justify-between lg:gap-8 lg:py-0 xl:max-w-[1280px] xl:px-8">
-        <div className="flex flex-col gap-12 md:max-w-[400px] lg:sticky lg:top-1/2 lg:self-start lg:pt-24 lg:pb-24 xl:max-w-[480px]">
+      <section className="relative mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:flex-row lg:justify-between lg:gap-8 lg:py-0 xl:max-w-[80rem] xl:px-8">
+        <div className="flex flex-col gap-12 md:max-w-[25rem] lg:sticky lg:top-1/2 lg:self-start lg:pt-24 lg:pb-24 xl:max-w-[30rem]">
           <div className="space-y-6">
             <div className="space-y-3">
               <SubHeader brand="primary" title="Privacy" />
@@ -174,9 +183,9 @@ export default function Home() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="mx-auto w-full px-4 md:px-6 xl:max-w-[1280px] xl:px-0">
-        <div className="bg-brand-accent-blue border-gray-dark/5 relative w-full overflow-hidden border px-4 pt-24 pb-16 md:px-6 md:pb-16 xl:px-8 xl:pt-[120px] xl:pb-20">
-          <BackgroundArt className="absolute top-1/2 left-1/2 size-[614px] -translate-x-1/2 -translate-y-1/2 md:size-[943px]" />
+      <section className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-0">
+        <div className="bg-brand-accent-blue border-gray-dark/5 relative w-full overflow-hidden border px-4 pt-24 pb-16 md:px-6 md:pb-16 xl:px-8 xl:pt-[7.5rem] xl:pb-20">
+          <BackgroundArt className="absolute top-1/2 left-1/2 size-[38.375rem] -translate-x-1/2 -translate-y-1/2 md:size-[58.9375rem]" />
           <div className="flex flex-col items-center gap-12">
             <div className="space-y-6 text-center xl:space-y-8">
               <h2 className="text-element-high-em text-5.5xl md:text-7xl">
@@ -184,7 +193,7 @@ export default function Home() {
                 <br />
                 <span className="font-martina italic">patent expertise</span>
               </h2>
-              <p className="text-element-high-em max-w-[329px] text-center md:max-w-[480px] xl:max-w-[560px] xl:text-lg">
+              <p className="text-element-high-em max-w-[20.5625rem] text-center md:max-w-[30rem] xl:max-w-[35rem] xl:text-lg">
                 Engineered for patents, AndAI executes litigation-grade work at
                 machine scale. You set strategy; AndAI delivers the work.
               </p>
@@ -196,7 +205,16 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <div className="h-16" />
+      <footer className="flex flex-col items-center gap-4 px-4 py-6 md:flex-row md:justify-between lg:px-6 xl:px-8">
+        <p className="text-element-mid-em text-sm font-medium">
+          © {currentYear} AndAI Inc. All rights reserved
+        </p>
+        <div className="flex items-center gap-8">
+          <a className="text-element-mid-em text-sm font-medium">Privacy</a>
+          <a className="text-element-mid-em text-sm font-medium">Terms</a>
+          <a className="text-element-mid-em text-sm font-medium">LinkedIn</a>
+        </div>
+      </footer>
     </main>
   );
 }
