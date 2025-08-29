@@ -2,22 +2,25 @@
 import Image from 'next/image';
 import { useMediaQuery } from 'usehooks-ts';
 
+import { Paragraph } from '@/common/components/animated-text/paragraph';
 import { Button } from '@/common/components/button';
 import {
   AnonymousIcon,
   ArrowTopRightIcon,
+  AtIcon,
   BoxGroupIcon,
+  CornerDownIcon,
   DatabaseSlashIcon,
   FirstRoundIcon,
   Shield2CheckIcon,
   SvaIcon,
   YCombinatorIcon,
 } from '@/common/components/icon';
+import { Logo } from '@/common/components/logo';
 import { SubHeader } from '@/common/components/subheader';
 
-import { FeatureCard, FeatureCardProps } from '@/module/privacy';
 import { BackgroundArt } from '@/module/cta';
-import { Logo } from '@/common/components/logo';
+import { FeatureCard, FeatureCardProps } from '@/module/privacy';
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
@@ -105,6 +108,43 @@ export default function Home() {
             className="absolute scale-110"
             src="/illustration.png"
           />
+        </div>
+      </section>
+
+      {/* ANIMATED TEXT SECTION */}
+      <section className="mx-auto px-4 md:px-6 md:pt-[120px] md:pb-24 xl:max-w-[80rem] xl:px-8 xl:py-24 xl:pt-40 xl:pb-[120px]">
+        <div className="space-y-16">
+          <div className="flex flex-col gap-8">
+            <SubHeader brand="primary" title="Assistant" />
+            <span className="lg:px-10 xl:px-24">
+              <Paragraph
+                value="             Andy is an AI patent assistant that turns your instructions into
+              high-quality first drafts, delivered on a collaborative platform. It
+              then helps refine the work through smart review and editing."
+              />
+            </span>
+          </div>
+
+          <div className="lg:px-10 xl:px-24">
+            <div className="border-gray-dark/10 rounded-lg border bg-white/30">
+              <div className="border-gray-dark/10 border-b p-4">
+                <p>
+                  Hey Andy, help me find more prior art for claim 20 that pair
+                  well wi
+                </p>
+              </div>
+              <div className="flex items-center justify-between p-2">
+                <Button
+                  className="border-gray-300"
+                  iconLeft={<AtIcon className="text-element-low-em!" />}
+                  variant="secondary"
+                >
+                  Add context
+                </Button>
+                <Button iconRight={<CornerDownIcon />}>Ask Andy</Button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

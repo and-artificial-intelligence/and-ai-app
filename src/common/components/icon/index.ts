@@ -1,5 +1,7 @@
 export * from './anonymous';
 export * from './arrow-top-right';
+export * from './at';
+export * from './corner-down';
 export * from './custom-icon';
 export * from './database-slash';
 export * from './investors';
