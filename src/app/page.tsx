@@ -182,7 +182,7 @@ export default function Home() {
               <h2 className="text-element-high-em text-5.5xl md:text-7xl">
                 Scale your
                 <br />
-                <span className="font-martina">patent expertise</span>
+                <span className="font-martina italic">patent expertise</span>
               </h2>
               <p className="text-element-high-em max-w-[329px] text-center md:max-w-[480px] xl:max-w-[560px] xl:text-lg">
                 Engineered for patents, AndAI executes litigation-grade work at
