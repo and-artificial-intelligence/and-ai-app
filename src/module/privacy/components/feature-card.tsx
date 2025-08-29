@@ -1,22 +1,28 @@
 import { cloneElement, ReactElement } from 'react';
+import Image from 'next/image';
 
 export interface FeatureCardProps {
-  featureIcon: ReactElement;
+  imageSrc: string;
   title: string;
   description: string;
   icon: ReactElement;
 }
 
 export const FeatureCard = ({
-  featureIcon,
+  imageSrc,
   title,
   description,
   icon,
 }: FeatureCardProps) => {
   return (
     <div className="flex flex-col gap-6 lg:max-w-[544px] xl:max-w-[560px]">
-      <div className="border-gray-dark/5 grid h-[320px] w-full place-content-center rounded-sm border bg-gray-200">
-        {featureIcon}
+      <div className="border-gray-dark/5 relative grid h-[320px] w-full place-content-center rounded-sm border bg-gray-200">
+        <Image
+          src={imageSrc}
+          alt={title}
+          fill
+          className="h-[80%]! w-auto place-self-center object-contain"
+        />
       </div>
       <div className="space-y-2">
         <div className="flex items-center gap-2">

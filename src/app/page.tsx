@@ -19,34 +19,31 @@ import {
   FeatureCard,
   FeatureCardProps,
 } from '@/module/privacy/components/feature-card';
-import { FeatureLogo1 } from '@/module/privacy/components/logo-1';
-import { FeatureLogo2 } from '@/module/privacy/components/logo-2';
-import { FeatureLogo3 } from '@/module/privacy/components/logo-3';
 
 export default function Home() {
   const isTablet = useMediaQuery('(min-width: 768px)'); // md
 
   const features: FeatureCardProps[] = [
     {
-      featureIcon: <FeatureLogo1 />,
+      imageSrc: '/feature-logo-1.png',
       title: 'No training',
       description:
         'AndAI does not train models on your data. Zero-retention with configured model providers.',
       icon: <AnonymousIcon />,
     },
     {
-      featureIcon: <FeatureLogo2 />,
+      imageSrc: '/feature-logo-2.png',
       title: 'Access and Encryption',
       description:
         'SAML SSO, role-based access controls, and encryption in transit and at rest.',
       icon: <Shield2CheckIcon />,
     },
     {
-      icon: <DatabaseSlashIcon />,
-      featureIcon: <FeatureLogo3 />,
+      imageSrc: '/feature-logo-3.png',
       title: 'Data control',
       description:
         'On request, AndAI deletes organization, user, or project data.',
+      icon: <DatabaseSlashIcon />,
     },
   ];
 
