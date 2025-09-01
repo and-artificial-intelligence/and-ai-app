@@ -1,1 +1,1 @@
-export * from './feature-card';
+export * from './privacy-card';

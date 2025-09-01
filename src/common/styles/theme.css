@@ -20,9 +20,11 @@
   --color-gray-dark: rgb(12, 11, 9);
   --color-gray-200: #ece8df;
   --color-gray-300: #dcd6cb;
+  --color-gray-500: #7d7667;
   --color-gray-800: #2a2823;
   --color-gray-950: #0c0b09;
   --color-background: #f2efe9;
+  --color-background-lighter: #f5f3ef;
   --color-transparent: transparent;
 }
 

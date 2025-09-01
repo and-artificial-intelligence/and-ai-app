@@ -1,19 +1,19 @@
 import Image from 'next/image';
 import { cloneElement, ReactElement } from 'react';
 
-export interface FeatureCardProps {
+export interface PrivacyCardProps {
   imageSrc: string;
   title: string;
   description: string;
   icon: ReactElement;
 }
 
-export const FeatureCard = ({
+export const PrivacyCard = ({
   imageSrc,
   title,
   description,
   icon,
-}: FeatureCardProps) => {
+}: PrivacyCardProps) => {
   return (
     <div className="flex flex-col gap-6 lg:max-w-[544px] xl:max-w-[560px]">
       <div className="border-gray-dark/5 relative grid h-[320px] w-full place-content-center rounded-sm border bg-gray-200">

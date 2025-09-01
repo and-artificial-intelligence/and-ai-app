@@ -6,22 +6,30 @@ import { Paragraph } from '@/common/components/animated-text/paragraph';
 import { Button } from '@/common/components/button';
 import {
   AnonymousIcon,
+  Ar3DIcon,
   ArrowTopRightIcon,
   AtIcon,
   BoxGroupIcon,
   CornerDownIcon,
   DatabaseSlashIcon,
+  DocumentTextIcon,
+  FileCopyIcon,
   FirstRoundIcon,
+  ListIcon,
+  MessageIcon,
+  SearchDocumentIcon,
   Shield2CheckIcon,
+  SpreadsheetIcon,
   SvaIcon,
   YCombinatorIcon,
 } from '@/common/components/icon';
 import { Logo } from '@/common/components/logo';
 import { SubHeader } from '@/common/components/subheader';
 import { TypingAnimation } from '@/common/components/typing-animation';
+import { cn } from '@/common/functions/cn';
 
 import { BackgroundArt } from '@/module/cta';
-import { FeatureCard, FeatureCardProps } from '@/module/privacy';
+import { PrivacyCard, PrivacyCardProps } from '@/module/privacy';
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
@@ -34,7 +42,100 @@ export default function Home() {
     'Hey Andy, turn these charts into an invalidity contentions draft. Use my go-to template',
   ];
 
-  const features: FeatureCardProps[] = [
+  const features = [
+    {
+      tag: 'Discovery',
+      tagColor: 'primary' as const,
+      title: 'Find what others miss. Nothing is out of reach.',
+      description:
+        'Case-aware search by text, figures, or biologics with claim-limitation attribution. Global coverage. Steerable and iterative',
+      items: [
+        {
+          icon: <SearchDocumentIcon />,
+          title: 'Patents',
+          description:
+            'Applications and publications across major jurisdictions and languages.',
+        },
+        {
+          icon: <FileCopyIcon />,
+          title: 'Non-Patent Literature',
+          description:
+            'Research papers, standards, clinical trials, and more across the internet.',
+        },
+        {
+          icon: <Ar3DIcon />,
+          title: 'Products',
+          description:
+            'Current and archival product listings, specs, manuals, and teardowns.',
+        },
+      ],
+    },
+    {
+      tag: 'Charts',
+      tagColor: 'accent-blue-dark' as const,
+      title: 'Work product ready for court in minutes, not hours.',
+      description:
+        'Built on your context, strategy, and goals. Instant drafts to fully formatted exports.',
+      items: [
+        {
+          icon: <SpreadsheetIcon />,
+          title: 'Claims and features',
+          description:
+            'Reasoned citations to key disclosures for invalidity, infringement, and freedom-to-operate. ',
+        },
+        {
+          icon: <ListIcon />,
+          title: 'Construction',
+          description:
+            'Term-by-term constructions drawn from the prosecution history and family.',
+        },
+      ],
+    },
+    {
+      tag: 'Drafts',
+      tagColor: 'accent-purple' as const,
+      title: 'Create any document. Fast, consistent, court-ready.',
+      description:
+        'Using your case record, draft and edit anything from invalidity contentions to a litigation pitch deck.',
+      items: [
+        {
+          icon: <DocumentTextIcon />,
+          title: 'Template',
+          description:
+            'Fully formatted examples with variables and generation blocks for on-the-fly drafting.',
+        },
+        {
+          icon: <MessageIcon />,
+          title: 'Editor',
+          description:
+            'A workspace to collaborate with colleagues – and Andy – on a single draft.',
+        },
+      ],
+    },
+    {
+      tag: 'Tables',
+      tagColor: 'primary' as const,
+      title: 'Analysis at previously impossible scale.',
+      description:
+        'Ask questions across thousands of documents at once, grounded by web search and deep reasoning.',
+      items: [
+        {
+          icon: <SearchDocumentIcon />,
+          title: 'Structured Analysis',
+          description:
+            'Prompt each document with shared context to produce structured or free-text outputs.',
+        },
+        {
+          icon: <DocumentTextIcon />,
+          title: 'Views',
+          description:
+            'Slice the table by any natural-language or metadata filter. ',
+        },
+      ],
+    },
+  ];
+
+  const privacy: PrivacyCardProps[] = [
     {
       imageSrc: '/feature-logo-1.png',
       title: 'No training',
@@ -152,6 +253,82 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FEATURES SECTION */}
+      <section className="relative mx-auto w-full px-4 py-12 md:px-6 md:py-16 xl:px-8">
+        <div className="bg-background-lighter shadow-gray-dark/10 mx-auto w-full rounded-xs border border-gray-300 shadow xl:max-w-[1376px]">
+          <div className="flex items-center justify-between px-6 pt-6 md:px-16 md:pt-10 lg:px-6 xl:px-18">
+            <p className="text-sm font-medium text-gray-500">FEATURES</p>
+            <p className="text-sm font-medium text-gray-500">SECTION 2 OF 4</p>
+            <p className="hidden text-sm font-medium text-gray-500 md:block">
+              US 6,237,565 B1
+            </p>
+          </div>
+
+          {features.map((feature, fIndex) => (
+            <div
+              key={feature.tag}
+              className={cn(
+                'border-t-gray-dark/20 flex flex-col gap-8 border-t border-dashed px-4 py-12 md:px-16 md:py-16 lg:flex-row lg:px-6 xl:gap-0 xl:px-20',
+                fIndex === 0 && 'border-t-0',
+              )}
+            >
+              <div className="flex flex-col gap-12 pt-4 pb-4 lg:min-w-[448px] lg:justify-between lg:pt-10 lg:pb-4 xl:min-w-[560px]">
+                <div className="space-y-5">
+                  <div className="space-y-3">
+                    <SubHeader brand={feature.tagColor} title={feature.tag} />
+                    <h3 className="text-element-high-em font-martina xl:text-4.5xl text-4xl tracking-[-0.32px] md:tracking-[-0.36px] xl:max-w-[520px] xl:tracking-[-0.4px]">
+                      {feature.title}
+                    </h3>
+                  </div>
+                  <p className="text-element-mid-em tracking-[-0.16px] lg:max-w-[400px] xl:max-w-[500px] xl:text-lg xl:tracking-[-0.18px]">
+                    {feature.description}
+                  </p>
+                </div>
+
+                <div>
+                  {feature.items.map((item, index) => {
+                    const notLastItem = fIndex !== features.length - 1;
+
+                    const brandColor =
+                      feature.tagColor === 'accent-blue-dark'
+                        ? 'border-l-brand-accent-blue-dark'
+                        : feature.tagColor === 'accent-purple'
+                          ? 'border-l-brand-accent-purple'
+                          : 'border-l-brand-primary';
+
+                    const selected = index === 0;
+                    return (
+                      <div
+                        key={item.title}
+                        className={cn(
+                          'flex flex-col gap-2 py-1.5',
+                          notLastItem &&
+                            'border-l-2 border-l-gray-300 pl-4 md:pl-6',
+                          selected && brandColor,
+                        )}
+                      >
+                        <div className="flex items-center gap-2">
+                          {item.icon}
+                          <p className="text-element-high-em font-medium">
+                            {item.title}
+                          </p>
+                        </div>
+
+                        <p className="text-element-mid-em">
+                          {item.description}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="border-gray-dark/10 h-[360px] w-full rounded-sm border bg-gray-200 md:h-[560px]" />
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* WORKFLOW SECTION */}
       <section className="mx-auto flex flex-col gap-12 px-4 py-12 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="flex flex-col items-end gap-6 md:flex-row lg:items-stretch lg:gap-8">
@@ -220,8 +397,8 @@ export default function Home() {
           </Button>
         </div>
         <div className="space-y-12 md:space-y-16 lg:pt-20 lg:pb-24">
-          {features.map((feature) => (
-            <FeatureCard key={feature.title} {...feature} />
+          {privacy.map((item) => (
+            <PrivacyCard key={item.title} {...item} />
           ))}
         </div>
       </section>
