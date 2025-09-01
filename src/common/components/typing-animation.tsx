@@ -1,6 +1,7 @@
 'use client';
-import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+
 import { cn } from '@/common/functions/cn';
 
 interface TypingAnimationProps {
@@ -73,17 +74,17 @@ export const TypingAnimation = ({
         {phase !== 'fading' && (
           <motion.span
             key={index}
-            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
             className="break-words whitespace-pre-wrap"
+            exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
           >
             {shown}
             <motion.span
               aria-hidden
-              className="ml-0.5 inline-block h-[1em] w-[1px] bg-current"
               animate={{ opacity: [0, 1, 0] }}
+              className="ml-0.5 inline-block h-[1em] w-[1px] bg-current"
               transition={{ duration: 0.9, repeat: Infinity }}
             />
           </motion.span>

@@ -18,10 +18,10 @@ import {
 } from '@/common/components/icon';
 import { Logo } from '@/common/components/logo';
 import { SubHeader } from '@/common/components/subheader';
+import { TypingAnimation } from '@/common/components/typing-animation';
 
 import { BackgroundArt } from '@/module/cta';
 import { FeatureCard, FeatureCardProps } from '@/module/privacy';
-import { TypingAnimation } from '@/common/components/typing-animation';
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
