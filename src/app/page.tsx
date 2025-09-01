@@ -21,11 +21,18 @@ import { SubHeader } from '@/common/components/subheader';
 
 import { BackgroundArt } from '@/module/cta';
 import { FeatureCard, FeatureCardProps } from '@/module/privacy';
+import { TypingAnimation } from '@/common/components/typing-animation';
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
 
   const isTablet = useMediaQuery('(min-width: 48rem)'); // md
+
+  const typingTexts: string[] = [
+    'Hey Andy, help me find more prior art for claim 4 that pair well with my key references',
+    `Hey Andy, what does Mozak '479 say about the architecture of the assembly?`,
+    'Hey Andy, turn these charts into an invalidity contentions draft. Use my go-to template',
+  ];
 
   const features: FeatureCardProps[] = [
     {
@@ -128,10 +135,7 @@ export default function Home() {
           <div className="lg:px-10 xl:px-24">
             <div className="border-gray-dark/10 rounded-lg border bg-white/30">
               <div className="border-gray-dark/10 border-b p-4">
-                <p>
-                  Hey Andy, help me find more prior art for claim 20 that pair
-                  well wi
-                </p>
+                <TypingAnimation texts={typingTexts} />
               </div>
               <div className="flex items-center justify-between p-2">
                 <Button
