@@ -7,7 +7,6 @@ import { BrandColor } from '@/common/types/common';
 
 import { useBlazeSlider } from '@/tools/blaze-slider/useBlazeSlider';
 
-
 export interface ItemAndSliderProps {
   tag: string;
   tagColor: BrandColor;
@@ -29,7 +28,8 @@ export const ItemAndSlider = ({
   description,
   items,
   singleImage,
-}: ItemAndSliderProps) => {
+  index,
+}: ItemAndSliderProps & { index: number }) => {
   const [ref, sliderRef] = useBlazeSlider({
     all: {
       loop: true,
@@ -83,12 +83,14 @@ export const ItemAndSlider = ({
         ? '[&_button.active]:bg-brand-accent-purple'
         : '[&_button.active]:bg-brand-primary';
 
+  const isFirst = index === 0;
   const isTagTables = tag === 'Tables';
 
   return (
     <div
       className={cn(
-        'border-t-gray-dark/20 flex flex-col gap-8 border-t border-dashed px-4 py-12 first-of-type:border-t-0 md:px-16 md:py-16 lg:flex-row lg:px-6 xl:gap-0 xl:px-20',
+        'border-t-gray-dark/20 flex flex-col gap-8 border-t border-dashed px-4 py-12 md:px-16 md:py-16 lg:flex-row lg:px-6 xl:gap-0 xl:px-20',
+        isFirst && 'border-t-0',
       )}
     >
       <div className="flex flex-col gap-12 pt-4 pb-4 lg:min-w-[448px] lg:justify-between lg:pt-10 lg:pb-4 xl:min-w-[560px]">

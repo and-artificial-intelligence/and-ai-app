@@ -118,8 +118,8 @@ const features: ItemAndSliderProps[] = [
 export const FeaturesSection = () => {
   return (
     <>
-      {features.map((feature) => (
-        <ItemAndSlider key={feature.tag} {...feature} />
+      {features.map((feature, index) => (
+        <ItemAndSlider key={feature.tag} {...feature} index={index} />
       ))}
     </>
   );
