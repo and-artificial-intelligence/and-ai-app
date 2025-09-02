@@ -61,3 +61,8 @@
   --text-6\.5xl: 4rem;
   --text-6\.5xl--line-height: 4rem;
 }
+
+/* SPACING */
+@theme {
+  --spacing-fill-available: -webkit-fill-available;
+}

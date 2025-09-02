@@ -24,6 +24,7 @@ import { BrandColor } from '@/common/types/common';
 import { BackgroundArt } from '@/module/cta';
 import { FeaturesSection } from '@/module/features';
 import { PrivacyCard, PrivacyCardProps } from '@/module/privacy';
+import { cn } from '@/common/functions/cn';
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
@@ -63,7 +64,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
       {/* HEADER */}
-      <nav className="mx-auto flex h-16 w-full items-center justify-between px-6 py-3 md:max-w-[592px] md:px-0 lg:max-w-[976px] xl:max-w-[1280px]">
+      <nav className="mx-auto flex h-16 w-full items-center justify-between px-6 py-3 md:max-w-[592px] md:px-0 lg:max-w-[976px] xl:max-w-[1280px] xl:px-8">
         <Logo andText className="h-[18px]" />
         <div className="flex items-center gap-3">
           <Button variant="tertiary">Login</Button>
@@ -73,7 +74,7 @@ export default function Home() {
 
       {/* HERO SECTION */}
       <section className="flex flex-col items-center gap-12 px-4 pt-8 md:gap-16 md:px-6 md:pt-24 lg:mx-auto lg:flex-row lg:items-end lg:pt-14 xl:px-8 xl:pt-10">
-        <div className="flex flex-col items-center justify-center lg:max-w-[360px] lg:min-w-[360px] xl:max-w-[602px] xl:min-w-[602px]">
+        <div className="lg:h-fill-available flex flex-col items-center justify-center lg:max-w-[360px] lg:min-w-[360px] lg:items-start xl:max-w-[602px] xl:min-w-[602px]">
           <div className="space-y-14 pt-8 md:space-y-20 md:pt-0 lg:space-y-24">
             <div className="space-y-8 md:space-y-10 lg:space-y-12">
               <div className="space-y-6 md:space-y-8">
@@ -82,11 +83,25 @@ export default function Home() {
                   <br className="block md:hidden lg:block" />
                   <span className="font-martina italic"> patent expertise</span>
                 </h1>
-                <p className="text-element-mid-em text-center text-base md:max-w-[592px] lg:max-w-[22.5rem] lg:text-left xl:max-w-[30rem] xl:text-lg">
+                <p
+                  className={cn(
+                    'lg:hidden xl:block',
+                    'text-element-mid-em text-center text-base md:max-w-[592px] lg:max-w-[22.5rem] lg:text-left xl:max-w-[30rem] xl:text-lg',
+                  )}
+                >
                   Engineered for patents, AndAI executes litigation-
-                  {!isTablet && <br />}
+                  <br />
                   grade work at machine scale. You set strategy;
-                  {!isTablet && <br />} AndAI delivers the work.
+                  <br /> AndAI delivers the work.
+                </p>
+                <p
+                  className={cn(
+                    'hidden lg:block xl:hidden',
+                    'text-element-mid-em text-center text-base md:max-w-[592px] lg:max-w-[22.5rem] lg:text-left xl:max-w-[30rem] xl:text-lg',
+                  )}
+                >
+                  Engineered for patents, AndAI executes litigation-grade work
+                  at machine scale. You set strategy; AndAI delivers the work.
                 </p>
               </div>
               <div className="flex items-center justify-center gap-3 lg:justify-start">
