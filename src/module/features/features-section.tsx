@@ -119,7 +119,7 @@ export const FeaturesSection = () => {
   return (
     <>
       {features.map((feature, index) => (
-        <ItemAndSlider key={feature.tag} {...feature} index={index} />
+        <ItemAndSlider key={feature.tag} index={index} {...feature} />
       ))}
     </>
   );
