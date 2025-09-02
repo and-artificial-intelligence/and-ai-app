@@ -137,7 +137,7 @@ export const ItemAndSlider = ({
         </div>
       </div>
 
-      <div ref={ref} className="blaze-slider">
+      <div ref={ref} className="blaze-slider w-full">
         <div
           className={cn(
             'blaze-container border-gray-dark/10 rounded-sm border pt-4 pl-4 md:pt-8 md:pl-8',
@@ -152,7 +152,7 @@ export const ItemAndSlider = ({
                     fill
                     alt={`Feature ${tag}`}
                     src={singleImage ?? ''}
-                    className="object-cover object-top-left"
+                    className="object-cover object-top-left lg:object-none"
                   />
                 </div>
               ) : (
@@ -165,7 +165,7 @@ export const ItemAndSlider = ({
                       fill
                       alt={`Feature ${tag}-${i + 1}`}
                       src={item.imageSrc ?? ''}
-                      className="object-none object-top-left"
+                      className="object-cover object-top-left lg:object-none"
                     />
                   </div>
                 ))
@@ -181,13 +181,15 @@ export const ItemAndSlider = ({
             )}
           />
           {/* pagination */}
-          <div
-            className={cn(
-              'blaze-pagination absolute bottom-4 left-1/2 -translate-x-1/2',
-              '[&_button]:bg-gray-300',
-              sliderBrandColorBackground,
-            )}
-          />
+          {!isTagTables && (
+            <div
+              className={cn(
+                'blaze-pagination absolute bottom-4 left-1/2 -translate-x-1/2',
+                '[&_button]:bg-gray-300',
+                sliderBrandColorBackground,
+              )}
+            />
+          )}
         </div>
       </div>
     </div>
