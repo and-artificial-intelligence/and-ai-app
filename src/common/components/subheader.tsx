@@ -1,17 +1,18 @@
 import { cn } from '@/common/functions/cn';
+import { BrandColor } from '@/common/types/common';
 
 interface SubHeaderProps {
-  brand: 'primary' | 'accent-blue-dark' | 'accent-blue' | 'accent-purple';
+  brand: BrandColor;
   title: string;
 }
 
 export const SubHeader = ({ brand, title }: SubHeaderProps) => {
   const brandColor =
-    brand === 'primary'
+    brand === BrandColor.PRIMARY
       ? 'bg-brand-primary'
-      : brand === 'accent-blue-dark'
+      : brand === BrandColor.ACCENT_BLUE_DARK
         ? 'bg-brand-accent-blue-dark'
-        : brand === 'accent-blue'
+        : brand === BrandColor.ACCENT_BLUE
           ? 'bg-brand-accent-blue'
           : 'bg-brand-accent-purple';
 

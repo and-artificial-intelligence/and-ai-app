@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 
 import '@/common/styles/main.css';
+
 import { geist, martina, mono } from '@/common/fonts';
 import { cn } from '@/common/functions/cn';
+
+import 'blaze-slider/dist/blaze.css';
 
 export const metadata: Metadata = {
   title: '&AI',
