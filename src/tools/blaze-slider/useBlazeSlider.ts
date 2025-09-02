@@ -1,5 +1,5 @@
-import { RefObject, useEffect, useRef } from 'react';
 import BlazeSlider, { BlazeConfig } from 'blaze-slider';
+import { RefObject, useEffect, useRef } from 'react';
 
 export const useBlazeSlider = (
   config: BlazeConfig,
@@ -11,6 +11,7 @@ export const useBlazeSlider = (
     if (!sliderRef.current && elRef.current) {
       sliderRef.current = new BlazeSlider(elRef.current, config);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return [elRef, sliderRef];

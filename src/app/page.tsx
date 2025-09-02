@@ -19,11 +19,11 @@ import {
 import { Logo } from '@/common/components/logo';
 import { SubHeader } from '@/common/components/subheader';
 import { TypingAnimation } from '@/common/components/typing-animation';
+import { BrandColor } from '@/common/types/common';
 
 import { BackgroundArt } from '@/module/cta';
-import { PrivacyCard, PrivacyCardProps } from '@/module/privacy';
 import { FeaturesSection } from '@/module/features';
-import { BrandColor } from '@/common/types/common';
+import { PrivacyCard, PrivacyCardProps } from '@/module/privacy';
 
 export default function Home() {
   const currentYear = new Date().getFullYear();

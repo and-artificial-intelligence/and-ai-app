@@ -1,2 +1,2 @@
-export * from './features-section';
 export * from './components';
+export * from './features-section';

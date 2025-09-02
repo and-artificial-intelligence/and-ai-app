@@ -1,9 +1,12 @@
+import Image from 'next/image';
+import { ReactElement, useEffect, useState } from 'react';
+
 import { SubHeader } from '@/common/components/subheader';
 import { cn } from '@/common/functions/cn';
 import { BrandColor } from '@/common/types/common';
-import { ReactElement, useEffect, useState } from 'react';
+
 import { useBlazeSlider } from '@/tools/blaze-slider/useBlazeSlider';
-import Image from 'next/image';
+
 
 export interface ItemAndSliderProps {
   tag: string;
@@ -151,8 +154,8 @@ export const ItemAndSlider = ({
                   <Image
                     fill
                     alt={`Feature ${tag}`}
-                    src={singleImage ?? ''}
                     className="object-cover object-top-left lg:object-none"
+                    src={singleImage ?? ''}
                   />
                 </div>
               ) : (
@@ -164,8 +167,8 @@ export const ItemAndSlider = ({
                     <Image
                       fill
                       alt={`Feature ${tag}-${i + 1}`}
-                      src={item.imageSrc ?? ''}
                       className="object-cover object-top-left lg:object-none"
+                      src={item.imageSrc ?? ''}
                     />
                   </div>
                 ))
