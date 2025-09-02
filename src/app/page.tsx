@@ -1,6 +1,4 @@
-'use client';
 import Image from 'next/image';
-import { useMediaQuery } from 'usehooks-ts';
 
 import { Paragraph } from '@/common/components/animated-text/paragraph';
 import { Button } from '@/common/components/button';
@@ -19,17 +17,15 @@ import {
 import { Logo } from '@/common/components/logo';
 import { SubHeader } from '@/common/components/subheader';
 import { TypingAnimation } from '@/common/components/typing-animation';
+import { cn } from '@/common/functions/cn';
 import { BrandColor } from '@/common/types/common';
 
 import { BackgroundArt } from '@/module/cta';
 import { FeaturesSection } from '@/module/features';
 import { PrivacyCard, PrivacyCardProps } from '@/module/privacy';
-import { cn } from '@/common/functions/cn';
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
-
-  const isTablet = useMediaQuery('(min-width: 48rem)'); // md
 
   const typingTexts: string[] = [
     'Hey Andy, help me find more prior art for claim 4 that pair well with my key references',
