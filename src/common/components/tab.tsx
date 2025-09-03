@@ -9,6 +9,7 @@ import {
   useCallback,
 } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
+
 import { cn } from '@/common/functions/cn';
 
 const tabVariants = tv({
@@ -124,13 +125,14 @@ export const TabRoot = ({
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <TabContext.Provider value={{ size, registerActive }}>
       <div
-        className={base({ className: cn(className) })}
         ref={containerRef}
+        className={base({ className: cn(className) })}
         {...props}
       >
         <div className={indicator()} style={indicatorStyle} />

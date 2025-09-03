@@ -64,8 +64,8 @@ export default function Home() {
 
       {/* HERO SECTION */}
       <section
-        id="hero"
         className="flex flex-col items-center gap-12 px-4 pt-8 md:gap-16 md:px-6 md:pt-24 lg:mx-auto lg:flex-row lg:items-end lg:pt-14 xl:px-8 xl:pt-10"
+        id="hero"
       >
         <div className="lg:h-fill-available flex flex-col items-center justify-center lg:max-w-[360px] lg:min-w-[360px] lg:items-start xl:max-w-[602px] xl:min-w-[602px]">
           <div className="space-y-14 pt-8 md:space-y-20 md:pt-0 lg:space-y-24">
@@ -130,8 +130,8 @@ export default function Home() {
 
       {/* ANIMATED TEXT SECTION */}
       <section
-        id="assistant"
         className="mx-auto px-4 md:px-6 md:pt-[120px] md:pb-24 xl:max-w-[80rem] xl:px-8 xl:py-24 xl:pt-40 xl:pb-[120px]"
+        id="assistant"
       >
         <div className="space-y-16">
           <div className="flex flex-col gap-8">
@@ -169,8 +169,8 @@ export default function Home() {
 
       {/* WORKFLOW SECTION */}
       <section
-        id="workflow"
         className="mx-auto flex flex-col gap-12 px-4 py-12 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24"
+        id="workflow"
       >
         <div className="flex flex-col items-end gap-6 md:flex-row lg:items-stretch lg:gap-8">
           <div className="space-y-3 md:min-w-[19.75rem] lg:min-w-[25rem] xl:min-w-[44rem]">
@@ -220,8 +220,8 @@ export default function Home() {
 
       {/* PRIVACY SECTION */}
       <section
-        id="privacy"
         className="relative mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:flex-row lg:justify-between lg:gap-8 lg:py-0 xl:max-w-[80rem] xl:px-8"
+        id="privacy"
       >
         <div className="flex flex-col gap-12 md:max-w-[25rem] lg:sticky lg:top-1/2 lg:self-start lg:pt-24 lg:pb-24 xl:max-w-[30rem]">
           <div className="space-y-6">
@@ -249,8 +249,8 @@ export default function Home() {
 
       {/* CTA SECTION */}
       <section
-        id="cta"
         className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-0"
+        id="cta"
       >
         <div className="bg-brand-accent-blue border-gray-dark/5 relative w-full overflow-hidden border px-4 pt-24 pb-16 md:px-6 md:pb-16 xl:px-8 xl:pt-[7.5rem] xl:pb-20">
           <BackgroundArt className="absolute top-1/2 left-1/2 size-[38.375rem] -translate-x-1/2 -translate-y-1/2 md:size-[58.9375rem]" />

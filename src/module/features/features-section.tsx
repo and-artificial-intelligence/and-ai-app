@@ -1,4 +1,7 @@
 'use client';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMediaQuery } from 'usehooks-ts';
+
 import {
   DocumentTextIcon,
   SearchDocumentIcon,
@@ -8,16 +11,14 @@ import {
   ListIcon,
   MessageIcon,
 } from '@/common/components/icon';
+import Tab from '@/common/components/tab';
+import { cn } from '@/common/functions/cn';
 import { BrandColor } from '@/common/types/common';
 
 import {
   ItemAndSlider,
   ItemAndSliderProps,
 } from './components/item-and-slider';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import Tab from '@/common/components/tab';
-import { cn } from '@/common/functions/cn';
-import { useMediaQuery } from 'usehooks-ts';
 
 const features: ItemAndSliderProps[] = [
   {
@@ -164,7 +165,9 @@ export const FeaturesSection = () => {
       },
     );
 
-    nodes.forEach((n) => spy.observe(n));
+    nodes.forEach((n) => {
+      spy.observe(n);
+    });
     return () => spy.disconnect();
   }, [tagIds, isAutoScrolling]);
 
@@ -183,8 +186,8 @@ export const FeaturesSection = () => {
   return (
     <section
       ref={sectionRef}
-      id="features"
       className="relative mx-auto w-full px-4 py-12 md:px-6 md:py-16 xl:px-8"
+      id="features"
     >
       <div className="bg-background-lighter shadow-gray-dark/10 mx-auto w-full rounded-xs border border-gray-300 shadow xl:max-w-[1376px]">
         <div className="flex items-center justify-between px-6 pt-6 md:px-16 md:pt-10 lg:px-6 xl:px-18">
@@ -207,8 +210,8 @@ export const FeaturesSection = () => {
             {features.map((f) => (
               <Tab.Button
                 key={f.tag}
-                size={isMd ? 'md' : 'sm'}
                 isActive={activeTag === f.tag}
+                size={isMd ? 'md' : 'sm'}
                 onClick={() => handleTabClick(f.tag)}
               >
                 {f.tag}
@@ -219,9 +222,9 @@ export const FeaturesSection = () => {
         {features.map((feature, index) => (
           <div
             key={feature.tag}
-            id={tagIds[feature.tag]}
             className="scroll-mt-24 md:scroll-mt-28"
             data-feature-tag={feature.tag}
+            id={tagIds[feature.tag]}
           >
             <ItemAndSlider index={index} {...feature} />
           </div>
