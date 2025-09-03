@@ -165,23 +165,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURES SECTION */}
-      <section
-        id="features"
-        className="relative mx-auto w-full px-4 py-12 md:px-6 md:py-16 xl:px-8"
-      >
-        <div className="bg-background-lighter shadow-gray-dark/10 mx-auto w-full rounded-xs border border-gray-300 shadow xl:max-w-[1376px]">
-          <div className="flex items-center justify-between px-6 pt-6 md:px-16 md:pt-10 lg:px-6 xl:px-18">
-            <p className="text-sm font-medium text-gray-500">FEATURES</p>
-            <p className="text-sm font-medium text-gray-500">SECTION 2 OF 4</p>
-            <p className="hidden text-sm font-medium text-gray-500 md:block">
-              US 6,237,565 B1
-            </p>
-          </div>
-
-          <FeaturesSection />
-        </div>
-      </section>
+      <FeaturesSection />
 
       {/* WORKFLOW SECTION */}
       <section
