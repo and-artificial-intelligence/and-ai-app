@@ -30,6 +30,8 @@
   --color-gray-950: #0c0b09;
   --color-background: #f2efe9;
   --color-background-lighter: #f5f3ef;
+  --color-border: rgba(12, 11, 9, 0.2);
+  --color-border-dark: rgba(12, 11, 9, 0.3);
   --color-transparent: transparent;
 }
 

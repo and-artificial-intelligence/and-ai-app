@@ -14,7 +14,7 @@ import {
   SvaIcon,
   YCombinatorIcon,
 } from '@/common/components/icon';
-import { Logo } from '@/common/components/logo';
+import { Navbar } from '@/common/components/navbar';
 import { SubHeader } from '@/common/components/subheader';
 import { TypingAnimation } from '@/common/components/typing-animation';
 import { cn } from '@/common/functions/cn';
@@ -60,16 +60,13 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
       {/* HEADER */}
-      <nav className="mx-auto flex h-16 w-full items-center justify-between px-6 py-3 md:max-w-[592px] md:px-0 lg:max-w-[976px] xl:max-w-[1280px] xl:px-8">
-        <Logo andText className="h-[18px]" />
-        <div className="flex items-center gap-3">
-          <Button variant="tertiary">Login</Button>
-          <Button>Book demo</Button>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* HERO SECTION */}
-      <section className="flex flex-col items-center gap-12 px-4 pt-8 md:gap-16 md:px-6 md:pt-24 lg:mx-auto lg:flex-row lg:items-end lg:pt-14 xl:px-8 xl:pt-10">
+      <section
+        id="hero"
+        className="flex flex-col items-center gap-12 px-4 pt-8 md:gap-16 md:px-6 md:pt-24 lg:mx-auto lg:flex-row lg:items-end lg:pt-14 xl:px-8 xl:pt-10"
+      >
         <div className="lg:h-fill-available flex flex-col items-center justify-center lg:max-w-[360px] lg:min-w-[360px] lg:items-start xl:max-w-[602px] xl:min-w-[602px]">
           <div className="space-y-14 pt-8 md:space-y-20 md:pt-0 lg:space-y-24">
             <div className="space-y-8 md:space-y-10 lg:space-y-12">
@@ -132,7 +129,10 @@ export default function Home() {
       </section>
 
       {/* ANIMATED TEXT SECTION */}
-      <section className="mx-auto px-4 md:px-6 md:pt-[120px] md:pb-24 xl:max-w-[80rem] xl:px-8 xl:py-24 xl:pt-40 xl:pb-[120px]">
+      <section
+        id="assistant"
+        className="mx-auto px-4 md:px-6 md:pt-[120px] md:pb-24 xl:max-w-[80rem] xl:px-8 xl:py-24 xl:pt-40 xl:pb-[120px]"
+      >
         <div className="space-y-16">
           <div className="flex flex-col gap-8">
             <SubHeader brand={BrandColor.PRIMARY} title="Assistant" />
@@ -166,7 +166,10 @@ export default function Home() {
       </section>
 
       {/* FEATURES SECTION */}
-      <section className="relative mx-auto w-full px-4 py-12 md:px-6 md:py-16 xl:px-8">
+      <section
+        id="features"
+        className="relative mx-auto w-full px-4 py-12 md:px-6 md:py-16 xl:px-8"
+      >
         <div className="bg-background-lighter shadow-gray-dark/10 mx-auto w-full rounded-xs border border-gray-300 shadow xl:max-w-[1376px]">
           <div className="flex items-center justify-between px-6 pt-6 md:px-16 md:pt-10 lg:px-6 xl:px-18">
             <p className="text-sm font-medium text-gray-500">FEATURES</p>
@@ -181,7 +184,10 @@ export default function Home() {
       </section>
 
       {/* WORKFLOW SECTION */}
-      <section className="mx-auto flex flex-col gap-12 px-4 py-12 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
+      <section
+        id="workflow"
+        className="mx-auto flex flex-col gap-12 px-4 py-12 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24"
+      >
         <div className="flex flex-col items-end gap-6 md:flex-row lg:items-stretch lg:gap-8">
           <div className="space-y-3 md:min-w-[19.75rem] lg:min-w-[25rem] xl:min-w-[44rem]">
             <SubHeader brand={BrandColor.PRIMARY} title="Workflows" />
@@ -229,7 +235,10 @@ export default function Home() {
       </section>
 
       {/* PRIVACY SECTION */}
-      <section className="relative mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:flex-row lg:justify-between lg:gap-8 lg:py-0 xl:max-w-[80rem] xl:px-8">
+      <section
+        id="privacy"
+        className="relative mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:flex-row lg:justify-between lg:gap-8 lg:py-0 xl:max-w-[80rem] xl:px-8"
+      >
         <div className="flex flex-col gap-12 md:max-w-[25rem] lg:sticky lg:top-1/2 lg:self-start lg:pt-24 lg:pb-24 xl:max-w-[30rem]">
           <div className="space-y-6">
             <div className="space-y-3">
@@ -255,7 +264,10 @@ export default function Home() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-0">
+      <section
+        id="cta"
+        className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-0"
+      >
         <div className="bg-brand-accent-blue border-gray-dark/5 relative w-full overflow-hidden border px-4 pt-24 pb-16 md:px-6 md:pb-16 xl:px-8 xl:pt-[7.5rem] xl:pb-20">
           <BackgroundArt className="absolute top-1/2 left-1/2 size-[38.375rem] -translate-x-1/2 -translate-y-1/2 md:size-[58.9375rem]" />
           <div className="flex flex-col items-center gap-12">
