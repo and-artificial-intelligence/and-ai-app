@@ -8,8 +8,9 @@ import { cn } from '@/common/functions/cn';
 import 'blaze-slider/dist/blaze.css';
 
 export const metadata: Metadata = {
-  title: '&AI',
-  description: 'And AI',
+  title: 'AndAI | Scale your patent expertise',
+  description:
+    'AndAI is the AI workspace for executing litigation-grade patent work at machine scale.',
   authors: [{ name: 'And AI' }],
 };
 
