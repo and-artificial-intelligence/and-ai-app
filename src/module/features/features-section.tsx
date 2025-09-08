@@ -189,7 +189,19 @@ export const FeaturesSection = () => {
       className="relative mx-auto w-full px-4 py-12 md:px-6 md:py-16 xl:px-8"
       id="features"
     >
-      <div className="bg-background-lighter shadow-gray-dark/10 mx-auto w-full rounded-xs border border-gray-300 shadow xl:max-w-[1376px]">
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        aria-hidden="true"
+      >
+        <div
+          className={cn(
+            'relative h-full w-full',
+            '[background-image:linear-gradient(to_right,rgba(0,0,0,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.06)_1px,transparent_1px)] [background-size:20px_20px,20px_20px] [background-position:0_0,0_0] [background-repeat:repeat,repeat]',
+            '[mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_2%,rgba(0,0,0,1)_98%,rgba(0,0,0,0)_100%)] [mask-mode:alpha] [mask-repeat:no-repeat] [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_2%,rgba(0,0,0,1)_98%,rgba(0,0,0,0)_100%)] [-webkit-mask-repeat:no-repeat]',
+          )}
+        />
+      </div>
+      <div className="bg-background-lighter shadow-gray-dark/10 relative z-10 mx-auto w-full rounded-xs border border-gray-300 shadow xl:max-w-[1376px]">
         <div className="flex items-center justify-between px-6 pt-6 md:px-16 md:pt-10 lg:px-6 xl:px-18">
           <p className="text-sm font-medium text-gray-500">FEATURES</p>
           <p className="text-sm font-medium text-gray-500">SECTION 2 OF 4</p>
