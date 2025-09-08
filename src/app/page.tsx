@@ -98,8 +98,10 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex items-center justify-center gap-3 lg:justify-start">
-                <Button>Book demo</Button>
-                <Button variant="secondary">Learn more</Button>
+                <Button href="#">Book demo</Button>
+                <Button href="#" variant="secondary">
+                  Learn more
+                </Button>
               </div>
             </div>
 
@@ -236,7 +238,7 @@ export default function Home() {
               to ensure your data is safe and secure.
             </p>
           </div>
-          <Button className="w-fit" iconRight={<ArrowTopRightIcon />}>
+          <Button className="w-fit" href="#" iconRight={<ArrowTopRightIcon />}>
             Trust center
           </Button>
         </div>
@@ -253,7 +255,7 @@ export default function Home() {
         id="cta"
       >
         <div className="bg-brand-accent-blue border-gray-dark/5 relative w-full overflow-hidden border px-4 pt-24 pb-16 md:px-6 md:pb-16 xl:px-8 xl:pt-[7.5rem] xl:pb-20">
-          <BackgroundArt className="absolute top-1/2 left-1/2 size-[38.375rem] -translate-x-1/2 -translate-y-1/2 md:size-[58.9375rem]" />
+          <BackgroundArt className="pointer-events-none absolute top-1/2 left-1/2 size-[38.375rem] -translate-x-1/2 -translate-y-1/2 md:size-[58.9375rem]" />
           <div className="flex flex-col items-center gap-12">
             <div className="space-y-6 text-center xl:space-y-8">
               <h2 className="text-element-high-em text-5.5xl md:text-7xl">
@@ -267,7 +269,7 @@ export default function Home() {
               </p>
             </div>
 
-            <Button>Book demo</Button>
+            <Button href="#">Book demo</Button>
           </div>
         </div>
       </section>
@@ -278,9 +280,24 @@ export default function Home() {
           © {currentYear} AndAI Inc. All rights reserved
         </p>
         <div className="flex items-center gap-8">
-          <a className="text-element-mid-em text-sm font-medium">Privacy</a>
-          <a className="text-element-mid-em text-sm font-medium">Terms</a>
-          <a className="text-element-mid-em text-sm font-medium">LinkedIn</a>
+          <a
+            className="text-element-mid-em hover:text-element-high-em cursor-pointer text-sm font-medium hover:underline"
+            href="#"
+          >
+            Privacy
+          </a>
+          <a
+            className="text-element-mid-em hover:text-element-high-em cursor-pointer text-sm font-medium hover:underline"
+            href="#"
+          >
+            Terms
+          </a>
+          <a
+            className="text-element-mid-em hover:text-element-high-em cursor-pointer text-sm font-medium hover:underline"
+            href="#"
+          >
+            LinkedIn
+          </a>
         </div>
       </footer>
     </main>
