@@ -190,8 +190,8 @@ export const FeaturesSection = () => {
       id="features"
     >
       <div
-        className="pointer-events-none absolute inset-0 z-0"
         aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0"
       >
         <div
           className={cn(
