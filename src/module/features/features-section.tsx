@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useMediaQuery } from 'usehooks-ts';
 
 import {
   DocumentTextIcon,
@@ -128,8 +127,6 @@ export const FeaturesSection = () => {
 
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  const isMd = useMediaQuery('(min-width: 768px)');
-
   const tagIds = useMemo(
     () =>
       features.reduce<Record<string, string>>((acc, f) => {
@@ -218,12 +215,12 @@ export const FeaturesSection = () => {
               : 'pointer-events-none fixed top-20 left-1/2 -translate-x-1/2 -translate-y-2 opacity-0 xl:top-24',
           )}
         >
-          <Tab size={isMd ? 'md' : 'sm'}>
+          <Tab size="responsive">
             {features.map((f) => (
               <Tab.Button
                 key={f.tag}
                 isActive={activeTag === f.tag}
-                size={isMd ? 'md' : 'sm'}
+                size="responsive"
                 onClick={() => handleTabClick(f.tag)}
               >
                 {f.tag}

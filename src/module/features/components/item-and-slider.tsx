@@ -157,7 +157,7 @@ export const ItemAndSlider = ({
                   <Image
                     fill
                     alt={`Feature ${tag}`}
-                    className="object-cover object-top-left lg:object-none"
+                    className="object-cover object-top-left"
                     src={singleImage ?? ''}
                   />
                 </div>
@@ -170,7 +170,7 @@ export const ItemAndSlider = ({
                     <Image
                       fill
                       alt={`Feature ${tag}-${i + 1}`}
-                      className="object-cover object-top-left lg:object-none"
+                      className="object-cover object-top-left"
                       src={item.imageSrc ?? ''}
                     />
                   </div>

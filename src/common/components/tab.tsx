@@ -61,6 +61,10 @@ const tabVariants = tv({
         base: ['h-11'],
         tabButton: ['py-2', 'px-3', 'text-base', 'w-30', 'h-9'],
       },
+      responsive: {
+        base: ['h-9', 'md:h-11'],
+        tabButton: ['py-1', 'px-3', 'text-sm', 'w-20', 'h-7', 'md:py-2', 'md:px-3', 'md:text-base', 'md:w-30', 'md:h-9'],
+      },
     },
   },
   defaultVariants: {
