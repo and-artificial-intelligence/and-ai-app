@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { Button } from '@/common/components/button';
 import { Logo } from '@/common/components/logo';
+import { Links } from '@/common/constants/links';
 import { cn } from '@/common/functions/cn';
 
 export const Navbar = () => {
@@ -36,10 +37,12 @@ export const Navbar = () => {
       >
         <Logo andText className="h-[18px]" />
         <div className="flex items-center gap-3">
-          <Button href="#" variant="tertiary">
+          <Button href={Links.LogIn} variant="tertiary">
             Login
           </Button>
-          <Button href="#">Book demo</Button>
+          <Button external href={Links.Contact}>
+            Book demo
+          </Button>
         </div>
         <div
           className="pointer-events-none absolute bottom-0 left-0 hidden h-px w-full xl:block"

@@ -2,6 +2,7 @@ import Image from 'next/image';
 
 import { Paragraph } from '@/common/components/animated-text/paragraph';
 import { Button } from '@/common/components/button';
+import { Footer } from '@/common/components/footer';
 import {
   AnonymousIcon,
   ArrowTopRightIcon,
@@ -17,6 +18,7 @@ import {
 import { Navbar } from '@/common/components/navbar';
 import { SubHeader } from '@/common/components/subheader';
 import { TypingAnimation } from '@/common/components/typing-animation';
+import { Links } from '@/common/constants/links';
 import { cn } from '@/common/functions/cn';
 import { BrandColor } from '@/common/types/common';
 
@@ -25,8 +27,6 @@ import { FeaturesSection } from '@/module/features';
 import { PrivacyCard, PrivacyCardProps } from '@/module/privacy';
 
 export default function Home() {
-  const currentYear = new Date().getFullYear();
-
   const typingTexts: string[] = [
     'Hey Andy, help me find more prior art for claim 4 that pair well with my key references',
     `Hey Andy, what does Mozak '479 say about the architecture of the assembly?`,
@@ -98,8 +98,10 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex items-center justify-center gap-3 lg:justify-start">
-                <Button href="#">Book demo</Button>
-                <Button href="#" variant="secondary">
+                <Button external href={Links.Contact}>
+                  Book demo
+                </Button>
+                <Button external href={Links.Security} variant="secondary">
                   Learn more
                 </Button>
               </div>
@@ -238,7 +240,12 @@ export default function Home() {
               to ensure your data is safe and secure.
             </p>
           </div>
-          <Button className="w-fit" href="#" iconRight={<ArrowTopRightIcon />}>
+          <Button
+            external
+            className="w-fit"
+            href={Links.Compliance}
+            iconRight={<ArrowTopRightIcon />}
+          >
             Trust center
           </Button>
         </div>
@@ -269,37 +276,15 @@ export default function Home() {
               </p>
             </div>
 
-            <Button href="#">Book demo</Button>
+            <Button external href={Links.Contact}>
+              Book demo
+            </Button>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="mx-auto flex w-full flex-col items-center gap-4 px-4 py-6 md:max-w-[592px] md:flex-row md:justify-between lg:max-w-[976px] lg:px-6 xl:max-w-[1280px] xl:px-8">
-        <p className="text-element-mid-em text-sm font-medium">
-          © {currentYear} AndAI Inc. All rights reserved
-        </p>
-        <div className="flex items-center gap-8">
-          <a
-            className="text-element-mid-em hover:text-element-high-em cursor-pointer text-sm font-medium hover:underline"
-            href="#"
-          >
-            Privacy
-          </a>
-          <a
-            className="text-element-mid-em hover:text-element-high-em cursor-pointer text-sm font-medium hover:underline"
-            href="#"
-          >
-            Terms
-          </a>
-          <a
-            className="text-element-mid-em hover:text-element-high-em cursor-pointer text-sm font-medium hover:underline"
-            href="#"
-          >
-            LinkedIn
-          </a>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

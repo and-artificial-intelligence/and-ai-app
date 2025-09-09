@@ -1,0 +1,39 @@
+import { Links } from '@/common/constants/links';
+
+export const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="mx-auto flex w-full flex-col items-center gap-4 px-4 py-6 md:max-w-[592px] md:flex-row md:justify-between lg:max-w-[976px] lg:px-6 xl:max-w-[1280px] xl:px-8">
+      <p className="text-element-mid-em text-sm font-medium">
+        © {currentYear} AndAI Inc. All rights reserved
+      </p>
+      <div className="flex items-center gap-8">
+        <a
+          className="text-element-mid-em hover:text-element-high-em cursor-pointer text-sm font-medium hover:underline"
+          href={Links.Privacy}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Privacy
+        </a>
+        <a
+          className="text-element-mid-em hover:text-element-high-em cursor-pointer text-sm font-medium hover:underline"
+          href={Links.Terms}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Terms
+        </a>
+        <a
+          className="text-element-mid-em hover:text-element-high-em cursor-pointer text-sm font-medium hover:underline"
+          href={Links.LinkedIn}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          LinkedIn
+        </a>
+      </div>
+    </footer>
+  );
+};
