@@ -11,6 +11,7 @@ export * from './investors';
 export * from './linked-in';
 export * from './list';
 export * from './message';
+export * from './play-video';
 export * from './search-document';
 export * from './shield-2-check';
 export * from './spreadsheet';
