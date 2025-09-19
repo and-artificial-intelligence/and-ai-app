@@ -5,6 +5,7 @@ import { Button } from '@/common/components/button';
 import { Logo } from '@/common/components/logo';
 import { Links } from '@/common/constants/links';
 import { cn } from '@/common/functions/cn';
+import Link from 'next/link';
 
 export const Navbar = () => {
   const [hasIntersected, setHasIntersected] = useState(false);
@@ -35,7 +36,9 @@ export const Navbar = () => {
           'relative mx-auto flex h-16 w-full items-center justify-between px-6 py-3 md:max-w-[592px] md:px-0 lg:max-w-[976px] xl:h-20 xl:max-w-[1280px] xl:px-8',
         )}
       >
-        <Logo andText className="h-[18px]" />
+        <Link href="/">
+          <Logo andText className="h-[18px]" />
+        </Link>
         <div className="flex items-center gap-3">
           <Button href={Links.LogIn} variant="tertiary">
             Login
