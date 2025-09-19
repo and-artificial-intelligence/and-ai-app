@@ -109,7 +109,7 @@ export default function Home() {
 
             <div className="flex flex-col items-center justify-center gap-6 md:flex-row md:gap-10 lg:flex-col lg:items-start lg:justify-start lg:gap-6 xl:flex-row xl:gap-10">
               <p className="text-element-mid-em font-mono text-sm capitalize md:max-w-40 lg:max-w-max xl:max-w-40">
-                Backed by world-class investors
+                BACKED BY WORLD-CLASS INVESTORS
               </p>
               <div className="flex items-center gap-8">
                 <FirstRoundIcon className="text-element-mid-em" />
