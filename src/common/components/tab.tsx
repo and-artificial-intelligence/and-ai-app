@@ -37,6 +37,7 @@ const tabVariants = tv({
       'justify-center',
       'relative',
       'z-10',
+      'cursor-pointer',
     ],
     indicator: [
       'absolute',
@@ -63,7 +64,18 @@ const tabVariants = tv({
       },
       responsive: {
         base: ['h-9', 'md:h-11'],
-        tabButton: ['py-1', 'px-3', 'text-sm', 'w-20', 'h-7', 'md:py-2', 'md:px-3', 'md:text-base', 'md:w-30', 'md:h-9'],
+        tabButton: [
+          'py-1',
+          'px-3',
+          'text-sm',
+          'w-20',
+          'h-7',
+          'md:py-2',
+          'md:px-3',
+          'md:text-base',
+          'md:w-30',
+          'md:h-9',
+        ],
       },
     },
   },
