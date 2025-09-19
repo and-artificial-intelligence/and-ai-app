@@ -200,9 +200,13 @@ export const FeaturesSection = () => {
       </div>
       <div className="bg-background-lighter shadow-gray-dark/10 relative z-10 mx-auto w-full rounded-xs border border-gray-300 shadow xl:max-w-[1376px]">
         <div className="flex items-center justify-between px-6 pt-6 md:px-16 md:pt-10 lg:px-6 xl:px-18">
-          <p className="text-sm font-medium text-gray-500">FEATURES</p>
-          <p className="text-sm font-medium text-gray-500">SECTION 2 OF 4</p>
-          <p className="hidden text-sm font-medium text-gray-500 md:block">
+          <p className="font-mono text-sm font-medium text-gray-500">
+            FEATURES
+          </p>
+          <p className="font-mono text-sm font-medium text-gray-500">
+            SECTION 2 OF 4
+          </p>
+          <p className="hidden font-mono text-sm font-medium text-gray-500 md:block">
             US 6,237,565 B1
           </p>
         </div>
