@@ -64,9 +64,9 @@ export const ItemAndSlider = ({
     tag === 'Discovery'
       ? 'to-feature-1'
       : tag === 'Charts'
-        ? 'to-feature-2/50'
+        ? 'to-feature-2'
         : tag === 'Drafts'
-          ? 'to-feature-3/50'
+          ? 'to-feature-3'
           : 'to-feature-4';
 
   const backgroundColor =
@@ -189,7 +189,7 @@ export const ItemAndSlider = ({
           {/* linear gradient */}
           <div
             className={cn(
-              'pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-100%',
+              'pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-100%',
               toGradientColor,
             )}
           />
