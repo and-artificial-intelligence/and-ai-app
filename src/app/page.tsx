@@ -150,7 +150,7 @@ export default function Home() {
           </div>
 
           <div className="lg:px-10 xl:px-24">
-            <div className="border-gray-dark/10 rounded-lg border bg-white/30">
+            <div className="border-gray-dark/10 shadow-gray-dark/10 rounded-lg border bg-white/30 shadow">
               <div className="border-gray-dark/10 border-b p-4">
                 <TypingAnimation texts={typingTexts} />
               </div>
