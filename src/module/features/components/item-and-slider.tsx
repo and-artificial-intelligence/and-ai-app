@@ -35,6 +35,7 @@ export const ItemAndSlider = ({
     all: {
       loop: true,
       enableAutoplay: true,
+      autoplayInterval: 5000,
     },
   });
 
