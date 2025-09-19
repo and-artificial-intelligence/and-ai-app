@@ -171,8 +171,8 @@ export default function Home() {
 
       <FeaturesSection />
 
-      {/* WORKFLOW SECTION */}
-      <section
+      {/* WORKFLOW SECTION //TODO: replace video placeholder*/}
+      {/* <section
         className="mx-auto flex flex-col gap-12 px-4 py-12 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24"
         id="workflow"
       >
@@ -190,10 +190,9 @@ export default function Home() {
           </p>
         </div>
         <div>
-          {/* //TODO: video placeholder */}
           <div className="border-element-sketch h-[10.375rem] w-full rounded border bg-gray-300 md:h-[20.6875rem] lg:h-[28.0625rem] xl:h-[35rem]" />
         </div>
-      </section>
+      </section> */}
 
       {/* BUILT-FOR-PATENTS SECTION */}
       <section className="mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:gap-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
