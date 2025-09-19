@@ -14,7 +14,7 @@ interface TypingAnimationProps {
 export const TypingAnimation = ({
   texts,
   typingSpeedMs = 40,
-  pauseMs = 500,
+  pauseMs = 1000,
   className,
 }: TypingAnimationProps) => {
   const [index, setIndex] = useState(0);
