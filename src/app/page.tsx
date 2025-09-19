@@ -226,7 +226,7 @@ export default function Home() {
         className="relative mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:flex-row lg:justify-between lg:gap-8 lg:py-0 xl:max-w-[80rem] xl:px-8"
         id="privacy"
       >
-        <div className="flex flex-col gap-12 md:max-w-[25rem] lg:sticky lg:top-1/2 lg:self-start lg:pt-24 lg:pb-24 xl:max-w-[30rem]">
+        <div className="flex flex-col gap-12 md:max-w-[25rem] lg:sticky lg:top-12 lg:self-start lg:pt-24 lg:pb-24 xl:max-w-[30rem]">
           <div className="space-y-6">
             <div className="space-y-3">
               <SubHeader brand={BrandColor.PRIMARY} title="Privacy" />
