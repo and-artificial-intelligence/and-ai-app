@@ -107,7 +107,7 @@ export const ItemAndSlider = ({
           </p>
         </div>
 
-        <div className="relative space-y-3 before:absolute before:inset-0 before:z-[-1] before:border-l-2 before:border-l-gray-300">
+        <div className="relative cursor-pointer space-y-3 before:absolute before:inset-0 before:z-[-1] before:border-l-2 before:border-l-gray-300">
           {items.map((item, index) => {
             const brandColor =
               tagColor === BrandColor.ACCENT_BLUE_DARK
@@ -191,7 +191,7 @@ export const ItemAndSlider = ({
             <div
               className={cn(
                 'blaze-pagination absolute bottom-4 left-1/2 -translate-x-1/2',
-                '[&_button]:bg-gray-300',
+                '[&_button]:cursor-pointer [&_button]:bg-gray-300',
                 sliderBrandColorBackground,
               )}
             />
