@@ -108,7 +108,13 @@ export const ItemAndSlider = ({
           </p>
         </div>
 
-        <div className="relative cursor-pointer space-y-3 before:absolute before:inset-0 before:z-[-1] before:border-l-2 before:border-l-gray-300">
+        <div
+          className={cn(
+            'relative cursor-pointer space-y-3',
+            !isTagTables &&
+              'before:absolute before:inset-0 before:z-[-1] before:border-l-2 before:border-l-gray-300',
+          )}
+        >
           {items.map((item, index) => {
             const brandColor =
               tagColor === BrandColor.ACCENT_BLUE_DARK
