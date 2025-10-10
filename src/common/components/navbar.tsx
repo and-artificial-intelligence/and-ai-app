@@ -55,6 +55,12 @@ export const Navbar = () => {
             </Link>
             <Link
               className="text-element-high-em hover:text-element-mid-em text-sm transition-colors"
+              href="/blog"
+            >
+              Blog
+            </Link>
+            <Link
+              className="text-element-high-em hover:text-element-mid-em text-sm transition-colors"
               href="/about"
             >
               Company
