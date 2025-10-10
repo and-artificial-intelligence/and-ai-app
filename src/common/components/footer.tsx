@@ -11,17 +11,13 @@ export const Footer = () => {
       <div className="flex items-center gap-8">
         <a
           className="text-element-mid-em hover:text-element-high-em cursor-pointer text-sm font-medium hover:underline"
-          href={Links.Privacy}
-          rel="noopener noreferrer"
-          target="_blank"
+          href="/privacy"
         >
           Privacy
         </a>
         <a
           className="text-element-mid-em hover:text-element-high-em cursor-pointer text-sm font-medium hover:underline"
-          href={Links.Terms}
-          rel="noopener noreferrer"
-          target="_blank"
+          href="/terms"
         >
           Terms
         </a>

@@ -38,7 +38,7 @@ export default function Home() {
       imageSrc: '/privacy-logo-1.png',
       title: 'No training',
       description:
-        'AndAI does not train models on your data. Zero-retention with configured model providers.',
+        '&AI does not train models on your data. Zero-retention with configured model providers.',
       icon: <AnonymousIcon />,
     },
     {
@@ -52,7 +52,7 @@ export default function Home() {
       imageSrc: '/privacy-logo-3.png',
       title: 'Data control',
       description:
-        'On request, AndAI deletes organization, user, or project data.',
+        'On request, &AI deletes organization, user, or project data.',
       icon: <DatabaseSlashIcon />,
     },
   ];
@@ -82,10 +82,10 @@ export default function Home() {
                     'text-element-mid-em text-center text-base md:max-w-[592px] lg:max-w-[22.5rem] lg:text-left xl:max-w-[30rem] xl:text-lg',
                   )}
                 >
-                  Engineered for patents, AndAI executes litigation-
+                  Engineered for patents, &AI executes litigation-
                   <br />
                   grade work at machine scale. You set strategy;
-                  <br /> AndAI delivers the work.
+                  <br /> &AI delivers the work.
                 </p>
                 <p
                   className={cn(
@@ -93,14 +93,12 @@ export default function Home() {
                     'text-element-mid-em text-center text-base md:max-w-[592px] lg:max-w-[22.5rem] lg:text-left xl:max-w-[30rem] xl:text-lg',
                   )}
                 >
-                  Engineered for patents, AndAI executes litigation-grade work
-                  at machine scale. You set strategy; AndAI delivers the work.
+                  Engineered for patents, &AI executes litigation-grade work at
+                  machine scale. You set strategy; &AI delivers the work.
                 </p>
               </div>
               <div className="flex items-center justify-center gap-3 lg:justify-start">
-                <Button external href={Links.Contact}>
-                  Book demo
-                </Button>
+                <Button href="/book-demo">Book demo</Button>
                 <Button external href={Links.Security} variant="secondary">
                   Learn more
                 </Button>
@@ -270,14 +268,12 @@ export default function Home() {
                 <span className="font-martina italic">patent expertise</span>
               </h2>
               <p className="text-element-high-em max-w-[20.5625rem] text-center md:max-w-[30rem] xl:max-w-[35rem] xl:text-lg">
-                Engineered for patents, AndAI executes litigation-grade work at
-                machine scale. You set strategy; AndAI delivers the work.
+                Engineered for patents, &AI executes litigation-grade work at
+                machine scale. You set strategy; &AI delivers the work.
               </p>
             </div>
 
-            <Button external href={Links.Contact}>
-              Book demo
-            </Button>
+            <Button href="/book-demo">Book demo</Button>
           </div>
         </div>
       </section>

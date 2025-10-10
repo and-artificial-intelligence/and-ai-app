@@ -1,0 +1,142 @@
+import Image from 'next/image';
+
+import { Footer } from '@/common/components/footer';
+import { Navbar } from '@/common/components/navbar';
+import { SubHeader } from '@/common/components/subheader';
+import { BrandColor } from '@/common/types/common';
+
+interface Advisor {
+  name: string;
+  position: string;
+  imageSrc: string;
+}
+
+export default function About() {
+  const advisors: Advisor[] = [
+    {
+      name: 'Peter Magic',
+      position: 'Managing Partner at Desmarais LLP',
+      imageSrc: '/advisor-1.jpeg',
+    },
+    {
+      name: 'Tigran Guledjian',
+      position: 'IP Litigation Co-Chair at Quinn Emanuel',
+      imageSrc: '/advisor-2.jpeg',
+    },
+    {
+      name: 'Ybet Villacorta',
+      position: 'Partner at Foley & Lardner',
+      imageSrc: '/advisor-3.jpg',
+    },
+    {
+      name: 'Charles Calkins',
+      position: 'Partner at Kilpatrick Townsend',
+      imageSrc: '/advisor-4.jpeg',
+    },
+    {
+      name: 'Josef Schenker',
+      position: 'Partner at Gish LLP',
+      imageSrc: '/advisor-5.jpeg',
+    },
+    {
+      name: 'Bryce Barcelo',
+      position: 'Founder at Barcelo Law PLLC',
+      imageSrc: '/advisor-6.jpeg',
+    },
+  ];
+
+  return (
+    <main className="flex min-h-screen flex-col">
+      <Navbar />
+
+      <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
+        <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20 xl:gap-24">
+          <div className="flex-1 space-y-8 lg:max-w-[480px]">
+            <div className="space-y-3">
+              <SubHeader brand={BrandColor.PRIMARY} title="About us" />
+              <h1 className="text-element-high-em text-5xl md:text-6xl xl:text-7xl">
+                Our <span className="font-martina italic">vision</span>
+              </h1>
+            </div>
+            <div className="text-element-mid-em space-y-4 text-base xl:text-lg">
+              <p>
+                Ultrices vestibulum erat euismod non dictum tempor. Gravida
+                aliquet purus magna egestas sed scelerisque massa. Duis feugiat
+                accumsan vitae non nisl magna malesuada nibh tormentum.
+                Adipiscing in turpis eu pellentesque vitae praesent mauris ut
+                metus.
+              </p>
+              <p>
+                Dictum et vulputate pulvinar tortor congue massa fermentum
+                dolor. Arcu pharetra nisi ultrices ut turpis ac metus. Egestas
+                nulla morbi viverra nibh lectus lorem in tristique. Euismod
+                proin purus faucibus eget lobortis libero mollis eget. Viverra
+                hendrerit egestas sed velit rutrum.
+              </p>
+              <p>
+                Sed turpis turpis non vel vulputate lorem congue vitae leo.
+                Mauris malesuada nulla malesuada mi diam.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative h-[20rem] w-full flex-1 rounded-lg md:h-[28rem] xl:h-[32rem]">
+            <Image
+              fill
+              alt="About us"
+              className="rounded-lg object-cover object-top"
+              src="/founders.jpg"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="relative mx-auto w-full px-4 py-12 md:px-6 md:py-16 xl:px-8">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0"
+        >
+          <div className="relative h-full w-full [background-image:linear-gradient(to_right,rgba(0,0,0,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.06)_1px,transparent_1px)] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_2%,rgba(0,0,0,1)_98%,rgba(0,0,0,0)_100%)] [background-size:20px_20px,20px_20px] [background-position:0_0,0_0] [background-repeat:repeat,repeat] [mask-mode:alpha] [mask-repeat:no-repeat] [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_2%,rgba(0,0,0,1)_98%,rgba(0,0,0,0)_100%)] [-webkit-mask-repeat:no-repeat]" />
+        </div>
+        <div className="bg-background-lighter shadow-gray-dark/10 relative z-10 mx-auto w-full rounded-xs border border-gray-300 shadow xl:max-w-[1376px]">
+          <div className="flex items-center justify-between px-6 pt-6 md:px-16 md:pt-10 lg:px-6 xl:px-20">
+            <p className="font-mono text-sm font-medium text-gray-500">
+              ADVISORY BOARD
+            </p>
+            <p className="font-mono text-sm font-medium text-gray-500">
+              6 MEMBERS
+            </p>
+            <p className="hidden font-mono text-sm font-medium text-gray-500 md:block">
+              US 6,237,565 B1
+            </p>
+          </div>
+
+          <div className="grid gap-8 px-6 py-12 md:grid-cols-2 md:px-16 md:py-16 lg:grid-cols-3 lg:px-6 xl:px-20">
+            {advisors.map((advisor, index) => (
+              <div key={index} className="flex flex-col gap-4">
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-gray-200">
+                  <Image
+                    fill
+                    alt={advisor.name}
+                    className="object-cover"
+                    src={advisor.imageSrc}
+                  />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-element-high-em text-lg font-medium">
+                    {advisor.name}
+                  </h3>
+                  <p className="text-element-mid-em text-sm">
+                    {advisor.position}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}
