@@ -3,7 +3,6 @@ import { useState, FormEvent } from 'react';
 
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
-import { Navbar } from '@/common/components/navbar';
 import { SubHeader } from '@/common/components/subheader';
 import { cn } from '@/common/functions/cn';
 import { BrandColor } from '@/common/types/common';
@@ -66,8 +65,6 @@ export default function BookDemo() {
 
   return (
     <main className="flex min-h-screen flex-col">
-      <Navbar />
-
       <section className="relative mx-auto w-full flex-1 px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="flex flex-col gap-16 lg:flex-row lg:gap-20 xl:gap-24">
           <div className="space-y-3 lg:pt-8">
@@ -86,7 +83,7 @@ export default function BookDemo() {
             </div>
 
             <div className="border-gray-dark/10 bg-background-lighter relative z-10 rounded-lg border p-6 shadow-sm md:p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="space-y-2">
                     <label

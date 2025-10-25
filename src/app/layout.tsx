@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import '@/common/styles/main.css';
 
+import { Navbar } from '@/common/components/navbar';
 import { geist, martina, mono } from '@/common/fonts';
 import { cn } from '@/common/functions/cn';
 
@@ -30,6 +31,7 @@ export default function RootLayout({
       lang="en"
     >
       <body>
+        <Navbar />
         <div className="relative h-full min-h-full">{children}</div>
       </body>
     </html>

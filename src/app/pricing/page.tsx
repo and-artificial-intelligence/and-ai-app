@@ -1,71 +1,104 @@
+'use client';
+import { useState } from 'react';
+
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
-import { Navbar } from '@/common/components/navbar';
 import { SubHeader } from '@/common/components/subheader';
-import { Links } from '@/common/constants/links';
-import { cn } from '@/common/functions/cn';
+import Tab from '@/common/components/tab';
 import { BrandColor } from '@/common/types/common';
+
+type BillingPeriod = 'monthly' | 'yearly';
 
 interface PricingTier {
   name: string;
-  price: string;
+  monthlyPrice: string | null;
+  yearlyPrice: string | null;
   description: string;
   features: string[];
 }
 
 export default function Pricing() {
+  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>('monthly');
+
   const pricingTiers: PricingTier[] = [
     {
-      name: 'Basic',
-      price: '$10',
-      description: 'Our most popular plan.',
+      name: 'Core',
+      monthlyPrice: '$375',
+      yearlyPrice: '$3,600',
+      description: 'Public-only access to &AI.',
       features: [
-        'Basic functionality',
-        'Access to basic features',
-        'Basic reporting and analytics',
-        'Up to 10 individual users',
-        '20 GB individual data each user',
-        'Basic chat and email support',
+        'Patent, NPL, and product search',
+        'Prosecution, previous IPRs, and global family',
+        'Claim construction',
+        'Invalidity and evidence-of-use charts',
+        'Default draft and pitch templates',
+        'Exports to Word, PowerPoint, and Excel',
+        'No document uploads or prompts',
       ],
     },
     {
-      name: 'Premium',
-      price: '$35',
-      description: 'Our most popular plan.',
+      name: 'Pro',
+      monthlyPrice: '$625',
+      yearlyPrice: '$6,000',
+      description: 'Full access to &AI.',
       features: [
-        'Basic, plus',
-        'Access to all basic features',
-        'Basic reporting and analytics',
-        'Up to 10 individual users',
-        '20 GB individual data each user',
-        'Basic chat and email support',
+        'All core features',
+        'Andy, the AI patent assistant',
+        'Tables',
+        'Document uploads',
+        'Custom prompt libraries',
+        'Custom draft and table templates',
+        'Instructions and annotations',
       ],
     },
     {
       name: 'Enterprise',
-      price: '$50',
-      description: 'Our most popular plan.',
+      monthlyPrice: null,
+      yearlyPrice: null,
+      description: 'Customized for your needs.',
       features: [
-        'Premium, plus',
-        'Access to basic features',
-        'Basic reporting and analytics',
-        'Up to 10 individual users',
-        '20 GB individual data each user',
-        'Basic chat and email support',
+        'All pro features',
+        'SSO and RBAC',
+        'Priority support',
+        'Single-tenant architecture',
+        'Self-hosted models',
+        'Passthrough invoicing',
+        'Workflow automation',
       ],
     },
   ];
 
   return (
     <main className="flex min-h-screen flex-col">
-      <Navbar />
-
       <section className="relative mx-auto w-full flex-1 px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="mb-16 flex flex-col items-center gap-4 text-center md:mb-20">
-          <SubHeader brand={BrandColor.PRIMARY} title="Flexible plans" />
+          <SubHeader brand={BrandColor.PRIMARY} title="Pricing" />
           <h1 className="text-element-high-em text-5xl md:text-6xl">
-            Plan that <span className="font-martina italic">grow</span> with you
+            From essentials to <span className="font-martina italic">unlimited</span>
           </h1>
+          <div className="mt-6">
+            <Tab size="responsive">
+              <Tab.Button
+                isActive={billingPeriod === 'monthly'}
+                size="responsive"
+                onClick={() => setBillingPeriod('monthly')}
+              >
+                Monthly
+              </Tab.Button>
+              <Tab.Button
+                isActive={billingPeriod === 'yearly'}
+                size="responsive"
+                onClick={() => setBillingPeriod('yearly')}
+              >
+                <span className="flex items-center gap-1.5">
+                  Annual
+                  <span className="text-xs font-medium text-orange-500">
+                    -20%
+                  </span>
+                </span>
+              </Tab.Button>
+            </Tab>
+          </div>
         </div>
 
         <div className="relative -my-12 py-12">
@@ -87,10 +120,25 @@ export default function Pricing() {
                     {tier.name}
                   </h2>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-element-high-em text-4xl font-medium">
-                      {tier.price}
-                    </span>
-                    <span className="text-element-mid-em text-sm">/month</span>
+                    {tier.monthlyPrice || tier.yearlyPrice ? (
+                      <>
+                        <span className="text-element-high-em text-4xl font-medium">
+                          {billingPeriod === 'monthly'
+                            ? tier.monthlyPrice
+                            : tier.yearlyPrice}
+                        </span>
+                        <span className="text-element-mid-em text-sm">
+                          /
+                          {billingPeriod === 'monthly'
+                            ? 'monthly user'
+                            : 'annual user'}
+                        </span>
+                      </>
+                    ) : (
+                      <span className="text-element-high-em text-4xl font-medium">
+                        Custom
+                      </span>
+                    )}
                   </div>
                   <p className="text-element-mid-em text-sm">
                     {tier.description}
@@ -103,11 +151,11 @@ export default function Pricing() {
 
                 <div className="border-gray-dark/10 flex-1 space-y-3 border-t pt-6">
                   <p className="text-element-high-em text-sm font-medium">
-                    {tier.name === 'Basic'
-                      ? 'Basic functionality'
-                      : tier.name === 'Premium'
-                        ? 'Basic, plus'
-                        : 'Premium, plus'}
+                    {tier.name === 'Core'
+                      ? 'The essentials'
+                      : tier.name === 'Pro'
+                        ? 'Core, plus'
+                        : 'Pro, plus'}
                   </p>
                   <ul className="space-y-3">
                     {tier.features.map((feature) => (

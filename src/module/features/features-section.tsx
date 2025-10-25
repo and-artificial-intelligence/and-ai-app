@@ -21,7 +21,7 @@ import {
 
 const features: ItemAndSliderProps[] = [
   {
-    tag: 'Discovery',
+    tag: 'Search',
     tagColor: BrandColor.PRIMARY,
     title: 'Find what others miss. Nothing is out of reach.',
     description:
@@ -32,21 +32,21 @@ const features: ItemAndSliderProps[] = [
         title: 'Patents',
         description:
           'Applications and publications across major jurisdictions and languages.',
-        imageSrc: '/feature-1-1.png',
+        imageSrc: '/1.1.png',
       },
       {
         icon: <FileCopyIcon />,
         title: 'Non-Patent Literature',
         description:
           'Research papers, standards, clinical trials, and more across the internet.',
-        imageSrc: '/feature-1-2.png',
+        imageSrc: '/1.2.png',
       },
       {
         icon: <Ar3DIcon />,
         title: 'Products',
         description:
           'Current and archival product listings, specs, manuals, and teardowns.',
-        imageSrc: '/feature-1-3.png',
+        imageSrc: '/1.3.png',
       },
     ],
   },
@@ -62,14 +62,14 @@ const features: ItemAndSliderProps[] = [
         title: 'Claims and features',
         description:
           'Reasoned citations to key disclosures for invalidity, infringement, and freedom-to-operate. ',
-        imageSrc: '/feature-2-1.png',
+        imageSrc: '/2.1.png',
       },
       {
         icon: <ListIcon />,
         title: 'Construction',
         description:
           'Term-by-term constructions drawn from the prosecution history and family.',
-        imageSrc: '/feature-2-2.png',
+        imageSrc: '/2.2.png',
       },
     ],
   },
@@ -85,14 +85,14 @@ const features: ItemAndSliderProps[] = [
         title: 'Template',
         description:
           'Fully formatted examples with variables and generation blocks for on-the-fly drafting.',
-        imageSrc: '/feature-3-1.png',
+        imageSrc: '/3.1.png',
       },
       {
         icon: <MessageIcon />,
         title: 'Editor',
         description:
           'A workspace to collaborate with colleagues – and Andy – on a single draft.',
-        imageSrc: '/feature-3-2.png',
+        imageSrc: '/3.2.png',
       },
     ],
   },
@@ -116,13 +116,13 @@ const features: ItemAndSliderProps[] = [
           'Slice the table by any natural-language or metadata filter. ',
       },
     ],
-    singleImage: '/feature-4-1.png',
+    singleImage: '/4.1.png',
   },
 ];
 
 export const FeaturesSection = () => {
   const [tabsVisible, setTabsVisible] = useState(false);
-  const [activeTag, setActiveTag] = useState<string>('Discovery');
+  const [activeTag, setActiveTag] = useState<string>('Search');
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
 
   const sectionRef = useRef<HTMLElement | null>(null);

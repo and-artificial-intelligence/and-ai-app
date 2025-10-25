@@ -2,15 +2,12 @@ import Link from 'next/link';
 
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
-import { Navbar } from '@/common/components/navbar';
 
 import { BackgroundArt } from '@/module/cta';
 
 export default function BlogPost() {
   return (
     <main className="flex min-h-screen flex-col">
-      <Navbar />
-
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[48rem] xl:px-8 xl:py-24">
         <div className="space-y-12">
           <div className="space-y-6">
@@ -38,7 +35,7 @@ export default function BlogPost() {
               <h1 className="text-element-high-em text-4xl md:text-5xl">
                 Reliable by Design: Grounding Legal AI with RAG
               </h1>
-              <p className="text-element-mid-em text-sm">Feb 6, 2025</p>
+              <p className="text-element-mid-em text-sm">February 6, 2025</p>
             </div>
           </div>
 
@@ -158,8 +155,8 @@ export default function BlogPost() {
                 <span className="font-martina italic">patent expertise</span>
               </h2>
               <p className="text-element-high-em max-w-[20.5625rem] text-center md:max-w-[30rem] xl:max-w-[35rem] xl:text-lg">
-                Engineered for patents, &AI executes litigation-grade work at
-                machine scale. You set strategy; &AI delivers the work.
+                &AI delivers trial-ready work product for patent litigators —
+                fast enough for pitches, strong enough for court.
               </p>
             </div>
             <Button href="/book-demo">Book demo</Button>

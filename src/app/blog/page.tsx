@@ -1,12 +1,10 @@
 import Link from 'next/link';
 
 import { Footer } from '@/common/components/footer';
-import { Navbar } from '@/common/components/navbar';
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
 
-import { BackgroundArt } from '@/module/cta';
-import { Button } from '@/common/components/button';
+import { CTASection } from '@/module/cta';
 
 interface BlogPost {
   slug: string;
@@ -19,59 +17,25 @@ interface BlogPost {
 export default function Blog() {
   const posts: BlogPost[] = [
     {
-      slug: 'reliable-by-design-grounding-legal-ai-with-rag',
-      title: 'Reliable by Design: Grounding Legal AI with RAG',
+      slug: 'general-access',
+      title: 'General access',
       description:
-        'By deploying advanced RAG technology, &AI grounds legal AI in accurate, verified sources - delivering reliability and eliminating legal hallucinations.',
-      date: 'Feb 6, 2025',
-      backgroundColor: 'bg-gray-200',
-    },
-    {
-      slug: 'bringing-patent-law-into-the-agentic-era',
-      title: 'Bringing Patent Law into the Agentic Era',
-      description:
-        "AI is entering its agentic era — here's how this is changing everything from search to strategy in IP law.",
-      date: 'Feb 6, 2025',
+        'We are excited to announce that &AI is now available for general access.',
+      date: 'October 28, 2025',
       backgroundColor: 'bg-brand-accent-blue',
     },
     {
       slug: 'seed-funding-announcement',
-      title: '$6.5 Million Seed Funding',
+      title: '$6.5m seed funding',
       description:
         '&AI Raises $6.5 million to Launch First AI Agent for Patents',
-      date: 'Feb 6, 2025',
+      date: 'February 6, 2025',
       backgroundColor: 'bg-brand-accent-purple/30',
-    },
-    {
-      slug: 'why-ai',
-      title: 'Why "&AI"?',
-      description:
-        'The use of &ESTR; (‹&") has been met by a rise in tools for creating, storing, and managing them.',
-      date: 'Feb 6, 2025',
-      backgroundColor: 'bg-gray-200',
-    },
-    {
-      slug: 'rethinking-prior-art-search',
-      title: 'Rethinking Prior Art Search',
-      description:
-        'AI is revolutionizing prior art search by addressing key challenges in semantic understanding, quality evaluation, and scalability.',
-      date: 'Feb 6, 2025',
-      backgroundColor: 'bg-brand-accent-blue/50',
-    },
-    {
-      slug: 'portfolio-management-at-scale',
-      title: 'Portfolio Management at Scale',
-      description:
-        '&AI transforms patent portfolio management by automating traditionally time-consuming due diligence tasks.',
-      date: 'Feb 6, 2025',
-      backgroundColor: 'bg-gray-200',
     },
   ];
 
   return (
     <main className="flex min-h-screen flex-col">
-      <Navbar />
-
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="mb-16 flex flex-col items-center gap-4 text-center md:mb-20">
           <SubHeader brand={BrandColor.PRIMARY} title="Blog" />
@@ -89,15 +53,15 @@ export default function Blog() {
           </div>
 
           <div className="bg-background-lighter shadow-gray-dark/10 relative z-10 rounded-xs border border-gray-300 shadow">
-            <div className="flex items-center justify-between px-6 pt-6 md:px-16 md:pt-10 lg:px-6 xl:px-20">
+            <div className="grid grid-cols-3 items-center px-6 pt-6 md:px-16 md:pt-10 lg:px-6 xl:px-20">
               <p className="font-mono text-sm font-medium text-gray-500">
                 BLOG
               </p>
-              <p className="font-mono text-sm font-medium text-gray-500">
+              <p className="text-center font-mono text-sm font-medium text-gray-500">
                 {posts.length} ARTICLES
               </p>
-              <p className="hidden font-mono text-sm font-medium text-gray-500 md:block">
-                US 6,237,565 B1
+              <p className="text-right font-mono text-sm font-medium text-gray-500 md:block">
+                <span className="hidden md:inline">US 6,237,565 B1</span>
               </p>
             </div>
 
@@ -130,25 +94,7 @@ export default function Blog() {
         </div>
       </section>
 
-      <section className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-0">
-        <div className="bg-brand-accent-blue border-gray-dark/5 relative w-full overflow-hidden border px-4 pt-24 pb-16 md:px-6 md:pb-16 xl:px-8 xl:pt-[7.5rem] xl:pb-20">
-          <BackgroundArt className="pointer-events-none absolute top-1/2 left-1/2 size-[38.375rem] -translate-x-1/2 -translate-y-1/2 md:size-[58.9375rem]" />
-          <div className="flex flex-col items-center gap-12">
-            <div className="space-y-6 text-center xl:space-y-8">
-              <h2 className="text-element-high-em text-5.5xl md:text-7xl">
-                Scale your
-                <br />
-                <span className="font-martina italic">patent expertise</span>
-              </h2>
-              <p className="text-element-high-em max-w-[20.5625rem] text-center md:max-w-[30rem] xl:max-w-[35rem] xl:text-lg">
-                Engineered for patents, &AI executes litigation-grade work at
-                machine scale. You set strategy; &AI delivers the work.
-              </p>
-            </div>
-            <Button href="/book-demo">Book demo</Button>
-          </div>
-        </div>
-      </section>
+      <CTASection />
 
       <Footer />
     </main>

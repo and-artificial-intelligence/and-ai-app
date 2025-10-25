@@ -61,7 +61,7 @@ export const ItemAndSlider = ({
   };
 
   const toGradientColor =
-    tag === 'Discovery'
+    tag === 'Search'
       ? 'to-feature-1'
       : tag === 'Charts'
         ? 'to-feature-2'
@@ -70,7 +70,7 @@ export const ItemAndSlider = ({
           : 'to-feature-4';
 
   const backgroundColor =
-    tag === 'Discovery'
+    tag === 'Search'
       ? 'bg-feature-1'
       : tag === 'Charts'
         ? 'bg-feature-2/50'
@@ -143,7 +143,9 @@ export const ItemAndSlider = ({
                   </p>
                 </div>
 
-                <p className="text-element-mid-em">{item.description}</p>
+                <p className="text-element-mid-em max-w-[420px]">
+                  {item.description}
+                </p>
               </div>
             );
           })}

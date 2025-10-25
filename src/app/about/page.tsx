@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 import { Footer } from '@/common/components/footer';
-import { Navbar } from '@/common/components/navbar';
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
 
@@ -38,17 +37,10 @@ export default function About() {
       position: 'Partner at Gish LLP',
       imageSrc: '/advisor-5.jpeg',
     },
-    {
-      name: 'Bryce Barcelo',
-      position: 'Founder at Barcelo Law PLLC',
-      imageSrc: '/advisor-6.jpeg',
-    },
   ];
 
   return (
     <main className="flex min-h-screen flex-col">
-      <Navbar />
-
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20 xl:gap-24">
           <div className="flex-1 space-y-8 lg:max-w-[480px]">
@@ -60,22 +52,26 @@ export default function About() {
             </div>
             <div className="text-element-mid-em space-y-4 text-base xl:text-lg">
               <p>
-                Ultrices vestibulum erat euismod non dictum tempor. Gravida
-                aliquet purus magna egestas sed scelerisque massa. Duis feugiat
-                accumsan vitae non nisl magna malesuada nibh tormentum.
-                Adipiscing in turpis eu pellentesque vitae praesent mauris ut
-                metus.
+                Co-founders Herbie Turner and Caleb Harris met at MIT, where
+                both studied engineering through undergrad and graduate school.
+                Caleb went on to serve as a technical expert in patent
+                litigation, analyzing frontier science in high-stakes cases.
+                Herbie built his career in engineering and invention, creating
+                products and navigating the realities of protecting innovation.
+                Both saw the same problem: patent litigation was extraordinarily
+                expensive and slow—not because patents lacked value, but because
+                proving infringement or validity required such deep technical
+                analysis that billions in potential licensing revenue remained
+                locked away.
               </p>
               <p>
-                Dictum et vulputate pulvinar tortor congue massa fermentum
-                dolor. Arcu pharetra nisi ultrices ut turpis ac metus. Egestas
-                nulla morbi viverra nibh lectus lorem in tristique. Euismod
-                proin purus faucibus eget lobortis libero mollis eget. Viverra
-                hendrerit egestas sed velit rutrum.
-              </p>
-              <p>
-                Sed turpis turpis non vel vulputate lorem congue vitae leo.
-                Mauris malesuada nulla malesuada mi diam.
+                In 2024, modern AI reached the sophistication needed to handle
+                the technical complexity of patent material. This realization
+                sparked Herbie and Caleb to found &AI. They assembled a
+                world-class team of MIT engineers with experience from Google,
+                Meta, and Citadel Securities to build the system that makes
+                patent litigation efficient — unlocking new revenue
+                opportunities for asset holders, funders, and litigators.
               </p>
             </div>
           </div>
@@ -104,7 +100,7 @@ export default function About() {
               ADVISORY BOARD
             </p>
             <p className="font-mono text-sm font-medium text-gray-500">
-              6 MEMBERS
+              5 MEMBERS
             </p>
             <p className="hidden font-mono text-sm font-medium text-gray-500 md:block">
               US 6,237,565 B1
