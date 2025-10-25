@@ -2,15 +2,16 @@ import type { Metadata } from 'next';
 
 import '@/common/styles/main.css';
 
+import { Navbar } from '@/common/components/navbar';
 import { geist, martina, mono } from '@/common/fonts';
 import { cn } from '@/common/functions/cn';
 
 import 'blaze-slider/dist/blaze.css';
 
 export const metadata: Metadata = {
-  title: 'AndAI | Scale your patent expertise',
+  title: '&AI | Scale your patent expertise',
   description:
-    'AndAI is the AI workspace for executing litigation-grade patent work at machine scale.',
+    '&AI is the AI workspace for executing litigation-grade patent work at machine scale.',
   authors: [{ name: 'And AI' }],
 };
 
@@ -30,6 +31,7 @@ export default function RootLayout({
       lang="en"
     >
       <body>
+        <Navbar />
         <div className="relative h-full min-h-full">{children}</div>
       </body>
     </html>

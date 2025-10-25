@@ -15,21 +15,20 @@ import {
   SvaIcon,
   YCombinatorIcon,
 } from '@/common/components/icon';
-import { Navbar } from '@/common/components/navbar';
 import { SubHeader } from '@/common/components/subheader';
 import { TypingAnimation } from '@/common/components/typing-animation';
 import { Links } from '@/common/constants/links';
 import { cn } from '@/common/functions/cn';
 import { BrandColor } from '@/common/types/common';
 
-import { BackgroundArt } from '@/module/cta';
+import { CTASection } from '@/module/cta';
 import { FeaturesSection } from '@/module/features';
 import { PrivacyCard, PrivacyCardProps } from '@/module/privacy';
 
 export default function Home() {
   const typingTexts: string[] = [
     'Hey Andy, help me find more prior art for claim 4 that pair well with my key references',
-    `Hey Andy, what does Mozak '479 say about the architecture of the assembly?`,
+    `Hey Andy, what does Asano '782 say about the architecture of the assembly?`,
     'Hey Andy, turn these charts into an invalidity contentions draft. Use my go-to template',
   ];
 
@@ -38,7 +37,7 @@ export default function Home() {
       imageSrc: '/privacy-logo-1.png',
       title: 'No training',
       description:
-        'AndAI does not train models on your data. Zero-retention with configured model providers.',
+        '&AI does not train models on your data. Zero-retention with configured model providers.',
       icon: <AnonymousIcon />,
     },
     {
@@ -52,16 +51,13 @@ export default function Home() {
       imageSrc: '/privacy-logo-3.png',
       title: 'Data control',
       description:
-        'On request, AndAI deletes organization, user, or project data.',
+        'On request, &AI deletes organization, user, or project data.',
       icon: <DatabaseSlashIcon />,
     },
   ];
 
   return (
     <main className="flex min-h-screen flex-col">
-      {/* HEADER */}
-      <Navbar />
-
       {/* HERO SECTION */}
       <section
         className="flex flex-col items-center gap-12 px-4 pt-8 md:gap-16 md:px-6 md:pt-24 lg:mx-auto lg:flex-row lg:items-end lg:pt-14 xl:px-8 xl:pt-10"
@@ -79,29 +75,27 @@ export default function Home() {
                 <p
                   className={cn(
                     'lg:hidden xl:block',
-                    'text-element-mid-em text-center text-base md:max-w-[592px] lg:max-w-[22.5rem] lg:text-left xl:max-w-[30rem] xl:text-lg',
+                    'text-element-mid-em text-center text-base md:max-w-[680px] lg:max-w-[26rem] lg:text-left xl:max-w-[35rem] xl:text-lg',
                   )}
                 >
-                  Engineered for patents, AndAI executes litigation-
+                  &AI delivers trial-ready work product for patent
                   <br />
-                  grade work at machine scale. You set strategy;
-                  <br /> AndAI delivers the work.
+                  litigators — fast enough for pitches, strong enough <br />
+                  for court.
                 </p>
                 <p
                   className={cn(
                     'hidden lg:block xl:hidden',
-                    'text-element-mid-em text-center text-base md:max-w-[592px] lg:max-w-[22.5rem] lg:text-left xl:max-w-[30rem] xl:text-lg',
+                    'text-element-mid-em text-center text-base md:max-w-[680px] lg:max-w-[26rem] lg:text-left xl:max-w-[35rem] xl:text-lg',
                   )}
                 >
-                  Engineered for patents, AndAI executes litigation-grade work
-                  at machine scale. You set strategy; AndAI delivers the work.
+                  &AI delivers trial-ready work product for patent litigators —
+                  fast enough for pitches, strong enough for court.
                 </p>
               </div>
               <div className="flex items-center justify-center gap-3 lg:justify-start">
-                <Button external href={Links.Contact}>
-                  Book demo
-                </Button>
-                <Button external href={Links.Security} variant="secondary">
+                <Button href="/book-demo">Book demo</Button>
+                <Button href="#assistant" variant="secondary">
                   Learn more
                 </Button>
               </div>
@@ -122,12 +116,12 @@ export default function Home() {
         </div>
 
         {/* LANDING IMAGE */}
-        <div className="relative h-[22.5625rem] w-[23.4375rem] rounded-2xl md:h-[33.5rem] md:w-[34.8125rem] xl:h-[35rem] xl:w-[36.375rem]">
+        <div className="relative aspect-square w-[23.4375rem] rounded-2xl md:w-[34.8125rem] xl:w-[36.375rem]">
           <Image
             fill
             alt="landing-page-bg"
-            className="absolute scale-110"
-            src="/illustration.png"
+            className="scale-110 object-contain"
+            src="/Graphic.png"
           />
         </div>
       </section>
@@ -255,32 +249,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA SECTION */}
-      <section
-        className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-0"
-        id="cta"
-      >
-        <div className="bg-brand-accent-blue border-gray-dark/5 relative w-full overflow-hidden border px-4 pt-24 pb-16 md:px-6 md:pb-16 xl:px-8 xl:pt-[7.5rem] xl:pb-20">
-          <BackgroundArt className="pointer-events-none absolute top-1/2 left-1/2 size-[38.375rem] -translate-x-1/2 -translate-y-1/2 md:size-[58.9375rem]" />
-          <div className="flex flex-col items-center gap-12">
-            <div className="space-y-6 text-center xl:space-y-8">
-              <h2 className="text-element-high-em text-5.5xl md:text-7xl">
-                Scale your
-                <br />
-                <span className="font-martina italic">patent expertise</span>
-              </h2>
-              <p className="text-element-high-em max-w-[20.5625rem] text-center md:max-w-[30rem] xl:max-w-[35rem] xl:text-lg">
-                Engineered for patents, AndAI executes litigation-grade work at
-                machine scale. You set strategy; AndAI delivers the work.
-              </p>
-            </div>
-
-            <Button external href={Links.Contact}>
-              Book demo
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CTASection />
 
       {/* FOOTER */}
       <Footer />
