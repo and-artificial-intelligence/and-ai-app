@@ -14,8 +14,8 @@ const VideoComponent = forwardRef<HTMLVideoElement, VideoComponentProps>(
       fallbackUrl,
       isTransparent,
       autoplayInView = true,
-      showWaveForm = true,
-      showMuteButton = false,
+      showWaveForm: _showWaveForm = true,
+      showMuteButton: _showMuteButton = false,
       showPlayButton = false,
       wrapperProps,
       ...props

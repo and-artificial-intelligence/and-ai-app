@@ -18,6 +18,11 @@ export default function About() {
       imageSrc: '/advisor-1.jpeg',
     },
     {
+      name: 'Charles Calkins',
+      position: 'Partner at Kilpatrick Townsend',
+      imageSrc: '/advisor-4.jpeg',
+    },
+    {
       name: 'Tigran Guledjian',
       position: 'IP Litigation Co-Chair at Quinn Emanuel',
       imageSrc: '/advisor-2.jpeg',
@@ -26,11 +31,6 @@ export default function About() {
       name: 'Ybet Villacorta',
       position: 'Partner at Foley & Lardner',
       imageSrc: '/advisor-3.jpg',
-    },
-    {
-      name: 'Charles Calkins',
-      position: 'Partner at Kilpatrick Townsend',
-      imageSrc: '/advisor-4.jpeg',
     },
     {
       name: 'Josef Schenker',
@@ -43,7 +43,7 @@ export default function About() {
     <main className="flex min-h-screen flex-col">
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20 xl:gap-24">
-          <div className="flex-1 space-y-8 lg:max-w-[480px]">
+          <div className="space-y-8 lg:flex-1">
             <div className="space-y-3">
               <SubHeader brand={BrandColor.PRIMARY} title="About us" />
               <h1 className="text-element-high-em text-5xl md:text-6xl xl:text-7xl">
@@ -53,30 +53,28 @@ export default function About() {
             <div className="text-element-mid-em space-y-4 text-base xl:text-lg">
               <p>
                 Co-founders Herbie Turner and Caleb Harris met at MIT, where
-                both studied engineering through undergrad and graduate school.
-                Caleb went on to serve as a technical expert in patent
-                litigation, analyzing frontier science in high-stakes cases.
-                Herbie built his career in engineering and invention, creating
-                products and navigating the realities of protecting innovation.
-                Both saw the same problem: patent litigation was extraordinarily
-                expensive and slow—not because patents lacked value, but because
-                proving infringement or validity required such deep technical
-                analysis that billions in potential licensing revenue remained
-                locked away.
+                they both studied computer science through undergrad and
+                graduate school. Caleb went on to serve as a technical expert in
+                patent litigation, whereas Herbie built his career in machine
+                learning and AI. Through different lenses, both saw the same
+                problem: the patent system was slow and expensive. Proving
+                validity or infringement required such deep technical analysis
+                that countless inventions and billions in potential licensing
+                revenue remained locked away.
               </p>
               <p>
-                In 2024, modern AI reached the sophistication needed to handle
-                the technical complexity of patent material. This realization
-                sparked Herbie and Caleb to found &AI. They assembled a
-                world-class team of MIT engineers with experience from Google,
-                Meta, and Citadel Securities to build the system that makes
-                patent litigation efficient — unlocking new revenue
-                opportunities for asset holders, funders, and litigators.
+                In 2024, LLMs reached the sophistication needed to handle the
+                scientific complexity of patent material. This insight sparked
+                Herbie and Caleb to found &AI with an early team of MIT
+                engineers with experience from Google, Meta, and Citadel
+                Securities. The goal was to build the system that makes patent
+                litigation efficient and unlock new revenue opportunities for
+                asset holders, funders, and litigators alike.
               </p>
             </div>
           </div>
 
-          <div className="relative h-[20rem] w-full flex-1 rounded-lg md:h-[28rem] xl:h-[32rem]">
+          <div className="relative h-[20rem] w-full rounded-lg md:h-[28rem] lg:w-[40%] xl:h-[32rem]">
             <Image
               fill
               alt="About us"
@@ -107,7 +105,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid gap-8 px-6 py-12 md:grid-cols-2 md:px-16 md:py-16 lg:grid-cols-3 lg:px-6 xl:px-20">
+          <div className="grid gap-8 px-6 py-12 md:grid-cols-2 md:px-16 md:py-16 lg:grid-cols-5 lg:px-6 xl:px-20">
             {advisors.map((advisor, index) => (
               <div key={index} className="flex flex-col gap-4">
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-gray-200">
