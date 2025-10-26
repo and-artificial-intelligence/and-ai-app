@@ -6,7 +6,8 @@ import { BrandColor } from '@/common/types/common';
 
 interface Advisor {
   name: string;
-  position: string;
+  title: string;
+  firm: string;
   imageSrc: string;
 }
 
@@ -14,27 +15,32 @@ export default function About() {
   const advisors: Advisor[] = [
     {
       name: 'Peter Magic',
-      position: 'Managing Partner at Desmarais LLP',
+      title: 'Managing Partner',
+      firm: 'Desmarais LLP',
       imageSrc: '/advisor-1.jpeg',
     },
     {
       name: 'Charles Calkins',
-      position: 'Partner at Kilpatrick Townsend',
+      title: 'Partner',
+      firm: 'Kilpatrick Townsend',
       imageSrc: '/advisor-4.jpeg',
     },
     {
       name: 'Tigran Guledjian',
-      position: 'IP Litigation Co-Chair at Quinn Emanuel',
+      title: 'IP Litigation Co-Chair',
+      firm: 'Quinn Emanuel',
       imageSrc: '/advisor-2.jpeg',
     },
     {
       name: 'Ybet Villacorta',
-      position: 'Partner at Foley & Lardner',
+      title: 'Partner',
+      firm: 'Foley & Lardner',
       imageSrc: '/advisor-3.jpg',
     },
     {
       name: 'Josef Schenker',
-      position: 'Partner at Gish LLP',
+      title: 'Partner',
+      firm: 'Gish PLLC',
       imageSrc: '/advisor-5.jpeg',
     },
   ];
@@ -120,9 +126,8 @@ export default function About() {
                   <h3 className="text-element-high-em text-lg font-medium">
                     {advisor.name}
                   </h3>
-                  <p className="text-element-mid-em text-sm">
-                    {advisor.position}
-                  </p>
+                  <p className="text-element-mid-em text-sm">{advisor.title}</p>
+                  <p className="text-element-mid-em text-sm">{advisor.firm}</p>
                 </div>
               </div>
             ))}

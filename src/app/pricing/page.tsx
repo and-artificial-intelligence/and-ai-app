@@ -13,6 +13,10 @@ interface PricingTier {
   name: string;
   monthlyPrice: string | null;
   yearlyPrice: string | null;
+  monthlyCredits: number | null;
+  yearlyCredits: number | null;
+  monthlyCreditPrice: string | null;
+  yearlyCreditPrice: string | null;
   description: string;
   features: string[];
 }
@@ -25,26 +29,34 @@ export default function Pricing() {
       name: 'Core',
       monthlyPrice: '$375',
       yearlyPrice: '$3,600',
-      description: 'Public-only access to &AI.',
+      monthlyCredits: 1500,
+      yearlyCredits: 18000,
+      monthlyCreditPrice: '$0.25',
+      yearlyCreditPrice: '$0.20',
+      description: '',
       features: [
+        'Limited, public-only access to &AI',
         'Patent, NPL, and product search',
         'Prosecution, previous IPRs, and global family',
         'Claim construction',
         'Invalidity and evidence-of-use charts',
         'Default draft and pitch templates',
         'Exports to Word, PowerPoint, and Excel',
-        'No document uploads or prompts',
       ],
     },
     {
       name: 'Pro',
       monthlyPrice: '$625',
       yearlyPrice: '$6,000',
-      description: 'Full access to &AI.',
+      monthlyCredits: 2500,
+      yearlyCredits: 30000,
+      monthlyCreditPrice: '$0.25',
+      yearlyCreditPrice: '$0.20',
+      description: '',
       features: [
-        'All core features',
+        'Unrestricted access to &AI',
         'Andy, the AI patent assistant',
-        'Tables',
+        'Portfolio and document tables',
         'Document uploads',
         'Custom prompt libraries',
         'Custom draft and table templates',
@@ -55,15 +67,19 @@ export default function Pricing() {
       name: 'Enterprise',
       monthlyPrice: null,
       yearlyPrice: null,
+      monthlyCredits: null,
+      yearlyCredits: null,
+      monthlyCreditPrice: null,
+      yearlyCreditPrice: null,
       description: 'Customized for your needs.',
       features: [
-        'All pro features',
         'SSO and RBAC',
         'Priority support',
         'Single-tenant architecture',
         'Self-hosted models',
         'Passthrough invoicing',
         'Workflow automation',
+        'Custom integrations',
       ],
     },
   ];
@@ -74,7 +90,8 @@ export default function Pricing() {
         <div className="mb-16 flex flex-col items-center gap-4 text-center md:mb-20">
           <SubHeader brand={BrandColor.PRIMARY} title="Pricing" />
           <h1 className="text-element-high-em text-5xl md:text-6xl">
-            From essentials to <span className="font-martina italic">unlimited</span>
+            From essentials to{' '}
+            <span className="font-martina italic">unlimited</span>
           </h1>
           <div className="mt-6">
             <Tab size="responsive">
@@ -140,6 +157,21 @@ export default function Pricing() {
                       </span>
                     )}
                   </div>
+                  {(billingPeriod === 'monthly'
+                    ? tier.monthlyCredits
+                    : tier.yearlyCredits) && (
+                    <p className="text-element-mid-em text-sm">
+                      {(billingPeriod === 'monthly'
+                        ? tier.monthlyCredits
+                        : tier.yearlyCredits
+                      )?.toLocaleString()}{' '}
+                      credits included,{' '}
+                      {billingPeriod === 'monthly'
+                        ? tier.monthlyCreditPrice
+                        : tier.yearlyCreditPrice}
+                      /credit after
+                    </p>
+                  )}
                   <p className="text-element-mid-em text-sm">
                     {tier.description}
                   </p>
@@ -152,7 +184,7 @@ export default function Pricing() {
                 <div className="border-gray-dark/10 flex-1 space-y-3 border-t pt-6">
                   <p className="text-element-high-em text-sm font-medium">
                     {tier.name === 'Core'
-                      ? 'The essentials'
+                      ? 'Essentials'
                       : tier.name === 'Pro'
                         ? 'Core, plus'
                         : 'Pro, plus'}
