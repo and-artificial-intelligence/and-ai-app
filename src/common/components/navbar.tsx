@@ -7,7 +7,7 @@ import { cn } from '@/common/functions/cn';
 
 export const Navbar = () => {
   return (
-    <nav className={cn('bg-background sticky top-0 z-[99]')}>
+    <nav className={cn('bg-background fixed top-0 right-0 left-0 z-[100]')}>
       <div
         className={cn(
           'mx-auto flex h-16 w-full items-center justify-between px-6 py-3 md:max-w-[592px] md:px-0 lg:max-w-[976px] xl:h-20 xl:max-w-[1280px] xl:px-8',

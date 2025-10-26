@@ -32,7 +32,9 @@ export default function RootLayout({
     >
       <body>
         <Navbar />
-        <div className="relative h-full min-h-full">{children}</div>
+        <div className="relative h-full min-h-full pt-16 xl:pt-20">
+          {children}
+        </div>
       </body>
     </html>
   );
