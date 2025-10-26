@@ -25,7 +25,7 @@ const features: ItemAndSliderProps[] = [
     tagColor: BrandColor.PRIMARY,
     title: 'Find what others miss. Nothing is out of reach.',
     description:
-      'Case-aware search by text, figures, or biologics with claim-limitation attribution. Global coverage. Steerable and iterative',
+      'Surface the references most relevant to your strategy through iterative, targeted search.',
     items: [
       {
         icon: <SearchDocumentIcon />,
@@ -53,9 +53,9 @@ const features: ItemAndSliderProps[] = [
   {
     tag: 'Charts',
     tagColor: BrandColor.ACCENT_BLUE_DARK,
-    title: 'Work product ready for court in minutes, not hours.',
+    title: 'Ready for the court in minutes, not hours.',
     description:
-      'Built on your context, strategy, and goals. Instant drafts to fully formatted exports.',
+      'Built on your context, strategy, and goals. Instantly draft claim charts with seamless exports tailored to your style. ',
     items: [
       {
         icon: <SpreadsheetIcon />,
@@ -76,9 +76,9 @@ const features: ItemAndSliderProps[] = [
   {
     tag: 'Drafts',
     tagColor: BrandColor.ACCENT_PURPLE,
-    title: 'Create any document. Fast, consistent, court-ready.',
+    title: 'Create any document. Fast, consistent, reliable.',
     description:
-      'Using your case record, draft and edit anything from invalidity contentions to a litigation pitch deck.',
+      'Using your case record, draft anything from invalidity contentions to litigation pitch decks.',
     items: [
       {
         icon: <DocumentTextIcon />,
