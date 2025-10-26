@@ -76,7 +76,7 @@ const features: ItemAndSliderProps[] = [
   {
     tag: 'Drafts',
     tagColor: BrandColor.ACCENT_PURPLE,
-    title: 'Pitch and win more clients profitably.',
+    title: 'Pitch more clients profitably.',
     description:
       'Draft invalidity contentions, expert reports, and pitch materials grounded in your case. Make unbillable work economical.',
     items: [
@@ -99,7 +99,7 @@ const features: ItemAndSliderProps[] = [
   {
     tag: 'Tables',
     tagColor: BrandColor.PRIMARY,
-    title: 'Discover new cases worth pursuing.',
+    title: 'Discover opportunities worth pursuing.',
     description:
       'Query thousands of documents simultaneously to identify litigation opportunities and infringement patterns.',
     items: [

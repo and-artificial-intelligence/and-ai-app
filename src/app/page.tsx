@@ -35,21 +35,21 @@ export default function Home() {
   const privacy: PrivacyCardProps[] = [
     {
       imageSrc: '/privacy-logo-1.png',
-      title: 'Your work stays yours',
+      title: 'Model training',
       description:
-        '&AI never trains models on your data. Zero-data-retention policies with all configured model providers.',
+        '&AI and subprocessors never train on your data, with strict zero data retention policies configured.',
       icon: <AnonymousIcon />,
     },
     {
       imageSrc: '/privacy-logo-2.png',
-      title: 'Control who sees what',
+      title: 'Encryption and authentication',
       description:
         'SAML SSO, role-based access controls, and encryption in transit and at rest protect sensitive case information.',
       icon: <Shield2CheckIcon />,
     },
     {
       imageSrc: '/privacy-logo-3.png',
-      title: 'Delete data on demand',
+      title: 'Data control',
       description:
         'Request deletion of organization, user, or project data at any time—complete control over your information.',
       icon: <DatabaseSlashIcon />,
