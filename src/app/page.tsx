@@ -119,7 +119,7 @@ export default function Home() {
             fill
             alt="landing-page-bg"
             className="scale-110 object-contain"
-            src="/illustration-2.png"
+            src="/Illustration-2.png"
           />
         </div>
       </section>
