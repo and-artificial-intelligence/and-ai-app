@@ -27,9 +27,9 @@ import { PrivacyCard, PrivacyCardProps } from '@/module/privacy';
 
 export default function Home() {
   const typingTexts: string[] = [
-    'Hey Andy, help me find more prior art for claim 4 that pair well with my key references',
+    'Hey Andy, how is "pivot access" used in the prosecution history?',
     `Hey Andy, what does Asano '782 say about the architecture of the assembly?`,
-    'Hey Andy, turn these charts into an invalidity contentions draft. Use my go-to template',
+    'Hey Andy, draft me a defense-side pitch deck for this complaint using my go-to template.',
   ];
 
   const privacy: PrivacyCardProps[] = [
