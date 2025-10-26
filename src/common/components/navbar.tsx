@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { Button } from '@/common/components/button';
@@ -9,6 +10,12 @@ import { cn } from '@/common/functions/cn';
 
 export const Navbar = () => {
   const [hasIntersected, setHasIntersected] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const intersection = document.getElementById('hero');
@@ -49,20 +56,35 @@ export const Navbar = () => {
           </Link>
           <div className="hidden items-center gap-6 md:flex">
             <Link
-              className="text-element-high-em hover:text-element-mid-em text-sm font-medium transition-colors"
+              className={cn(
+                'text-element-high-em hover:text-element-mid-em text-sm font-medium transition-[color]',
+                mounted &&
+                  pathname === '/pricing' &&
+                  'underline decoration-orange-500 decoration-1 underline-offset-[6px]',
+              )}
               href="/pricing"
             >
               Pricing
             </Link>
             <Link
-              className="text-element-high-em hover:text-element-mid-em text-sm font-medium transition-colors"
+              className={cn(
+                'text-element-high-em hover:text-element-mid-em text-sm font-medium transition-[color]',
+                mounted &&
+                  pathname.startsWith('/blog') &&
+                  'underline decoration-orange-500 decoration-1 underline-offset-[6px]',
+              )}
               href="/blog"
             >
               Blog
             </Link>
             <Link
-              className="text-element-high-em hover:text-element-mid-em text-sm font-medium transition-colors"
-              href="/about"
+              className={cn(
+                'text-element-high-em hover:text-element-mid-em text-sm font-medium transition-[color]',
+                mounted &&
+                  pathname === '/company' &&
+                  'underline decoration-orange-500 decoration-1 underline-offset-[6px]',
+              )}
+              href="/company"
             >
               Company
             </Link>
