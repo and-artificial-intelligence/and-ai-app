@@ -132,7 +132,7 @@ export default function Home() {
         <div className="space-y-16">
           <div className="flex flex-col gap-8">
             <SubHeader brand={BrandColor.PRIMARY} title="Assistant" />
-            <span className="lg:px-10 xl:px-24">
+            <span className="relative lg:px-10 xl:px-24">
               <Paragraph value="             Andy is an AI assistant that turns your instructions into high-quality work product. From drafting invalidity contentions to building pitch decks, and everything in-between." />
             </span>
           </div>

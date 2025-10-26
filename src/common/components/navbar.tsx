@@ -51,6 +51,7 @@ export const Navbar = () => {
               className="h-[18px] w-auto"
               height={18}
               src="/logo-off-black.png"
+              style={{ width: 'auto' }}
               width={92}
             />
           </Link>
