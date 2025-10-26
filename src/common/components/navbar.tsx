@@ -49,19 +49,19 @@ export const Navbar = () => {
           </Link>
           <div className="hidden items-center gap-6 md:flex">
             <Link
-              className="text-element-high-em hover:text-element-mid-em text-sm transition-colors"
+              className="text-element-high-em hover:text-element-mid-em text-sm font-medium transition-colors"
               href="/pricing"
             >
               Pricing
             </Link>
             <Link
-              className="text-element-high-em hover:text-element-mid-em text-sm transition-colors"
+              className="text-element-high-em hover:text-element-mid-em text-sm font-medium transition-colors"
               href="/blog"
             >
               Blog
             </Link>
             <Link
-              className="text-element-high-em hover:text-element-mid-em text-sm transition-colors"
+              className="text-element-high-em hover:text-element-mid-em text-sm font-medium transition-colors"
               href="/about"
             >
               Company
@@ -70,7 +70,7 @@ export const Navbar = () => {
         </div>
         <div className="flex items-center gap-3">
           <Link
-            className="text-element-high-em hover:text-element-mid-em hidden pr-3 text-sm transition-colors md:block"
+            className="text-element-high-em hover:text-element-mid-em hidden px-5 text-sm font-medium transition-colors md:block"
             href={Links.LogIn}
           >
             Log in

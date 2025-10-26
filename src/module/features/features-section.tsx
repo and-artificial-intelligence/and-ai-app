@@ -23,9 +23,9 @@ const features: ItemAndSliderProps[] = [
   {
     tag: 'Search',
     tagColor: BrandColor.PRIMARY,
-    title: 'Find what others miss. Nothing is out of reach.',
+    title: 'Find what your opponents miss.',
     description:
-      'Surface the references most relevant to your strategy through iterative, targeted search.',
+      'Search patents, research papers, and products in real-time across jurisdictions and languages.',
     items: [
       {
         icon: <SearchDocumentIcon />,
@@ -53,22 +53,22 @@ const features: ItemAndSliderProps[] = [
   {
     tag: 'Charts',
     tagColor: BrandColor.ACCENT_BLUE_DARK,
-    title: 'Ready for the court in minutes, not hours.',
+    title: 'Win cases faster with court-ready analysis.',
     description:
-      'Built on your context, strategy, and goals. Instantly draft claim charts with seamless exports tailored to your style. ',
+      'Generate precise invalidity or evidence-of-use claim charts in minutes instead of days.',
     items: [
       {
         icon: <SpreadsheetIcon />,
-        title: 'Claims and features',
+        title: 'Claims and Features',
         description:
-          'Reasoned citations to key disclosures for invalidity, infringement, and freedom-to-operate. ',
+          'Claim mapping to reasoned citations to key disclosures in prior art and product documentation.',
         imageSrc: '/2.1.png',
       },
       {
         icon: <ListIcon />,
         title: 'Construction',
         description:
-          'Term-by-term constructions drawn from the prosecution history and family.',
+          'Term-by-term constructions drawn from prosecution history and global patent family.',
         imageSrc: '/2.2.png',
       },
     ],
@@ -76,22 +76,22 @@ const features: ItemAndSliderProps[] = [
   {
     tag: 'Drafts',
     tagColor: BrandColor.ACCENT_PURPLE,
-    title: 'Create any document. Fast, consistent, reliable.',
+    title: 'Pitch and win more clients profitably.',
     description:
-      'Using your case record, draft anything from invalidity contentions to litigation pitch decks.',
+      'Draft invalidity contentions, expert reports, and pitch materials grounded in your case. Make unbillable work economical.',
     items: [
       {
         icon: <DocumentTextIcon />,
-        title: 'Template',
+        title: 'Templates',
         description:
-          'Fully formatted examples with variables and generation blocks for on-the-fly drafting.',
+          'Pre-formatted templates with smart variables and generation blocks for flexible, on-demand drafting.',
         imageSrc: '/3.1.png',
       },
       {
         icon: <MessageIcon />,
         title: 'Editor',
         description:
-          'A workspace to collaborate with colleagues – and Andy – on a single draft.',
+          'Collaborative workspace where your team and AI refine documents together in real-time.',
         imageSrc: '/3.2.png',
       },
     ],
@@ -99,21 +99,21 @@ const features: ItemAndSliderProps[] = [
   {
     tag: 'Tables',
     tagColor: BrandColor.PRIMARY,
-    title: 'Analysis at previously impossible scale.',
+    title: 'Discover new cases worth pursuing.',
     description:
-      'Ask questions across thousands of documents at once, grounded by web search and deep reasoning.',
+      'Query thousands of documents simultaneously to identify litigation opportunities and infringement patterns.',
     items: [
       {
         icon: <SearchDocumentIcon />,
         title: 'Structured Analysis',
         description:
-          'Prompt each document with shared context to produce structured or free-text outputs.',
+          'Apply prompts to each document with shared context to extract structured data and generate insights.',
       },
       {
         icon: <DocumentTextIcon />,
         title: 'Views',
         description:
-          'Slice the table by any natural-language or metadata filter. ',
+          'Filter and segment using natural language queries or metadata criteria to surface exactly what matters.',
       },
     ],
     singleImage: '/4.1.png',

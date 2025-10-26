@@ -51,7 +51,7 @@ export default function About() {
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20 xl:gap-24">
           <div className="space-y-8 lg:flex-1">
             <div className="space-y-3">
-              <SubHeader brand={BrandColor.PRIMARY} title="About us" />
+              <SubHeader brand={BrandColor.PRIMARY} title="Company" />
               <h1 className="text-element-high-em text-5xl md:text-6xl xl:text-7xl">
                 Our <span className="font-martina italic">vision</span>
               </h1>
@@ -62,11 +62,11 @@ export default function About() {
                 they both studied computer science through undergrad and
                 graduate school. Caleb went on to serve as a technical expert in
                 patent litigation, whereas Herbie built his career in machine
-                learning and AI. Through different lenses, both saw the same
-                problem: the patent system was slow and expensive. Proving
-                validity or infringement required such deep technical analysis
-                that countless inventions and billions in potential licensing
-                revenue remained locked away.
+                learning and AI. Through different lenses, both saw the
+                inefficiencies in the patent system. Proving validity or
+                infringement required such deep technical analysis that
+                countless inventions and billions in potential licensing revenue
+                remained locked away.
               </p>
               <p>
                 In 2024, LLMs reached the sophistication needed to handle the
@@ -83,7 +83,7 @@ export default function About() {
           <div className="relative h-[20rem] w-full rounded-lg md:h-[28rem] lg:w-[40%] xl:h-[32rem]">
             <Image
               fill
-              alt="About us"
+              alt="Company"
               className="rounded-lg object-cover object-top"
               src="/founders.jpg"
             />

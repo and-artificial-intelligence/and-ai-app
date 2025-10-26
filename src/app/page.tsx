@@ -35,23 +35,23 @@ export default function Home() {
   const privacy: PrivacyCardProps[] = [
     {
       imageSrc: '/privacy-logo-1.png',
-      title: 'No training',
+      title: 'Your work stays yours',
       description:
-        '&AI does not train models on your data. Zero-retention with configured model providers.',
+        '&AI never trains models on your data. Zero-data-retention policies with all configured model providers.',
       icon: <AnonymousIcon />,
     },
     {
       imageSrc: '/privacy-logo-2.png',
-      title: 'Access and Encryption',
+      title: 'Control who sees what',
       description:
-        'SAML SSO, role-based access controls, and encryption in transit and at rest.',
+        'SAML SSO, role-based access controls, and encryption in transit and at rest protect sensitive case information.',
       icon: <Shield2CheckIcon />,
     },
     {
       imageSrc: '/privacy-logo-3.png',
-      title: 'Data control',
+      title: 'Delete data on demand',
       description:
-        'On request, &AI deletes organization, user, or project data.',
+        'Request deletion of organization, user, or project data at any time—complete control over your information.',
       icon: <DatabaseSlashIcon />,
     },
   ];
@@ -75,18 +75,16 @@ export default function Home() {
                 <p
                   className={cn(
                     'lg:hidden xl:block',
-                    'text-element-mid-em text-center text-base md:max-w-[680px] lg:max-w-[26rem] lg:text-left xl:max-w-[35rem] xl:text-lg',
+                    'text-element-mid-em text-center text-base md:max-w-[560px] lg:max-w-[22rem] lg:text-left xl:max-w-[26rem] xl:text-lg',
                   )}
                 >
-                  &AI delivers trial-ready work product for patent
-                  <br />
-                  litigators — fast enough for pitches, strong enough <br />
-                  for court.
+                  &AI delivers trial-ready work product for patent litigators —
+                  fast enough for pitches, strong enough for court.
                 </p>
                 <p
                   className={cn(
                     'hidden lg:block xl:hidden',
-                    'text-element-mid-em text-center text-base md:max-w-[680px] lg:max-w-[26rem] lg:text-left xl:max-w-[35rem] xl:text-lg',
+                    'text-element-mid-em text-center text-base md:max-w-[560px] lg:max-w-[22rem] lg:text-left xl:max-w-[26rem] xl:text-lg',
                   )}
                 >
                   &AI delivers trial-ready work product for patent litigators —
@@ -95,8 +93,8 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-center gap-3 lg:justify-start">
                 <Button href="/book-demo">Book demo</Button>
-                <Button href="#assistant" variant="secondary">
-                  Learn more
+                <Button href="/pricing" variant="secondary">
+                  See pricing
                 </Button>
               </div>
             </div>
@@ -188,15 +186,15 @@ export default function Home() {
       <section className="mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:gap-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="flex flex-col items-center gap-6 xl:gap-8">
           <div className="flex flex-col items-center gap-3">
-            <SubHeader brand={BrandColor.PRIMARY} title="Built for Patents" />
+            <SubHeader brand={BrandColor.PRIMARY} title="Built for patents" />
             <h2 className="font-martina text-element-high-em text-4.5xl text-center xl:text-5xl">
-              All the context in one place, accessible
+              Everything you need in one place
             </h2>
           </div>
           <p className="text-element-mid-em text-center md:max-w-[40rem]">
-            Specialized processing across patent types and jurisdictions. Full
-            context from the patent family, prosecution history, and prior
-            cases.
+            &AI automatically surfaces and processes the full patent family,
+            prosecution history, and prior cases. Focus on building stronger
+            arguments, not organizing data.
           </p>
         </div>
         <div>
@@ -219,14 +217,14 @@ export default function Home() {
         <div className="flex flex-col gap-12 md:max-w-[25rem] lg:sticky lg:top-12 lg:self-start lg:pt-24 lg:pb-24 xl:max-w-[30rem]">
           <div className="space-y-6">
             <div className="space-y-3">
-              <SubHeader brand={BrandColor.PRIMARY} title="Privacy" />
+              <SubHeader brand={BrandColor.PRIMARY} title="Security" />
               <h2 className="font-martina text-element-high-em text-4.5xl xl:text-5xl">
-                Your data, your rules
+                Protect confidentiality with confidence
               </h2>
             </div>
             <p className="text-element-mid-em lg:pt-10">
-              &AI is built on the leading security standards and best practices
-              to ensure your data is safe and secure.
+              Enterprise-grade security and compliance built for law. Your data
+              stays private, secure, and under your control.
             </p>
           </div>
           <Button
