@@ -25,27 +25,27 @@ const features: ItemAndSliderProps[] = [
     tagColor: BrandColor.PRIMARY,
     title: 'Find what your opponents miss.',
     description:
-      'Search patents, research papers, and products in real-time across jurisdictions and languages.',
+      'Search patent documents, non-patent literature, and products, in real time, from all over the world.',
     items: [
       {
         icon: <SearchDocumentIcon />,
         title: 'Patents',
         description:
-          'Applications and publications across major jurisdictions and languages.',
+          'Patent applications and publications from major jurisdictions',
         imageSrc: '/1.1.png',
       },
       {
         icon: <FileCopyIcon />,
-        title: 'Non-Patent Literature',
+        title: 'Non-patent literature',
         description:
-          'Research papers, standards, clinical trials, and more across the internet.',
+          'Research papers, standards, clinical trials, and more across the internet',
         imageSrc: '/1.2.png',
       },
       {
         icon: <Ar3DIcon />,
         title: 'Products',
         description:
-          'Current and archival product listings, specs, manuals, and teardowns.',
+          'Current and archival product listings, specifications, manuals, videos, and teardowns',
         imageSrc: '/1.3.png',
       },
     ],
@@ -53,22 +53,22 @@ const features: ItemAndSliderProps[] = [
   {
     tag: 'Charts',
     tagColor: BrandColor.ACCENT_BLUE_DARK,
-    title: 'Win cases faster with court-ready analysis.',
+    title: 'Win cases faster with trial-ready analysis.',
     description:
       'Generate precise invalidity or evidence-of-use claim charts in minutes instead of days.',
     items: [
       {
         icon: <SpreadsheetIcon />,
-        title: 'Claims and Features',
+        title: 'Claims and elements',
         description:
-          'Claim mapping to reasoned citations to key disclosures in prior art and product documentation.',
+          'Element-by-element claim charts with citations to prior art and product documentation',
         imageSrc: '/2.1.png',
       },
       {
         icon: <ListIcon />,
-        title: 'Construction',
+        title: 'Claim construction',
         description:
-          'Term-by-term constructions drawn from prosecution history and global patent family.',
+          'Claim constructions generated from the as-filed application, prosecution history, related family, and more',
         imageSrc: '/2.2.png',
       },
     ],
@@ -84,14 +84,14 @@ const features: ItemAndSliderProps[] = [
         icon: <DocumentTextIcon />,
         title: 'Templates',
         description:
-          'Pre-formatted templates with smart variables and generation blocks for flexible, on-demand drafting.',
+          'Pre-formatted templates with smart variables and generation blocks for flexible, on-demand drafting',
         imageSrc: '/3.1.png',
       },
       {
         icon: <MessageIcon />,
         title: 'Editor',
         description:
-          'Collaborative workspace where your team and AI refine documents together in real-time.',
+          'Collaborative workspace where your team and AI refine documents together in real time',
         imageSrc: '/3.2.png',
       },
     ],
@@ -105,15 +105,15 @@ const features: ItemAndSliderProps[] = [
     items: [
       {
         icon: <SearchDocumentIcon />,
-        title: 'Structured Analysis',
+        title: 'Structured analysis',
         description:
-          'Apply prompts to each document with shared context to extract structured data and generate insights.',
+          'Apply prompts to each document with shared context to extract structured data and answer questions',
       },
       {
         icon: <DocumentTextIcon />,
         title: 'Views',
         description:
-          'Filter and segment using natural language queries or metadata criteria to surface exactly what matters.',
+          'Slice and filter tables using natural language or metadata to surface exactly what you need',
       },
     ],
     singleImage: '/4.1.png',

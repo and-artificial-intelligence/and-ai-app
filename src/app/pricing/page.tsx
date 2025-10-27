@@ -184,10 +184,10 @@ export default function Pricing() {
                 <div className="border-gray-dark/10 flex-1 space-y-3 border-t pt-6">
                   <p className="text-element-high-em text-sm font-medium">
                     {tier.name === 'Core'
-                      ? 'Essentials'
+                      ? 'Core:'
                       : tier.name === 'Pro'
-                        ? 'Core, plus'
-                        : 'Pro, plus'}
+                        ? 'Core, plus:'
+                        : 'Pro, plus:'}
                   </p>
                   <ul className="space-y-3">
                     {tier.features.map((feature) => (

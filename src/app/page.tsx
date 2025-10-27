@@ -37,21 +37,21 @@ export default function Home() {
       imageSrc: '/privacy-logo-1.png',
       title: 'Model training',
       description:
-        '&AI and subprocessors never train on your data, with strict zero data retention policies configured.',
+        '&AI and subprocessors never train on your or your clients\' data, with strict zero data retention policies configured.',
       icon: <AnonymousIcon />,
     },
     {
       imageSrc: '/privacy-logo-2.png',
       title: 'Encryption and authentication',
       description:
-        'SAML SSO, role-based access controls, and encryption in transit and at rest protect sensitive case information.',
+        '&AI protects sensitive case information with SAML SSO, role-based access controls, and encryption in transit and at rest.',
       icon: <Shield2CheckIcon />,
     },
     {
       imageSrc: '/privacy-logo-3.png',
-      title: 'Data control',
+      title: 'Public-only mode',
       description:
-        'Request deletion of organization, user, or project data at any time—complete control over your information.',
+        '&AI can be used in public-only mode, disabling all ability to access or store confidential information.',
       icon: <DatabaseSlashIcon />,
     },
   ];
@@ -185,9 +185,11 @@ export default function Home() {
       {/* BUILT-FOR-PATENTS SECTION */}
       <section className="mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:gap-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="flex flex-col items-center gap-6 xl:gap-8">
-          <div className="flex flex-col items-center gap-3">
-            <SubHeader brand={BrandColor.PRIMARY} title="Built for patents" />
-            <h2 className="font-martina text-element-high-em text-4.5xl text-center xl:text-5xl">
+          <div className="flex w-full flex-col items-center gap-3">
+            <div className="w-full">
+              <SubHeader brand={BrandColor.PRIMARY} title="Context" />
+            </div>
+            <h2 className="font-martina text-element-high-em text-4.5xl pt-6 text-center xl:text-5xl">
               Everything you need in one place
             </h2>
           </div>
