@@ -23,29 +23,29 @@ const features: ItemAndSliderProps[] = [
   {
     tag: 'Search',
     tagColor: BrandColor.PRIMARY,
-    title: 'Find what others miss. Nothing is out of reach.',
+    title: 'Find what your opponents miss.',
     description:
-      'Case-aware search by text, figures, or biologics with claim-limitation attribution. Global coverage. Steerable and iterative',
+      'Search patent documents, non-patent literature, and products, in real time, from all over the world.',
     items: [
       {
         icon: <SearchDocumentIcon />,
         title: 'Patents',
         description:
-          'Applications and publications across major jurisdictions and languages.',
+          'Patent applications and publications from major jurisdictions',
         imageSrc: '/1.1.png',
       },
       {
         icon: <FileCopyIcon />,
-        title: 'Non-Patent Literature',
+        title: 'Non-patent literature',
         description:
-          'Research papers, standards, clinical trials, and more across the internet.',
+          'Research papers, standards, clinical trials, and more across the internet',
         imageSrc: '/1.2.png',
       },
       {
         icon: <Ar3DIcon />,
         title: 'Products',
         description:
-          'Current and archival product listings, specs, manuals, and teardowns.',
+          'Current and archival product listings, specifications, manuals, videos, and teardowns',
         imageSrc: '/1.3.png',
       },
     ],
@@ -53,22 +53,22 @@ const features: ItemAndSliderProps[] = [
   {
     tag: 'Charts',
     tagColor: BrandColor.ACCENT_BLUE_DARK,
-    title: 'Work product ready for court in minutes, not hours.',
+    title: 'Win cases faster with trial-ready analysis.',
     description:
-      'Built on your context, strategy, and goals. Instant drafts to fully formatted exports.',
+      'Generate precise invalidity or evidence-of-use claim charts in minutes instead of days.',
     items: [
       {
         icon: <SpreadsheetIcon />,
-        title: 'Claims and features',
+        title: 'Claims and elements',
         description:
-          'Reasoned citations to key disclosures for invalidity, infringement, and freedom-to-operate. ',
+          'Element-by-element claim charts with citations to prior art and product documentation',
         imageSrc: '/2.1.png',
       },
       {
         icon: <ListIcon />,
-        title: 'Construction',
+        title: 'Claim construction',
         description:
-          'Term-by-term constructions drawn from the prosecution history and family.',
+          'Claim constructions generated from the as-filed application, prosecution history, related family, and more',
         imageSrc: '/2.2.png',
       },
     ],
@@ -76,22 +76,22 @@ const features: ItemAndSliderProps[] = [
   {
     tag: 'Drafts',
     tagColor: BrandColor.ACCENT_PURPLE,
-    title: 'Create any document. Fast, consistent, court-ready.',
+    title: 'Pitch more clients profitably.',
     description:
-      'Using your case record, draft and edit anything from invalidity contentions to a litigation pitch deck.',
+      'Draft invalidity contentions, expert reports, and pitch materials grounded in your case. Make unbillable work economical.',
     items: [
       {
         icon: <DocumentTextIcon />,
-        title: 'Template',
+        title: 'Templates',
         description:
-          'Fully formatted examples with variables and generation blocks for on-the-fly drafting.',
+          'Pre-formatted templates with smart variables and generation blocks for flexible, on-demand drafting',
         imageSrc: '/3.1.png',
       },
       {
         icon: <MessageIcon />,
         title: 'Editor',
         description:
-          'A workspace to collaborate with colleagues – and Andy – on a single draft.',
+          'Collaborative workspace where your team and AI refine documents together in real time',
         imageSrc: '/3.2.png',
       },
     ],
@@ -99,21 +99,21 @@ const features: ItemAndSliderProps[] = [
   {
     tag: 'Tables',
     tagColor: BrandColor.PRIMARY,
-    title: 'Analysis at previously impossible scale.',
+    title: 'Discover opportunities worth pursuing.',
     description:
-      'Ask questions across thousands of documents at once, grounded by web search and deep reasoning.',
+      'Query thousands of documents simultaneously to identify litigation opportunities and infringement patterns.',
     items: [
       {
         icon: <SearchDocumentIcon />,
-        title: 'Structured Analysis',
+        title: 'Structured analysis',
         description:
-          'Prompt each document with shared context to produce structured or free-text outputs.',
+          'Apply prompts to each document with shared context to extract structured data and answer questions',
       },
       {
         icon: <DocumentTextIcon />,
         title: 'Views',
         description:
-          'Slice the table by any natural-language or metadata filter. ',
+          'Slice and filter tables using natural language or metadata to surface exactly what you need',
       },
     ],
     singleImage: '/4.1.png',

@@ -17,7 +17,7 @@ export const CTASection = () => (
             <span className="font-martina italic">patent expertise</span>
           </h2>
           <p className="text-element-high-em max-w-[24rem] text-center md:max-w-[35rem] xl:max-w-[40rem] xl:text-lg">
-            &AI delivers trial-ready work product for patent litigators — <br />
+            &AI delivers trial-ready work product for patent litigators —
             fast enough for pitches, strong enough for court.
           </p>
         </div>

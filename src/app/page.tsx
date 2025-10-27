@@ -27,31 +27,31 @@ import { PrivacyCard, PrivacyCardProps } from '@/module/privacy';
 
 export default function Home() {
   const typingTexts: string[] = [
-    'Hey Andy, help me find more prior art for claim 4 that pair well with my key references',
+    'Hey Andy, how is "pivot access" used in the prosecution history?',
     `Hey Andy, what does Asano '782 say about the architecture of the assembly?`,
-    'Hey Andy, turn these charts into an invalidity contentions draft. Use my go-to template',
+    'Hey Andy, draft me a defense-side pitch deck for this complaint using my go-to template.',
   ];
 
   const privacy: PrivacyCardProps[] = [
     {
       imageSrc: '/privacy-logo-1.png',
-      title: 'No training',
+      title: 'Model training',
       description:
-        '&AI does not train models on your data. Zero-retention with configured model providers.',
+        '&AI and subprocessors never train on your or your clients\' data, with strict zero data retention policies configured.',
       icon: <AnonymousIcon />,
     },
     {
       imageSrc: '/privacy-logo-2.png',
-      title: 'Access and Encryption',
+      title: 'Encryption and authentication',
       description:
-        'SAML SSO, role-based access controls, and encryption in transit and at rest.',
+        '&AI protects sensitive case information with SAML SSO, role-based access controls, and encryption in transit and at rest.',
       icon: <Shield2CheckIcon />,
     },
     {
       imageSrc: '/privacy-logo-3.png',
-      title: 'Data control',
+      title: 'Public-only mode',
       description:
-        'On request, &AI deletes organization, user, or project data.',
+        '&AI can be used in public-only mode, disabling all ability to access or store confidential information.',
       icon: <DatabaseSlashIcon />,
     },
   ];
@@ -75,18 +75,16 @@ export default function Home() {
                 <p
                   className={cn(
                     'lg:hidden xl:block',
-                    'text-element-mid-em text-center text-base md:max-w-[680px] lg:max-w-[26rem] lg:text-left xl:max-w-[35rem] xl:text-lg',
+                    'text-element-mid-em text-center text-base md:max-w-[560px] lg:max-w-[22rem] lg:text-left xl:max-w-[26rem] xl:text-lg',
                   )}
                 >
-                  &AI delivers trial-ready work product for patent
-                  <br />
-                  litigators — fast enough for pitches, strong enough <br />
-                  for court.
+                  &AI delivers trial-ready work product for patent litigators —
+                  fast enough for pitches, strong enough for court.
                 </p>
                 <p
                   className={cn(
                     'hidden lg:block xl:hidden',
-                    'text-element-mid-em text-center text-base md:max-w-[680px] lg:max-w-[26rem] lg:text-left xl:max-w-[35rem] xl:text-lg',
+                    'text-element-mid-em text-center text-base md:max-w-[560px] lg:max-w-[22rem] lg:text-left xl:max-w-[26rem] xl:text-lg',
                   )}
                 >
                   &AI delivers trial-ready work product for patent litigators —
@@ -95,8 +93,8 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-center gap-3 lg:justify-start">
                 <Button href="/book-demo">Book demo</Button>
-                <Button href="#assistant" variant="secondary">
-                  Learn more
+                <Button href="/pricing" variant="secondary">
+                  See pricing
                 </Button>
               </div>
             </div>
@@ -121,7 +119,7 @@ export default function Home() {
             fill
             alt="landing-page-bg"
             className="scale-110 object-contain"
-            src="/Graphic.png"
+            src="/Illustration-2.png"
           />
         </div>
       </section>
@@ -134,12 +132,8 @@ export default function Home() {
         <div className="space-y-16">
           <div className="flex flex-col gap-8">
             <SubHeader brand={BrandColor.PRIMARY} title="Assistant" />
-            <span className="lg:px-10 xl:px-24">
-              <Paragraph
-                value="             Andy is an AI patent assistant that turns your instructions into
-              high-quality first drafts, delivered on a collaborative platform. It
-              then helps refine the work through smart review and editing."
-              />
+            <span className="relative lg:px-10 xl:px-24">
+              <Paragraph value="             Andy is an AI assistant that turns your instructions into high-quality work product. From drafting invalidity contentions to building pitch decks, and everything in-between." />
             </span>
           </div>
 
@@ -191,16 +185,18 @@ export default function Home() {
       {/* BUILT-FOR-PATENTS SECTION */}
       <section className="mx-auto flex w-full flex-col gap-16 px-4 py-16 md:gap-12 md:px-6 md:py-20 lg:gap-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="flex flex-col items-center gap-6 xl:gap-8">
-          <div className="flex flex-col items-center gap-3">
-            <SubHeader brand={BrandColor.PRIMARY} title="Built for Patents" />
-            <h2 className="font-martina text-element-high-em text-4.5xl text-center xl:text-5xl">
-              All the context in one place, accessible
+          <div className="flex w-full flex-col items-center gap-3">
+            <div className="w-full">
+              <SubHeader brand={BrandColor.PRIMARY} title="Context" />
+            </div>
+            <h2 className="font-martina text-element-high-em text-4.5xl pt-6 text-center xl:text-5xl">
+              Everything you need in one place
             </h2>
           </div>
           <p className="text-element-mid-em text-center md:max-w-[40rem]">
-            Specialized processing across patent types and jurisdictions. Full
-            context from the patent family, prosecution history, and prior
-            cases.
+            &AI automatically surfaces and processes the full patent family,
+            prosecution history, and prior cases. Focus on building stronger
+            arguments, not organizing data.
           </p>
         </div>
         <div>
@@ -223,14 +219,14 @@ export default function Home() {
         <div className="flex flex-col gap-12 md:max-w-[25rem] lg:sticky lg:top-12 lg:self-start lg:pt-24 lg:pb-24 xl:max-w-[30rem]">
           <div className="space-y-6">
             <div className="space-y-3">
-              <SubHeader brand={BrandColor.PRIMARY} title="Privacy" />
+              <SubHeader brand={BrandColor.PRIMARY} title="Security" />
               <h2 className="font-martina text-element-high-em text-4.5xl xl:text-5xl">
-                Your data, your rules
+                Protect confidentiality with confidence
               </h2>
             </div>
             <p className="text-element-mid-em lg:pt-10">
-              &AI is built on the leading security standards and best practices
-              to ensure your data is safe and secure.
+              Enterprise-grade security and compliance built for law. Your data
+              stays private, secure, and under your control.
             </p>
           </div>
           <Button

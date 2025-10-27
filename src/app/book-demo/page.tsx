@@ -11,11 +11,7 @@ export default function BookDemo() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
-    companyWebsite: '',
-    primaryLocation: '',
-    numberOfLawyers: '',
-    organizationType: '',
+    useCase: '',
     referralSource: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,11 +36,7 @@ export default function BookDemo() {
         setFormData({
           name: '',
           email: '',
-          company: '',
-          companyWebsite: '',
-          primaryLocation: '',
-          numberOfLawyers: '',
-          organizationType: '',
+          useCase: '',
           referralSource: '',
         });
       } else {
@@ -84,144 +76,59 @@ export default function BookDemo() {
 
             <div className="border-gray-dark/10 bg-background-lighter relative z-10 rounded-lg border p-6 shadow-sm md:p-8">
               <form className="space-y-6" onSubmit={handleSubmit}>
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div className="space-y-2">
-                    <label
-                      className="text-element-high-em text-sm"
-                      htmlFor="name"
-                    >
-                      Name <span className="text-brand-primary">*</span>
-                    </label>
-                    <input
-                      required
-                      className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter h-11 w-full rounded-md border px-4 text-sm transition-colors focus:outline-none"
-                      id="name"
-                      name="name"
-                      placeholder="John Smith"
-                      type="text"
-                      value={formData.name}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label
-                      className="text-element-high-em text-sm"
-                      htmlFor="email"
-                    >
-                      Email <span className="text-brand-primary">*</span>
-                    </label>
-                    <input
-                      required
-                      className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter h-11 w-full rounded-md border px-4 text-sm transition-colors focus:outline-none"
-                      id="email"
-                      name="email"
-                      placeholder="example@tryandai.com"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </div>
-
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div className="space-y-2">
-                    <label
-                      className="text-element-high-em text-sm"
-                      htmlFor="company"
-                    >
-                      Company <span className="text-brand-primary">*</span>
-                    </label>
-                    <input
-                      required
-                      className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter h-11 w-full rounded-md border px-4 text-sm transition-colors focus:outline-none"
-                      id="company"
-                      name="company"
-                      placeholder="Acme Inc."
-                      type="text"
-                      value={formData.company}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label
-                      className="text-element-high-em text-sm"
-                      htmlFor="companyWebsite"
-                    >
-                      Company Website{' '}
-                      <span className="text-brand-primary">*</span>
-                    </label>
-                    <input
-                      required
-                      className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter h-11 w-full rounded-md border px-4 text-sm transition-colors focus:outline-none"
-                      id="companyWebsite"
-                      name="companyWebsite"
-                      placeholder="https://www.tryandai.com/"
-                      type="text"
-                      value={formData.companyWebsite}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </div>
-
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div className="space-y-2">
-                    <label
-                      className="text-element-high-em text-sm"
-                      htmlFor="primaryLocation"
-                    >
-                      Primary Location{' '}
-                      <span className="text-brand-primary">*</span>
-                    </label>
-                    <input
-                      required
-                      className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter h-11 w-full rounded-md border px-4 text-sm transition-colors focus:outline-none"
-                      id="primaryLocation"
-                      name="primaryLocation"
-                      placeholder="New York, NY"
-                      type="text"
-                      value={formData.primaryLocation}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label
-                      className="text-element-high-em text-sm"
-                      htmlFor="numberOfLawyers"
-                    >
-                      Number of Lawyers{' '}
-                      <span className="text-brand-primary">*</span>
-                    </label>
-                    <input
-                      required
-                      className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter h-11 w-full rounded-md border px-4 text-sm transition-colors focus:outline-none"
-                      id="numberOfLawyers"
-                      name="numberOfLawyers"
-                      type="text"
-                      value={formData.numberOfLawyers}
-                      onChange={handleChange}
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <label
+                    className="text-element-high-em text-sm"
+                    htmlFor="name"
+                  >
+                    Name <span className="text-brand-primary">*</span>
+                  </label>
+                  <input
+                    required
+                    className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter h-11 w-full rounded-md border px-4 text-sm transition-colors focus:outline-none"
+                    id="name"
+                    name="name"
+                    placeholder="Your full name"
+                    type="text"
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
                 </div>
 
                 <div className="space-y-2">
                   <label
                     className="text-element-high-em text-sm"
-                    htmlFor="organizationType"
+                    htmlFor="email"
                   >
-                    Organization Type{' '}
-                    <span className="text-brand-primary">*</span>
+                    Work email <span className="text-brand-primary">*</span>
                   </label>
                   <input
                     required
                     className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter h-11 w-full rounded-md border px-4 text-sm transition-colors focus:outline-none"
-                    id="organizationType"
-                    name="organizationType"
-                    placeholder="e.g. Law Firm, Legal Team, Government"
-                    type="text"
-                    value={formData.organizationType}
+                    id="email"
+                    name="email"
+                    placeholder="you@company.com"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label
+                    className="text-element-high-em text-sm"
+                    htmlFor="useCase"
+                  >
+                    Tell us about your use case{' '}
+                    <span className="text-brand-primary">*</span>
+                  </label>
+                  <textarea
+                    required
+                    className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter min-h-[120px] w-full rounded-md border px-4 py-3 text-sm transition-colors focus:outline-none"
+                    id="useCase"
+                    name="useCase"
+                    placeholder="E.g., pitching clients, drafting invalidity contentions, building claim charts..."
+                    value={formData.useCase}
                     onChange={handleChange}
                   />
                 </div>
@@ -239,6 +146,7 @@ export default function BookDemo() {
                     className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter h-11 w-full rounded-md border px-4 text-sm transition-colors focus:outline-none"
                     id="referralSource"
                     name="referralSource"
+                    placeholder="E.g., Google, a colleague, LinkedIn..."
                     type="text"
                     value={formData.referralSource}
                     onChange={handleChange}

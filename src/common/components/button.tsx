@@ -71,7 +71,7 @@ const buttonVariants = tv({
 
 interface ButtonProps
   extends VariantProps<typeof buttonVariants>,
-    HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
+    Omit<HTMLAttributes<HTMLButtonElement | HTMLAnchorElement>, 'type'> {
   children: ReactNode;
   className?: string;
   href?: string;
@@ -79,6 +79,7 @@ interface ButtonProps
   onClick?: () => void;
   iconRight?: ReactElement<{ className?: string }>;
   iconLeft?: ReactElement<{ className?: string }>;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export const Button = ({
@@ -93,6 +94,7 @@ export const Button = ({
   variant,
   iconRight,
   iconLeft,
+  type,
   ...props
 }: ButtonProps) => {
   const { base: baseTheme, icon: iconTheme } = buttonVariants({
@@ -137,6 +139,7 @@ export const Button = ({
     <button
       className={baseTheme({ className })}
       disabled={disabled}
+      type={type}
       onClick={onClick}
       {...props}
     >

@@ -75,7 +75,7 @@ export const TypingAnimation = ({
           <motion.span
             key={index}
             animate={{ opacity: 1 }}
-            className="break-words whitespace-pre-wrap"
+            className="whitespace-nowrap"
             exit={{ opacity: 0 }}
             initial={{ opacity: 0 }}
             transition={{ duration: 0.35 }}

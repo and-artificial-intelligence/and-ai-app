@@ -17,14 +17,6 @@ interface BlogPost {
 export default function Blog() {
   const posts: BlogPost[] = [
     {
-      slug: 'general-access',
-      title: 'General access',
-      description:
-        'We are excited to announce that &AI is now available for general access.',
-      date: 'October 28, 2025',
-      backgroundColor: 'bg-brand-accent-blue',
-    },
-    {
       slug: 'seed-funding-announcement',
       title: '$6.5m seed funding',
       description:
