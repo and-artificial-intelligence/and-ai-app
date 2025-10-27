@@ -62,20 +62,21 @@ export default function About() {
                 they both studied computer science through undergrad and
                 graduate school. Caleb went on to serve as a technical expert in
                 patent litigation, whereas Herbie built his career in machine
-                learning and AI. Through different lenses, both saw the
-                inefficiencies in the patent system. Proving validity or
-                infringement required such deep technical analysis that
-                countless inventions and billions in potential licensing revenue
-                remained locked away.
+                learning and AI. Through the lenses of procurement and
+                litigation, both saw the inefficiencies in the patent system.
+                Proving validity or infringement required such deep technical
+                analysis that countless inventions and billions in potential
+                licensing revenue remained locked away.
               </p>
               <p>
                 In 2024, LLMs reached the sophistication needed to handle the
-                scientific complexity of patent material. This insight sparked
-                Herbie and Caleb to found &AI with an early team of MIT
-                engineers with experience from Google, Meta, and Citadel
-                Securities. The goal was to build the system that makes patent
-                litigation efficient and unlock new revenue opportunities for
-                asset holders, funders, and litigators alike.
+                scientific complexity of patent material and the ambiguity of
+                drafting. This insight sparked Herbie and Caleb to found &AI
+                with an early team of MIT engineers with experience from Google,
+                Meta, and Citadel Securities. The goal was to build the system
+                that makes patent litigation efficient and unlock new revenue
+                opportunities for asset holders, funders, litigators, and
+                clients alike.
               </p>
             </div>
           </div>
