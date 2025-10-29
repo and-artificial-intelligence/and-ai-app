@@ -12,7 +12,7 @@ interface Advisor {
 }
 
 export default function About() {
-  const advisors: Advisor[] = [
+  const _advisors: Advisor[] = [
     {
       name: 'Peter Magic',
       title: 'Managing Partner',
@@ -113,7 +113,7 @@ export default function About() {
           </div>
 
           <div className="grid gap-8 px-6 py-12 md:grid-cols-2 md:px-16 md:py-16 lg:grid-cols-5 lg:px-6 xl:px-20">
-            {advisors.map((advisor, index) => (
+            {_advisors.map((advisor, index) => (
               <div key={index} className="flex flex-col gap-4">
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-gray-200">
                   <Image

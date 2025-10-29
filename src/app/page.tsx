@@ -140,7 +140,7 @@ export default function Home() {
           <div className="lg:px-10 xl:px-24">
             <div className="border-gray-dark/10 shadow-gray-dark/10 rounded-lg border bg-white/30 shadow">
               <div className="border-gray-dark/10 flex min-h-[3.5rem] items-start border-b p-4">
-                <TypingAnimation texts={typingTexts} className="w-full" />
+                <TypingAnimation className="w-full" texts={typingTexts} />
               </div>
               <div className="flex items-center justify-between p-2">
                 <Button

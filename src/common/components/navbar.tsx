@@ -57,7 +57,11 @@ export const Navbar = () => {
         )}
       >
         <div className="flex items-center gap-6">
-          <Link className="pr-6" href="/" onClick={() => setMobileMenuOpen(false)}>
+          <Link
+            className="pr-6"
+            href="/"
+            onClick={() => setMobileMenuOpen(false)}
+          >
             <Image
               priority
               alt="&AI"
@@ -111,9 +115,9 @@ export const Navbar = () => {
           >
             Log in
           </Link>
-          <Button className="hidden md:flex" href="/book-demo">
-            Book demo
-          </Button>
+          <div className="hidden md:block">
+            <Button href="/book-demo">Book demo</Button>
+          </div>
           {/* Hamburger Menu Button */}
           <button
             aria-label="Toggle menu"
