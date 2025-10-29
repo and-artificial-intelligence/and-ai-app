@@ -102,7 +102,6 @@ export const Button = ({
     size,
     fullWidth,
     disabled,
-    className,
   });
 
   const styledIcon = (icon?: ReactElement<{ className?: string }>) => {

@@ -60,11 +60,21 @@ export default function Home() {
     <main className="flex min-h-screen flex-col">
       {/* HERO SECTION */}
       <section
-        className="flex flex-col items-center gap-12 px-4 pt-8 md:gap-16 md:px-6 md:pt-24 lg:mx-auto lg:flex-row lg:items-end lg:pt-14 xl:px-8 xl:pt-10"
+        className="flex flex-col items-center gap-3 px-4 pt-6 md:gap-16 md:px-6 md:pt-24 lg:mx-auto lg:flex-row lg:items-end lg:pt-14 xl:px-8 xl:pt-10"
         id="hero"
       >
-        <div className="lg:h-fill-available flex flex-col items-center justify-center lg:max-w-[360px] lg:min-w-[360px] lg:items-start xl:max-w-[602px] xl:min-w-[602px]">
-          <div className="space-y-14 pt-8 md:space-y-20 md:pt-0 lg:space-y-24">
+        {/* LANDING IMAGE */}
+        <div className="relative order-1 aspect-square w-32 rounded-2xl md:w-[34.8125rem] lg:order-2 xl:w-[36.375rem]">
+          <Image
+            fill
+            alt="landing-page-bg"
+            className="scale-110 object-contain"
+            src="/Illustration-2.png"
+          />
+        </div>
+
+        <div className="lg:h-fill-available order-2 flex flex-col items-center justify-center lg:order-1 lg:max-w-[360px] lg:min-w-[360px] lg:items-start xl:max-w-[602px] xl:min-w-[602px]">
+          <div className="space-y-14 pt-4 md:space-y-20 md:pt-0 lg:space-y-24">
             <div className="space-y-8 md:space-y-10 lg:space-y-12">
               <div className="space-y-6 md:space-y-8">
                 <h1 className="md:text-5.5xl text-center text-5xl lg:text-left xl:text-7xl">
@@ -112,35 +122,25 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        {/* LANDING IMAGE */}
-        <div className="relative aspect-square w-[23.4375rem] rounded-2xl md:w-[34.8125rem] xl:w-[36.375rem]">
-          <Image
-            fill
-            alt="landing-page-bg"
-            className="scale-110 object-contain"
-            src="/Illustration-2.png"
-          />
-        </div>
       </section>
 
       {/* ANIMATED TEXT SECTION */}
       <section
-        className="mx-auto px-4 md:px-6 md:pt-[120px] md:pb-24 xl:max-w-[80rem] xl:px-8 xl:py-24 xl:pt-40 xl:pb-[120px]"
+        className="mx-auto px-4 py-16 md:px-6 md:pt-[120px] md:pb-24 xl:max-w-[80rem] xl:px-8 xl:py-24 xl:pt-40 xl:pb-[120px]"
         id="assistant"
       >
         <div className="space-y-16">
           <div className="flex flex-col gap-8">
             <SubHeader brand={BrandColor.PRIMARY} title="Assistant" />
-            <span className="relative lg:px-10 xl:px-24">
+            <div className="relative w-full py-2 lg:px-10 xl:px-24">
               <Paragraph value="             Andy is an AI assistant that turns your instructions into high-quality work product. From drafting invalidity contentions to building pitch decks, and everything in-between." />
-            </span>
+            </div>
           </div>
 
           <div className="lg:px-10 xl:px-24">
             <div className="border-gray-dark/10 shadow-gray-dark/10 rounded-lg border bg-white/30 shadow">
-              <div className="border-gray-dark/10 border-b p-4">
-                <TypingAnimation texts={typingTexts} />
+              <div className="border-gray-dark/10 flex min-h-[3.5rem] items-start border-b p-4">
+                <TypingAnimation className="w-full" texts={typingTexts} />
               </div>
               <div className="flex items-center justify-between p-2">
                 <Button
@@ -199,12 +199,12 @@ export default function Home() {
             arguments, not organizing data.
           </p>
         </div>
-        <div>
-          <div className="border-gray-dark/5 relative h-[20.75rem] w-full rounded-xs border bg-gray-200 lg:h-[27.5625rem] xl:h-[32.4375rem]">
+        <div className="px-4 md:px-8 lg:px-12">
+          <div className="border-gray-dark/5 relative aspect-[16/9] w-full rounded-xs border bg-gray-200">
             <Image
               fill
               alt="built-for-patents-illustration"
-              className="object-cover object-center md:object-contain"
+              className="object-contain object-center"
               src="/built-for-patents-illustration.png"
             />
           </div>
