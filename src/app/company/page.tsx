@@ -92,7 +92,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="relative mx-auto w-full px-4 py-12 md:px-6 md:py-16 xl:px-8">
+      {/* <section className="relative mx-auto w-full px-4 py-12 md:px-6 md:py-16 xl:px-8">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0"
@@ -134,7 +134,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </main>
