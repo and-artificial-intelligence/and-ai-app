@@ -15,7 +15,7 @@ export default function About() {
   const _advisors: Advisor[] = [
     {
       name: 'Peter Magic',
-      title: 'Managing Partner',
+      title: 'Managing Partner, San Francisco',
       firm: 'Desmarais LLP',
       imageSrc: '/advisor-1.jpeg',
     },
@@ -33,7 +33,7 @@ export default function About() {
     },
     {
       name: 'Ybet Villacorta',
-      title: 'Partner',
+      title: 'Of Counsel',
       firm: 'Foley & Lardner',
       imageSrc: '/advisor-3.jpg',
     },
@@ -41,7 +41,7 @@ export default function About() {
       name: 'Josef Schenker',
       title: 'Partner',
       firm: 'Gish PLLC',
-      imageSrc: '/advisor-5.jpeg',
+      imageSrc: '/josef.jpg',
     },
   ];
 
@@ -92,7 +92,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* <section className="relative mx-auto w-full px-4 py-12 md:px-6 md:py-16 xl:px-8">
+      <section className="relative mx-auto w-full px-4 py-12 md:px-6 md:py-16 xl:px-8">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0"
@@ -134,7 +134,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       <Footer />
     </main>
