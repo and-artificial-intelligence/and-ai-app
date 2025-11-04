@@ -256,7 +256,7 @@ export default function Pricing() {
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="grid gap-12 lg:grid-cols-[1fr_2fr] lg:gap-16 xl:gap-24">
           <div>
-            <h2 className="text-element-high-em text-5xl md:text-6xl">
+            <h2 className="font-martina text-element-high-em text-4.5xl xl:text-5xl">
               Frequently asked questions
             </h2>
           </div>
