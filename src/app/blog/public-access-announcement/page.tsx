@@ -41,14 +41,14 @@ export default function PublicAccessPost() {
 
           <div className="text-element-mid-em space-y-8 text-base">
             <p>
-              Today, I’m excited to announce that the &AI platform is now
-              generally available. Over the past year, we’ve been working
+              Today, I&apos;m excited to announce that the &AI platform is now
+              generally available. Over the past year, we&apos;ve been working
               closely with some of the best patent litigators and in-house teams
-              in the world – supporting them from pitch to verdict in cases with
-              billions in combined risk. &AI has been their secret weapon used
-              to monetize portfolios and drive litigation outcomes, and now it’s
-              available for any individual or team looking to scale their patent
-              expertise.
+              in the world &mdash; supporting them from pitch to verdict in
+              cases with billions in combined risk. &AI has been their secret
+              weapon used to monetize portfolios and drive litigation outcomes,
+              and now it&apos;s available for any individual or team looking to
+              scale their patent expertise.
             </p>
 
             <div className="space-y-4">
@@ -56,9 +56,9 @@ export default function PublicAccessPost() {
                 Advisory Board
               </h2>
               <p>
-                To support our expansion, we've also formed an advisory board of
-                world-class experts in patent litigation, licensing, and
-                monetization:
+                To support our expansion, we&apos;ve also formed an advisory
+                board of world-class experts in patent litigation, licensing,
+                and monetization:
               </p>
               <ul className="list-disc space-y-2 pl-6">
                 <li>
@@ -99,7 +99,7 @@ export default function PublicAccessPost() {
                 </h2>
                 <p>
                   &AI is a collaborative workspace for patent invalidity and
-                  infringement work – litigation, portfolio monetization,
+                  infringement work &mdash; litigation, portfolio monetization,
                   business development, and more. Beyond providing technical
                   analysis, &AI delivers trial-ready work product enriched by
                   key context and your strategic insight. Whether you&apos;re
@@ -157,10 +157,10 @@ export default function PublicAccessPost() {
                       Generate precise invalidity or evidence-of-use claim
                       charts in minutes instead of days, informed by a detailed
                       claim construction. Charts are composed entirely of
-                      citations and are produced in trial-ready format – all you
-                      have to do is review, edit, and export. Over thousands of
-                      charts produced on &AI, our first pass is 89% similar to
-                      that which is exported for litigation.
+                      citations and are produced in trial-ready format &mdash;
+                      all you have to do is review, edit, and export. Over
+                      thousands of charts produced on &AI, our first pass is 89%
+                      similar to that which is exported for litigation.
                     </p>
                     <ul className="list-disc space-y-2 pl-6">
                       <li>
@@ -195,9 +195,10 @@ export default function PublicAccessPost() {
                   <div className="flex-1 space-y-4">
                     <p>
                       Draft any type of document combining templated and
-                      generated material – cease & desist letters, infringement
-                      complaints, invalidity contentions, expert reports, pitch
-                      materials, and more, all grounded in your project.
+                      generated material &mdash; cease & desist letters,
+                      infringement complaints, invalidity contentions, expert
+                      reports, pitch materials, and more, all grounded in your
+                      project.
                     </p>
                     <ul className="list-disc space-y-2 pl-6">
                       <li>

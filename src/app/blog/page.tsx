@@ -75,9 +75,9 @@ export default function Blog() {
                 >
                   <div className="relative aspect-[16/9] w-full">
                     <Image
+                      fill
                       alt={post.title}
                       className="object-cover"
-                      fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
                       src={post.coverImage}
                     />
