@@ -33,7 +33,7 @@ export default function PublicAccessPost() {
 
             <div className="space-y-4">
               <h1 className="text-element-high-em text-4xl md:text-5xl">
-                The &AI platform is now publicly available
+                The &AI platform is now generally available
               </h1>
               <p className="text-element-mid-em text-sm">November 6, 2025</p>
             </div>

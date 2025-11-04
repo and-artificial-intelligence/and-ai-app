@@ -19,7 +19,7 @@ export default function Blog() {
   const posts: BlogPost[] = [
     // {
     //   slug: 'public-access-announcement',
-    //   title: 'The &AI platform is now\npublicly available',
+    //   title: 'The &AI platform is now\ngenerally available',
     //   description:
     //     'The &AI platform is now generally available with transparent pricing, new advisory board, and powerful features for patent work',
     //   date: 'November 6, 2025',
