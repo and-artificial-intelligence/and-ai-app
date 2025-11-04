@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { Footer } from '@/common/components/footer';
@@ -11,18 +12,26 @@ interface BlogPost {
   title: string;
   description: string;
   date: string;
-  backgroundColor: string;
+  coverImage: string;
 }
 
 export default function Blog() {
   const posts: BlogPost[] = [
+    // {
+    //   slug: 'public-access-announcement',
+    //   title: 'The &AI platform is now\npublicly available',
+    //   description:
+    //     'The &AI platform is now generally available with transparent pricing, new advisory board, and powerful features for patent work',
+    //   date: 'November 6, 2025',
+    //   coverImage: '/article-cover-blue.png',
+    // },
     {
       slug: 'seed-funding-announcement',
       title: '$6.5m seed funding',
       description:
         '&AI Raises $6.5 million to Launch First AI Agent for Patents',
       date: 'February 6, 2025',
-      backgroundColor: 'bg-brand-accent-purple/30',
+      coverImage: '/article-cover-purple.png',
     },
   ];
 
@@ -64,12 +73,19 @@ export default function Blog() {
                   className="group border-gray-dark/10 flex flex-col overflow-hidden rounded-sm border transition-shadow hover:shadow-md"
                   href={`/blog/${post.slug}`}
                 >
-                  <div
-                    className={`flex h-48 items-end px-6 pb-6 md:h-56 ${post.backgroundColor}`}
-                  >
-                    <h3 className="text-element-high-em font-martina text-2xl md:text-3xl">
-                      {post.title}
-                    </h3>
+                  <div className="relative aspect-[16/9] w-full">
+                    <Image
+                      alt={post.title}
+                      className="object-cover"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                      src={post.coverImage}
+                    />
+                    <div className="absolute inset-0 flex items-end px-6 pb-6">
+                      <h3 className="text-element-high-em font-martina text-2xl whitespace-pre-line md:text-3xl">
+                        {post.title}
+                      </h3>
+                    </div>
                   </div>
                   <div className="flex flex-1 flex-col justify-between bg-white p-6">
                     <p className="text-element-mid-em mb-4 text-sm">
