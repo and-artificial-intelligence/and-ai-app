@@ -270,8 +270,8 @@ export default function PublicAccessPost() {
                 <p>
                   With general availability, we&apos;ve released transparent,{' '}
                   <Link
-                    href="/pricing"
                     className="text-element-high-em hover:underline"
+                    href="/pricing"
                   >
                     credit-based pricing
                   </Link>{' '}
