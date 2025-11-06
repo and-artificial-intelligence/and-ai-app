@@ -17,19 +17,19 @@ interface BlogPost {
 
 export default function Blog() {
   const posts: BlogPost[] = [
-    // {
-    //   slug: 'public-access-announcement',
-    //   title: 'The &AI platform is now\ngenerally available',
-    //   description:
-    //     'The &AI platform is now generally available with transparent pricing, new advisory board, and powerful features for patent work',
-    //   date: 'November 6, 2025',
-    //   coverImage: '/article-cover-blue.png',
-    // },
+    {
+      slug: 'public-access-announcement',
+      title: 'General access',
+      description:
+        'The &AI platform is now generally available with transparent pricing and powerful features for patent litigation.',
+      date: 'November 6, 2025',
+      coverImage: '/article-cover-blue.png',
+    },
     {
       slug: 'seed-funding-announcement',
       title: '$6.5m seed funding',
       description:
-        '&AI Raises $6.5 million to Launch First AI Agent for Patents',
+        '&AI raises $6.5 million to launch the first AI agent for patent attorneys.',
       date: 'February 6, 2025',
       coverImage: '/article-cover-purple.png',
     },

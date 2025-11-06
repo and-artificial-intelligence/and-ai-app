@@ -268,11 +268,16 @@ export default function PublicAccessPost() {
                   Flexible Pricing
                 </h2>
                 <p>
-                  With general availability, we&apos;ve released transparent,
-                  credit-based pricing that starts at $375 per monthly seat. For
-                  a limited time, new signups will receive twice as many credits
-                  their first month, giving you an opportunity to try out &AI
-                  with flexibility.
+                  With general availability, we&apos;ve released transparent,{' '}
+                  <Link
+                    className="text-element-high-em hover:underline"
+                    href="/pricing"
+                  >
+                    credit-based pricing
+                  </Link>{' '}
+                  that starts at $375 per monthly seat. For a limited time, new
+                  signups will receive twice as many credits their first month,
+                  giving you an opportunity to try out &AI with flexibility.
                 </p>
                 <p>
                   Our Core plan uses only public data, enabling individuals and

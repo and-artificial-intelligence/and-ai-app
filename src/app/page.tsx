@@ -35,7 +35,7 @@ export default function Home() {
   const privacy: PrivacyCardProps[] = [
     {
       imageSrc: '/privacy-logo-1.png',
-      title: 'Model training',
+      title: 'No training',
       description:
         "&AI and subprocessors never train on your or your clients' data, with strict zero data retention policies configured.",
       icon: <AnonymousIcon />,
