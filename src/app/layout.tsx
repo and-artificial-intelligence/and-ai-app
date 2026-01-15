@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
 
 import '@/common/styles/main.css';
@@ -35,6 +36,7 @@ export default function RootLayout({
         <div className="relative h-full min-h-full pt-16 xl:pt-20">
           {children}
         </div>
+        <Analytics />
       </body>
     </html>
   );
