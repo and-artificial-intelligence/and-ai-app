@@ -15,6 +15,7 @@
     "validate": "pnpm run prettier & pnpm run lint & pnpm run check-types && pnpm run build"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.6.1",
     "blaze-slider": "^1.9.3",
     "clsx": "^2.1.1",
     "form-data": "^4.0.4",
