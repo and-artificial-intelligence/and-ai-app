@@ -1,5 +1,6 @@
 import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
+import Script from 'next/script';
 
 import '@/common/styles/main.css';
 
@@ -31,6 +32,28 @@ export default function RootLayout({
       )}
       lang="en"
     >
+      <head>
+        <Script
+          id="apollo-tracker"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              function initApollo(){
+                var n=Math.random().toString(36).substring(7),
+                    o=document.createElement("script");
+                o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n;
+                o.async=true;
+                o.defer=true;
+                o.onload=function(){
+                  window.trackingFunctions.onLoad({appId:"69672cf689c8f4001579b4f0"})
+                };
+                document.head.appendChild(o);
+              }
+              initApollo();
+            `,
+          }}
+        />
+      </head>
       <body>
         <Navbar />
         <div className="relative h-full min-h-full pt-16 xl:pt-20">
