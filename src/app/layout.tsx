@@ -34,8 +34,6 @@ export default function RootLayout({
     >
       <head>
         <Script
-          id="apollo-tracker"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               function initApollo(){
@@ -52,6 +50,8 @@ export default function RootLayout({
               initApollo();
             `,
           }}
+          id="apollo-tracker"
+          strategy="beforeInteractive"
         />
       </head>
       <body>
