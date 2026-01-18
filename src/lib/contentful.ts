@@ -37,11 +37,19 @@ const getAssetImage = (asset: Asset | null): BlogPostImage | null => {
   const url = typeof file.url === 'string' ? file.url : '';
   if (!url) return null;
 
-  const details = 'details' in file ? (file.details as Asset['fields']['file']['details']) : undefined;
+  const details =
+    file &&
+    typeof file === 'object' &&
+    'details' in file &&
+    typeof file.details === 'object'
+      ? (file.details as { image?: { width?: number; height?: number } })
+      : undefined;
   const width =
     typeof details?.image?.width === 'number' ? details.image.width : undefined;
   const height =
-    typeof details?.image?.height === 'number' ? details.image.height : undefined;
+    typeof details?.image?.height === 'number'
+      ? details.image.height
+      : undefined;
 
   return {
     url: url.startsWith('//') ? `https:${url}` : url,
