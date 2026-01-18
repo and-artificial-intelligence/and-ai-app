@@ -1,0 +1,29 @@
+import type { Document } from '@contentful/rich-text-types';
+import type { EntryFieldTypes, EntrySkeletonType } from 'contentful';
+
+export interface BlogPostFields {
+  title: EntryFieldTypes.Text;
+  slug: EntryFieldTypes.Text;
+  description: EntryFieldTypes.Text;
+  date?: EntryFieldTypes.Date;
+  coverImage: EntryFieldTypes.AssetLink;
+  content: EntryFieldTypes.RichText;
+}
+
+export type BlogPostSkeleton = EntrySkeletonType<BlogPostFields, 'blogPost'>;
+
+export type BlogPostImage = {
+  url: string;
+  title: string;
+  width?: number;
+  height?: number;
+};
+
+export type BlogPost = {
+  title: string;
+  slug: string;
+  description: string;
+  date: string;
+  coverImage: BlogPostImage | null;
+  content: Document | null;
+};

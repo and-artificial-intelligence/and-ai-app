@@ -1,11 +1,151 @@
+import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
+
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import {
+  BLOCKS,
+  INLINES,
+  type Document,
+} from '@contentful/rich-text-types';
 
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
+import { getBlogPostBySlug, getBlogPostSlugs } from '@/lib/contentful';
 
 import { BackgroundArt } from '@/module/cta';
 
-export default function BlogPost() {
+export const revalidate = 60;
+
+const formatBlogDate = (date: string) =>
+  new Date(date).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+
+const renderRichText = (document: Document) =>
+  documentToReactComponents(document, {
+    renderNode: {
+      [BLOCKS.HEADING_2]: (_, children) => (
+        <h2 className="text-element-high-em mt-6 text-2xl font-medium">
+          {children}
+        </h2>
+      ),
+      [BLOCKS.HEADING_3]: (_, children) => (
+        <h3 className="text-element-high-em mt-5 text-xl font-medium">
+          {children}
+        </h3>
+      ),
+      [BLOCKS.HEADING_1]: (_, children) => (
+        <h1 className="text-element-high-em mt-8 text-3xl font-medium">
+          {children}
+        </h1>
+      ),
+      [BLOCKS.HEADING_4]: (_, children) => (
+        <h4 className="text-element-high-em mt-4 text-lg font-medium">
+          {children}
+        </h4>
+      ),
+      [BLOCKS.HEADING_5]: (_, children) => (
+        <h5 className="text-element-high-em mt-3 text-base font-medium">
+          {children}
+        </h5>
+      ),
+      [BLOCKS.HEADING_6]: (_, children) => (
+        <h6 className="text-element-high-em mt-3 text-sm font-medium uppercase tracking-wide">
+          {children}
+        </h6>
+      ),
+      [BLOCKS.PARAGRAPH]: (_, children) => <p>{children}</p>,
+      [BLOCKS.UL_LIST]: (_, children) => (
+        <ul className="list-disc space-y-2 pl-6">{children}</ul>
+      ),
+      [BLOCKS.OL_LIST]: (_, children) => (
+        <ol className="list-decimal space-y-2 pl-6">{children}</ol>
+      ),
+      [BLOCKS.LIST_ITEM]: (_, children) => <li>{children}</li>,
+      [BLOCKS.QUOTE]: (_, children) => (
+        <blockquote className="border-gray-dark/10 border-l-2 pl-4 italic">
+          {children}
+        </blockquote>
+      ),
+      [BLOCKS.EMBEDDED_ASSET]: (node) => {
+        const target = node.data.target as {
+          fields?: {
+            title?: string;
+            description?: string;
+            file?: {
+              url?: string;
+              contentType?: string;
+              details?: { image?: { width?: number; height?: number } };
+            };
+          };
+        };
+        const file = target.fields?.file;
+        const rawUrl = file?.url;
+        if (!rawUrl) return null;
+        const url = rawUrl.startsWith('//') ? `https:${rawUrl}` : rawUrl;
+        const contentType = file?.contentType ?? '';
+        const width = file?.details?.image?.width ?? 1200;
+        const height = file?.details?.image?.height ?? 600;
+        const alt = target.fields?.description || target.fields?.title || '';
+
+        if (contentType.startsWith('image/')) {
+          return (
+            <div className="relative my-8 w-full overflow-hidden rounded-lg">
+              <Image
+                alt={alt}
+                height={height}
+                src={url}
+                width={width}
+                sizes="(max-width: 768px) 100vw, 48rem"
+              />
+            </div>
+          );
+        }
+
+        return (
+          <a
+            className="text-element-high-em my-4 inline-flex items-center gap-2 underline"
+            href={url}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {target.fields?.title || 'Download asset'}
+          </a>
+        );
+      },
+      [INLINES.HYPERLINK]: (node, children) => {
+        const href = node.data.uri as string;
+        const isExternal = href.startsWith('http');
+        return (
+          <a
+            className="text-element-high-em underline underline-offset-4 hover:no-underline"
+            href={href}
+            rel={isExternal ? 'noopener noreferrer' : undefined}
+            target={isExternal ? '_blank' : undefined}
+          >
+            {children}
+          </a>
+        );
+      },
+    },
+  });
+
+export const generateStaticParams = async () => {
+  const slugs = await getBlogPostSlugs();
+  return slugs.map((slug) => ({ slug }));
+};
+
+export default async function BlogPost({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const post = await getBlogPostBySlug(params.slug);
+  if (!post) notFound();
+
   return (
     <main className="flex min-h-screen flex-col">
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[48rem] xl:px-8 xl:py-24">
@@ -33,113 +173,20 @@ export default function BlogPost() {
 
             <div className="space-y-4">
               <h1 className="text-element-high-em text-4xl md:text-5xl">
-                Reliable by Design: Grounding Legal AI with RAG
+                {post.title}
               </h1>
-              <p className="text-element-mid-em text-sm">February 6, 2025</p>
+              <p className="text-element-mid-em text-sm">
+                {formatBlogDate(post.date)}
+              </p>
             </div>
           </div>
 
-          <div className="text-element-mid-em space-y-8 text-base">
-            <p>
-              Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam
-              suspendisse morbi eleifend faucibus eget.{' '}
-              <strong>vestibulum</strong> felis. Dictum quis montes, sit sit.
-              Tellus aliquam enim urna, etiam. Mauris posuere vulputate arcu
-              amet, vitae nisi, tellus tincidunt. At feugiat sapien varius id.
-            </p>
-
-            <p>
-              Eget quis mi enim, leo lacinia pharetra, semper. Eget in{' '}
-              <strong>volutpat mollis</strong> at volutpat lectus velit, sed
-              auctor. Porttitor fames arcu quis fusce augue enim. Quis at
-              habitant diam at. Suscipit tristique risus, at donec. In turpis
-              vel et quam imperdiet. Ipsum molestie aliquet sodales id est ac
-              volutpat.
-            </p>
-
-            <div className="space-y-4">
-              <h2 className="text-element-high-em text-2xl font-medium">
-                Mi feugiat amet
-              </h2>
-              <p>
-                Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum,
-                nulla odio nisl vitae. In aliquet pellentesque aenean hac
-                vestibulum turpis mi bibendum diam. Tempor integer aliquam in
-                vitae malesuada fringilla.
-              </p>
-              <p>
-                Elit nisi in eleifend sed nisi. Pulvinar at orci, proin
-                imperdiet commodo consectetur convallis risus. Sed condimentum
-                enim dignissim adipiscing faucibus consequat, urna. Viverra
-                purus et erat auctor aliquam. Risus, volutpat vulputate posuere
-                purus sit congue convallis aliquet. Arcu id augue ut feugiat
-                donec porttitor neque. Mauris, neque ultricies eu vestibulum,
-                bibendum quam lorem id. Dolor lacus, eget nunc lectus in tellus,
-                pharetra, porttitor.
-              </p>
-              <p>
-                Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim
-                mauris id. Non pellentesque congue eget consectetur turpis.
-                Sapien, dictum molestie sem tempor. Diam elit, orci, tincidunt
-                aenean tempus. Quis velit eget ut tortor tellus. Sed vel, congue
-                felis elit erat nam nibh orci.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <h2 className="text-element-high-em text-2xl font-medium">
-                Volutpat turpis quisque
-              </h2>
-              <p>
-                Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum,
-                nulla odio nisl vitae. In aliquet pellentesque aenean hac
-                vestibulum turpis mi bibendum diam. Tempor integer aliquam in
-                vitae malesuada fringilla.
-              </p>
-              <p>
-                Elit nisi in eleifend sed nisi. Pulvinar at orci, proin
-                imperdiet commodo consectetur convallis risus. Sed condimentum
-                enim dignissim adipiscing faucibus consequat, urna. Viverra
-                purus et erat auctor aliquam. Risus, volutpat vulputate posuere
-                purus sit congue convallis aliquet. Arcu id augue ut feugiat
-                donec porttitor neque. Mauris, neque ultricies eu vestibulum,
-                bibendum quam lorem id. Dolor lacus, eget nunc lectus in tellus,
-                pharetra, porttitor.
-              </p>
-              <p>
-                Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim
-                mauris id. Non pellentesque congue eget consectetur turpis.
-                Sapien, dictum molestie sem tempor. Diam elit, orci, tincidunt
-                aenean tempus. Quis velit eget ut tortor tellus. Sed vel, congue
-                felis elit erat nam nibh orci.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <h2 className="text-element-high-em text-2xl font-medium">
-                Elementum odio
-              </h2>
-              <p>
-                Sagittis et eu at elementum, quis in. Proin praesent volutpat
-                cursus sodales at lorem ipsum. Eget diam curabitur mi ac. Auctor
-                rutrum lacus malesuada massa ornare et. Vulputate consectetur ac
-                ultrices at diam et, egestas. Quis facilisi velit eros, ultrices
-                nec, turpis in. Iaculis nisi arcu quis urna, lacus convallis
-                dignissim massa amet volutpat gravida id. Sed nibh auctor
-                vulputate hac elementum gravida cursus dis.
-              </p>
-              <ol className="list-decimal space-y-2 pl-6">
-                <li>Lectus id duis vitae porttitor enim gravida morbi.</li>
-                <li>
-                  Eu turpis posuere semper feugiat volutpat elit, ultrices
-                  suspendisse. Auctor vel in vitae placerat.
-                </li>
-                <li>
-                  Suspendisse maecenas ac donec scelerisque diam sed est duis
-                  purus.
-                </li>
-              </ol>
-            </div>
+          <div className="text-element-mid-em space-y-4 text-base">
+            {post.content ? (
+              renderRichText(post.content)
+            ) : (
+              <p>This post is still being prepared.</p>
+            )}
           </div>
         </div>
       </section>
