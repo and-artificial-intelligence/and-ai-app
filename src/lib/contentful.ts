@@ -17,8 +17,7 @@ const client = createClient({
   accessToken,
 });
 
-const blogPostContentType =
-  process.env.CONTENTFUL_BLOG_POST_TYPE_ID || 'blogPost';
+const blogPostContentType = 'pageBlogPost';
 const blogPostDateField = process.env.CONTENTFUL_BLOG_POST_DATE_FIELD;
 const blogPostFeatureImageField =
   process.env.CONTENTFUL_BLOG_POST_FEATURE_IMAGE_FIELD;
