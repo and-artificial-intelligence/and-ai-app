@@ -1,11 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { Footer } from '@/common/components/footer';
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
-import { getBlogPosts } from '@/lib/contentful';
 
+import { getBlogPosts } from '@/lib/contentful';
 import { CTASection } from '@/module/cta';
 
 const formatBlogDate = (date: string) =>
@@ -58,9 +57,9 @@ export default async function Blog() {
                 >
                   <div className="relative aspect-[16/9] w-full">
                     <Image
-                      fill
                       alt={post.title}
                       className="object-cover"
+                      fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
                       src={
                         post.featureImage?.url ??

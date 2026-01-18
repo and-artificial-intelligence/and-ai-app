@@ -1,18 +1,12 @@
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { BLOCKS, INLINES, type Document } from '@contentful/rich-text-types';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import {
-  BLOCKS,
-  INLINES,
-  type Document,
-} from '@contentful/rich-text-types';
-
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
-import { getBlogPostBySlug, getBlogPostSlugs } from '@/lib/contentful';
 
+import { getBlogPostBySlug, getBlogPostSlugs } from '@/lib/contentful';
 import { BackgroundArt } from '@/module/cta';
 
 export const revalidate = 60;
@@ -97,9 +91,9 @@ const renderRichText = (document: Document) =>
               <Image
                 alt={alt}
                 height={height}
+                sizes="(max-width: 768px) 100vw, 48rem"
                 src={url}
                 width={width}
-                sizes="(max-width: 768px) 100vw, 48rem"
               />
             </div>
           );
@@ -174,9 +168,11 @@ export default async function BlogPost({
             {post.featureImage || post.coverImage ? (
               <div className="border-gray-dark/10 relative aspect-[16/9] w-full overflow-hidden rounded-lg border bg-gray-100">
                 <Image
-                  fill
-                  alt={post.featureImage?.title ?? post.coverImage?.title ?? post.title}
+                  alt={
+                    post.featureImage?.title ?? post.coverImage?.title ?? post.title
+                  }
                   className="object-cover"
+                  fill
                   sizes="(max-width: 768px) 100vw, 48rem"
                   src={
                     post.featureImage?.url ??
