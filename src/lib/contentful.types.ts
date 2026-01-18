@@ -12,7 +12,7 @@ export interface BlogPostFields {
   content: EntryFieldTypes.RichText;
 }
 
-export type BlogPostSkeleton = EntrySkeletonType<BlogPostFields, 'blogPost'>;
+export type BlogPostSkeleton = EntrySkeletonType<BlogPostFields, 'pageBlogPost'>;
 
 export type BlogPostImage = {
   url: string;
