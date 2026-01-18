@@ -5,6 +5,7 @@ export interface BlogPostFields {
   title: EntryFieldTypes.Text;
   slug: EntryFieldTypes.Text;
   description: EntryFieldTypes.Text;
+  author?: EntryFieldTypes.Text;
   date?: EntryFieldTypes.Date;
   coverImage?: EntryFieldTypes.AssetLink;
   featureImage?: EntryFieldTypes.AssetLink;
@@ -24,6 +25,7 @@ export type BlogPost = {
   title: string;
   slug: string;
   description: string;
+  author: string;
   date: string;
   coverImage: BlogPostImage | null;
   featureImage: BlogPostImage | null;

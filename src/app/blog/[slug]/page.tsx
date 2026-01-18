@@ -3,6 +3,7 @@ import { BLOCKS, INLINES, type Document } from '@contentful/rich-text-types';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 
@@ -168,11 +169,11 @@ export default async function BlogPost({
             {post.featureImage || post.coverImage ? (
               <div className="border-gray-dark/10 relative aspect-[16/9] w-full overflow-hidden rounded-lg border bg-gray-100">
                 <Image
+                  fill
                   alt={
                     post.featureImage?.title ?? post.coverImage?.title ?? post.title
                   }
                   className="object-cover"
-                  fill
                   sizes="(max-width: 768px) 100vw, 48rem"
                   src={
                     post.featureImage?.url ??
@@ -187,9 +188,14 @@ export default async function BlogPost({
               <h1 className="text-element-high-em text-4xl md:text-5xl">
                 {post.title}
               </h1>
-              <p className="text-element-mid-em text-sm">
-                {formatBlogDate(post.date)}
-              </p>
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-element-mid-em text-sm">
+                  {formatBlogDate(post.date)}
+                </p>
+                <span className="border-gray-dark/10 text-element-high-em rounded-full border px-3 py-1 text-xs font-medium">
+                  {post.author}
+                </span>
+              </div>
             </div>
           </div>
 

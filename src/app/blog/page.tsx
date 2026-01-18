@@ -1,11 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { Footer } from '@/common/components/footer';
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
 
 import { getBlogPosts } from '@/lib/contentful';
 import { CTASection } from '@/module/cta';
+
+export const revalidate = 0;
 
 const formatBlogDate = (date: string) =>
   new Date(date).toLocaleDateString('en-US', {
@@ -57,9 +60,9 @@ export default async function Blog() {
                 >
                   <div className="relative aspect-[16/9] w-full">
                     <Image
+                      fill
                       alt={post.title}
                       className="object-cover"
-                      fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
                       src={
                         post.featureImage?.url ??
@@ -72,9 +75,14 @@ export default async function Blog() {
                     <p className="text-element-mid-em mb-4 text-sm">
                       {post.description}
                     </p>
-                    <p className="text-element-low-em text-xs font-medium">
-                      {formatBlogDate(post.date)}
-                    </p>
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-element-low-em text-xs font-medium">
+                        {formatBlogDate(post.date)}
+                      </p>
+                      <span className="border-gray-dark/10 text-element-high-em rounded-full border px-3 py-1 text-xs font-medium">
+                        {post.author}
+                      </span>
+                    </div>
                   </div>
                 </Link>
               ))}

@@ -69,6 +69,29 @@ const getDateFieldValue = (
   return undefined;
 };
 
+const normalizeAuthorName = (value: string): string => {
+  if (value === 'Claeb Harris') return 'Caleb';
+  if (value === 'AndAI') return '&AI Team';
+  if (value === 'Caleb' || value === 'Caleb Harris') return 'Caleb, Founder';
+  if (value === 'Herbie' || value === 'Herbie Turner')
+    return 'Herbie, Founder';
+  return value;
+};
+
+const getAuthorFieldValue = (
+  fields: Record<string, unknown>,
+): string | undefined => {
+  const candidates = ['author', 'authorName', 'byline', 'writer'].filter(
+    Boolean,
+  ) as string[];
+
+  for (const key of candidates) {
+    const value = fields[key];
+    if (typeof value === 'string') return normalizeAuthorName(value);
+  }
+  return undefined;
+};
+
 const normalizeBlogPost = (entry: Entry<BlogPostSkeleton>): BlogPost => {
   const fields = entry.fields as Record<string, unknown>;
   const featureImageFieldCandidates = [
@@ -86,6 +109,7 @@ const normalizeBlogPost = (entry: Entry<BlogPostSkeleton>): BlogPost => {
     title: typeof fields.title === 'string' ? fields.title : '',
     slug: typeof fields.slug === 'string' ? fields.slug : '',
     description: typeof fields.description === 'string' ? fields.description : '',
+    author: getAuthorFieldValue(fields) ?? '&AI Team',
     date:
       getDateFieldValue(fields) ??
       entry.sys.updatedAt ??
