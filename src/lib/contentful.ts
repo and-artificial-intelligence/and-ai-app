@@ -150,18 +150,16 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
   try {
     entries = await client.getEntries<BlogPostSkeleton>({
       content_type: blogPostContentType,
-      order: orderByDate as unknown as string[],
       include: 2,
-    } as any);
+    });
   } catch (error) {
     if (!blogPostDateField || !isUnknownFieldError(error, blogPostDateField)) {
       throw error;
     }
     entries = await client.getEntries<BlogPostSkeleton>({
       content_type: blogPostContentType,
-      order: ['-sys.updatedAt'],
       include: 2,
-    } as any);
+    });
   }
 
   return entries.items
@@ -189,18 +187,14 @@ export const getBlogPostSlugs = async (): Promise<string[]> => {
   try {
     entries = await client.getEntries<BlogPostSkeleton>({
       content_type: blogPostContentType,
-      order: (blogPostDateField
-        ? [`-fields.${blogPostDateField}`]
-        : ['-sys.updatedAt']) as unknown as string[],
-    } as any);
+    });
   } catch (error) {
     if (!blogPostDateField || !isUnknownFieldError(error, blogPostDateField)) {
       throw error;
     }
     entries = await client.getEntries<BlogPostSkeleton>({
       content_type: blogPostContentType,
-      order: ['-sys.updatedAt'],
-    } as any);
+    });
   }
 
   return entries.items
