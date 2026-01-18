@@ -142,15 +142,15 @@ const isUnknownFieldError = (error: unknown, fieldId: string): boolean => {
 };
 
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
-  const orderByDate = blogPostDateField
+  const orderByDate = (blogPostDateField
     ? [`-fields.${blogPostDateField}`]
-    : ['-sys.updatedAt'];
+    : ['-sys.updatedAt']) as string[];
   let entries;
 
   try {
     entries = await client.getEntries<BlogPostSkeleton>({
       content_type: blogPostContentType,
-      order: orderByDate,
+      order: orderByDate as unknown as never[],
       include: 2,
     });
   } catch (error) {
@@ -189,9 +189,9 @@ export const getBlogPostSlugs = async (): Promise<string[]> => {
   try {
     entries = await client.getEntries<BlogPostSkeleton>({
       content_type: blogPostContentType,
-      order: blogPostDateField
+      order: (blogPostDateField
         ? [`-fields.${blogPostDateField}`]
-        : ['-sys.updatedAt'],
+        : ['-sys.updatedAt']) as unknown as never[],
     });
   } catch (error) {
     if (!blogPostDateField || !isUnknownFieldError(error, blogPostDateField)) {
