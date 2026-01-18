@@ -20,6 +20,8 @@ const client = createClient({
 const blogPostContentType =
   process.env.CONTENTFUL_BLOG_POST_TYPE_ID || 'blogPost';
 const blogPostDateField = process.env.CONTENTFUL_BLOG_POST_DATE_FIELD;
+const blogPostFeatureImageField =
+  process.env.CONTENTFUL_BLOG_POST_FEATURE_IMAGE_FIELD;
 
 const asAsset = (value: unknown): Asset | null => {
   if (!value || typeof value !== 'object') return null;
@@ -70,6 +72,17 @@ const getDateFieldValue = (
 
 const normalizeBlogPost = (entry: Entry<BlogPostSkeleton>): BlogPost => {
   const fields = entry.fields as Record<string, unknown>;
+  const featureImageFieldCandidates = [
+    blogPostFeatureImageField,
+    'featureImage',
+    'feature_image',
+    'featureimage',
+    'featuredImage',
+  ].filter(Boolean) as string[];
+  const featureImageField = featureImageFieldCandidates.find(
+    (key) => fields[key],
+  );
+
   return {
     title: typeof fields.title === 'string' ? fields.title : '',
     slug: typeof fields.slug === 'string' ? fields.slug : '',
@@ -79,6 +92,9 @@ const normalizeBlogPost = (entry: Entry<BlogPostSkeleton>): BlogPost => {
       entry.sys.updatedAt ??
       entry.sys.createdAt,
     coverImage: getAssetImage(asAsset(fields.coverImage)),
+    featureImage: getAssetImage(
+      asAsset(featureImageField ? fields[featureImageField] : null),
+    ),
     content: (fields.content as BlogPost['content']) ?? null,
   };
 };

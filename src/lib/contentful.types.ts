@@ -6,7 +6,8 @@ export interface BlogPostFields {
   slug: EntryFieldTypes.Text;
   description: EntryFieldTypes.Text;
   date?: EntryFieldTypes.Date;
-  coverImage: EntryFieldTypes.AssetLink;
+  coverImage?: EntryFieldTypes.AssetLink;
+  featureImage?: EntryFieldTypes.AssetLink;
   content: EntryFieldTypes.RichText;
 }
 
@@ -25,5 +26,6 @@ export type BlogPost = {
   description: string;
   date: string;
   coverImage: BlogPostImage | null;
+  featureImage: BlogPostImage | null;
   content: Document | null;
 };

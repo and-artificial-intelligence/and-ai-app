@@ -62,13 +62,12 @@ export default async function Blog() {
                       alt={post.title}
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                      src={post.coverImage?.url ?? '/article-cover-gray.png'}
+                      src={
+                        post.featureImage?.url ??
+                        post.coverImage?.url ??
+                        '/article-cover-gray.png'
+                      }
                     />
-                    <div className="absolute inset-0 flex items-end px-6 pb-6">
-                      <h3 className="text-element-high-em font-martina text-2xl whitespace-pre-line md:text-3xl">
-                        {post.title}
-                      </h3>
-                    </div>
                   </div>
                   <div className="flex flex-1 flex-col justify-between bg-white p-6">
                     <p className="text-element-mid-em mb-4 text-sm">

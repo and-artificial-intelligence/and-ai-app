@@ -171,6 +171,22 @@ export default async function BlogPost({
               Back to blog
             </Link>
 
+            {post.featureImage || post.coverImage ? (
+              <div className="border-gray-dark/10 relative aspect-[16/9] w-full overflow-hidden rounded-lg border bg-gray-100">
+                <Image
+                  fill
+                  alt={post.featureImage?.title ?? post.coverImage?.title ?? post.title}
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 48rem"
+                  src={
+                    post.featureImage?.url ??
+                    post.coverImage?.url ??
+                    '/article-cover-gray.png'
+                  }
+                />
+              </div>
+            ) : null}
+
             <div className="space-y-4">
               <h1 className="text-element-high-em text-4xl md:text-5xl">
                 {post.title}
