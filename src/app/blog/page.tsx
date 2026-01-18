@@ -5,35 +5,20 @@ import { Footer } from '@/common/components/footer';
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
 
+import { getBlogPosts } from '@/lib/contentful';
 import { CTASection } from '@/module/cta';
 
-interface BlogPost {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  coverImage: string;
-}
+export const revalidate = 0;
 
-export default function Blog() {
-  const posts: BlogPost[] = [
-    {
-      slug: 'public-access-announcement',
-      title: 'General access',
-      description:
-        'The &AI platform is now generally available with transparent pricing and powerful features for patent litigation.',
-      date: 'November 6, 2025',
-      coverImage: '/article-cover-blue.png',
-    },
-    {
-      slug: 'seed-funding-announcement',
-      title: '$6.5m seed funding',
-      description:
-        '&AI raises $6.5 million to launch the first AI agent for patent attorneys.',
-      date: 'February 6, 2025',
-      coverImage: '/article-cover-purple.png',
-    },
-  ];
+const formatBlogDate = (date: string) =>
+  new Date(date).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+
+export default async function Blog() {
+  const posts = await getBlogPosts();
 
   return (
     <main className="flex min-h-screen flex-col">
@@ -79,21 +64,25 @@ export default function Blog() {
                       alt={post.title}
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                      src={post.coverImage}
+                      src={
+                        post.featureImage?.url ??
+                        post.coverImage?.url ??
+                        '/article-cover-gray.png'
+                      }
                     />
-                    <div className="absolute inset-0 flex items-end px-6 pb-6">
-                      <h3 className="text-element-high-em font-martina text-2xl whitespace-pre-line md:text-3xl">
-                        {post.title}
-                      </h3>
-                    </div>
                   </div>
                   <div className="flex flex-1 flex-col justify-between bg-white p-6">
                     <p className="text-element-mid-em mb-4 text-sm">
                       {post.description}
                     </p>
-                    <p className="text-element-low-em text-xs font-medium">
-                      {post.date}
-                    </p>
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-element-low-em text-xs font-medium">
+                        {formatBlogDate(post.date)}
+                      </p>
+                      <span className="border-gray-dark/10 text-element-high-em rounded-full border px-3 py-1 text-xs font-medium">
+                        {post.author}
+                      </span>
+                    </div>
                   </div>
                 </Link>
               ))}
