@@ -53,6 +53,14 @@ export default function RootLayout({
           id="apollo-tracker"
           strategy="beforeInteractive"
         />
+        <Script
+          async
+          data-pid="dSGoRhLw6OFI8UwR"
+          data-version="062024"
+          id="vtag-ai-js"
+          src="https://r2.leadsy.ai/tag.js"
+          strategy="afterInteractive"
+        />
       </head>
       <body>
         <Navbar />
