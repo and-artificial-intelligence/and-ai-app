@@ -116,6 +116,8 @@ const normalizeBlogPost = (entry: Entry<BlogPostSkeleton>): BlogPost => {
   return {
     title: typeof fields.title === 'string' ? fields.title : '',
     slug: typeof fields.slug === 'string' ? fields.slug : '',
+    subtitle:
+      typeof fields.shortDescription === 'string' ? fields.shortDescription : '',
     description: typeof fields.description === 'string' ? fields.description : '',
     author: getAuthorFieldValue(fields) ?? '&AI Team',
     date:

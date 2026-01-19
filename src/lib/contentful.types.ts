@@ -4,6 +4,7 @@ import type { EntryFieldTypes, EntrySkeletonType } from 'contentful';
 export interface BlogPostFields {
   title: EntryFieldTypes.Text;
   slug: EntryFieldTypes.Text;
+  subtitle?: EntryFieldTypes.Text;
   description: EntryFieldTypes.Text;
   author?: EntryFieldTypes.Text;
   date?: EntryFieldTypes.Date;
@@ -24,6 +25,7 @@ export type BlogPostImage = {
 export type BlogPost = {
   title: string;
   slug: string;
+  subtitle: string;
   description: string;
   author: string;
   date: string;
