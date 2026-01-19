@@ -1,5 +1,6 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES, type Document } from '@contentful/rich-text-types';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -11,6 +12,54 @@ import { getBlogPostBySlug, getBlogPostSlugs } from '@/lib/contentful';
 import { BackgroundArt } from '@/module/cta';
 
 export const revalidate = 60;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
+
+  if (!post) {
+    return {
+      title: 'Blog Post Not Found | &AI',
+    };
+  }
+
+  const ogImage = post.featureImage?.url ?? post.coverImage?.url;
+  const metaDescription =
+    post.subtitle || post.description || `Read "${post.title}" on the &AI blog.`;
+
+  return {
+    title: `${post.title} | &AI Blog`,
+    description: metaDescription,
+    authors: [{ name: post.author }],
+    openGraph: {
+      title: post.title,
+      description: metaDescription,
+      type: 'article',
+      publishedTime: post.date,
+      authors: [post.author],
+      ...(ogImage && {
+        images: [
+          {
+            url: ogImage,
+            width: post.featureImage?.width ?? post.coverImage?.width ?? 1200,
+            height: post.featureImage?.height ?? post.coverImage?.height ?? 630,
+            alt: post.title,
+          },
+        ],
+      }),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: metaDescription,
+      ...(ogImage && { images: [ogImage] }),
+    },
+  };
+}
 
 const formatBlogDate = (date: string) =>
   new Date(date).toLocaleDateString('en-US', {

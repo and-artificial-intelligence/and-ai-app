@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -9,6 +10,24 @@ import { getBlogPosts } from '@/lib/contentful';
 import { CTASection } from '@/module/cta';
 
 export const revalidate = 0;
+
+export const metadata: Metadata = {
+  title: 'Blog | &AI',
+  description:
+    'Stay up to date with the latest news, insights, and updates from &AI — the AI workspace for patent litigation.',
+  openGraph: {
+    title: 'Blog | &AI',
+    description:
+      'Stay up to date with the latest news, insights, and updates from &AI — the AI workspace for patent litigation.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog | &AI',
+    description:
+      'Stay up to date with the latest news, insights, and updates from &AI — the AI workspace for patent litigation.',
+  },
+};
 
 const formatBlogDate = (date: string) =>
   new Date(date).toLocaleDateString('en-US', {
@@ -28,6 +47,10 @@ export default async function Blog() {
           <h1 className="text-element-high-em text-5xl md:text-6xl xl:text-7xl">
             Latest <span className="font-martina italic">news</span>
           </h1>
+          <p className="text-element-mid-em max-w-xl text-base md:text-lg">
+            Stay up to date with the latest insights, updates, and announcements
+            from the &AI team.
+          </p>
         </div>
 
         <div className="relative">
@@ -72,9 +95,16 @@ export default async function Blog() {
                     />
                   </div>
                   <div className="flex flex-1 flex-col justify-between bg-white p-6">
-                    <p className="text-element-mid-em mb-4 text-sm">
-                      {post.description}
-                    </p>
+                    <div className="mb-4 space-y-2">
+                      <h2 className="text-element-high-em text-lg font-medium leading-tight">
+                        {post.title}
+                      </h2>
+                      {(post.subtitle || post.description) && (
+                        <p className="text-element-mid-em text-sm line-clamp-2">
+                          {post.subtitle || post.description}
+                        </p>
+                      )}
+                    </div>
                     <div className="flex items-center justify-between gap-3">
                       <p className="text-element-low-em text-xs font-medium">
                         {formatBlogDate(post.date)}
