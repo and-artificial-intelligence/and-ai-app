@@ -78,12 +78,26 @@ const getDateFieldValue = (
 };
 
 const normalizeAuthorName = (value: string): string => {
-  if (value === 'Claeb Harris') return 'Caleb';
+  if (value === 'Claeb Harris' || value === 'Caleb') return 'Caleb Harris';
   if (value === 'AndAI') return '&AI Team';
-  if (value === 'Caleb' || value === 'Caleb Harris') return 'Caleb, Founder';
-  if (value === 'Herbie' || value === 'Herbie Turner')
-    return 'Herbie, Founder';
+  if (value === 'Herbie') return 'Herbie Turner';
   return value;
+};
+
+const getAuthorNameFromEntry = (entry: unknown): string | undefined => {
+  if (!entry || typeof entry !== 'object') return undefined;
+  if (!('fields' in entry)) return undefined;
+  const fields = (entry as { fields: Record<string, unknown> }).fields;
+  
+  // Check common author name field names
+  const nameFields = ['name', 'fullName', 'displayName', 'authorName', 'title'];
+  for (const field of nameFields) {
+    const value = fields[field];
+    if (typeof value === 'string' && value.trim()) {
+      return value;
+    }
+  }
+  return undefined;
 };
 
 const getAuthorFieldValue = (
@@ -95,7 +109,13 @@ const getAuthorFieldValue = (
 
   for (const key of candidates) {
     const value = fields[key];
+    // Handle string author field
     if (typeof value === 'string') return normalizeAuthorName(value);
+    // Handle linked author entry (reference)
+    if (value && typeof value === 'object') {
+      const authorName = getAuthorNameFromEntry(value);
+      if (authorName) return normalizeAuthorName(authorName);
+    }
   }
   return undefined;
 };
