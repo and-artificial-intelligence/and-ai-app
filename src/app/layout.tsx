@@ -13,7 +13,7 @@ import 'blaze-slider/dist/blaze.css';
 export const metadata: Metadata = {
   title: '&AI | Scale your patent expertise',
   description:
-    '&AI is the AI workspace for executing litigation-grade patent work at machine scale.',
+    'The AI workspace for executing litigation-grade patent work at machine scale. Built for in-house counsel and litigation teams.',
   authors: [{ name: 'And AI' }],
 };
 
