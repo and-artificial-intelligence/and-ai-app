@@ -4,6 +4,8 @@ import { useState, FormEvent } from 'react';
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 import { cn } from '@/common/functions/cn';
+import { BrandColor } from '@/common/types/common';
+import { SubHeader } from '@/common/components/subheader';
 
 export default function RequestSampleChart() {
   const [formData, setFormData] = useState({
@@ -63,15 +65,17 @@ export default function RequestSampleChart() {
         <div className="flex flex-col gap-16 lg:flex-row lg:gap-20 xl:gap-24">
           <div className="space-y-6 lg:max-w-lg lg:pt-8">
             <div className="space-y-4">
+              <SubHeader brand={BrandColor.PRIMARY} title="Evaluate us" />
               <h1 className="text-element-high-em text-5xl md:text-6xl xl:text-7xl">
                 Request a sample{' '}
                 <span className="font-martina italic">claim chart</span>
               </h1>
             </div>
             <p className="text-element-mid-em text-base leading-relaxed md:text-lg">
-              See how &AI can help you build claim charts faster and more accurately.
-              We'll email you a first-draft chart with limitation-by-limitation
-              mapping of pinpoint citations your team can review.
+              See how &AI can help you build claim charts faster and more
+              accurately. We'll email you a first-draft chart with
+              limitation-by-limitation mapping of pinpoint citations your team
+              can review.
             </p>
           </div>
 
