@@ -6,11 +6,21 @@ export async function POST(request: Request) {
   const formData = await request.json();
 
   // Check if required environment variables are set
-  if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
-    console.error('Missing Mailgun configuration');
+  if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN || 
+      process.env.MAILGUN_API_KEY === 'your_mailgun_api_key_here' ||
+      process.env.MAILGUN_DOMAIN === 'your_mailgun_domain_here') {
+    // Development mode: log to console instead of sending email
+    console.log('📧 Sample Chart Request (Development Mode):');
+    console.log('Name:', formData.name);
+    console.log('Email:', formData.email);
+    console.log('Firm/Company:', formData.firmCompany);
+    console.log('Target Patent:', formData.targetPatent);
+    console.log('Claim Numbers:', formData.claimNumbers);
+    console.log('Reference Materials:', formData.referencePatents);
+    
     return NextResponse.json(
-      { message: 'Email service not configured' },
-      { status: 500 },
+      { message: 'Form submitted successfully (development mode)' },
+      { status: 200 },
     );
   }
 

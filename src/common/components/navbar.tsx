@@ -116,7 +116,7 @@ export const Navbar = () => {
             Log in
           </Link>
           <div className="hidden md:block">
-            <Button variant="secondary" href="/request-sample-chart">
+            <Button href="/request-sample-chart" variant="secondary">
               Request sample chart
             </Button>
           </div>
@@ -230,9 +230,9 @@ export const Navbar = () => {
 
           <div className="flex flex-col gap-3 pt-2">
             <Button
-              variant="secondary"
               className="w-full"
               href="/request-sample-chart"
+              variant="secondary"
               onClick={() => setMobileMenuOpen(false)}
             >
               Request sample chart

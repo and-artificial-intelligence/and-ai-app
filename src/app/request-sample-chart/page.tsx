@@ -3,9 +3,9 @@ import { useState, FormEvent } from 'react';
 
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
+import { SubHeader } from '@/common/components/subheader';
 import { cn } from '@/common/functions/cn';
 import { BrandColor } from '@/common/types/common';
-import { SubHeader } from '@/common/components/subheader';
 
 export default function RequestSampleChart() {
   const [formData, setFormData] = useState({
@@ -73,10 +73,24 @@ export default function RequestSampleChart() {
             </div>
             <p className="text-element-mid-em text-base leading-relaxed md:text-lg">
               See how &AI can help you build claim charts faster and more
-              accurately. We'll email you a first-draft chart with
-              limitation-by-limitation mapping of pinpoint citations your team
-              can review.
+              accurately. We&apos;ll email you a first-draft for your team to
+              evaluate.
             </p>
+            <div className="border-gray-dark/10 bg-background-lighter space-y-2 rounded-lg border p-4 md:p-5">
+              <p className="text-element-mid-em text-sm leading-relaxed">
+                <strong className="text-element-high-em">Note:</strong> The
+                sample chart uses our base chart export settings and does not
+                reflect the full range of customization available through the
+                platform.
+              </p>
+              <p className="text-element-mid-em text-sm leading-relaxed">
+                {' '}
+                &AI has dozens of settings to tailor boilerplate language,
+                formatting, styling and more to match your team&apos;s
+                preferences. And if we don&apos;t have a setting you need,
+                we&apos;ll build it for you.
+              </p>
+            </div>
           </div>
 
           <div className="relative -my-8 flex-1 py-8">
@@ -189,15 +203,14 @@ export default function RequestSampleChart() {
                     className="text-element-high-em text-sm"
                     htmlFor="referencePatents"
                   >
-                    Reference materials{' '}
-                    <span className="text-brand-primary">*</span>
+                    Reference <span className="text-brand-primary">*</span>
                   </label>
                   <textarea
                     required
                     className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter min-h-[120px] w-full rounded-md border px-4 py-3 text-sm transition-colors focus:outline-none"
                     id="referencePatents"
                     name="referencePatents"
-                    placeholder="Prior art patents, NPL, specs/manuals, teardowns, screenshots, video URLs, or any other materials"
+                    placeholder="Prior art patent number or URL of other document to chart against the target patent"
                     value={formData.referencePatents}
                     onChange={handleChange}
                   />
