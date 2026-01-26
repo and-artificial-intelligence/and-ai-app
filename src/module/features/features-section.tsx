@@ -21,6 +21,53 @@ import {
 
 const features: ItemAndSliderProps[] = [
   {
+    tag: 'Opportunities',
+    tagColor: BrandColor.PRIMARY,
+    title: 'Discover opportunities worth pursuing.',
+    description:
+      'A personalized, real-time feed of new patent litigation—helping you find the right cases to pitch.',
+    items: [
+      {
+        icon: <SearchDocumentIcon />,
+        title: 'Real-time feed',
+        description:
+          'A real-time feed with pitch recommendations and configurable alerts and filters',
+        imageSrc: '/OpportunitiesOverview.png',
+      },
+      {
+        icon: <SearchDocumentIcon />,
+        title: 'Personal and team recommendations',
+        description:
+          "The right cases, triaged to the right partner based on your team's prior experience",
+        imageSrc: '/OpportunitiesDetail.png',
+      },
+    ],
+  },
+
+  {
+    tag: 'Charts',
+    tagColor: BrandColor.ACCENT_BLUE_DARK,
+    title: 'Win cases faster with trial-ready analysis.',
+    description:
+      'Generate precise invalidity or evidence-of-use claim charts in minutes instead of days.',
+    items: [
+      {
+        icon: <SpreadsheetIcon />,
+        title: 'Claims and elements',
+        description:
+          'Element-by-element claim charts with citations to prior art and product documentation',
+        imageSrc: '/2.1.png',
+      },
+      {
+        icon: <ListIcon />,
+        title: 'Claim construction',
+        description:
+          'Claim constructions generated from the as-filed application, prosecution history, related family, and more',
+        imageSrc: '/2.2.png',
+      },
+    ],
+  },
+  {
     tag: 'Search',
     tagColor: BrandColor.PRIMARY,
     title: 'Find what your opponents miss.',
@@ -51,34 +98,11 @@ const features: ItemAndSliderProps[] = [
     ],
   },
   {
-    tag: 'Charts',
-    tagColor: BrandColor.ACCENT_BLUE_DARK,
-    title: 'Win cases faster with trial-ready analysis.',
-    description:
-      'Generate precise invalidity or evidence-of-use claim charts in minutes instead of days.',
-    items: [
-      {
-        icon: <SpreadsheetIcon />,
-        title: 'Claims and elements',
-        description:
-          'Element-by-element claim charts with citations to prior art and product documentation',
-        imageSrc: '/2.1.png',
-      },
-      {
-        icon: <ListIcon />,
-        title: 'Claim construction',
-        description:
-          'Claim constructions generated from the as-filed application, prosecution history, related family, and more',
-        imageSrc: '/2.2.png',
-      },
-    ],
-  },
-  {
     tag: 'Drafts',
     tagColor: BrandColor.ACCENT_PURPLE,
-    title: 'Pitch more clients profitably.',
+    title: 'Draft winning arguments.',
     description:
-      'Draft invalidity contentions, expert reports, and pitch materials grounded in your case. Make unbillable work economical.',
+      'Draft invalidity contentions, expert reports, and pitch materials grounded in your case. Make unbillable work billable.',
     items: [
       {
         icon: <DocumentTextIcon />,
