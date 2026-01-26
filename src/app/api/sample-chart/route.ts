@@ -11,10 +11,11 @@ export async function POST(request: Request) {
     key: process.env.MAILGUN_API_KEY || '',
   });
 
-  // Get template name and remove any trailing slashes
   const templateName = (
-    process.env.MAILGUN_SAMPLE_CHART_TEMPLATE_NAME || 'chart-sample'
-  ).replace(/\/+$/, '');
+    process.env.MAILGUN_SAMPLE_CHART_TEMPLATE_NAME || 'chart sample request'
+  )
+    .trim()
+    .replace(/\/+$/, '');
 
   return mg.messages
     .create(process.env.MAILGUN_DOMAIN || '', {
