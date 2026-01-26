@@ -72,10 +72,16 @@ export default function RequestSampleChart() {
               </h1>
             </div>
             <p className="text-element-mid-em text-base leading-relaxed md:text-lg">
-              Request a sample claim chart to see how &AI Charts can help you
-              build claim charts faster and more accurately. We'll email you a
-              first-draft chart with limitation-by-limitation mapping of
-              pinpoint citations your team can review.
+              See how{' '}
+              <Link
+                className="text-brand-primary hover:underline"
+                href="/product/claim-charts"
+              >
+                &AI Charts
+              </Link>{' '}
+              can help you build claim charts faster and more accurately.
+              We'll email you a first-draft chart with limitation-by-limitation
+              mapping of pinpoint citations your team can review.
             </p>
           </div>
 
@@ -171,7 +177,7 @@ export default function RequestSampleChart() {
                     className="text-element-high-em text-sm"
                     htmlFor="claimNumbers"
                   >
-                    Claims I care about
+                    Claims
                   </label>
                   <input
                     className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter h-11 w-full rounded-md border px-4 text-sm transition-colors focus:outline-none"

@@ -1,6 +1,8 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
@@ -8,11 +10,11 @@ import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
 import { CTASection } from '@/module/cta';
 
-export const metadata: Metadata = {
-  title: 'Product Overview | &AI',
-  description:
-    'Explore the AI workspace for patent litigation. Tools for infringement detection, invalidity analysis, claim charts, prior art search, and business development.',
-};
+// export const metadata: Metadata = {
+//   title: 'Product Overview | &AI',
+//   description:
+//     'Explore the AI workspace for patent litigation. Tools for infringement detection, invalidity analysis, claim charts, prior art search, and business development.',
+// };
 
 const faqs = [
   {
@@ -66,6 +68,8 @@ const products = [
 ];
 
 export default function ProductOverviewPage() {
+  const [openFAQ, setOpenFAQ] = useState<number | null>(0);
+
   return (
     <main className="flex min-h-screen flex-col">
       {/* Hero Section */}
@@ -143,44 +147,74 @@ export default function ProductOverviewPage() {
 
       {/* FAQ Section */}
       {faqs.length > 0 && (
-        <section className="py-16 md:py-20">
-          <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
-            <div className="mx-auto max-w-3xl">
-              <h2 className="text-element-high-em mb-8 text-center text-2xl font-medium md:text-3xl">
-                FAQ
+        <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
+          <div className="grid gap-12 lg:grid-cols-[1fr_2fr] lg:gap-16 xl:gap-24">
+            <div>
+              <h2 className="font-martina text-element-high-em text-4.5xl xl:text-5xl">
+                Frequently asked questions
               </h2>
-              <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <details
-                    key={index}
-                    className="group rounded-lg border border-gray-200 bg-white"
+            </div>
+
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="border-gray-dark/10 border-b last:border-b-0"
+                >
+                  <button
+                    aria-expanded={openFAQ === index}
+                    className="text-element-high-em hover:text-element-high-em/70 flex w-full items-start justify-between gap-4 py-6 text-left transition-colors"
+                    onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
                   >
-                    <summary className="flex cursor-pointer items-center justify-between p-5">
-                      <span className="text-element-high-em pr-4 text-base font-medium">
-                        {faq.question}
-                      </span>
-                      <svg
-                        className="h-5 w-5 shrink-0 text-gray-500 transition-transform group-open:rotate-180"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M19 9l-7 7-7-7"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </summary>
-                    <div className="border-t border-gray-200 px-5 py-4">
-                      <p className="text-element-mid-em text-sm leading-relaxed">
-                        {faq.answer}
-                      </p>
+                    <span className="text-lg font-medium">{faq.question}</span>
+                    <span className="mt-1 flex size-6 shrink-0 items-center justify-center transition-transform duration-200">
+                      {openFAQ === index ? (
+                        <svg
+                          className="size-6"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={1.5}
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M5 12h14"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      ) : (
+                        <svg
+                          className="size-6"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={1.5}
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 5v14m-7-7h14"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      )}
+                    </span>
+                  </button>
+                  <div
+                    className="overflow-hidden transition-all duration-200"
+                    style={{
+                      maxHeight: openFAQ === index ? '500px' : '0px',
+                    }}
+                  >
+                    <div className="text-element-mid-em pb-6 text-base">
+                      {faq.answer.split('\n\n').map((paragraph, i) => (
+                        <p key={i} className={i > 0 ? 'mt-4' : ''}>
+                          {paragraph}
+                        </p>
+                      ))}
                     </div>
-                  </details>
-                ))}
-              </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

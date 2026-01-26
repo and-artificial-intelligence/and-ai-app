@@ -9,27 +9,87 @@ import { Links } from '@/common/constants/links';
 import { cn } from '@/common/functions/cn';
 
 const productLinks = [
-  { name: 'Overview', href: '/product', description: 'AI workspace for patent litigation' },
-  { name: 'Prior Art Search', href: '/product/prior-art-search', description: 'Discover relevant prior art' },
-  { name: 'Claim Charts', href: '/product/claim-charts', description: 'Generate litigation-ready charts' },
-  { name: 'Business Development', href: '/product/patent-litigation-business-development', description: 'Grow your patent practice' },
-  { name: 'Invalidity Analysis', href: '/product/invalidity-analysis', description: 'Build stronger invalidity arguments' },
-  { name: 'Infringement Detection', href: '/product/infringement-detection', description: 'Find evidence of use faster' },
+  {
+    name: 'Overview',
+    href: '/product',
+    description: 'AI workspace for patent litigation',
+  },
+  {
+    name: 'Prior Art Search',
+    href: '/product/prior-art-search',
+    description: 'Discover relevant prior art',
+  },
+  {
+    name: 'Claim Charts',
+    href: '/product/claim-charts',
+    description: 'Generate litigation-ready charts',
+  },
+  {
+    name: 'Business Development',
+    href: '/product/patent-litigation-business-development',
+    description: 'Grow your patent practice',
+  },
+  {
+    name: 'Invalidity Analysis',
+    href: '/product/invalidity-analysis',
+    description: 'Build stronger invalidity arguments',
+  },
+  {
+    name: 'Infringement Detection',
+    href: '/product/infringement-detection',
+    description: 'Find evidence of use faster',
+  },
 ];
 
 const solutionsByType = [
-  { name: 'Law Firms', href: '/solutions/law-firms', description: 'From Am Law 100 to IP Boutiques' },
-  { name: 'In-House', href: '/solutions/in-house', description: 'Litigation prep, infringement mining, transactions' },
-  { name: 'Litigation Funds', href: '/solutions/litigation-funds', description: 'Discover opportunities at scale' },
+  {
+    name: 'Law Firms',
+    href: '/solutions/law-firms',
+    description: 'From Am Law 100 to IP Boutiques',
+  },
+  {
+    name: 'In-House',
+    href: '/solutions/in-house',
+    description: 'Litigation prep, infringement mining, transactions',
+  },
+  {
+    name: 'Litigation Funds',
+    href: '/solutions/litigation-funds',
+    description: 'Discover opportunities at scale',
+  },
 ];
 
 const solutionsByUseCase = [
-  { name: 'Defense Litigation', href: '/solutions/defense-litigation', description: 'Build stronger invalidity positions faster' },
-  { name: 'Defense Business Development', href: '/solutions/defense-business-development', description: 'Win more mandates with rapid assessments' },
-  { name: 'Plaintiff Litigation', href: '/solutions/plaintiff-litigation', description: 'Find infringement evidence at scale' },
-  { name: 'Infringement Mining', href: '/solutions/infringement-mining', description: 'Discover infringing products systematically' },
-  { name: 'Transactions', href: '/solutions/transactions', description: 'Accelerate IP due diligence' },
-  { name: 'Litigation Funding', href: '/solutions/litigation-funding', description: 'Evaluate case strength for funding decisions' },
+  {
+    name: 'Defense Litigation',
+    href: '/solutions/defense-litigation',
+    description: 'Build stronger invalidity positions faster',
+  },
+  {
+    name: 'Defense Business Development',
+    href: '/solutions/defense-business-development',
+    description: 'Win more mandates with rapid assessments',
+  },
+  {
+    name: 'Plaintiff Litigation',
+    href: '/solutions/plaintiff-litigation',
+    description: 'Find infringement evidence at scale',
+  },
+  {
+    name: 'Infringement Mining',
+    href: '/solutions/infringement-mining',
+    description: 'Discover infringing products systematically',
+  },
+  {
+    name: 'Transactions',
+    href: '/solutions/transactions',
+    description: 'Accelerate IP due diligence',
+  },
+  {
+    name: 'Litigation Funding',
+    href: '/solutions/litigation-funding',
+    description: 'Evaluate case strength for funding decisions',
+  },
 ];
 
 export const Navbar = () => {
@@ -154,7 +214,7 @@ export const Navbar = () => {
               </button>
               <div
                 className={cn(
-                  'bg-background absolute left-0 top-full mt-2 min-w-[320px] rounded-lg border border-gray-200 py-2 shadow-lg transition-all duration-200',
+                  'bg-background absolute top-full left-0 mt-2 min-w-[320px] rounded-lg border border-gray-200 py-2 shadow-lg transition-all duration-200',
                   productsOpen
                     ? 'pointer-events-auto translate-y-0 opacity-100'
                     : 'pointer-events-none -translate-y-2 opacity-0',
@@ -213,7 +273,7 @@ export const Navbar = () => {
               </button>
               <div
                 className={cn(
-                  'bg-background absolute left-0 top-full mt-2 min-w-[560px] rounded-lg border border-gray-200 py-4 shadow-lg transition-all duration-200',
+                  'bg-background absolute top-full left-0 mt-2 min-w-[560px] rounded-lg border border-gray-200 py-4 shadow-lg transition-all duration-200',
                   solutionsOpen
                     ? 'pointer-events-auto translate-y-0 opacity-100'
                     : 'pointer-events-none -translate-y-2 opacity-0',
@@ -222,7 +282,7 @@ export const Navbar = () => {
                 <div className="flex gap-8 px-6">
                   {/* By Type Column */}
                   <div className="flex-1">
-                    <p className="text-element-low-em mb-3 text-xs font-medium uppercase tracking-wide">
+                    <p className="text-element-low-em mb-3 text-xs font-medium tracking-wide uppercase">
                       By Type
                     </p>
                     <div className="space-y-1">
@@ -250,7 +310,7 @@ export const Navbar = () => {
                   </div>
                   {/* By Use Case Column */}
                   <div className="flex-1">
-                    <p className="text-element-low-em mb-3 text-xs font-medium uppercase tracking-wide">
+                    <p className="text-element-low-em mb-3 text-xs font-medium tracking-wide uppercase">
                       By Use Case
                     </p>
                     <div className="space-y-1">
@@ -435,10 +495,14 @@ export const Navbar = () => {
                     href={product.href}
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <span className={cn(
-                      'text-element-mid-em hover:text-element-high-em block text-base transition-colors',
-                      mounted && pathname === product.href && 'text-element-high-em',
-                    )}>
+                    <span
+                      className={cn(
+                        'text-element-mid-em hover:text-element-high-em block text-base transition-colors',
+                        mounted &&
+                          pathname === product.href &&
+                          'text-element-high-em',
+                      )}
+                    >
                       {product.name}
                     </span>
                     <span className="text-element-low-em block text-sm">
@@ -487,7 +551,7 @@ export const Navbar = () => {
               >
                 {/* By Type */}
                 <div>
-                  <p className="text-element-low-em mb-2 text-xs font-medium uppercase tracking-wide">
+                  <p className="text-element-low-em mb-2 text-xs font-medium tracking-wide uppercase">
                     By Type
                   </p>
                   <div className="space-y-3">
@@ -498,10 +562,14 @@ export const Navbar = () => {
                         href={solution.href}
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        <span className={cn(
-                          'text-element-mid-em hover:text-element-high-em block text-base transition-colors',
-                          mounted && pathname === solution.href && 'text-element-high-em',
-                        )}>
+                        <span
+                          className={cn(
+                            'text-element-mid-em hover:text-element-high-em block text-base transition-colors',
+                            mounted &&
+                              pathname === solution.href &&
+                              'text-element-high-em',
+                          )}
+                        >
                           {solution.name}
                         </span>
                         <span className="text-element-low-em block text-sm">
@@ -513,7 +581,7 @@ export const Navbar = () => {
                 </div>
                 {/* By Use Case */}
                 <div>
-                  <p className="text-element-low-em mb-2 text-xs font-medium uppercase tracking-wide">
+                  <p className="text-element-low-em mb-2 text-xs font-medium tracking-wide uppercase">
                     By Use Case
                   </p>
                   <div className="space-y-3">
@@ -524,10 +592,14 @@ export const Navbar = () => {
                         href={solution.href}
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        <span className={cn(
-                          'text-element-mid-em hover:text-element-high-em block text-base transition-colors',
-                          mounted && pathname === solution.href && 'text-element-high-em',
-                        )}>
+                        <span
+                          className={cn(
+                            'text-element-mid-em hover:text-element-high-em block text-base transition-colors',
+                            mounted &&
+                              pathname === solution.href &&
+                              'text-element-high-em',
+                          )}
+                        >
                           {solution.name}
                         </span>
                         <span className="text-element-low-em block text-sm">

@@ -210,8 +210,16 @@ export function ProductPage({
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (
-        <section className="border-t border-gray-200 py-16">
-          <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
+        <section className="relative border-t border-gray-200 py-16">
+          {/* Grid Background */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-0"
+          >
+            <div className="relative h-full w-full [background-image:linear-gradient(to_right,rgba(0,0,0,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.06)_1px,transparent_1px)] [background-size:20px_20px] [background-position:0_0] [background-repeat:repeat] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_5%,rgba(0,0,0,1)_95%,rgba(0,0,0,0)_100%)] [mask-repeat:no-repeat] [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_5%,rgba(0,0,0,1)_95%,rgba(0,0,0,0)_100%)] [-webkit-mask-repeat:no-repeat]" />
+          </div>
+
+          <div className="relative z-10 mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
             <h3 className="text-element-mid-em mb-10 text-center text-sm font-medium tracking-wide uppercase">
               Explore More Products
             </h3>
