@@ -6,9 +6,12 @@ export async function POST(request: Request) {
   const formData = await request.json();
 
   // Check if required environment variables are set
-  if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN || 
-      process.env.MAILGUN_API_KEY === 'your_mailgun_api_key_here' ||
-      process.env.MAILGUN_DOMAIN === 'your_mailgun_domain_here') {
+  if (
+    !process.env.MAILGUN_API_KEY ||
+    !process.env.MAILGUN_DOMAIN ||
+    process.env.MAILGUN_API_KEY === 'your_mailgun_api_key_here' ||
+    process.env.MAILGUN_DOMAIN === 'your_mailgun_domain_here'
+  ) {
     // Development mode: log to console instead of sending email
     console.log('📧 Sample Chart Request (Development Mode):');
     console.log('Name:', formData.name);
@@ -17,7 +20,7 @@ export async function POST(request: Request) {
     console.log('Target Patent:', formData.targetPatent);
     console.log('Claim Numbers:', formData.claimNumbers);
     console.log('Reference Materials:', formData.referencePatents);
-    
+
     return NextResponse.json(
       { message: 'Form submitted successfully (development mode)' },
       { status: 200 },
@@ -35,7 +38,8 @@ export async function POST(request: Request) {
       from: `AndAI <mailgun@${process.env.MAILGUN_DOMAIN}>`,
       to: ['caleb@tryandai.com'],
       subject: 'New Sample Chart Request',
-      template: process.env.MAILGUN_SAMPLE_CHART_TEMPLATE_NAME || 'sample-chart-request',
+      template:
+        process.env.MAILGUN_SAMPLE_CHART_TEMPLATE_NAME || 'chart-sample',
       'h:X-Mailgun-Variables': JSON.stringify({
         name: formData.name,
         email: formData.email,
