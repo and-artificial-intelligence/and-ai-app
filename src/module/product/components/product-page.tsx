@@ -155,9 +155,7 @@ export function ProductPage({
                     onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
                   >
                     <span className="text-lg font-medium">{faq.question}</span>
-                    <span
-                      className="mt-1 flex size-6 shrink-0 items-center justify-center transition-transform duration-200"
-                    >
+                    <span className="mt-1 flex size-6 shrink-0 items-center justify-center transition-transform duration-200">
                       {openFAQ === index ? (
                         <svg
                           className="size-6"
@@ -575,4 +573,3 @@ function FeatureListContent({
     </div>
   );
 }
-
