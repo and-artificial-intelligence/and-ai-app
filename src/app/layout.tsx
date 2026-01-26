@@ -11,10 +11,49 @@ import { cn } from '@/common/functions/cn';
 import 'blaze-slider/dist/blaze.css';
 
 export const metadata: Metadata = {
-  title: '&AI | Scale your patent expertise',
+  title: {
+    default: '&AI | Scale your patent expertise',
+    template: '%s | &AI',
+  },
   description:
     'The AI workspace for executing litigation-grade patent work at machine scale. Built for in-house counsel and litigation teams.',
   authors: [{ name: 'And AI' }],
+  metadataBase: new URL('https://tryandai.com'),
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://tryandai.com',
+    siteName: '&AI',
+    title: '&AI | Scale your patent expertise',
+    description:
+      'The AI workspace for executing litigation-grade patent work at machine scale. Built for in-house counsel and litigation teams.',
+    images: [
+      {
+        url: '/Logo-Design-Full-Color-Black.png',
+        width: 1200,
+        height: 630,
+        alt: '&AI - Patent Litigation AI Platform',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '&AI | Scale your patent expertise',
+    description:
+      'The AI workspace for executing litigation-grade patent work at machine scale. Built for in-house counsel and litigation teams.',
+    images: ['/Logo-Design-Full-Color-Black.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({

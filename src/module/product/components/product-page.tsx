@@ -1,0 +1,578 @@
+'use client';
+
+import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { Button } from '@/common/components/button';
+import { Footer } from '@/common/components/footer';
+import { SubHeader } from '@/common/components/subheader';
+import { BrandColor } from '@/common/types/common';
+import { CTASection } from '@/module/cta';
+
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export interface RelatedProduct {
+  name: string;
+  href: string;
+  image?: string;
+  description?: string;
+}
+
+export interface BreadcrumbItem {
+  name: string;
+  href: string;
+}
+
+// Flexible content section types
+export type ContentSectionType =
+  | 'bullets' // Simple bullet list (no boxes)
+  | 'numbered-steps' // Numbered workflow steps
+  | 'list' // Simple list with checkmarks (no boxes)
+  | 'tags' // Pill/tag style items
+  | 'paragraphs' // Text paragraphs
+  | 'feature-cards' // Cards with bold title + description
+  | 'feature-list'; // Bold title + description as simple list (no boxes)
+
+export interface ContentSection {
+  label?: string; // Small uppercase label above title
+  title: string;
+  subtitle?: string;
+  description?: string; // Body text paragraph between subtitle and items
+  type: ContentSectionType;
+  items: string[] | { title: string; description: string }[];
+  image?: string; // Optional image for side-by-side layout
+  background?: 'default' | 'light'; // 'light' adds the gray background
+  centered?: boolean; // Center the section instead of alternating left/right
+  bulletStyle?: 'bullet' | 'check'; // For 'bullets' type: circle bullet or checkmark (default: check)
+  dividerBelow?: boolean; // Add a horizontal line below the section
+}
+
+export interface ProductPageProps {
+  // Hero
+  h1: string;
+  h1Highlight?: string;
+  subheading?: string;
+  valueProp: string;
+
+  // CTAs (optional customization)
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+
+  // Flexible content sections - each page defines its own
+  sections: ContentSection[];
+
+  // FAQ (consistent across pages)
+  faqs: FAQ[];
+
+  // Internal links
+  relatedProducts: RelatedProduct[];
+
+  // Breadcrumbs (kept for schema but not displayed)
+  breadcrumbs?: BreadcrumbItem[];
+}
+
+export function ProductPage({
+  h1,
+  h1Highlight,
+  subheading,
+  valueProp,
+  primaryCta = { label: 'Book demo', href: '/book-demo' },
+  secondaryCta = { label: 'See pricing', href: '/pricing' },
+  sections,
+  faqs,
+  relatedProducts,
+}: ProductPageProps) {
+  const [openFAQ, setOpenFAQ] = useState<number | null>(0);
+
+  return (
+    <main className="flex min-h-screen flex-col">
+      {/* Hero Section - Left Aligned */}
+      <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
+        <div className="max-w-4xl">
+          <Link className="mb-6 flex w-fit" href="/product">
+            <SubHeader brand={BrandColor.PRIMARY} title="Product" />
+          </Link>
+          <h1 className="text-element-high-em text-4xl md:text-5xl xl:text-6xl">
+            {h1Highlight ? (
+              <>
+                {h1} <span className="font-martina italic">{h1Highlight}</span>
+              </>
+            ) : (
+              h1
+            )}
+          </h1>
+          {subheading && (
+            <p className="text-element-high-em mt-4 text-xl font-medium md:text-2xl">
+              {subheading}
+            </p>
+          )}
+          <div className="text-element-mid-em mt-6 space-y-4 text-lg xl:text-xl">
+            {valueProp.split('\n\n').map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button href={primaryCta.href}>{primaryCta.label}</Button>
+            <Button href={secondaryCta.href} variant="secondary">
+              {secondaryCta.label}
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Dynamic Content Sections - Alternating */}
+      {sections.map((section, sectionIndex) => (
+        <ContentSectionRenderer
+          key={sectionIndex}
+          index={sectionIndex}
+          section={section}
+        />
+      ))}
+
+      {/* FAQ Section */}
+      {faqs.length > 0 && (
+        <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
+          <div className="grid gap-12 lg:grid-cols-[1fr_2fr] lg:gap-16 xl:gap-24">
+            <div>
+              <h2 className="font-martina text-element-high-em text-4.5xl xl:text-5xl">
+                Frequently asked questions
+              </h2>
+            </div>
+
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="border-gray-dark/10 border-b last:border-b-0"
+                >
+                  <button
+                    aria-expanded={openFAQ === index}
+                    className="text-element-high-em hover:text-element-high-em/70 flex w-full items-start justify-between gap-4 py-6 text-left transition-colors"
+                    onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
+                  >
+                    <span className="text-lg font-medium">{faq.question}</span>
+                    <span
+                      className="mt-1 flex size-6 shrink-0 items-center justify-center transition-transform duration-200"
+                    >
+                      {openFAQ === index ? (
+                        <svg
+                          className="size-6"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={1.5}
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M5 12h14"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      ) : (
+                        <svg
+                          className="size-6"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={1.5}
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 5v14m-7-7h14"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      )}
+                    </span>
+                  </button>
+                  <div
+                    className="overflow-hidden transition-all duration-200"
+                    style={{
+                      maxHeight: openFAQ === index ? '500px' : '0px',
+                    }}
+                  >
+                    <div className="text-element-mid-em pb-6 text-base">
+                      {faq.answer.split('\n\n').map((paragraph, i) => (
+                        <p key={i} className={i > 0 ? 'mt-4' : ''}>
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Related Products */}
+      {relatedProducts.length > 0 && (
+        <section className="border-t border-gray-200 py-16">
+          <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
+            <h3 className="text-element-mid-em mb-10 text-center text-sm font-medium tracking-wide uppercase">
+              Explore More Products
+            </h3>
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedProducts.map((product) => (
+                <Link
+                  key={product.href}
+                  className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-gray-300 hover:shadow-lg"
+                  href={product.href}
+                >
+                  {product.image && (
+                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
+                      <Image
+                        alt={product.name}
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        fill
+                        src={product.image}
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-col p-5">
+                    <h4 className="text-element-high-em text-lg font-medium">
+                      {product.name}
+                    </h4>
+                    {product.description && (
+                      <p className="text-element-mid-em mt-2 text-sm">
+                        {product.description}
+                      </p>
+                    )}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CTA Section */}
+      <CTASection showPricing />
+
+      <Footer />
+    </main>
+  );
+}
+
+// Render different section types with alternating alignment
+function ContentSectionRenderer({
+  section,
+  index,
+}: {
+  section: ContentSection;
+  index: number;
+}) {
+  const isEven = index % 2 === 0;
+  const hasImage = !!section.image;
+  const bgClass =
+    section.background === 'light'
+      ? 'bg-background-lighter border-y border-gray-200'
+      : '';
+
+  // Side-by-side layout when there's an image
+  if (hasImage) {
+    return (
+      <section className={`py-16 md:py-20 ${bgClass}`}>
+        <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
+          <div
+            className={`flex flex-col items-center gap-12 lg:flex-row lg:gap-16 ${
+              isEven ? '' : 'lg:flex-row-reverse'
+            }`}
+          >
+            {/* Image */}
+            <div className="w-full lg:w-1/2">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-gray-200">
+                <Image
+                  fill
+                  alt={section.title}
+                  className="object-cover"
+                  src={section.image!}
+                />
+              </div>
+            </div>
+            {/* Content */}
+            <div className="w-full lg:w-1/2">
+              {section.label && (
+                <p className="text-element-mid-em mb-2 text-xs font-medium tracking-wide uppercase">
+                  {section.label}
+                </p>
+              )}
+              <h2 className="text-element-high-em mb-4 text-2xl font-medium md:text-3xl">
+                {section.title}
+              </h2>
+              {section.subtitle && (
+                <h3 className="text-element-mid-em mb-4 text-lg font-medium">
+                  {section.subtitle}
+                </h3>
+              )}
+              {section.description && (
+                <p className="text-element-mid-em mb-6 text-base leading-relaxed">
+                  {section.description}
+                </p>
+              )}
+              <SectionContent section={section} />
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Full-width layout with alternating text alignment (or centered)
+  const alignment = section.centered
+    ? 'mx-auto text-center'
+    : isEven
+      ? ''
+      : 'ml-auto';
+
+  return (
+    <>
+      <section className={`py-16 md:py-20 ${bgClass}`}>
+        <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
+          <div className={`max-w-4xl ${alignment}`}>
+            {section.label && (
+              <p className="text-element-mid-em mb-2 text-xs font-medium tracking-wide uppercase">
+                {section.label}
+              </p>
+            )}
+            <h2 className="text-element-high-em mb-4 text-2xl font-medium md:text-3xl">
+              {section.title}
+            </h2>
+            {section.subtitle && (
+              <h3 className="text-element-mid-em mb-4 text-lg font-medium">
+                {section.subtitle}
+              </h3>
+            )}
+            {section.description && (
+              <p
+                className={`text-element-mid-em mb-8 text-base leading-relaxed ${section.centered ? '' : 'max-w-2xl'}`}
+              >
+                {section.description}
+              </p>
+            )}
+            <SectionContent centered={section.centered} section={section} />
+          </div>
+        </div>
+      </section>
+      {section.dividerBelow && (
+        <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
+          <hr className="border-gray-300" />
+        </div>
+      )}
+    </>
+  );
+}
+
+// Section content renderer
+function SectionContent({
+  section,
+  centered,
+}: {
+  section: ContentSection;
+  centered?: boolean;
+}) {
+  switch (section.type) {
+    case 'bullets':
+      return (
+        <BulletsContent
+          centered={centered}
+          items={section.items as string[]}
+          bulletStyle={section.bulletStyle}
+        />
+      );
+    case 'numbered-steps':
+      return (
+        <NumberedStepsContent
+          items={section.items as { title: string; description: string }[]}
+        />
+      );
+    case 'list':
+      return <ListContent items={section.items as string[]} />;
+    case 'tags':
+      return <TagsContent items={section.items as string[]} />;
+    case 'paragraphs':
+      return <ParagraphsContent items={section.items as string[]} />;
+    case 'feature-cards':
+      return (
+        <FeatureCardsContent
+          items={section.items as { title: string; description: string }[]}
+        />
+      );
+    case 'feature-list':
+      return (
+        <FeatureListContent
+          items={section.items as { title: string; description: string }[]}
+        />
+      );
+    default:
+      return null;
+  }
+}
+
+// Bullets - simple list with bullet points
+function BulletsContent({
+  items,
+  centered,
+  bulletStyle = 'check',
+}: {
+  items: string[];
+  centered?: boolean;
+  bulletStyle?: 'bullet' | 'check';
+}) {
+  return (
+    <ul className={`space-y-3 ${centered ? 'inline-block text-left' : ''}`}>
+      {items.map((item, index) => (
+        <li key={index} className="flex items-start gap-3">
+          {bulletStyle === 'bullet' ? (
+            <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-orange-500" />
+          ) : (
+            <svg
+              className="mt-1 h-5 w-5 shrink-0 text-orange-500"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 13l4 4L19 7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
+          <span className="text-element-mid-em">{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// Numbered steps - workflow style
+function NumberedStepsContent({
+  items,
+}: {
+  items: { title: string; description: string }[];
+}) {
+  return (
+    <div className="space-y-6">
+      {items.map((item, index) => (
+        <div key={index} className="flex gap-4">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-100 text-sm font-medium text-orange-600">
+            {index + 1}
+          </div>
+          <div>
+            <h3 className="text-element-high-em font-medium">{item.title}</h3>
+            <p className="text-element-mid-em mt-1 text-sm">
+              {item.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// List - simple list with checkmarks (no boxes)
+function ListContent({ items }: { items: string[] }) {
+  return (
+    <ul className="space-y-3">
+      {items.map((item, index) => (
+        <li key={index} className="flex items-start gap-3">
+          <svg
+            className="mt-1 h-5 w-5 shrink-0 text-orange-500"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M5 13l4 4L19 7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span className="text-element-mid-em">{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// Tags - pill style
+function TagsContent({ items }: { items: string[] }) {
+  return (
+    <div className="flex flex-wrap gap-3">
+      {items.map((item, index) => (
+        <span
+          key={index}
+          className="rounded-full border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700"
+        >
+          {item}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+// Paragraphs - text content
+function ParagraphsContent({ items }: { items: string[] }) {
+  return (
+    <div className="space-y-4">
+      {items.map((item, index) => (
+        <p
+          key={index}
+          className="text-element-mid-em text-base leading-relaxed"
+        >
+          {item}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+// Feature cards - cards with bold title + description (kept for when boxes are wanted)
+function FeatureCardsContent({
+  items,
+}: {
+  items: { title: string; description: string }[];
+}) {
+  return (
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {items.map((item, index) => (
+        <div
+          key={index}
+          className="rounded-lg border border-gray-200 bg-white p-5"
+        >
+          <h3 className="text-element-high-em mb-2 font-medium">
+            {item.title}
+          </h3>
+          <p className="text-element-mid-em text-sm">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Feature list - bold title + description as simple list (no boxes)
+function FeatureListContent({
+  items,
+}: {
+  items: { title: string; description: string }[];
+}) {
+  return (
+    <div className="space-y-6">
+      {items.map((item, index) => (
+        <div key={index}>
+          <h3 className="text-element-high-em font-medium">{item.title}</h3>
+          <p className="text-element-mid-em mt-1">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+

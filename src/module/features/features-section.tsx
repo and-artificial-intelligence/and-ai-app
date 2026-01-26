@@ -183,7 +183,7 @@ export const FeaturesSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative mx-auto w-full px-4 py-12 md:px-6 md:py-16 xl:px-8"
+      className="relative mx-auto mt-20 w-full px-4 pt-12 pb-12 md:mt-28 md:px-6 md:pt-16 md:pb-16 xl:px-8"
       id="features"
     >
       <div
