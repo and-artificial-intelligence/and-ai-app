@@ -21,7 +21,7 @@ export const CTASection = () => (
             fast enough for pitches, strong enough for court.
           </p>
         </div>
-        <Button href="/book-demo">Book demo</Button>
+        <Button href="/book-demo">Free trial</Button>
       </div>
     </div>
   </section>

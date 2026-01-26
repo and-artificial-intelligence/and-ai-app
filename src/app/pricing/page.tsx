@@ -212,7 +212,7 @@ export default function Pricing() {
                 </div>
 
                 <Button fullWidth className="mb-6" href="/book-demo">
-                  Book demo
+                  Free trial
                 </Button>
 
                 <div className="border-gray-dark/10 flex-1 space-y-3 border-t pt-6">

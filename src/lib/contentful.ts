@@ -164,7 +164,7 @@ const isUnknownFieldError = (error: unknown, fieldId: string): boolean => {
 };
 
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
-  const orderByDate = (blogPostDateField
+  const _orderByDate = (blogPostDateField
     ? [`-fields.${blogPostDateField}`]
     : ['-sys.updatedAt']) as string[];
   let entries;

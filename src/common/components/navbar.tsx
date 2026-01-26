@@ -116,7 +116,12 @@ export const Navbar = () => {
             Log in
           </Link>
           <div className="hidden md:block">
-            <Button href="/book-demo">Book demo</Button>
+            <Button href="/request-sample-chart" variant="secondary">
+              Request sample chart
+            </Button>
+          </div>
+          <div className="hidden md:block">
+            <Button href="/book-demo">Free trial</Button>
           </div>
           {/* Hamburger Menu Button */}
           <button
@@ -223,13 +228,21 @@ export const Navbar = () => {
             </Link>
           </div>
 
-          <div className="pt-2">
+          <div className="flex flex-col gap-3 pt-2">
+            <Button
+              className="w-full"
+              href="/request-sample-chart"
+              variant="secondary"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Request sample chart
+            </Button>
             <Button
               className="w-full"
               href="/book-demo"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Book demo
+              Free trial
             </Button>
           </div>
         </div>

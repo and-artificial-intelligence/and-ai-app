@@ -7,12 +7,14 @@ import { SubHeader } from '@/common/components/subheader';
 import { cn } from '@/common/functions/cn';
 import { BrandColor } from '@/common/types/common';
 
-export default function BookDemo() {
+export default function RequestSampleChart() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    useCase: '',
-    referralSource: '',
+    firmCompany: '',
+    targetPatent: '',
+    claimNumbers: '',
+    referencePatents: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
@@ -25,7 +27,7 @@ export default function BookDemo() {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/api/sample-chart', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -36,8 +38,10 @@ export default function BookDemo() {
         setFormData({
           name: '',
           email: '',
-          useCase: '',
-          referralSource: '',
+          firmCompany: '',
+          targetPatent: '',
+          claimNumbers: '',
+          referencePatents: '',
         });
       } else {
         setSubmitStatus('error');
@@ -59,13 +63,34 @@ export default function BookDemo() {
     <main className="flex min-h-screen flex-col">
       <section className="relative mx-auto w-full flex-1 px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="flex flex-col gap-16 lg:flex-row lg:gap-20 xl:gap-24">
-          <div className="space-y-3 lg:pt-8">
-            <SubHeader brand={BrandColor.PRIMARY} title="Contact us" />
-            <h1 className="text-element-high-em text-5xl md:text-6xl xl:text-7xl">
-              Book your
-              <br />
-              free <span className="font-martina italic">trial</span>
-            </h1>
+          <div className="space-y-6 lg:max-w-lg lg:pt-8">
+            <div className="space-y-4">
+              <SubHeader brand={BrandColor.PRIMARY} title="Evaluate us" />
+              <h1 className="text-element-high-em text-5xl md:text-6xl xl:text-7xl">
+                Request a sample{' '}
+                <span className="font-martina italic">claim chart</span>
+              </h1>
+            </div>
+            <p className="text-element-mid-em text-base leading-relaxed md:text-lg">
+              See how &AI can help you build claim charts faster and more
+              accurately. We&apos;ll email you a first-draft for your team to
+              evaluate.
+            </p>
+            <div className="border-gray-dark/10 bg-background-lighter space-y-2 rounded-lg border p-4 md:p-5">
+              <p className="text-element-mid-em text-sm leading-relaxed">
+                <strong className="text-element-high-em">Note:</strong> The
+                sample chart uses our base chart export settings and does not
+                reflect the full range of customization available through the
+                platform.
+              </p>
+              <p className="text-element-mid-em text-sm leading-relaxed">
+                {' '}
+                &AI has dozens of settings to tailor boilerplate language,
+                formatting, styling and more to match your team&apos;s
+                preferences. And if we don&apos;t have a setting you need,
+                we&apos;ll build it for you.
+              </p>
+            </div>
           </div>
 
           <div className="relative -my-8 flex-1 py-8">
@@ -102,7 +127,7 @@ export default function BookDemo() {
                     className="text-element-high-em text-sm"
                     htmlFor="email"
                   >
-                    Work email <span className="text-brand-primary">*</span>
+                    Email <span className="text-brand-primary">*</span>
                   </label>
                   <input
                     required
@@ -119,18 +144,18 @@ export default function BookDemo() {
                 <div className="space-y-2">
                   <label
                     className="text-element-high-em text-sm"
-                    htmlFor="useCase"
+                    htmlFor="firmCompany"
                   >
-                    Tell us about your use case{' '}
-                    <span className="text-brand-primary">*</span>
+                    Firm / Company <span className="text-brand-primary">*</span>
                   </label>
-                  <textarea
+                  <input
                     required
-                    className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter min-h-[120px] w-full rounded-md border px-4 py-3 text-sm transition-colors focus:outline-none"
-                    id="useCase"
-                    name="useCase"
-                    placeholder="E.g., pitching clients, drafting invalidity contentions, building claim charts..."
-                    value={formData.useCase}
+                    className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter h-11 w-full rounded-md border px-4 text-sm transition-colors focus:outline-none"
+                    id="firmCompany"
+                    name="firmCompany"
+                    placeholder="Your firm or company name"
+                    type="text"
+                    value={formData.firmCompany}
                     onChange={handleChange}
                   />
                 </div>
@@ -138,19 +163,55 @@ export default function BookDemo() {
                 <div className="space-y-2">
                   <label
                     className="text-element-high-em text-sm"
-                    htmlFor="referralSource"
+                    htmlFor="targetPatent"
                   >
-                    How did you hear about us?{' '}
+                    Target patent number{' '}
                     <span className="text-brand-primary">*</span>
                   </label>
                   <input
                     required
                     className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter h-11 w-full rounded-md border px-4 text-sm transition-colors focus:outline-none"
-                    id="referralSource"
-                    name="referralSource"
-                    placeholder="E.g., Google, a colleague, LinkedIn..."
+                    id="targetPatent"
+                    name="targetPatent"
+                    placeholder="E.g., US10,123,456 or attach PDF"
                     type="text"
-                    value={formData.referralSource}
+                    value={formData.targetPatent}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label
+                    className="text-element-high-em text-sm"
+                    htmlFor="claimNumbers"
+                  >
+                    Claims
+                  </label>
+                  <input
+                    className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter h-11 w-full rounded-md border px-4 text-sm transition-colors focus:outline-none"
+                    id="claimNumbers"
+                    name="claimNumbers"
+                    placeholder="E.g., 1, 3, 5-7 or leave blank for all claims"
+                    type="text"
+                    value={formData.claimNumbers}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label
+                    className="text-element-high-em text-sm"
+                    htmlFor="referencePatents"
+                  >
+                    Reference <span className="text-brand-primary">*</span>
+                  </label>
+                  <textarea
+                    required
+                    className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter min-h-[120px] w-full rounded-md border px-4 py-3 text-sm transition-colors focus:outline-none"
+                    id="referencePatents"
+                    name="referencePatents"
+                    placeholder="Prior art patent number or URL of other document to chart against the target patent"
+                    value={formData.referencePatents}
                     onChange={handleChange}
                   />
                 </div>
@@ -161,12 +222,14 @@ export default function BookDemo() {
                   disabled={isSubmitting}
                   type="submit"
                 >
-                  {isSubmitting ? 'Submitting...' : 'Submit'}
+                  {isSubmitting
+                    ? 'Submitting...'
+                    : 'Request a free sample claim chart'}
                 </Button>
 
                 {submitStatus === 'success' && (
                   <p className="text-center text-sm text-green-700">
-                    Thank you! We&apos;ll be in touch soon.
+                    Thank you! We&apos;ll send your sample chart soon.
                   </p>
                 )}
                 {submitStatus === 'error' && (
