@@ -11,12 +11,17 @@ export async function POST(request: Request) {
     key: process.env.MAILGUN_API_KEY || '',
   });
 
+  // Get template name and remove any trailing slashes
+  const templateName = (
+    process.env.MAILGUN_TEMPLATE_NAME || 'demo-request'
+  ).replace(/\/+$/, '');
+
   return mg.messages
     .create(process.env.MAILGUN_DOMAIN || '', {
       from: `AndAI <mailgun@${process.env.MAILGUN_DOMAIN}>`,
       to: ['caleb@tryandai.com'],
       subject: 'New Demo Request',
-      template: process.env.MAILGUN_TEMPLATE_NAME || 'demo-request',
+      template: templateName,
       'h:X-Mailgun-Variables': JSON.stringify({
         name: formData.name,
         email: formData.email,

@@ -62,7 +62,9 @@ export default function BookDemo() {
           <div className="space-y-3 lg:pt-8">
             <SubHeader brand={BrandColor.PRIMARY} title="Contact us" />
             <h1 className="text-element-high-em text-5xl md:text-6xl xl:text-7xl">
-              Book <span className="font-martina italic">demo</span>
+              Book your
+              <br />
+              free <span className="font-martina italic">trial</span>
             </h1>
           </div>
 

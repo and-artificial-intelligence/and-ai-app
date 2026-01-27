@@ -11,20 +11,24 @@ export async function POST(request: Request) {
     key: process.env.MAILGUN_API_KEY || '',
   });
 
+  const templateName = (
+    process.env.MAILGUN_SAMPLE_CHART_TEMPLATE_NAME || 'chart sample request'
+  )
+    .trim()
+    .replace(/\/+$/, '');
+
   return mg.messages
     .create(process.env.MAILGUN_DOMAIN || '', {
       from: `AndAI <mailgun@${process.env.MAILGUN_DOMAIN}>`,
       to: ['caleb@tryandai.com'],
       subject: 'New Sample Chart Request',
-      template:
-        process.env.MAILGUN_SAMPLE_CHART_TEMPLATE_NAME ||
-        'sample-chart-request',
+      template: templateName,
       'h:X-Mailgun-Variables': JSON.stringify({
         name: formData.name,
         email: formData.email,
         firmCompany: formData.firmCompany,
         targetPatent: formData.targetPatent,
-        claimNumbers: formData.claimNumbers || 'All claims',
+        claimNumbers: formData.claimNumbers,
         referencePatents: formData.referencePatents,
       }),
     })

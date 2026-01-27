@@ -26,7 +26,7 @@ export const CTASection = ({ showPricing = false }: CTASectionProps) => (
           </p>
         </div>
         <div className="flex flex-col items-center gap-3 sm:flex-row">
-          <Button href="/book-demo">Book demo</Button>
+          <Button href="/book-demo">Free trial</Button>
           {showPricing && (
             <Button href="/pricing" variant="secondary">
               See pricing

@@ -102,7 +102,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex items-center justify-center gap-3 lg:justify-start">
-                <Button href="/book-demo">Book demo</Button>
+                <Button href="/book-demo">Free trial</Button>
                 <Button href="/pricing" variant="secondary">
                   See pricing
                 </Button>

@@ -387,7 +387,7 @@ export const Navbar = () => {
             </Button>
           </div>
           <div className="hidden md:block">
-            <Button href="/book-demo">Book demo</Button>
+            <Button href="/book-demo">Free trial</Button>
           </div>
           {/* Hamburger Menu Button */}
           <button
@@ -673,7 +673,7 @@ export const Navbar = () => {
               href="/book-demo"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Book demo
+              Free trial
             </Button>
           </div>
         </div>
