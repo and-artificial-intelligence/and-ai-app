@@ -34,6 +34,24 @@ export default function RootLayout({
     >
       <head>
         <Script
+          async
+          id="google-tag"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17910305132"
+          strategy="afterInteractive"
+        />
+        <Script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-17910305132');
+            `,
+          }}
+          id="google-tag-init"
+          strategy="afterInteractive"
+        />
+        <Script
           dangerouslySetInnerHTML={{
             __html: `
               function initApollo(){
