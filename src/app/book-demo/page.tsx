@@ -116,9 +116,9 @@ export default function BookDemo() {
 
             {viewMode === 'calendly' && (
               <div
-                className="calendly-inline-widget relative z-10 w-full"
-                data-url="https://calendly.com/caleb-andai/ai-demo-1?background_color=f2efe9&primary_color=0c0b09"
-                style={{ minWidth: '320px', height: '700px' }}
+                className="calendly-inline-widget relative z-10 w-full h-[1200px] md:h-[700px]"
+                data-url="https://calendly.com/caleb-andai/ai-demo-1?background_color=f2efe9&primary_color=0c0b09&hide_gdpr_banner=1"
+                style={{ minWidth: '320px' }}
               />
             )}
             
