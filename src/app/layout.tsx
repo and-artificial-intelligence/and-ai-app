@@ -5,6 +5,10 @@ import Script from 'next/script';
 import '@/common/styles/main.css';
 
 import { Navbar } from '@/common/components/navbar';
+import {
+  generateOrganizationSchema,
+  JsonLd,
+} from '@/common/components/structured-data';
 import { geist, martina, mono } from '@/common/fonts';
 import { cn } from '@/common/functions/cn';
 
@@ -33,6 +37,7 @@ export default function RootLayout({
       lang="en"
     >
       <head>
+        <JsonLd data={generateOrganizationSchema()} />
         <Script
           async
           id="google-tag"

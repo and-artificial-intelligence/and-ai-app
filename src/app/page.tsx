@@ -15,6 +15,11 @@ import {
   SvaIcon,
   YCombinatorIcon,
 } from '@/common/components/icon';
+import {
+  generateBreadcrumbSchema,
+  generateSoftwareApplicationSchema,
+  JsonLd,
+} from '@/common/components/structured-data';
 import { SubHeader } from '@/common/components/subheader';
 import { TypingAnimation } from '@/common/components/typing-animation';
 import { Links } from '@/common/constants/links';
@@ -24,6 +29,13 @@ import { BrandColor } from '@/common/types/common';
 import { CTASection } from '@/module/cta';
 import { FeaturesSection } from '@/module/features';
 import { PrivacyCard, PrivacyCardProps } from '@/module/privacy';
+
+const homeBreadcrumb = [{ name: 'Home', url: 'https://tryandai.com' }];
+
+const pricingOffers = [
+  { name: 'Core', price: '375' },
+  { name: 'Pro', price: '625' },
+];
 
 export default function Home() {
   const typingTexts: string[] = [
@@ -58,6 +70,9 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col">
+      <JsonLd data={generateSoftwareApplicationSchema(pricingOffers)} />
+      <JsonLd data={generateBreadcrumbSchema(homeBreadcrumb)} />
+
       {/* HERO SECTION */}
       <section
         className="flex flex-col items-center gap-3 px-4 pt-6 md:gap-16 md:px-6 md:pt-24 lg:mx-auto lg:flex-row lg:items-end lg:pt-14 xl:px-8 xl:pt-10"

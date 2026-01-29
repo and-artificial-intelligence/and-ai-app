@@ -78,17 +78,13 @@ export default function RequestSampleChart() {
             </p>
             <div className="border-gray-dark/10 bg-background-lighter space-y-2 rounded-lg border p-4 md:p-5">
               <p className="text-element-mid-em text-sm leading-relaxed">
-                <strong className="text-element-high-em">Note:</strong> The
-                sample chart uses our base chart export settings and does not
-                reflect the full range of customization available through the
-                platform.
-              </p>
-              <p className="text-element-mid-em text-sm leading-relaxed">
-                {' '}
-                &AI has dozens of settings to tailor boilerplate language,
-                formatting, styling and more to match your team&apos;s
-                preferences. And if we don&apos;t have a setting you need,
-                we&apos;ll build it for you.
+                <strong className="text-element-high-em">Note:</strong> This
+                sample chart uses default export settings and does not reflect
+                the full range of customization available. The platform offers
+                extensive customization through boilerplate language,
+                formatting, and styling to match your team&apos;s
+                preferences—and if we don&apos;t have a setting you need,
+                we&apos;ll build it.
               </p>
             </div>
           </div>
