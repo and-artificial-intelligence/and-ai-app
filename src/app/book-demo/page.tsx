@@ -8,6 +8,14 @@ import Tab from '@/common/components/tab';
 import { cn } from '@/common/functions/cn';
 import { BrandColor } from '@/common/types/common';
 
+declare global {
+  interface Window {
+    Calendly?: {
+      initPopupWidget: (options: { url: string }) => void;
+    };
+  }
+}
+
 export default function BookDemo() {
   const [viewMode, setViewMode] = useState<'calendly' | 'form'>('calendly');
   const [formData, setFormData] = useState({
@@ -22,15 +30,25 @@ export default function BookDemo() {
   >('idle');
 
   useEffect(() => {
-    // Load Calendly script only when in calendly view
+    // Load Calendly assets when in calendly view
     if (viewMode === 'calendly') {
+      // Load CSS
+      const link = document.createElement('link');
+      link.href = 'https://assets.calendly.com/assets/external/widget.css';
+      link.rel = 'stylesheet';
+      document.head.appendChild(link);
+
+      // Load JS
       const script = document.createElement('script');
       script.src = 'https://assets.calendly.com/assets/external/widget.js';
       script.async = true;
       document.body.appendChild(script);
 
       return () => {
-        // Cleanup script on unmount
+        // Cleanup on unmount
+        if (document.head.contains(link)) {
+          document.head.removeChild(link);
+        }
         if (document.body.contains(script)) {
           document.body.removeChild(script);
         }
@@ -106,7 +124,7 @@ export default function BookDemo() {
             </Tab>
           </div>
 
-          <div className="relative -my-8 flex justify-center pb-12 pt-6">
+          <div className="relative -my-8 flex justify-center py-8">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 z-0 -mx-8"
@@ -115,11 +133,30 @@ export default function BookDemo() {
             </div>
 
             {viewMode === 'calendly' && (
-              <div
-                className="calendly-inline-widget relative z-10 w-full h-[1200px] md:h-[700px]"
-                data-url="https://calendly.com/caleb-andai/ai-demo-1?background_color=f2efe9&primary_color=0c0b09&hide_gdpr_banner=1"
-                style={{ minWidth: '320px' }}
-              />
+              <>
+                {/* Mobile: Popup link */}
+                <div className="relative z-10 flex w-full justify-center md:hidden">
+                  <Button
+                    size="md"
+                    onClick={() => {
+                      if (window.Calendly) {
+                        window.Calendly.initPopupWidget({
+                          url: 'https://calendly.com/caleb-andai/ai-demo-1?background_color=f2efe9&primary_color=0c0b09',
+                        });
+                      }
+                    }}
+                  >
+                    Click here to book
+                  </Button>
+                </div>
+
+                {/* Desktop: Inline widget */}
+                <div
+                  className="calendly-inline-widget relative z-10 hidden w-full md:block"
+                  data-url="https://calendly.com/caleb-andai/ai-demo-1?background_color=f2efe9&primary_color=0c0b09&hide_gdpr_banner=1"
+                  style={{ minWidth: '320px', height: '700px' }}
+                />
+              </>
             )}
             
             {viewMode === 'form' && (
