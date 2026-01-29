@@ -8,6 +8,7 @@ import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
+import { PRODUCTS } from '@/common/constants/products';
 import { CTASection } from '@/module/cta';
 
 // export const metadata: Metadata = {
@@ -20,50 +21,40 @@ const faqs = [
   {
     question: 'What makes &AI different from other patent tools?',
     answer:
-      '&AI is built specifically for patent litigation workflows—not just search. Every feature is optimized to produce trial-ready work product, with outputs designed for expert review and legal proceedings.',
+      '&AI is built specifically for end-to-end patent litigation workflows, from business development to trial. Every feature is optimized to produce trial-ready work product, with outputs designed for expert review and legal proceedings.',
   },
   {
-    question: 'Can I try the tools before committing?',
-    answer:
-      'Yes. We offer sample outputs and demos so you can evaluate the quality of our work product before making any commitment. Request a sample or book a demo to get started.',
+    question: 'Do you offer a free trial?',
+    answer: (
+      <>
+        Yes. We offer free credits to try the &AI platform so you can evaluate
+        the quality of our product before making any commitment.{' '}
+        <Link
+          className="text-orange-500 underline hover:text-orange-600"
+          href="/book-demo"
+        >
+          Book a demo
+        </Link>{' '}
+        to get started.
+      </>
+    ),
   },
   {
     question: 'How does pricing work?',
-    answer:
-      "We offer flexible pricing based on your firm's needs—from matter-based pricing to enterprise agreements. Contact us for a quote tailored to your workflow.",
-  },
-];
-
-const products = [
-  {
-    name: 'Prior Art Search',
-    href: '/product/prior-art-search',
-    image: '/1.1.png',
-    description: 'Discover relevant prior art with semantic AI.',
-  },
-  {
-    name: 'Claim Charts',
-    href: '/product/claim-charts',
-    image: '/3.1.png',
-    description: 'Generate litigation-ready claim charts in minutes.',
-  },
-  {
-    name: 'Business Development',
-    href: '/product/patent-litigation-business-development',
-    image: '/2.2.png',
-    description: 'Identify licensing opportunities and grow your practice.',
-  },
-  {
-    name: 'Invalidity Analysis',
-    href: '/product/invalidity-analysis',
-    image: '/2.1.png',
-    description: 'Build stronger invalidity arguments at scale.',
-  },
-  {
-    name: 'Infringement Detection',
-    href: '/product/infringement-detection',
-    image: '/4.1.png',
-    description: 'Find evidence of use faster with AI-powered analysis.',
+    answer: (
+      <>
+        We offer three options– Core, Pro, and Enterprise planes. Core and Pro
+        are a monthly seat cost, which includes a fixed number of credits, and
+        you can always buy more credits as needed.{' '}
+        <Link
+          className="text-orange-500 underline hover:text-orange-600"
+          href="/pricing"
+        >
+          See more pricing details here
+        </Link>
+        .
+      </>
+    ),
   },
 ];
 
@@ -83,14 +74,16 @@ export default function ProductOverviewPage() {
             <span className="font-martina italic">patent litigation</span>
           </h1>
           <p className="text-element-high-em mt-4 text-xl font-medium md:text-2xl">
-            Trial-ready work product, fast enough for pitches.
+            End-to-end patent litigation workflows, from business development to
+            active trial.
           </p>
           <div className="text-element-mid-em mt-6 space-y-4 text-lg xl:text-xl">
             <p>
-              Our suite of AI tools helps patent litigators execute faster—with
-              work product that&apos;s strong enough for court. From prior art
-              search to claim charts, every tool is designed to slot into your
-              existing workflow.
+              The &AI workspace helps patent litigators generate new business
+              and execute end-to-end workflows faster. From prior art search,
+              claim charts, and contentions drafting, &AI is the central
+              repository for your team in business development and active
+              matters.
             </p>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -117,7 +110,7 @@ export default function ProductOverviewPage() {
         />
         <div className="relative mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {products.map((product) => (
+            {PRODUCTS.map((product) => (
               <Link
                 key={product.href}
                 className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all hover:border-gray-300 hover:shadow-xl"
@@ -206,11 +199,13 @@ export default function ProductOverviewPage() {
                     }}
                   >
                     <div className="text-element-mid-em pb-6 text-base">
-                      {faq.answer.split('\n\n').map((paragraph, i) => (
-                        <p key={i} className={i > 0 ? 'mt-4' : ''}>
-                          {paragraph}
-                        </p>
-                      ))}
+                      {typeof faq.answer === 'string'
+                        ? faq.answer.split('\n\n').map((paragraph, i) => (
+                            <p key={i} className={i > 0 ? 'mt-4' : ''}>
+                              {paragraph}
+                            </p>
+                          ))
+                        : faq.answer}
                     </div>
                   </div>
                 </div>

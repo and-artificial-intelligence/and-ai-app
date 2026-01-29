@@ -6,6 +6,7 @@ import {
   generateFAQSchema,
   generateSoftwareApplicationSchema,
 } from '@/lib/schema';
+import { getProductsByName } from '@/common/constants/products';
 import { ProductPage } from '@/module/product';
 
 export const metadata: Metadata = {
@@ -18,22 +19,12 @@ const faqs = [
   {
     question: 'Does this replace a prior art search firm?',
     answer:
-      "That's the point. &AI is built to let teams run firm-grade searches internally—faster iteration, broader sources, and outputs you can actually use.",
+      "That's the point. &AI is built to let teams run searches internally—faster iteration, more sources, and outputs you can immediately analyze.",
   },
   {
     question: 'What sources do you search?',
     answer:
-      'Patents, non-patent literature, and products—including standards/clinical trials and archival product materials.',
-  },
-  {
-    question: 'Can you use archived web pages (Wayback) in a search workflow?',
-    answer:
-      'Yes—especially when a key disclosure was later edited or removed. The Wayback Machine supports URL lookup and date-range selection for captures.',
-  },
-  {
-    question: 'What is ClinicalTrials.gov?',
-    answer:
-      'A public website and online database of clinical research studies and results maintained by the U.S. National Library of Medicine.',
+      'Patents, non-patent literature, and products—including clinical trials and archival product materials.',
   },
 ];
 
@@ -46,27 +37,11 @@ const breadcrumbs = [
   },
 ];
 
-const relatedProducts = [
-  {
-    name: 'Invalidity Analysis',
-    href: '/product/invalidity-analysis',
-    image: '/2.1.png',
-    description:
-      'Build airtight invalidity positions with AI-assisted claim mapping.',
-  },
-  {
-    name: 'Claim Charts',
-    href: '/product/claim-charts',
-    image: '/3.1.png',
-    description: 'Generate detailed claim charts in minutes, not days.',
-  },
-  {
-    name: 'Infringement Detection',
-    href: '/product/infringement-detection',
-    image: '/4.1.png',
-    description: 'Identify potential infringement across products and patents.',
-  },
-];
+const relatedProducts = getProductsByName([
+  'Invalidity Analysis',
+  'Claim Charts',
+  'Infringement Detection',
+]);
 
 export default function PriorArtSearchPage() {
   const schemas = [
@@ -86,10 +61,8 @@ export default function PriorArtSearchPage() {
       <ProductPage
         h1="AI-Powered"
         h1Highlight="Prior Art Search"
-        subheading="Quality results in minutes, not days. Replace outside prior search firms."
-        valueProp={`No more outsourcing to third-party search firms with a long wait time. Search for invalidating prior art and infringing products across patents, non-patent literature, and product documentation—across the internet—in minutes.
-
-&AI enables native multimodal searches optimized for what matters most—whether isolating specific limitations or reinforcing a §103 combination.`}
+        subheading="Skip the external search firm invoice—and the wait."
+        valueProp={`Search for invalidating prior art and infringing products across patents, non-patent literature, and product documentation—across the internet—in minutes. &AI enables native multimodal searches optimized for what matters most—whether isolating specific limitations or reinforcing a §103 combination.`}
         secondaryCta={{
           label: 'See sample outputs',
           href: '/request-sample-chart',
@@ -97,22 +70,22 @@ export default function PriorArtSearchPage() {
         sections={[
           {
             label: 'Patents',
-            title: 'Search patent documents worldwide',
+            title: 'Search 60M+ patent publications',
             description:
-              'Patent applications and publications across major jurisdictions—built to iterate fast when the claim language changes. Results come back with relevance summaries and citations to key disclosures.',
+              'Patent applications and publications across major jurisdictions—built to iterate fast when the claim language changes. Results come back with summaries, at-a-glance invalidity or infringement analysis, citations to key disclosures.',
             type: 'bullets',
             image: '/1.1.png',
             items: [
               'US and international patents',
               'Applications and publications',
-              'Fast iteration when claim language changes',
+              'Multi-modal support with images and claims',
             ],
           },
           {
             label: 'Non-patent literature',
             title: 'Find invalidating art in NPL',
             description:
-              'Research papers, standards, clinical trials, and more across the public internet—where the best invalidating art often lives.',
+              'Research papers, standards, clinical trials, and more across the public internet.',
             type: 'bullets',
             image: '/1.2.png',
             items: [
@@ -126,7 +99,7 @@ export default function PriorArtSearchPage() {
             label: 'Products',
             title: 'Search product documentation',
             description:
-              'Current and archival product listings, specs, manuals, videos, and teardowns—because "prior art" isn\'t always filed at an office.',
+              'Current and archival product listings, specs, manuals, videos, and teardowns.',
             type: 'bullets',
             image: '/1.3.png',
             items: [
@@ -139,14 +112,14 @@ export default function PriorArtSearchPage() {
           {
             title: 'Replace prior art search firms—without lowering the bar',
             description:
-              'Outside search firms sell time and scarcity. &AI gives your team a repeatable workflow you can run anytime.',
+              'Outside prior art search firms cost thousands and take days to weeks. &AI prior art search gives the control to the expert, allowing fast iterations and key results delivered at a fraction of the cost.',
             type: 'bullets',
             bulletStyle: 'bullet',
             centered: true,
             background: 'light',
             items: [
               'Explore broader, faster (patents + NPL + products + archives)',
-              'Lock onto the few references that actually matter',
+              'Results delivered with first-pass analysis',
               'Keep the full trail when you need to explain why these are the best references',
             ],
           },

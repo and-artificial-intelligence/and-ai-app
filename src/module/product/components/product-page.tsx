@@ -51,6 +51,16 @@ export interface ContentSection {
   dividerBelow?: boolean; // Add a horizontal line below the section
 }
 
+export interface ComparisonTable {
+  title?: string;
+  description?: string;
+  columns: { name: string; highlight?: boolean }[];
+  rows: {
+    feature: string;
+    values: (string | boolean)[];
+  }[];
+}
+
 export interface ProductPageProps {
   // Hero
   h1: string;
@@ -64,6 +74,9 @@ export interface ProductPageProps {
 
   // Flexible content sections - each page defines its own
   sections: ContentSection[];
+
+  // Comparison table (optional)
+  comparisonTable?: ComparisonTable;
 
   // FAQ (consistent across pages)
   faqs: FAQ[];
@@ -83,6 +96,7 @@ export function ProductPage({
   primaryCta = { label: 'Book demo', href: '/book-demo' },
   secondaryCta = { label: 'See pricing', href: '/pricing' },
   sections,
+  comparisonTable,
   faqs,
   relatedProducts,
 }: ProductPageProps) {
@@ -132,6 +146,91 @@ export function ProductPage({
           section={section}
         />
       ))}
+
+      {/* Comparison Table */}
+      {comparisonTable && (
+        <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
+          <div className="mx-auto max-w-4xl">
+            {comparisonTable.title && (
+              <h2 className="font-martina text-element-high-em mb-4 text-center text-4.5xl xl:text-5xl">
+                {comparisonTable.title}
+              </h2>
+            )}
+            {comparisonTable.description && (
+              <p className="text-element-mid-em mb-12 text-center text-lg">
+                {comparisonTable.description}
+              </p>
+            )}
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="border-b-2 border-gray-300">
+                    <th className="text-element-high-em px-4 py-4 text-left font-semibold">
+                      Feature
+                    </th>
+                    {comparisonTable.columns.map((col, idx) => (
+                      <th
+                        key={idx}
+                        className={`px-4 py-4 text-center font-semibold ${
+                          col.highlight
+                            ? 'bg-orange-50 text-orange-600'
+                            : 'text-element-high-em'
+                        }`}
+                      >
+                        {col.name}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonTable.rows.map((row, rowIdx) => (
+                    <tr
+                      key={rowIdx}
+                      className="border-b border-gray-200 last:border-b-0"
+                    >
+                      <td className="text-element-mid-em px-4 py-4">
+                        {row.feature}
+                      </td>
+                      {row.values.map((value, colIdx) => (
+                        <td
+                          key={colIdx}
+                          className={`px-4 py-4 text-center ${
+                            comparisonTable.columns[colIdx]?.highlight
+                              ? 'bg-orange-50/50'
+                              : ''
+                          }`}
+                        >
+                          {typeof value === 'boolean' ? (
+                            value ? (
+                              <svg
+                                className="mx-auto h-5 w-5 text-green-600"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M5 13l4 4L19 7"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            ) : (
+                              <span className="text-gray-400">—</span>
+                            )
+                          ) : (
+                            <span className="text-element-mid-em">{value}</span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* FAQ Section */}
       {faqs.length > 0 && (

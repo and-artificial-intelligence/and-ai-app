@@ -23,16 +23,16 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: 'Blog Post Not Found | &AI',
+      title: 'Article Not Found | &AI',
     };
   }
 
   const ogImage = post.featureImage?.url ?? post.coverImage?.url;
   const metaDescription =
-    post.subtitle || post.description || `Read "${post.title}" on the &AI blog.`;
+    post.subtitle || post.description || `Read "${post.title}" on &AI Insights.`;
 
   return {
-    title: `${post.title} | &AI Blog`,
+    title: `${post.title} | &AI Insights`,
     description: metaDescription,
     authors: [{ name: post.author }],
     openGraph: {
@@ -213,7 +213,7 @@ export default async function BlogPost({
                   strokeLinejoin="round"
                 />
               </svg>
-              Back to blog
+              Back to insights
             </Link>
 
             {post.featureImage || post.coverImage ? (

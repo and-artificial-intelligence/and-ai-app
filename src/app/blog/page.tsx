@@ -12,18 +12,18 @@ import { CTASection } from '@/module/cta';
 export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: 'Blog | &AI',
+  title: 'Insights | &AI',
   description:
     'Stay up to date with the latest news, insights, and updates from &AI — the AI workspace for patent litigation.',
   openGraph: {
-    title: 'Blog | &AI',
+    title: 'Insights | &AI',
     description:
       'Stay up to date with the latest news, insights, and updates from &AI — the AI workspace for patent litigation.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog | &AI',
+    title: 'Insights | &AI',
     description:
       'Stay up to date with the latest news, insights, and updates from &AI — the AI workspace for patent litigation.',
   },
@@ -43,7 +43,7 @@ export default async function Blog() {
     <main className="flex min-h-screen flex-col">
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="mb-16 flex flex-col items-center gap-4 text-center md:mb-20">
-          <SubHeader brand={BrandColor.PRIMARY} title="Blog" />
+          <SubHeader brand={BrandColor.PRIMARY} title="Insights" />
           <h1 className="text-element-high-em text-5xl md:text-6xl xl:text-7xl">
             Latest <span className="font-martina italic">news</span>
           </h1>
@@ -64,7 +64,7 @@ export default async function Blog() {
           <div className="bg-background-lighter shadow-gray-dark/10 relative z-10 rounded-xs border border-gray-300 shadow">
             <div className="grid grid-cols-3 items-center px-6 pt-6 md:px-16 md:pt-10 lg:px-6 xl:px-20">
               <p className="font-mono text-sm font-medium text-gray-500">
-                BLOG
+                INSIGHTS
               </p>
               <p className="text-center font-mono text-sm font-medium text-gray-500">
                 {posts.length} ARTICLES

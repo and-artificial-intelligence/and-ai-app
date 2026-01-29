@@ -6,12 +6,13 @@ import {
   generateFAQSchema,
   generateSoftwareApplicationSchema,
 } from '@/lib/schema';
+import { getProductsByName } from '@/common/constants/products';
 import { ProductPage } from '@/module/product';
 
 export const metadata: Metadata = {
   title: 'Patent Claim Charts (Invalidity + EOU) | &AI',
   description:
-    'Generate litigation-ready invalidity and evidence-of-use claim charts in minutes, informed by claim construction and prosecution history—with citations you control. Request a free sample chart.',
+    'Generate precise patent invalidity claim charts and evidence-of-use charts, with dozens of formatting settings that make your chart exports trial-ready.',
 };
 
 const faqs = [
@@ -21,19 +22,19 @@ const faqs = [
       "Yes—send a patent and one or more references (prior art or product materials). We'll return a first-draft export so you can validate citations, mapping quality, and formatting.",
   },
   {
-    question: 'Do you support claim construction and prosecution history?',
+    question: 'Do you support claim construction?',
     answer:
-      'Yes—Charts uses claim constructions generated from the as-filed application, prosecution history, related family, and more.',
+      'Yes—our charts use claim constructions generated from the as-filed application, prosecution history, and related family.',
   },
   {
     question: 'What kinds of charts can I generate?',
     answer:
-      'Invalidity (including §102/§103/§112 support) and evidence-of-use charts are core, and the workflow is designed for litigation-ready exports.',
+      'You can generate invalidity (including §102/§103) and evidence-of-use charts. The workflow is designed for litigation-ready exports.',
   },
   {
     question: 'Do I stay in control of what gets exported?',
     answer:
-      'Yes—Charts is built for review, editing, and export. You control what goes out.',
+      'Yes—every citation requires approval before it shows up in any exported work product.',
   },
 ];
 
@@ -43,27 +44,11 @@ const breadcrumbs = [
   { name: 'Claim Charts', url: 'https://tryandai.com/product/claim-charts' },
 ];
 
-const relatedProducts = [
-  {
-    name: 'Invalidity Analysis',
-    href: '/product/invalidity-analysis',
-    image: '/2.1.png',
-    description: 'Build stronger invalidity arguments at scale.',
-  },
-  {
-    name: 'Infringement Detection',
-    href: '/product/infringement-detection',
-    image: '/4.1.png',
-    description: 'Find evidence of use faster with AI-powered analysis.',
-  },
-  {
-    name: 'Prior Art Search',
-    href: '/product/prior-art-search',
-    image: '/1.1.png',
-    description:
-      'Discover relevant prior art across patents, NPL, and products.',
-  },
-];
+const relatedProducts = getProductsByName([
+  'Invalidity Analysis',
+  'Infringement Detection',
+  'Prior Art Search',
+]);
 
 export default function ClaimChartsPage() {
   const schemas = [
@@ -83,10 +68,8 @@ export default function ClaimChartsPage() {
       <ProductPage
         h1="Litigation-Ready"
         h1Highlight="Claim Charts"
-        subheading="Win cases faster with trial-ready analysis."
-        valueProp={`Claim charting follows a familiar routine: pull the patent, pull the prior art or product materials, open Word, build a table. Copy each limitation into the left column. Hunt for evidence. Paste. Format citations. Repeat. And when litigation strategy changes midstream, too much of that work starts over.
-
-&AI built Charts to shorten that loop—without taking control away from you. Generate precise invalidity or evidence-of-use claim charts in minutes instead of days.`}
+        subheading="Precise claim charts in minutes, ready for you to refine"
+        valueProp="Generate precise invalidity and evidence-of-use claim charts in minutes, with dozens of formatting settings that make your chart exports trial-ready."
         secondaryCta={{
           label: 'Request a free sample chart',
           href: '/request-sample-chart',
@@ -96,7 +79,7 @@ export default function ClaimChartsPage() {
             label: 'Claims and elements',
             title: 'Element-by-element charts with citations',
             description:
-              'Charts produces element-by-element claim charts with citations to prior art and product documentation. Charts are composed entirely of citations and produced in a trial-ready format—so all you have to do is review, edit, and export.',
+              'Charts are composed entirely of citations and produced in a trial-ready format—so all you have to do is review, edit, and export.',
             type: 'bullets',
             image: '/2.1.png',
             items: [
@@ -107,9 +90,9 @@ export default function ClaimChartsPage() {
           },
           {
             label: 'Claim construction',
-            title: 'Use construction from day one',
+            title: 'Informed by claim construction',
             description:
-              'Charts is informed by a detailed claim construction. Constructions are generated from the as-filed application, prosecution history, related family, and more.',
+              'Each chart is informed by a detailed claim construction. Constructions are generated from the as-filed application, prosecution history, and related family.',
             type: 'bullets',
             image: '/2.2.png',
             items: [
@@ -120,14 +103,16 @@ export default function ClaimChartsPage() {
           },
           {
             label: 'Invalidity charts',
-            title: 'Built for §102, §103, and §112 workflows',
+            title: 'Built for §102, §103, and §112 analysis',
             description:
               'Charts supports invalidity charting in the way litigation teams actually work.',
             type: 'bullets',
+            bulletStyle: 'bullet',
+            centered: true,
             items: [
-              '§102 charts (anticipation / single-reference mapping)',
-              '§103 charts (combination-ready mapping as theories develop)',
-              '§112 support (spec grounding and clarity gaps where relevant)',
+              '§102 charts (anticipation)',
+              '§103 charts (obviousness)',
+              '§112 support (written support)',
             ],
           },
           {
@@ -136,6 +121,8 @@ export default function ClaimChartsPage() {
             description:
               "Generate evidence-of-use charts against product materials such as specs, manuals, teardowns, screenshots, and video—then refine with search across everything you've uploaded.",
             type: 'bullets',
+            bulletStyle: 'bullet',
+            centered: true,
             items: [
               'Product specs and manuals',
               'Teardowns and screenshots',
@@ -148,24 +135,12 @@ export default function ClaimChartsPage() {
             description:
               'Instead of committing to one reference and discovering gaps late, create first-draft charts for multiple candidates and quickly see which elements are strongest.',
             type: 'bullets',
+            bulletStyle: 'bullet',
+            centered: true,
             items: [
               'Which elements are strongest per reference',
               'Where the gaps are',
               'Whether a §103 combination is more efficient than forcing a weak single reference',
-            ],
-          },
-          {
-            title: 'Quality you can measure',
-            description:
-              "Charts are designed to be usable on the first pass. Over thousands of charts produced on &AI, the first pass is reported as 89% similar to what's ultimately exported for litigation.",
-            type: 'bullets',
-            bulletStyle: 'bullet',
-            centered: true,
-            background: 'light',
-            items: [
-              'First-pass accuracy: 89% similarity to final export',
-              'Designed for expert review and iteration',
-              'Full audit trails for defensibility',
             ],
           },
         ]}

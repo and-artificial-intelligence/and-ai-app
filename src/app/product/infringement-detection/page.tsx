@@ -6,6 +6,7 @@ import {
   generateFAQSchema,
   generateSoftwareApplicationSchema,
 } from '@/lib/schema';
+import { getProductsByName } from '@/common/constants/products';
 import { ProductPage } from '@/module/product';
 
 export const metadata: Metadata = {
@@ -41,29 +42,11 @@ const breadcrumbs = [
   },
 ];
 
-const relatedProducts = [
-  {
-    name: 'Claim Charts',
-    href: '/product/claim-charts',
-    image: '/3.1.png',
-    description:
-      'Element-by-element mapping with citations to product documentation.',
-  },
-  {
-    name: 'Prior Art Search',
-    href: '/product/prior-art-search',
-    image: '/1.1.png',
-    description:
-      'Search patents, NPL, and product documentation across the web.',
-  },
-  {
-    name: 'Invalidity Analysis',
-    href: '/product/invalidity-analysis',
-    image: '/2.1.png',
-    description:
-      'Build airtight invalidity positions with AI-assisted claim mapping.',
-  },
-];
+const relatedProducts = getProductsByName([
+  'Claim Charts',
+  'Prior Art Search',
+  'Invalidity Analysis',
+]);
 
 export default function InfringementDetectionPage() {
   const schemas = [
