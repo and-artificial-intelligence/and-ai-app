@@ -3,6 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Footer } from '@/common/components/footer';
+import {
+  generateBreadcrumbSchema,
+  JsonLd,
+} from '@/common/components/structured-data';
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
 
@@ -10,6 +14,11 @@ import { getBlogPosts } from '@/lib/contentful';
 import { CTASection } from '@/module/cta';
 
 export const revalidate = 0;
+
+const blogBreadcrumb = [
+  { name: 'Home', url: 'https://tryandai.com' },
+  { name: 'Blog', url: 'https://tryandai.com/blog' },
+];
 
 export const metadata: Metadata = {
   title: 'Blog | &AI',
@@ -41,6 +50,8 @@ export default async function Blog() {
 
   return (
     <main className="flex min-h-screen flex-col">
+      <JsonLd data={generateBreadcrumbSchema(blogBreadcrumb)} />
+
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="mb-16 flex flex-col items-center gap-4 text-center md:mb-20">
           <SubHeader brand={BrandColor.PRIMARY} title="Blog" />

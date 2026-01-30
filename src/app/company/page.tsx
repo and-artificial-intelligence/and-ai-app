@@ -1,6 +1,11 @@
 import Image from 'next/image';
 
 import { Footer } from '@/common/components/footer';
+import {
+  generateBreadcrumbSchema,
+  generatePersonListSchema,
+  JsonLd,
+} from '@/common/components/structured-data';
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
 
@@ -10,6 +15,11 @@ interface Advisor {
   firm: string;
   imageSrc: string;
 }
+
+const companyBreadcrumb = [
+  { name: 'Home', url: 'https://tryandai.com' },
+  { name: 'Company', url: 'https://tryandai.com/company' },
+];
 
 export default function About() {
   const _advisors: Advisor[] = [
@@ -45,8 +55,22 @@ export default function About() {
     },
   ];
 
+  const advisorSchemas = generatePersonListSchema(
+    _advisors.map((advisor) => ({
+      name: advisor.name,
+      jobTitle: advisor.title,
+      worksFor: advisor.firm,
+      image: `https://tryandai.com${advisor.imageSrc}`,
+    })),
+  );
+
   return (
     <main className="flex min-h-screen flex-col">
+      <JsonLd data={generateBreadcrumbSchema(companyBreadcrumb)} />
+      {advisorSchemas.map((schema, index) => (
+        <JsonLd key={index} data={schema} />
+      ))}
+
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20 xl:gap-24">
           <div className="space-y-8 lg:flex-1">

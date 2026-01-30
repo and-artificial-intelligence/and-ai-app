@@ -7,6 +7,11 @@ import { notFound } from 'next/navigation';
 
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  JsonLd,
+} from '@/common/components/structured-data';
 
 import { getBlogPostBySlug, getBlogPostSlugs } from '@/lib/contentful';
 import { BackgroundArt } from '@/module/cta';
@@ -191,8 +196,26 @@ export default async function BlogPost({
   const post = await getBlogPostBySlug(slug);
   if (!post) notFound();
 
+  const articleSchema = generateArticleSchema({
+    headline: post.title,
+    description: post.subtitle || post.description,
+    datePublished: post.date,
+    author: post.author,
+    image: post.featureImage?.url || post.coverImage?.url,
+    url: `https://tryandai.com/blog/${slug}`,
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: 'https://tryandai.com' },
+    { name: 'Blog', url: 'https://tryandai.com/blog' },
+    { name: post.title, url: `https://tryandai.com/blog/${slug}` },
+  ]);
+
   return (
     <main className="flex min-h-screen flex-col">
+      <JsonLd data={articleSchema} />
+      <JsonLd data={breadcrumbSchema} />
+
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[48rem] xl:px-8 xl:py-24">
         <div className="space-y-12">
           <div className="space-y-6">
