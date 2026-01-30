@@ -105,15 +105,14 @@ export default function ClaimChartsPage() {
           {
             label: 'Invalidity charts',
             title: 'Invalidity charts that hold up under scrutiny.',
-            description:
-              'Purpose-built for §102, §103, and §112—from single-reference mapping to multi-reference combinations to written support gaps.',
+            description: 'Purpose-built for §102, §103, and §112.',
             type: 'bullets',
             bulletStyle: 'bullet',
             centered: true,
             items: [
               'Anticipation (§102): one reference, fully mapped',
-              'Obviousness (§103): combination mapping that&apos;s easy to follow',
-              'Written support (§112): identify where the spec doesn&apos;t back the claims fully',
+              "Obviousness (§103): combination mapping that's easy to follow",
+              "Written support (§112): identify where the spec doesn't back the claims fully",
             ],
           },
           {

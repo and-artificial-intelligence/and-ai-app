@@ -36,7 +36,7 @@ export default function LawFirmsPage() {
       h1="From Am Law 100 to"
       h1Highlight="IP Boutiques"
       subheading="Trial-ready work product for patent litigators—fast enough for pitches, strong enough for court."
-      description="Replace unbillable scanning and first drafts with a workflow that scales your best lawyers—without changing how you practice. You stay in charge of the work product. &AI accelerates the tedious loop of searching, charting, drafting, and iterating—while keeping outputs reviewable and exportable."
+      description="Replace non-billable work with a workflow that scales your best lawyers—without changing how you practice. You stay in charge of the work product. &AI accelerates the tedious loop of searching, charting, drafting, and iterating—while keeping outputs reviewable and exportable."
       valueProps={valueProps}
       faqs={[
         {

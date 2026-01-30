@@ -164,7 +164,7 @@ export function ProductPage({
 
       {/* Comparison Table */}
       {comparisonTable && (
-        <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
+        <section className="mx-auto hidden w-full px-4 py-16 md:block md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
           <div className="mx-auto max-w-4xl">
             {comparisonTable.title && (
               <h2 className="font-martina text-element-high-em text-4.5xl mb-4 text-center xl:text-5xl">

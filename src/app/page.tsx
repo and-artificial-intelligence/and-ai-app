@@ -143,6 +143,8 @@ export default function Home() {
         </div>
       </section>
 
+      <FeaturesSection />
+
       {/* ANIMATED TEXT SECTION */}
       <section
         className="mx-auto px-4 py-16 md:px-6 md:pt-[120px] md:pb-24 xl:max-w-[80rem] xl:px-8 xl:py-24 xl:pt-40 xl:pb-[120px]"
@@ -175,8 +177,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <FeaturesSection />
 
       {/* WORKFLOW SECTION //TODO: replace video placeholder*/}
       {/* <section
