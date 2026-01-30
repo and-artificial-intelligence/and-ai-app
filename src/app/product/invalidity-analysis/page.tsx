@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 
+import { getProductsByName } from '@/common/constants/products';
 import { SchemaScript } from '@/common/components/schema-script';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
   generateSoftwareApplicationSchema,
 } from '@/lib/schema';
-import { getProductsByName } from '@/common/constants/products';
 import { ProductPage } from '@/module/product';
 
 export const metadata: Metadata = {
@@ -65,10 +65,10 @@ export default function InvalidityAnalysisPage() {
     <>
       <SchemaScript schema={schemas} />
       <ProductPage
+        faqs={faqs}
         h1="Patent"
         h1Highlight="Invalidity Analysis"
-        subheading="From discovery to contentions, without switching tools."
-        valueProp={`Discover prior art, generate claim charts, and draft §102, §103, and §112 arguments—built around the way litigators actually work.`}
+        relatedProducts={relatedProducts}
         secondaryCta={{
           label: 'See Prior Art Search',
           href: '/product/prior-art-search',
@@ -111,7 +111,7 @@ export default function InvalidityAnalysisPage() {
             background: 'light',
             items: [
               'Identify the specific limitation that controls the outcome',
-              'Capture pinpoint citations—not just “close” passages',
+              'Capture pinpoint citations—not just "close" passages',
             ],
           },
           {
@@ -142,8 +142,8 @@ export default function InvalidityAnalysisPage() {
             ],
           },
         ]}
-        faqs={faqs}
-        relatedProducts={relatedProducts}
+        subheading="From discovery to contentions, without switching tools."
+        valueProp={`Discover prior art, generate claim charts, and draft §102, §103, and §112 arguments—built around the way litigators actually work.`}
       />
     </>
   );

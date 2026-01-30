@@ -33,11 +33,7 @@ export default function LawFirmsPage() {
   return (
     <SolutionsByTypePage
       badge="&AI for Law Firms"
-      h1="From Am Law 100 to"
-      h1Highlight="IP Boutiques"
-      subheading="Trial-ready work product for patent litigators—fast enough for pitches, strong enough for court."
       description="Replace non-billable work with a workflow that scales your best lawyers—without changing how you practice. You stay in charge of the work product. &AI accelerates the tedious loop of searching, charting, drafting, and iterating—while keeping outputs reviewable and exportable."
-      valueProps={valueProps}
       faqs={[
         {
           question: 'Is &AI built for litigation-grade work product?',
@@ -56,6 +52,10 @@ export default function LawFirmsPage() {
             '&AI has enterprise-grade security and compliance built for law — including zero-data retention policies with model providers, SSO/RBAC, encryption in transit/at rest, and public-only mode.',
         },
       ]}
+      h1="From Am Law 100 to"
+      h1Highlight="IP Boutiques"
+      subheading="Trial-ready work product for patent litigators—fast enough for pitches, strong enough for court."
+      valueProps={valueProps}
     />
   );
 }

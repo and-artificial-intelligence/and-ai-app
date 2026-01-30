@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 
+import { getProductsByName } from '@/common/constants/products';
 import { SchemaScript } from '@/common/components/schema-script';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
   generateSoftwareApplicationSchema,
 } from '@/lib/schema';
-import { getProductsByName } from '@/common/constants/products';
 import { ProductPage } from '@/module/product';
 
 export const metadata: Metadata = {
@@ -51,6 +51,7 @@ const comparisonTable = {
     { name: '&AI Opportunities', highlight: true },
   ],
   rows: [
+    { feature: 'Access to federal court filings', values: [true, true, true] },
     { feature: 'Attorney-to-case matching', values: [false, false, true] },
     { feature: 'Patent assertion history', values: [false, true, true] },
     { feature: 'Party litigation patterns', values: [false, 'Limited', true] },
@@ -80,11 +81,12 @@ export default function PatentLitigationBusinessDevelopmentPage() {
     <>
       <SchemaScript schema={schemas} />
       <ProductPage
+        comparisonTable={comparisonTable}
+        faqs={faqs}
         h1="Business Development"
-        h1HighlightPrefix="for "
         h1Highlight="Patent Litigators"
-        subheading="Find the right cases. Pitch first."
-        valueProp="Opportunities is &AI's real-time feed of patent litigation filings, personalized to you and your team with memory of your prior work and how you like to pitch."
+        h1HighlightPrefix="for "
+        relatedProducts={relatedProducts}
         sections={[
           {
             label: 'Opportunities',
@@ -141,9 +143,8 @@ export default function PatentLitigationBusinessDevelopmentPage() {
             ],
           },
         ]}
-        comparisonTable={comparisonTable}
-        faqs={faqs}
-        relatedProducts={relatedProducts}
+        subheading="Find the right cases. Pitch first."
+        valueProp="Opportunities is &AI's real-time feed of patent litigation filings, personalized to you and your team with memory of your prior work and how you like to pitch."
       />
     </>
   );

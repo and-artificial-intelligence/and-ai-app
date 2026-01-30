@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 
+import { getProductsByName } from '@/common/constants/products';
 import { SchemaScript } from '@/common/components/schema-script';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
   generateSoftwareApplicationSchema,
 } from '@/lib/schema';
-import { getProductsByName } from '@/common/constants/products';
 import { ProductPage } from '@/module/product';
 
 export const metadata: Metadata = {
@@ -66,10 +66,10 @@ export default function ClaimChartsPage() {
     <>
       <SchemaScript schema={schemas} />
       <ProductPage
+        faqs={faqs}
         h1="Litigation-Ready"
         h1Highlight="Claim Charts"
-        subheading="Trial-ready invalidity and evidence-of-use claim charts in minutes. "
-        valueProp="Generate invalidity and evidence-of-use claim charts in minutes, with exact citations and dozens of formatting settings that allow you to export trial-ready charts."
+        relatedProducts={relatedProducts}
         secondaryCta={{
           label: 'Request a free sample chart',
           href: '/request-sample-chart',
@@ -130,8 +130,8 @@ export default function ClaimChartsPage() {
             ],
           },
         ]}
-        faqs={faqs}
-        relatedProducts={relatedProducts}
+        subheading="Trial-ready invalidity and evidence-of-use claim charts in minutes. "
+        valueProp="Generate invalidity and evidence-of-use claim charts in minutes, with exact citations and dozens of formatting settings that allow you to export trial-ready charts."
       />
     </>
   );

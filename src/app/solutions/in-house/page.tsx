@@ -34,12 +34,7 @@ export default function InHousePage() {
   return (
     <SolutionsByTypePage
       badge="&AI for In-House"
-      h1="Monetize your portfolio. Prep your defense.
-"
-      h1Highlight="Faster."
-      subheading="Whether you're asserting or defending, get to evidence-backed positions quickly and cost-effectively."
       description=" Whether you're responding to an assertion, evaluating a portfolio, or prepping for a deal, &AI gives in-house IP teams the search, charting, and drafting tools to build your position quickly—without sacrificing rigor."
-      valueProps={valueProps}
       faqs={[
         {
           question: 'How does the platform work for in-house teams?',
@@ -47,6 +42,11 @@ export default function InHousePage() {
             'Search across patents, NPL, and products. Generate evidence-of-use and invalidity claim charts in minutes. Draft memos, contentions, and strategy materials grounded in your project context.',
         },
       ]}
+      h1="Monetize your portfolio. Prep your defense.
+"
+      h1Highlight="Faster."
+      subheading="Whether you're asserting or defending, get to evidence-backed positions quickly and cost-effectively."
+      valueProps={valueProps}
     />
   );
 }

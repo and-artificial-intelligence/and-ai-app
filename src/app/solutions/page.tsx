@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-
 import Link from 'next/link';
 
 import { Button } from '@/common/components/button';

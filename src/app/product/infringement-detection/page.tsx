@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 
+import { getProductsByName } from '@/common/constants/products';
 import { SchemaScript } from '@/common/components/schema-script';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
   generateSoftwareApplicationSchema,
 } from '@/lib/schema';
-import { getProductsByName } from '@/common/constants/products';
 import { ProductPage } from '@/module/product';
 
 export const metadata: Metadata = {
@@ -64,13 +64,13 @@ export default function InfringementDetectionPage() {
     <>
       <SchemaScript schema={schemas} />
       <ProductPage
+        faqs={faqs}
         h1="AI-Powered"
         h1Highlight="Infringement Analysis"
+        relatedProducts={relatedProducts}
+        sections={[]}
         subheading="Find infringers faster. Build stronger positions."
         valueProp={`Scan portfolios at scale, search the full internet of product documentation, and build litigation-grade evidence-of-use charts—all in one place.`}
-        sections={[]}
-        faqs={faqs}
-        relatedProducts={relatedProducts}
       />
     </>
   );

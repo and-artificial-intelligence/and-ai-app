@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 
+import { getProductsByName } from '@/common/constants/products';
 import { SchemaScript } from '@/common/components/schema-script';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
   generateSoftwareApplicationSchema,
 } from '@/lib/schema';
-import { getProductsByName } from '@/common/constants/products';
 import { ProductPage } from '@/module/product';
 
 export const metadata: Metadata = {
@@ -59,10 +59,10 @@ export default function PriorArtSearchPage() {
     <>
       <SchemaScript schema={schemas} />
       <ProductPage
+        faqs={faqs}
         h1="AI-Powered"
         h1Highlight="Prior Art Search"
-        subheading="Skip the external search firm invoice—and the wait."
-        valueProp={`Search for invalidating prior art, across patents, non-patent literature (NPL), and product documentation across the internet in minutes. &AI enables multimodal searches optimized for what matters most—whether isolating specific limitations or reinforcing a §103 combination.`}
+        relatedProducts={relatedProducts}
         sections={[
           {
             label: 'Patents',
@@ -119,8 +119,8 @@ export default function PriorArtSearchPage() {
             ],
           },
         ]}
-        faqs={faqs}
-        relatedProducts={relatedProducts}
+        subheading="Skip the external search firm invoice—and the wait."
+        valueProp={`Search for invalidating prior art, across patents, non-patent literature (NPL), and product documentation across the internet in minutes. &AI enables multimodal searches optimized for what matters most—whether isolating specific limitations or reinforcing a §103 combination.`}
       />
     </>
   );

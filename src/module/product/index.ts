@@ -1,9 +1,9 @@
-export { ProductPage } from './components/product-page';
 export type {
-  ProductPageProps,
+  BreadcrumbItem,
   ContentSection,
   ContentSectionType,
   FAQ,
+  ProductPageProps,
   RelatedProduct,
-  BreadcrumbItem,
 } from './components/product-page';
+export { ProductPage } from './components/product-page';
