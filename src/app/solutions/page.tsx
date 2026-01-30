@@ -5,7 +5,6 @@ import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
-
 import { CTASection } from '@/module/cta';
 
 export const metadata: Metadata = {
