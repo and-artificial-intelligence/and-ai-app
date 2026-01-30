@@ -1,6 +1,6 @@
-export { generateArticleSchema, type ArticleSchemaProps } from './article';
-export { generateBreadcrumbSchema, type BreadcrumbItem } from './breadcrumb';
-export { generateFAQPageSchema, type FAQItem } from './faq-page';
+export { type ArticleSchemaProps,generateArticleSchema } from './article';
+export { type BreadcrumbItem,generateBreadcrumbSchema } from './breadcrumb';
+export { type FAQItem,generateFAQPageSchema } from './faq-page';
 export { JsonLd } from './json-ld';
 export { generateOrganizationSchema } from './organization';
 export {
