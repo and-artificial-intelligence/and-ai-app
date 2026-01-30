@@ -152,6 +152,7 @@ export const Navbar = () => {
                   'text-element-high-em hover:text-element-mid-em flex items-center gap-1 text-sm font-medium transition-[color]',
                   mounted &&
                     pathname.startsWith('/product') &&
+                    !productsOpen &&
                     'underline decoration-orange-500 decoration-1 underline-offset-[6px]',
                 )}
                 onClick={() => setProductsOpen(!productsOpen)}
@@ -176,32 +177,37 @@ export const Navbar = () => {
               </button>
               <div
                 className={cn(
-                  'bg-background absolute top-full left-0 mt-2 min-w-[320px] rounded-lg border border-gray-200 py-2 shadow-lg transition-all duration-200',
+                  'absolute top-full left-0 mt-2 min-w-[320px] overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg transition-all duration-200',
                   productsOpen
                     ? 'pointer-events-auto translate-y-0 opacity-100'
                     : 'pointer-events-none -translate-y-2 opacity-0',
                 )}
               >
-                {productLinks.map((product) => (
-                  <Link
-                    key={product.href}
-                    className={cn(
-                      'hover:bg-background-lighter block px-4 py-3 transition-colors',
-                      mounted &&
-                        pathname === product.href &&
-                        'bg-background-lighter',
-                    )}
-                    href={product.href}
-                    onClick={() => setProductsOpen(false)}
-                  >
-                    <span className="text-element-high-em block text-sm font-medium">
-                      {product.name}
-                    </span>
-                    <span className="text-element-mid-em block text-xs">
-                      {product.description}
-                    </span>
-                  </Link>
-                ))}
+                <div className="py-2">
+                  {productLinks.map((product) => (
+                    <Link
+                      key={product.href}
+                      className={cn(
+                        'hover:bg-background-lighter block px-4 py-3 transition-colors',
+                        mounted &&
+                          pathname === product.href &&
+                          'bg-background-lighter',
+                      )}
+                      href={product.href}
+                      onClick={() => setProductsOpen(false)}
+                    >
+                      <span className="text-element-high-em block text-sm font-medium">
+                        {product.name}
+                      </span>
+                      <span className="text-element-mid-em block text-xs">
+                        {product.description}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+                {mounted && pathname.startsWith('/product') && (
+                  <div className="h-0.5 w-full bg-orange-500" />
+                )}
               </div>
             </div>
             {/* Solutions Dropdown */}
@@ -211,6 +217,7 @@ export const Navbar = () => {
                   'text-element-high-em hover:text-element-mid-em flex items-center gap-1 text-sm font-medium transition-[color]',
                   mounted &&
                     pathname.startsWith('/solutions') &&
+                    !solutionsOpen &&
                     'underline decoration-orange-500 decoration-1 underline-offset-[6px]',
                 )}
                 onClick={() => setSolutionsOpen(!solutionsOpen)}
@@ -235,32 +242,37 @@ export const Navbar = () => {
               </button>
               <div
                 className={cn(
-                  'bg-background absolute top-full left-0 mt-2 min-w-[320px] rounded-lg border border-gray-200 py-2 shadow-lg transition-all duration-200',
+                  'absolute top-full left-0 mt-2 min-w-[320px] overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg transition-all duration-200',
                   solutionsOpen
                     ? 'pointer-events-auto translate-y-0 opacity-100'
                     : 'pointer-events-none -translate-y-2 opacity-0',
                 )}
               >
-                {solutionsByType.map((solution) => (
-                  <Link
-                    key={solution.href}
-                    className={cn(
-                      'hover:bg-background-lighter block px-4 py-3 transition-colors',
-                      mounted &&
-                        pathname === solution.href &&
-                        'bg-background-lighter',
-                    )}
-                    href={solution.href}
-                    onClick={() => setSolutionsOpen(false)}
-                  >
-                    <span className="text-element-high-em block text-sm font-medium">
-                      {solution.name}
-                    </span>
-                    <span className="text-element-mid-em block text-xs">
-                      {solution.description}
-                    </span>
-                  </Link>
-                ))}
+                <div className="py-2">
+                  {solutionsByType.map((solution) => (
+                    <Link
+                      key={solution.href}
+                      className={cn(
+                        'hover:bg-background-lighter block px-4 py-3 transition-colors',
+                        mounted &&
+                          pathname === solution.href &&
+                          'bg-background-lighter',
+                      )}
+                      href={solution.href}
+                      onClick={() => setSolutionsOpen(false)}
+                    >
+                      <span className="text-element-high-em block text-sm font-medium">
+                        {solution.name}
+                      </span>
+                      <span className="text-element-mid-em block text-xs">
+                        {solution.description}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+                {mounted && pathname.startsWith('/solutions') && (
+                  <div className="h-0.5 w-full bg-orange-500" />
+                )}
               </div>
             </div>
             <Link

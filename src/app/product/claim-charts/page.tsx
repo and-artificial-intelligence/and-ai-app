@@ -92,7 +92,7 @@ export default function ClaimChartsPage() {
           },
           {
             label: 'Claim construction',
-            title: 'Claim terms as essential context',
+            title: 'Claim construction drives everything',
             description:
               'Claim construction drives everything—invalidity, infringement, and settlement posture. Build Markman-ready constructions with a clear evidentiary record.',
             type: 'bullets',
