@@ -1,8 +1,10 @@
 export type {
   BreadcrumbItem,
+  ComparisonTable,
+  ContentSection,
+  ContentSectionType,
   FAQ,
-  HowItWorksStep,
   ProductPageProps,
-  ProductSection,
+  RelatedProduct,
 } from './product-page';
 export { ProductPage } from './product-page';

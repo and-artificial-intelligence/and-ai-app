@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
-import { getProductsByName } from '@/common/constants/products';
 import { SchemaScript } from '@/common/components/schema-script';
+import { getProductsByName } from '@/common/constants/products';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
