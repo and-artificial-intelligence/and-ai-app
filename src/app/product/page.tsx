@@ -1,21 +1,45 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
+import { ProductCard } from '@/common/components/product-card';
+import { SchemaScript } from '@/common/components/schema-script';
 import { SubHeader } from '@/common/components/subheader';
-import { BrandColor } from '@/common/types/common';
 import { PRODUCTS } from '@/common/constants/products';
+import { BrandColor } from '@/common/types/common';
+
+import {
+  generateBreadcrumbSchema,
+  generateFAQSchema,
+  generateSoftwareApplicationSchema,
+} from '@/lib/schema';
 import { CTASection } from '@/module/cta';
 
-// export const metadata: Metadata = {
-//   title: 'Product Overview | &AI',
-//   description:
-//     'Explore the AI workspace for patent litigation. Tools for infringement detection, invalidity analysis, claim charts, prior art search, and business development.',
-// };
+const schemaFaqs = [
+  {
+    question: 'What makes &AI different from other patent tools?',
+    answer:
+      '&AI is built specifically for end-to-end patent litigation workflows, from business development to trial. Every feature is optimized to produce trial-ready work product, with outputs designed for expert review and legal proceedings.',
+  },
+  {
+    question: 'Do you offer a free trial?',
+    answer:
+      'Yes. We offer free credits to try the &AI platform so you can evaluate the quality of our product before making any commitment. Book a demo to get started.',
+  },
+  {
+    question: 'How does pricing work?',
+    answer:
+      'We offer three options– Core, Pro, and Enterprise plans. Core and Pro are a monthly seat cost, which includes a fixed number of credits, and you can always buy more credits as needed. See more pricing details on our pricing page.',
+  },
+];
+
+const breadcrumbItems = [
+  { name: 'Home', url: 'https://tryandai.com' },
+  { name: 'Product', url: 'https://tryandai.com/product' },
+];
 
 const faqs = [
   {
@@ -63,6 +87,18 @@ export default function ProductOverviewPage() {
 
   return (
     <main className="flex min-h-screen flex-col">
+      <SchemaScript
+        schema={[
+          generateSoftwareApplicationSchema({
+            name: '&AI Patent Litigation Platform',
+            description:
+              'The AI workspace for patent litigation. End-to-end workflows from business development to active trial.',
+            url: 'https://tryandai.com/product',
+          }),
+          generateFAQSchema(schemaFaqs),
+          generateBreadcrumbSchema(breadcrumbItems),
+        ]}
+      />
       {/* Hero Section */}
       <section className="mx-auto w-full px-4 pt-16 pb-8 md:px-6 md:pt-20 md:pb-10 xl:max-w-[80rem] xl:px-8 xl:pt-24 xl:pb-12">
         <div className="max-w-4xl">
@@ -75,15 +111,15 @@ export default function ProductOverviewPage() {
           </h1>
           <p className="text-element-high-em mt-4 text-xl font-medium md:text-2xl">
             End-to-end patent litigation workflows, from business development to
-            active trial.
+            trial.
           </p>
           <div className="text-element-mid-em mt-6 space-y-4 text-lg xl:text-xl">
             <p>
               The &AI workspace helps patent litigators generate new business
-              and execute end-to-end workflows faster. From prior art search,
-              claim charts, and contentions drafting, &AI is the central
-              repository for your team in business development and active
-              matters.
+              and deliver winning outcomes through end-to-end litigation
+              workflows. From prior art search, claim charts, and contentions
+              drafting, &AI is the central repository for your team in business
+              development and active matters.
             </p>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -111,28 +147,7 @@ export default function ProductOverviewPage() {
         <div className="relative mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {PRODUCTS.map((product) => (
-              <Link
-                key={product.href}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all hover:border-gray-300 hover:shadow-xl"
-                href={product.href}
-              >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-50">
-                  <Image
-                    alt={product.name}
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    fill
-                    src={product.image}
-                  />
-                </div>
-                <div className="flex flex-col p-6">
-                  <h3 className="text-element-high-em text-lg font-semibold">
-                    {product.name}
-                  </h3>
-                  <p className="text-element-mid-em mt-2 text-sm">
-                    {product.description}
-                  </p>
-                </div>
-              </Link>
+              <ProductCard key={product.href} {...product} />
             ))}
           </div>
         </div>

@@ -19,12 +19,12 @@ const faqs = [
   {
     question: 'Does this replace a prior art search firm?',
     answer:
-      "That's the point. &AI is built to let teams run searches internally—faster iteration, more sources, and outputs you can immediately analyze.",
+      'Yes. &AI is built to let teams run searches internally with faster iteration, more sources, and outputs you can immediately analyze.',
   },
   {
     question: 'What sources do you search?',
     answer:
-      'Patents, non-patent literature, and products—including clinical trials and archival product materials.',
+      'Patents, non-patent literature, products, clinical trials, and archival web materials.',
   },
 ];
 
@@ -62,19 +62,15 @@ export default function PriorArtSearchPage() {
         h1="AI-Powered"
         h1Highlight="Prior Art Search"
         subheading="Skip the external search firm invoice—and the wait."
-        valueProp={`Search for invalidating prior art and infringing products across patents, non-patent literature, and product documentation—across the internet—in minutes. &AI enables native multimodal searches optimized for what matters most—whether isolating specific limitations or reinforcing a §103 combination.`}
-        secondaryCta={{
-          label: 'See sample outputs',
-          href: '/request-sample-chart',
-        }}
+        valueProp={`Search for invalidating prior art, across patents, non-patent literature (NPL), and product documentation across the internet in minutes. &AI enables multimodal searches optimized for what matters most—whether isolating specific limitations or reinforcing a §103 combination.`}
         sections={[
           {
             label: 'Patents',
             title: 'Search 60M+ patent publications',
             description:
-              'Patent applications and publications across major jurisdictions—built to iterate fast when the claim language changes. Results come back with summaries, at-a-glance invalidity or infringement analysis, citations to key disclosures.',
+              'Patent applications and publications across major jurisdictions—built to iterate fast and narrow down on key references.',
             type: 'bullets',
-            image: '/1.1.png',
+            image: '/stylized-features/search-patent.png',
             items: [
               'US and international patents',
               'Applications and publications',
@@ -85,14 +81,14 @@ export default function PriorArtSearchPage() {
             label: 'Non-patent literature',
             title: 'Find invalidating art in NPL',
             description:
-              'Research papers, standards, clinical trials, and more across the public internet.',
+              'Research papers, standards, clinical trials, and more across the entire public internet.',
             type: 'bullets',
-            image: '/1.2.png',
+            image: '/stylized-features/search-npl.png',
             items: [
               'Academic papers and journals',
               'Technical standards',
-              'US clinical trials (ClinicalTrials.gov)',
-              'Archived web (Wayback Machine)',
+              'US clinical trials',
+              'Archived web',
             ],
           },
           {
@@ -101,16 +97,15 @@ export default function PriorArtSearchPage() {
             description:
               'Current and archival product listings, specs, manuals, videos, and teardowns.',
             type: 'bullets',
-            image: '/1.3.png',
+            image: '/stylized-features/search-product.png',
             items: [
               'Product specs and manuals',
-              'Marketing materials and videos',
               'Teardowns and technical docs',
-              'Archived web (Wayback Machine)',
+              'Archived web',
             ],
           },
           {
-            title: 'Replace prior art search firms—without lowering the bar',
+            title: 'Replace prior art search firms without lowering the bar',
             description:
               'Outside prior art search firms cost thousands and take days to weeks. &AI prior art search gives the control to the expert, allowing fast iterations and key results delivered at a fraction of the cost.',
             type: 'bullets',
@@ -118,9 +113,9 @@ export default function PriorArtSearchPage() {
             centered: true,
             background: 'light',
             items: [
-              'Explore broader, faster (patents + NPL + products + archives)',
-              'Results delivered with first-pass analysis',
-              'Keep the full trail when you need to explain why these are the best references',
+              'Explore patents, NPL, and product documentation faster',
+              'Results delivered with robust, clear analysis',
+              'An interface built for quick iteration and exploration',
             ],
           },
         ]}

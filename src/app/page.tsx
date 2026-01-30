@@ -86,7 +86,7 @@ export default function Home() {
         <div className="relative order-1 aspect-square w-32 rounded-2xl md:w-[34.8125rem] lg:order-2 xl:w-[36.375rem]">
           <Image
             fill
-            alt="landing-page-bg"
+            alt="AI-powered patent litigation workspace illustration"
             className="scale-110 object-contain"
             src="/Illustration-2.png"
           />
@@ -222,7 +222,7 @@ export default function Home() {
           <div className="border-gray-dark/5 relative aspect-[16/9] w-full rounded-xs border bg-gray-200">
             <Image
               fill
-              alt="built-for-patents-illustration"
+              alt="Patent document analysis showing automated claim mapping and prior art organization"
               className="object-contain object-center"
               src="/built-for-patents-illustration.png"
             />

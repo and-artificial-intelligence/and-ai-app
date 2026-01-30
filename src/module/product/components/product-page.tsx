@@ -1,13 +1,15 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
+import { ProductCard } from '@/common/components/product-card';
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
+
 import { CTASection } from '@/module/cta';
 
 export interface FAQ {
@@ -64,6 +66,7 @@ export interface ComparisonTable {
 export interface ProductPageProps {
   // Hero
   h1: string;
+  h1HighlightPrefix?: string; // Regular text before the highlight (e.g., "for ")
   h1Highlight?: string;
   subheading?: string;
   valueProp: string;
@@ -90,6 +93,7 @@ export interface ProductPageProps {
 
 export function ProductPage({
   h1,
+  h1HighlightPrefix,
   h1Highlight,
   subheading,
   valueProp,
@@ -113,7 +117,18 @@ export function ProductPage({
           <h1 className="text-element-high-em text-4xl md:text-5xl xl:text-6xl">
             {h1Highlight ? (
               <>
-                {h1} <span className="font-martina italic">{h1Highlight}</span>
+                {h1}
+                {h1HighlightPrefix ? (
+                  <span className="block">
+                    {h1HighlightPrefix}
+                    <span className="font-martina italic">{h1Highlight}</span>
+                  </span>
+                ) : (
+                  <>
+                    {' '}
+                    <span className="font-martina italic">{h1Highlight}</span>
+                  </>
+                )}
               </>
             ) : (
               h1
@@ -152,7 +167,7 @@ export function ProductPage({
         <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
           <div className="mx-auto max-w-4xl">
             {comparisonTable.title && (
-              <h2 className="font-martina text-element-high-em mb-4 text-center text-4.5xl xl:text-5xl">
+              <h2 className="font-martina text-element-high-em text-4.5xl mb-4 text-center xl:text-5xl">
                 {comparisonTable.title}
               </h2>
             )}
@@ -161,7 +176,7 @@ export function ProductPage({
                 {comparisonTable.description}
               </p>
             )}
-            <div className="overflow-x-auto">
+            <div className={`overflow-x-auto ${!comparisonTable.description ? 'mt-8' : ''}`}>
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="border-b-2 border-gray-300">
@@ -315,41 +330,23 @@ export function ProductPage({
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 z-0"
           >
-            <div className="relative h-full w-full [background-image:linear-gradient(to_right,rgba(0,0,0,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.06)_1px,transparent_1px)] [background-size:20px_20px] [background-position:0_0] [background-repeat:repeat] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_5%,rgba(0,0,0,1)_95%,rgba(0,0,0,0)_100%)] [mask-repeat:no-repeat] [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_5%,rgba(0,0,0,1)_95%,rgba(0,0,0,0)_100%)] [-webkit-mask-repeat:no-repeat]" />
+            <div className="relative h-full w-full [background-image:linear-gradient(to_right,rgba(0,0,0,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.06)_1px,transparent_1px)] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_5%,rgba(0,0,0,1)_95%,rgba(0,0,0,0)_100%)] [background-size:20px_20px] [background-position:0_0] [background-repeat:repeat] [mask-repeat:no-repeat] [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_5%,rgba(0,0,0,1)_95%,rgba(0,0,0,0)_100%)] [-webkit-mask-repeat:no-repeat]" />
           </div>
 
           <div className="relative z-10 mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
             <h3 className="text-element-mid-em mb-10 text-center text-sm font-medium tracking-wide uppercase">
-              Explore More Products
+              Explore the platform
             </h3>
             <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {relatedProducts.map((product) => (
-                <Link
+                <ProductCard
                   key={product.href}
-                  className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-gray-300 hover:shadow-lg"
+                  description={product.description ?? ''}
                   href={product.href}
-                >
-                  {product.image && (
-                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
-                      <Image
-                        alt={product.name}
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        fill
-                        src={product.image}
-                      />
-                    </div>
-                  )}
-                  <div className="flex flex-col p-5">
-                    <h4 className="text-element-high-em text-lg font-medium">
-                      {product.name}
-                    </h4>
-                    {product.description && (
-                      <p className="text-element-mid-em mt-2 text-sm">
-                        {product.description}
-                      </p>
-                    )}
-                  </div>
-                </Link>
+                  image={product.image ?? ''}
+                  name={product.name}
+                  variant="compact"
+                />
               ))}
             </div>
           </div>
@@ -391,14 +388,15 @@ function ContentSectionRenderer({
           >
             {/* Image */}
             <div className="w-full lg:w-1/2">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-gray-200">
-                <Image
-                  fill
-                  alt={section.title}
-                  className="object-cover"
-                  src={section.image!}
-                />
-              </div>
+              <Image
+                alt={section.title}
+                className="h-auto w-full rounded-lg border border-gray-200"
+                height={0}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                src={section.image!}
+                style={{ width: '100%', height: 'auto' }}
+                width={0}
+              />
             </div>
             {/* Content */}
             <div className="w-full lg:w-1/2">
@@ -485,9 +483,9 @@ function SectionContent({
     case 'bullets':
       return (
         <BulletsContent
+          bulletStyle={section.bulletStyle}
           centered={centered}
           items={section.items as string[]}
-          bulletStyle={section.bulletStyle}
         />
       );
     case 'numbered-steps':

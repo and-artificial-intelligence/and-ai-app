@@ -17,12 +17,6 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question:
-      "What's the difference between a prior art search and invalidity analysis?",
-    answer:
-      'A prior art search focuses on finding relevant references, while invalidity analysis goes further by mapping those references to specific claim elements, constructing legal theories (§102/§103), and building the narrative for why a patent is invalid. &AI does both in one workflow.',
-  },
-  {
     question: 'Can I build §103 combinations with motivation to combine?',
     answer:
       'Yes. Generate drafts for multiple references, see coverage gaps early, and propose §103 combinations—charting them before you invest time polishing.',
@@ -36,7 +30,7 @@ const faqs = [
   {
     question: 'What deliverables do I get?',
     answer:
-      'You receive invalidity claim charts with element-by-element mappings, §102/§103/§112 contentions, motivation to combine narratives, and all exports in Word format ready for filings or expert reports.',
+      'You receive invalidity claim charts with element-by-element mappings, invalidity contentions, motivation to combine narratives, and all exports in Word format ready for filings.',
   },
 ];
 
@@ -73,10 +67,8 @@ export default function InvalidityAnalysisPage() {
       <ProductPage
         h1="Patent"
         h1Highlight="Invalidity Analysis"
-        subheading="From discovery to contentions—without switching tools."
-        valueProp={`&AI is a collaborative workspace for patent invalidity work that produces trial-ready work product grounded in your case.
-
-Discover prior art, generate claim charts, and draft §102, §103, and §112 arguments—built around the way litigators actually work.`}
+        subheading="From discovery to contentions, without switching tools."
+        valueProp={`Discover prior art, generate claim charts, and draft §102, §103, and §112 arguments—built around the way litigators actually work.`}
         secondaryCta={{
           label: 'See Prior Art Search',
           href: '/product/prior-art-search',
@@ -84,17 +76,17 @@ Discover prior art, generate claim charts, and draft §102, §103, and §112 arg
         sections={[
           {
             label: 'The invalidity workflow',
-            title: 'Find the art. Map the claim. Draft the arguments.',
+            title: 'Find the art. Build the charts. Draft the arguments.',
             description:
-              'Invalidity work breaks down into the same loop every time. &AI keeps that loop in one place—so when strategy changes, you iterate instead of rebuilding.',
+              'Invalidity work is document- and citation-driven, and it evolves as the record develops and positions sharpen. &AI supports the core steps—reference review, limitation mapping, and theory development—so teams can revise charts and arguments efficiently without duplicating work.',
             type: 'bullets',
-            image: '/2.1.png',
+            image: '/stylized-features/chart-claim.png',
             items: [
-              'Find the best references',
-              'Map limitations with clean citations',
-              'Pressure-test §102 / §103 theories',
-              'Address §112 vulnerabilities (written description / enablement)',
-              'Draft contentions and supporting materials',
+              'Source, compare, and organize the strongest prior arts',
+              'Map each limitation with precise, reviewable citations',
+              'Develop and pressure-test §102 and §103 positions',
+              'Assess §112 vulnerabilities, including written description and enablement',
+              'Generate drafts for contentions and supporting materials',
             ],
           },
           {
@@ -103,65 +95,50 @@ Discover prior art, generate claim charts, and draft §102, §103, and §112 arg
             description:
               'Claim construction drives everything—invalidity, infringement, and settlement posture. Build Markman-ready constructions with a clear evidentiary record.',
             type: 'bullets',
-            image: '/2.2.png',
+            image: '/stylized-features/chart-construction.png',
             items: [
               'Zero-in on disputed terms and generate draft definitions fast',
-              'Ground each definition in intrinsic evidence first (claims, specification, prosecution history)',
-              "Keep constructions 'live' as strategy evolves—so charts, analysis, and drafts stay consistent",
+              'Ground each definition in intrinsic evidence from the claims, specification, and prosecution history',
+              'Keep constructions live as strategy evolves—so charts, analysis, and drafts stay consistent',
             ],
           },
           {
-            title: '§102 — Single-reference theories with pinpoint support',
+            title: '§102. Single-reference theories with pinpoint support',
             description:
               "§102 turns on whether the claim is anticipated under the statute's novelty framework.",
             type: 'bullets',
             centered: true,
             background: 'light',
             items: [
-              'Isolate the exact limitation that makes or breaks the theory',
-              "Collect pinpoint citations (not just 'close' passages)",
-              'Maintain a clean trail from claim → evidence → draft',
+              'Identify the specific limitation that controls the outcome',
+              'Capture pinpoint citations—not just “close” passages',
             ],
           },
           {
             title:
-              '§103 — Combination suggestions and charts that evolve with strategy',
+              '§103. Combination suggestions and charts that evolve with strategy',
             description:
               '§103 is a non-obviousness inquiry—often requiring combinations, motivations, and clean mapping across multiple references.',
             type: 'bullets',
             centered: true,
             background: 'light',
             items: [
-              'Generate drafts for multiple references',
-              'See coverage gaps early',
-              'Propose §103 combinations and chart them before you invest time polishing',
+              'Build limitation mappings across multiple references—side by side',
+              'Surface coverage gaps and weak links early',
+              'Propose and chart candidate §103 combinations before investing time in a polished theory',
             ],
           },
           {
-            title: '§112 — Surface vulnerabilities and draft around them',
+            title: '§112. Surface vulnerabilities in the target patent',
             description:
-              '§112(a) requires written description and enablement, and teams often need to evaluate whether the spec supports the full claim scope.',
+              '§112(a) requires written description and enablement. When claim scope stretches beyond what the specification actually teaches, teams need a structured way to evaluate support.',
             type: 'bullets',
             centered: true,
             background: 'light',
             items: [
-              'Anchor analysis in the specification',
-              'Flag weak support by limitation / claim scope',
-              'Draft written description and enablement narratives faster',
-            ],
-          },
-          {
-            title: 'Discover better art. Build better theories. Draft faster.',
-            description:
-              'When positions change, you iterate instead of starting over. &AI is designed as a single repository so you can revise searches, charts, and drafts without restarting the entire pipeline.',
-            type: 'bullets',
-            bulletStyle: 'bullet',
-            centered: true,
-            dividerBelow: true,
-            items: [
-              'Trial-ready work product grounded in your case',
-              'One workspace from discovery to contentions',
-              'Iterate when strategy changes—without rebuilding',
+              'Ground the analysis in the specification and figures',
+              'Flag thin or missing support by limitation and asserted scope',
+              'Accelerate written description and enablement drafting with citation-backed narratives',
             ],
           },
         ]}

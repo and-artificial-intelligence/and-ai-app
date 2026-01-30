@@ -19,22 +19,22 @@ const faqs = [
   {
     question: 'Can I request a free sample claim chart?',
     answer:
-      "Yes—send a patent and one or more references (prior art or product materials). We'll return a first-draft export so you can validate citations, mapping quality, and formatting.",
+      "Yes. Send us a patent and one or more references. We'll return a first-draft export so you can validate citations, mapping quality, and formatting.",
   },
   {
     question: 'Do you support claim construction?',
     answer:
-      'Yes—our charts use claim constructions generated from the as-filed application, prosecution history, and related family.',
+      'Yes. Our charts use claim constructions generated from the patent, prosecution history, and patent family.',
   },
   {
     question: 'What kinds of charts can I generate?',
     answer:
-      'You can generate invalidity (including §102/§103) and evidence-of-use charts. The workflow is designed for litigation-ready exports.',
+      'You can generate invalidity §102/§103/§112 and evidence-of-use charts. The workflow is designed for litigation-ready exports.',
   },
   {
     question: 'Do I stay in control of what gets exported?',
     answer:
-      'Yes—every citation requires approval before it shows up in any exported work product.',
+      'Yes. Every citation requires approval before it shows up in any exported work product. There is absolutely no generated content included in any aspect of claim charts, from citations to your boilerplate language.',
   },
 ];
 
@@ -68,8 +68,8 @@ export default function ClaimChartsPage() {
       <ProductPage
         h1="Litigation-Ready"
         h1Highlight="Claim Charts"
-        subheading="Precise claim charts in minutes, ready for you to refine"
-        valueProp="Generate precise invalidity and evidence-of-use claim charts in minutes, with dozens of formatting settings that make your chart exports trial-ready."
+        subheading="Trial-ready invalidity and evidence-of-use claim charts in minutes. "
+        valueProp="Generate invalidity and evidence-of-use claim charts in minutes, with exact citations and dozens of formatting settings that allow you to export trial-ready charts."
         secondaryCta={{
           label: 'Request a free sample chart',
           href: '/request-sample-chart',
@@ -77,11 +77,11 @@ export default function ClaimChartsPage() {
         sections={[
           {
             label: 'Claims and elements',
-            title: 'Element-by-element charts with citations',
+            title: 'Limitation-by-limitation charts with citations',
             description:
-              'Charts are composed entirely of citations and produced in a trial-ready format—so all you have to do is review, edit, and export.',
+              'Produce limitation-by-limitation claim charts with citations to prior art and product documentation. Charts are composed entirely of exact citations, so all you have to do is review, refine, and export.',
             type: 'bullets',
-            image: '/2.1.png',
+            image: '/stylized-features/chart-claim.png',
             items: [
               'Limitation-by-limitation mapping',
               'Pinpoint citations to source material',
@@ -90,57 +90,44 @@ export default function ClaimChartsPage() {
           },
           {
             label: 'Claim construction',
-            title: 'Informed by claim construction',
+            title: 'Claim terms as essential context',
             description:
-              'Each chart is informed by a detailed claim construction. Constructions are generated from the as-filed application, prosecution history, and related family.',
+              'Claim construction drives everything—invalidity, infringement, and settlement posture. Build Markman-ready constructions with a clear evidentiary record.',
             type: 'bullets',
-            image: '/2.2.png',
+            image: '/stylized-features/chart-construction.png',
             items: [
-              'Tighten disputed terms before mapping evidence',
+              'Zero-in on disputed terms and generate draft definitions',
+              'Ground each definition in intrinsic evidence from the claims, specification, and prosecution history',
               'Preserve consistency across drafts and exports',
-              'Keep the record in view as positions evolve',
+              'Export Markman-ready charts',
             ],
           },
           {
             label: 'Invalidity charts',
-            title: 'Built for §102, §103, and §112 analysis',
+            title: 'Invalidity charts that hold up under scrutiny.',
             description:
-              'Charts supports invalidity charting in the way litigation teams actually work.',
+              'Purpose-built for §102, §103, and §112—from single-reference mapping to multi-reference combinations to written support gaps.',
             type: 'bullets',
             bulletStyle: 'bullet',
             centered: true,
             items: [
-              '§102 charts (anticipation)',
-              '§103 charts (obviousness)',
-              '§112 support (written support)',
+              'Anticipation (§102): one reference, fully mapped',
+              'Obviousness (§103): combination mapping that&apos;s easy to follow',
+              'Written support (§112): identify where the spec doesn&apos;t back the claims fully',
             ],
           },
           {
             label: 'Evidence of Use charts',
-            title: 'Map claims to real products—fast',
+            title: 'Evidence-of-use, accelerated.',
             description:
-              "Generate evidence-of-use charts against product materials such as specs, manuals, teardowns, screenshots, and video—then refine with search across everything you've uploaded.",
+              'Build evidence-of-use (EOU) charts against virtually any product documentation.',
             type: 'bullets',
             bulletStyle: 'bullet',
             centered: true,
             items: [
-              'Product specs and manuals',
-              'Teardowns and screenshots',
-              'Video and marketing materials',
-            ],
-          },
-          {
-            label: 'Compare references',
-            title: 'Pick the strongest reference before you polish',
-            description:
-              'Instead of committing to one reference and discovering gaps late, create first-draft charts for multiple candidates and quickly see which elements are strongest.',
-            type: 'bullets',
-            bulletStyle: 'bullet',
-            centered: true,
-            items: [
-              'Which elements are strongest per reference',
-              'Where the gaps are',
-              'Whether a §103 combination is more efficient than forcing a weak single reference',
+              'Specs, manuals, and datasheets',
+              'Teardowns, photos, and screenshots',
+              'Videos and demo footage',
             ],
           },
         ]}

@@ -52,44 +52,6 @@ const solutionsByType = [
     href: '/solutions/in-house',
     description: 'Litigation prep, infringement mining, transactions',
   },
-  {
-    name: 'Litigation Funds',
-    href: '/solutions/litigation-funds',
-    description: 'Discover opportunities at scale',
-  },
-];
-
-const solutionsByUseCase = [
-  {
-    name: 'Defense Litigation',
-    href: '/solutions/defense-litigation',
-    description: 'Build stronger invalidity positions faster',
-  },
-  {
-    name: 'Defense Business Development',
-    href: '/solutions/defense-business-development',
-    description: 'Win more mandates with rapid assessments',
-  },
-  {
-    name: 'Plaintiff Litigation',
-    href: '/solutions/plaintiff-litigation',
-    description: 'Find infringement evidence at scale',
-  },
-  {
-    name: 'Infringement Mining',
-    href: '/solutions/infringement-mining',
-    description: 'Discover infringing products systematically',
-  },
-  {
-    name: 'Transactions',
-    href: '/solutions/transactions',
-    description: 'Accelerate IP due diligence',
-  },
-  {
-    name: 'Litigation Funding',
-    href: '/solutions/litigation-funding',
-    description: 'Evaluate case strength for funding decisions',
-  },
 ];
 
 export const Navbar = () => {
@@ -273,70 +235,32 @@ export const Navbar = () => {
               </button>
               <div
                 className={cn(
-                  'bg-background absolute top-full left-0 mt-2 min-w-[560px] rounded-lg border border-gray-200 py-4 shadow-lg transition-all duration-200',
+                  'bg-background absolute top-full left-0 mt-2 min-w-[320px] rounded-lg border border-gray-200 py-2 shadow-lg transition-all duration-200',
                   solutionsOpen
                     ? 'pointer-events-auto translate-y-0 opacity-100'
                     : 'pointer-events-none -translate-y-2 opacity-0',
                 )}
               >
-                <div className="flex gap-8 px-6">
-                  {/* By Type Column */}
-                  <div className="flex-1">
-                    <p className="text-element-low-em mb-3 text-xs font-medium tracking-wide uppercase">
-                      By Type
-                    </p>
-                    <div className="space-y-1">
-                      {solutionsByType.map((solution) => (
-                        <Link
-                          key={solution.href}
-                          className={cn(
-                            'hover:bg-background-lighter -mx-2 block rounded-md px-2 py-2 transition-colors',
-                            mounted &&
-                              pathname === solution.href &&
-                              'bg-background-lighter',
-                          )}
-                          href={solution.href}
-                          onClick={() => setSolutionsOpen(false)}
-                        >
-                          <span className="text-element-high-em block text-sm font-medium">
-                            {solution.name}
-                          </span>
-                          <span className="text-element-mid-em block text-xs">
-                            {solution.description}
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                  {/* By Use Case Column */}
-                  <div className="flex-1">
-                    <p className="text-element-low-em mb-3 text-xs font-medium tracking-wide uppercase">
-                      By Use Case
-                    </p>
-                    <div className="space-y-1">
-                      {solutionsByUseCase.map((solution) => (
-                        <Link
-                          key={solution.href}
-                          className={cn(
-                            'hover:bg-background-lighter -mx-2 block rounded-md px-2 py-2 transition-colors',
-                            mounted &&
-                              pathname === solution.href &&
-                              'bg-background-lighter',
-                          )}
-                          href={solution.href}
-                          onClick={() => setSolutionsOpen(false)}
-                        >
-                          <span className="text-element-high-em block text-sm font-medium">
-                            {solution.name}
-                          </span>
-                          <span className="text-element-mid-em block text-xs">
-                            {solution.description}
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                {solutionsByType.map((solution) => (
+                  <Link
+                    key={solution.href}
+                    className={cn(
+                      'hover:bg-background-lighter block px-4 py-3 transition-colors',
+                      mounted &&
+                        pathname === solution.href &&
+                        'bg-background-lighter',
+                    )}
+                    href={solution.href}
+                    onClick={() => setSolutionsOpen(false)}
+                  >
+                    <span className="text-element-high-em block text-sm font-medium">
+                      {solution.name}
+                    </span>
+                    <span className="text-element-mid-em block text-xs">
+                      {solution.description}
+                    </span>
+                  </Link>
+                ))}
               </div>
             </div>
             <Link
@@ -359,7 +283,7 @@ export const Navbar = () => {
               )}
               href="/blog"
             >
-              Blog
+              Insights
             </Link>
             <Link
               className={cn(
@@ -543,72 +467,34 @@ export const Navbar = () => {
               </button>
               <div
                 className={cn(
-                  'mt-3 flex flex-col gap-6 overflow-hidden pl-4 transition-all duration-300',
+                  'mt-3 flex flex-col gap-4 overflow-hidden pl-4 transition-all duration-300',
                   mobileSolutionsOpen
-                    ? 'max-h-[800px] opacity-100'
+                    ? 'max-h-[400px] opacity-100'
                     : 'max-h-0 opacity-0',
                 )}
               >
-                {/* By Type */}
-                <div>
-                  <p className="text-element-low-em mb-2 text-xs font-medium tracking-wide uppercase">
-                    By Type
-                  </p>
-                  <div className="space-y-3">
-                    {solutionsByType.map((solution) => (
-                      <Link
-                        key={solution.href}
-                        className="block"
-                        href={solution.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <span
-                          className={cn(
-                            'text-element-mid-em hover:text-element-high-em block text-base transition-colors',
-                            mounted &&
-                              pathname === solution.href &&
-                              'text-element-high-em',
-                          )}
-                        >
-                          {solution.name}
-                        </span>
-                        <span className="text-element-low-em block text-sm">
-                          {solution.description}
-                        </span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-                {/* By Use Case */}
-                <div>
-                  <p className="text-element-low-em mb-2 text-xs font-medium tracking-wide uppercase">
-                    By Use Case
-                  </p>
-                  <div className="space-y-3">
-                    {solutionsByUseCase.map((solution) => (
-                      <Link
-                        key={solution.href}
-                        className="block"
-                        href={solution.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <span
-                          className={cn(
-                            'text-element-mid-em hover:text-element-high-em block text-base transition-colors',
-                            mounted &&
-                              pathname === solution.href &&
-                              'text-element-high-em',
-                          )}
-                        >
-                          {solution.name}
-                        </span>
-                        <span className="text-element-low-em block text-sm">
-                          {solution.description}
-                        </span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
+                {solutionsByType.map((solution) => (
+                  <Link
+                    key={solution.href}
+                    className="block"
+                    href={solution.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <span
+                      className={cn(
+                        'text-element-mid-em hover:text-element-high-em block text-base transition-colors',
+                        mounted &&
+                          pathname === solution.href &&
+                          'text-element-high-em',
+                      )}
+                    >
+                      {solution.name}
+                    </span>
+                    <span className="text-element-low-em block text-sm">
+                      {solution.description}
+                    </span>
+                  </Link>
+                ))}
               </div>
             </div>
             <Link
@@ -633,7 +519,7 @@ export const Navbar = () => {
               href="/blog"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Blog
+              Insights
             </Link>
             <Link
               className={cn(

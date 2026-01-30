@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 
 import { Footer } from '@/common/components/footer';
@@ -5,10 +6,13 @@ import { SchemaScript } from '@/common/components/schema-script';
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
 
-import {
-  generateBreadcrumbSchema,
-  generatePersonSchema,
-} from '@/lib/schema';
+import { generateBreadcrumbSchema, generatePersonSchema } from '@/lib/schema';
+
+export const metadata: Metadata = {
+  title: 'Company',
+  description:
+    'Meet the team behind &AI. Founded by MIT engineers building the AI workspace for patent litigation.',
+};
 
 interface Advisor {
   name: string;
@@ -68,7 +72,10 @@ export default function About() {
   return (
     <main className="flex min-h-screen flex-col">
       <SchemaScript
-        schema={[generateBreadcrumbSchema(companyBreadcrumb), ...advisorSchemas]}
+        schema={[
+          generateBreadcrumbSchema(companyBreadcrumb),
+          ...advisorSchemas,
+        ]}
       />
 
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
@@ -83,7 +90,7 @@ export default function About() {
             <div className="text-element-mid-em space-y-4 text-base xl:text-lg">
               <p>
                 Co-founders Herbie Turner and Caleb Harris met at MIT, where
-                they both studied computer science through undergrad and
+                they both studied computer science through undergraduate and
                 graduate school. Caleb went on to serve as a technical expert in
                 patent litigation, whereas Herbie built his career in machine
                 learning and AI. Through the lenses of procurement and

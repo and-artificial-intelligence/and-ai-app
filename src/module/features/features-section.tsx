@@ -32,14 +32,14 @@ const features: ItemAndSliderProps[] = [
         title: 'Real-time feed',
         description:
           'A real-time feed with pitch recommendations and configurable alerts and filters',
-        imageSrc: '/OpportunitiesOverview.png',
+        imageSrc: '/stylized-features/opportunities-feed.png',
       },
       {
         icon: <SearchDocumentIcon />,
         title: 'Personal and team recommendations',
         description:
           "The right cases, triaged to the right partner based on your team's prior experience",
-        imageSrc: '/OpportunitiesDetail.png',
+        imageSrc: '/stylized-features/opportunities-detail.png',
       },
     ],
   },
@@ -56,14 +56,14 @@ const features: ItemAndSliderProps[] = [
         title: 'Claims and elements',
         description:
           'Element-by-element claim charts with citations to prior art and product documentation',
-        imageSrc: '/2.1.png',
+        imageSrc: '/stylized-features/chart-claim.png',
       },
       {
         icon: <ListIcon />,
         title: 'Claim construction',
         description:
-          'Claim constructions generated from the as-filed application, prosecution history, related family, and more',
-        imageSrc: '/2.2.png',
+          'Claim constructions generated from the patent, prosecution history, and family',
+        imageSrc: '/stylized-features/chart-construction.png',
       },
     ],
   },
@@ -79,21 +79,21 @@ const features: ItemAndSliderProps[] = [
         title: 'Patents',
         description:
           'Patent applications and publications from major jurisdictions',
-        imageSrc: '/1.1.png',
+        imageSrc: '/stylized-features/search-patent.png',
       },
       {
         icon: <FileCopyIcon />,
         title: 'Non-patent literature',
         description:
           'Research papers, standards, clinical trials, and more across the internet',
-        imageSrc: '/1.2.png',
+        imageSrc: '/stylized-features/search-npl.png',
       },
       {
         icon: <Ar3DIcon />,
         title: 'Products',
         description:
           'Current and archival product listings, specifications, manuals, videos, and teardowns',
-        imageSrc: '/1.3.png',
+        imageSrc: '/stylized-features/search-product.png',
       },
     ],
   },
@@ -109,23 +109,23 @@ const features: ItemAndSliderProps[] = [
         title: 'Templates',
         description:
           'Pre-formatted templates with smart variables and generation blocks for flexible, on-demand drafting',
-        imageSrc: '/3.1.png',
+        imageSrc: '/stylized-features/draft-template.png',
       },
       {
         icon: <MessageIcon />,
         title: 'Editor',
         description:
           'Collaborative workspace where your team and AI refine documents together in real time',
-        imageSrc: '/3.2.png',
+        imageSrc: '/stylized-features/draft-memo.png',
       },
     ],
   },
   {
     tag: 'Tables',
     tagColor: BrandColor.PRIMARY,
-    title: 'Discover opportunities worth pursuing.',
+    title: 'Monetize your portfolio at scale.',
     description:
-      'Query thousands of documents simultaneously to identify litigation opportunities and infringement patterns.',
+      'Query thousands of documents simultaneously to identify infringement patterns and prioritize the products that deserve a full chart.',
     items: [
       {
         icon: <SearchDocumentIcon />,
@@ -140,7 +140,7 @@ const features: ItemAndSliderProps[] = [
           'Slice and filter tables using natural language or metadata to surface exactly what you need',
       },
     ],
-    singleImage: '/4.1.png',
+    singleImage: '/stylized-features/table.png',
   },
 ];
 

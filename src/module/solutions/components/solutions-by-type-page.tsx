@@ -41,10 +41,10 @@ export interface SolutionsByTypePageProps {
   // Value props section
   valueProps?: ValueProp[];
 
-  // Use case links - what this type of customer can do
+  // Use case links - what this type of customer can do (optional)
   useCasesTitle?: string;
   useCasesDescription?: string;
-  useCases: UseCaseLink[];
+  useCases?: UseCaseLink[];
 
   // Testimonial (optional)
   testimonial?: {
@@ -133,9 +133,9 @@ export function SolutionsByTypePage({
       {valueProps && valueProps.length > 0 && (
         <section className="border-y border-gray-200 bg-background-lighter py-16 md:py-20">
           <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16">
               {valueProps.map((prop, index) => (
-                <div key={index} className="text-center">
+                <div key={index} className="w-full max-w-[280px] text-center sm:w-auto">
                   <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-orange-100">
                     <ValuePropIcon type={prop.icon} />
                   </div>
@@ -153,52 +153,54 @@ export function SolutionsByTypePage({
       )}
 
       {/* Use Cases Section */}
-      <section className="py-16 md:py-20">
-        <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
-          <div className="mb-12 text-center">
-            <h2 className="text-element-high-em text-2xl font-medium md:text-3xl">
-              {useCasesTitle}
-            </h2>
-            {useCasesDescription && (
-              <p className="text-element-mid-em mx-auto mt-4 max-w-2xl text-lg">
-                {useCasesDescription}
-              </p>
-            )}
-          </div>
-          <div className={`mx-auto grid gap-6 md:grid-cols-2 ${useCases.length > 4 ? 'max-w-5xl lg:grid-cols-3' : 'max-w-4xl'}`}>
-            {useCases.map((useCase) => (
-              <Link
-                key={useCase.href}
-                className="group flex flex-col rounded-xl border border-gray-200 bg-white p-6 transition-all hover:border-gray-300 hover:shadow-lg"
-                href={useCase.href}
-              >
-                <h3 className="text-element-high-em mb-2 text-lg font-medium group-hover:text-orange-600">
-                  {useCase.name}
-                </h3>
-                <p className="text-element-mid-em flex-1 text-sm">
-                  {useCase.description}
+      {useCases && useCases.length > 0 && (
+        <section className="py-16 md:py-20">
+          <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
+            <div className="mb-12 text-center">
+              <h2 className="text-element-high-em text-2xl font-medium md:text-3xl">
+                {useCasesTitle}
+              </h2>
+              {useCasesDescription && (
+                <p className="text-element-mid-em mx-auto mt-4 max-w-2xl text-lg">
+                  {useCasesDescription}
                 </p>
-                <div className="mt-4 flex items-center text-sm font-medium text-orange-600">
-                  Learn more
-                  <svg
-                    className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M9 5l7 7-7 7"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                    />
-                  </svg>
-                </div>
-              </Link>
-            ))}
+              )}
+            </div>
+            <div className={`mx-auto grid gap-6 md:grid-cols-2 ${useCases.length > 4 ? 'max-w-5xl lg:grid-cols-3' : 'max-w-4xl'}`}>
+              {useCases.map((useCase) => (
+                <Link
+                  key={useCase.href}
+                  className="group flex flex-col rounded-xl border border-gray-200 bg-white p-6 transition-all hover:border-gray-300 hover:shadow-lg"
+                  href={useCase.href}
+                >
+                  <h3 className="text-element-high-em mb-2 text-lg font-medium group-hover:text-orange-600">
+                    {useCase.name}
+                  </h3>
+                  <p className="text-element-mid-em flex-1 text-sm">
+                    {useCase.description}
+                  </p>
+                  <div className="mt-4 flex items-center text-sm font-medium text-orange-600">
+                    Learn more
+                    <svg
+                      className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M9 5l7 7-7 7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                      />
+                    </svg>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Testimonial Section */}
       {testimonial && (

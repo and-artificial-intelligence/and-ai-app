@@ -57,33 +57,34 @@ export const PRODUCTS: Product[] = [
   {
     name: 'Prior Art Search',
     href: '/product/prior-art-search',
-    image: '/1.1.png',
+    image: '/stylized-features/search-patent.png',
     description:
       'Discover 60M+ patents and the full internet of NPL and products.',
   },
   {
     name: 'Claim Charts',
     href: '/product/claim-charts',
-    image: '/3.1.png',
+    image: '/stylized-features/chart-claim.png',
     description: 'Generate litigation-ready claim charts in minutes.',
   },
   {
     name: 'Business Development',
     href: '/product/patent-litigation-business-development',
-    image: '/2.2.png',
+    image: '/stylized-features/opportunities-feed.png',
     description: 'Grow your practice as both plaintiff and defense counsel.',
   },
   {
     name: 'Invalidity Analysis',
     href: '/product/invalidity-analysis',
-    image: '/2.1.png',
+    image: '/stylized-features/chart-construction.png',
     description: 'Build robust arguments for §101, §102, §103, and §112.',
   },
   {
     name: 'Infringement Detection',
     href: '/product/infringement-detection',
-    image: '/4.1.png',
-    description: 'Find evidence of use faster with product search and analysis.',
+    image: '/stylized-features/table.png',
+    description:
+      'Find evidence of use faster with product search and analysis.',
   },
 ];
 
