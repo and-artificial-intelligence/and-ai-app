@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 
-import {
-  generateBreadcrumbSchema,
-  JsonLd,
-} from '@/common/components/structured-data';
+import { SchemaScript } from '@/common/components/schema-script';
+
+import { generateBreadcrumbSchema } from '@/lib/schema';
 
 export const metadata: Metadata = {
-  title: 'Book a Demo | &AI',
+  title: 'Book a Demo',
   description:
     'Schedule a free trial and demo of &AI. See how our AI platform can help streamline your patent litigation workflow.',
 };
@@ -23,7 +22,7 @@ export default function BookDemoLayout({
 }) {
   return (
     <>
-      <JsonLd data={generateBreadcrumbSchema(breadcrumbItems)} />
+      <SchemaScript schema={generateBreadcrumbSchema(breadcrumbItems)} />
       {children}
     </>
   );

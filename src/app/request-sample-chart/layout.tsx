@@ -1,19 +1,21 @@
 import type { Metadata } from 'next';
 
-import {
-  generateBreadcrumbSchema,
-  JsonLd,
-} from '@/common/components/structured-data';
+import { SchemaScript } from '@/common/components/schema-script';
+
+import { generateBreadcrumbSchema } from '@/lib/schema';
 
 export const metadata: Metadata = {
-  title: 'Request a Sample Claim Chart | &AI',
+  title: 'Request a Sample Claim Chart',
   description:
     'See how &AI can help you build claim charts faster and more accurately. Request a free sample chart for your team to evaluate.',
 };
 
 const breadcrumbItems = [
   { name: 'Home', url: 'https://tryandai.com' },
-  { name: 'Request Sample Chart', url: 'https://tryandai.com/request-sample-chart' },
+  {
+    name: 'Request Sample Chart',
+    url: 'https://tryandai.com/request-sample-chart',
+  },
 ];
 
 export default function RequestSampleChartLayout({
@@ -23,7 +25,7 @@ export default function RequestSampleChartLayout({
 }) {
   return (
     <>
-      <JsonLd data={generateBreadcrumbSchema(breadcrumbItems)} />
+      <SchemaScript schema={generateBreadcrumbSchema(breadcrumbItems)} />
       {children}
     </>
   );

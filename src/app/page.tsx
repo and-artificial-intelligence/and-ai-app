@@ -15,27 +15,22 @@ import {
   SvaIcon,
   YCombinatorIcon,
 } from '@/common/components/icon';
-import {
-  generateBreadcrumbSchema,
-  generateSoftwareApplicationSchema,
-  JsonLd,
-} from '@/common/components/structured-data';
+import { SchemaScript } from '@/common/components/schema-script';
 import { SubHeader } from '@/common/components/subheader';
 import { TypingAnimation } from '@/common/components/typing-animation';
 import { Links } from '@/common/constants/links';
 import { cn } from '@/common/functions/cn';
 import { BrandColor } from '@/common/types/common';
 
+import {
+  generateBreadcrumbSchema,
+  generateSoftwareApplicationSchema,
+} from '@/lib/schema';
 import { CTASection } from '@/module/cta';
 import { FeaturesSection } from '@/module/features';
 import { PrivacyCard, PrivacyCardProps } from '@/module/privacy';
 
 const homeBreadcrumb = [{ name: 'Home', url: 'https://tryandai.com' }];
-
-const pricingOffers = [
-  { name: 'Core', price: '375' },
-  { name: 'Pro', price: '625' },
-];
 
 export default function Home() {
   const typingTexts: string[] = [
@@ -70,8 +65,17 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col">
-      <JsonLd data={generateSoftwareApplicationSchema(pricingOffers)} />
-      <JsonLd data={generateBreadcrumbSchema(homeBreadcrumb)} />
+      <SchemaScript
+        schema={[
+          generateSoftwareApplicationSchema({
+            name: '&AI',
+            description:
+              '&AI delivers trial-ready work product for patent litigators — fast enough for pitches, strong enough for court.',
+            url: 'https://tryandai.com',
+          }),
+          generateBreadcrumbSchema(homeBreadcrumb),
+        ]}
+      />
 
       {/* HERO SECTION */}
       <section

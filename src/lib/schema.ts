@@ -104,6 +104,72 @@ export function schemaToString(schema: object): string {
   return JSON.stringify(schema);
 }
 
+export interface ArticleSchemaProps {
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified?: string;
+  author?: string;
+  image?: string;
+  url: string;
+}
+
+/**
+ * Generate Article JSON-LD schema for blog posts
+ */
+export function generateArticleSchema(props: ArticleSchemaProps) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: props.headline,
+    description: props.description,
+    datePublished: props.datePublished,
+    ...(props.dateModified && { dateModified: props.dateModified }),
+    author: {
+      '@type': 'Organization',
+      name: '&AI',
+      url: 'https://tryandai.com',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: '&AI',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://tryandai.com/Logo-Design-Full-Color-Black.png',
+      },
+    },
+    ...(props.image && { image: props.image }),
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': props.url,
+    },
+  };
+}
+
+export interface PersonSchemaProps {
+  name: string;
+  jobTitle: string;
+  worksFor: string;
+  image?: string;
+}
+
+/**
+ * Generate Person JSON-LD schema for advisory board members
+ */
+export function generatePersonSchema(props: PersonSchemaProps) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: props.name,
+    jobTitle: props.jobTitle,
+    worksFor: {
+      '@type': 'Organization',
+      name: props.worksFor,
+    },
+    ...(props.image && { image: props.image }),
+  };
+}
+
 /**
  * Generate combined schema for a product page
  */

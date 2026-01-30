@@ -1,13 +1,14 @@
 import Image from 'next/image';
 
 import { Footer } from '@/common/components/footer';
-import {
-  generateBreadcrumbSchema,
-  generatePersonListSchema,
-  JsonLd,
-} from '@/common/components/structured-data';
+import { SchemaScript } from '@/common/components/schema-script';
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
+
+import {
+  generateBreadcrumbSchema,
+  generatePersonSchema,
+} from '@/lib/schema';
 
 interface Advisor {
   name: string;
@@ -21,55 +22,54 @@ const companyBreadcrumb = [
   { name: 'Company', url: 'https://tryandai.com/company' },
 ];
 
+const advisors: Advisor[] = [
+  {
+    name: 'Peter Magic',
+    title: 'Managing Partner, San Francisco',
+    firm: 'Desmarais LLP',
+    imageSrc: '/advisor-1.jpeg',
+  },
+  {
+    name: 'Charles Calkins',
+    title: 'Partner',
+    firm: 'Kilpatrick Townsend',
+    imageSrc: '/advisor-4.jpeg',
+  },
+  {
+    name: 'Tigran Guledjian',
+    title: 'IP Litigation Co-Chair',
+    firm: 'Quinn Emanuel',
+    imageSrc: '/advisor-2.jpeg',
+  },
+  {
+    name: 'Ybet Villacorta',
+    title: 'Of Counsel',
+    firm: 'Foley & Lardner',
+    imageSrc: '/advisor-3.jpg',
+  },
+  {
+    name: 'Josef Schenker',
+    title: 'Partner',
+    firm: 'Gish PLLC',
+    imageSrc: '/josef.jpg',
+  },
+];
+
+const advisorSchemas = advisors.map((advisor) =>
+  generatePersonSchema({
+    name: advisor.name,
+    jobTitle: advisor.title,
+    worksFor: advisor.firm,
+    image: `https://tryandai.com${advisor.imageSrc}`,
+  }),
+);
+
 export default function About() {
-  const _advisors: Advisor[] = [
-    {
-      name: 'Peter Magic',
-      title: 'Managing Partner, San Francisco',
-      firm: 'Desmarais LLP',
-      imageSrc: '/advisor-1.jpeg',
-    },
-    {
-      name: 'Charles Calkins',
-      title: 'Partner',
-      firm: 'Kilpatrick Townsend',
-      imageSrc: '/advisor-4.jpeg',
-    },
-    {
-      name: 'Tigran Guledjian',
-      title: 'IP Litigation Co-Chair',
-      firm: 'Quinn Emanuel',
-      imageSrc: '/advisor-2.jpeg',
-    },
-    {
-      name: 'Ybet Villacorta',
-      title: 'Of Counsel',
-      firm: 'Foley & Lardner',
-      imageSrc: '/advisor-3.jpg',
-    },
-    {
-      name: 'Josef Schenker',
-      title: 'Partner',
-      firm: 'Gish PLLC',
-      imageSrc: '/josef.jpg',
-    },
-  ];
-
-  const advisorSchemas = generatePersonListSchema(
-    _advisors.map((advisor) => ({
-      name: advisor.name,
-      jobTitle: advisor.title,
-      worksFor: advisor.firm,
-      image: `https://tryandai.com${advisor.imageSrc}`,
-    })),
-  );
-
   return (
     <main className="flex min-h-screen flex-col">
-      <JsonLd data={generateBreadcrumbSchema(companyBreadcrumb)} />
-      {advisorSchemas.map((schema, index) => (
-        <JsonLd key={index} data={schema} />
-      ))}
+      <SchemaScript
+        schema={[generateBreadcrumbSchema(companyBreadcrumb), ...advisorSchemas]}
+      />
 
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20 xl:gap-24">
@@ -137,7 +137,7 @@ export default function About() {
           </div>
 
           <div className="grid gap-8 px-6 py-12 md:grid-cols-2 md:px-16 md:py-16 lg:grid-cols-5 lg:px-6 xl:px-20">
-            {_advisors.map((advisor, index) => (
+            {advisors.map((advisor, index) => (
               <div key={index} className="flex flex-col gap-4">
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-gray-200">
                   <Image

@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
 
+import { SchemaScript } from '@/common/components/schema-script';
+
 import {
   generateBreadcrumbSchema,
-  generateFAQPageSchema,
+  generateFAQSchema,
   generateSoftwareApplicationSchema,
-  JsonLd,
-} from '@/common/components/structured-data';
+} from '@/lib/schema';
 
 export const metadata: Metadata = {
-  title: 'Pricing | &AI',
+  title: 'Pricing',
   description:
     'Choose the right plan for your patent litigation workflow. Core, Pro, and Enterprise pricing options available.',
 };
@@ -41,11 +42,6 @@ const faqItems = [
   },
 ];
 
-const pricingOffers = [
-  { name: 'Core', price: '375' },
-  { name: 'Pro', price: '625' },
-];
-
 const breadcrumbItems = [
   { name: 'Home', url: 'https://tryandai.com' },
   { name: 'Pricing', url: 'https://tryandai.com/pricing' },
@@ -58,9 +54,18 @@ export default function PricingLayout({
 }) {
   return (
     <>
-      <JsonLd data={generateFAQPageSchema(faqItems)} />
-      <JsonLd data={generateSoftwareApplicationSchema(pricingOffers)} />
-      <JsonLd data={generateBreadcrumbSchema(breadcrumbItems)} />
+      <SchemaScript
+        schema={[
+          generateFAQSchema(faqItems),
+          generateSoftwareApplicationSchema({
+            name: '&AI Pricing',
+            description:
+              'Choose the right plan for your patent litigation workflow. Core, Pro, and Enterprise pricing options available.',
+            url: 'https://tryandai.com/pricing',
+          }),
+          generateBreadcrumbSchema(breadcrumbItems),
+        ]}
+      />
       {children}
     </>
   );
