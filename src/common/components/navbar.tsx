@@ -125,7 +125,7 @@ export const Navbar = () => {
     <nav className={cn('bg-background fixed top-0 right-0 left-0 z-[100]')}>
       <div
         className={cn(
-          'relative mx-auto flex h-16 w-full items-center justify-between px-6 py-3 md:max-w-[592px] md:px-0 lg:max-w-[976px] xl:h-20 xl:max-w-[1280px] xl:px-8',
+          'relative mx-auto flex h-16 w-full items-center justify-between px-6 py-3 lg:max-w-[976px] lg:px-0 xl:h-20 xl:max-w-[1280px] xl:px-8',
         )}
       >
         <div className="flex items-center gap-6">
@@ -144,7 +144,7 @@ export const Navbar = () => {
               width={92}
             />
           </Link>
-          <div className="hidden items-center gap-6 md:flex">
+          <div className="hidden items-center gap-6 lg:flex">
             {/* Products Dropdown */}
             <div ref={productsRef} className="relative">
               <button
@@ -314,23 +314,23 @@ export const Navbar = () => {
         </div>
         <div className="flex items-center gap-3">
           <Link
-            className="text-element-high-em hover:text-element-mid-em hidden px-5 text-sm font-medium transition-colors md:block"
+            className="text-element-high-em hover:text-element-mid-em hidden px-5 text-sm font-medium transition-colors lg:block"
             href={Links.LogIn}
           >
             Log in
           </Link>
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Button href="/request-sample-chart" variant="secondary">
               Request sample chart
             </Button>
           </div>
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Button href="/book-demo">Free trial</Button>
           </div>
           {/* Hamburger Menu Button */}
           <button
             aria-label="Toggle menu"
-            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span
@@ -354,7 +354,7 @@ export const Navbar = () => {
           </button>
         </div>
         <div
-          className="pointer-events-none absolute bottom-0 left-0 hidden h-px w-full xl:block"
+          className="pointer-events-none absolute bottom-0 left-0 hidden h-px w-full lg:block"
           style={{
             backgroundColor: 'var(--color-border)',
             transform: hasIntersected ? 'scaleX(1)' : 'scaleX(0)',
@@ -364,7 +364,7 @@ export const Navbar = () => {
         />
       </div>
       <div
-        className="pointer-events-none absolute bottom-0 left-0 block h-px w-full xl:hidden"
+        className="pointer-events-none absolute bottom-0 left-0 block h-px w-full lg:hidden"
         style={{
           backgroundColor: 'var(--color-border)',
           transform: hasIntersected ? 'scaleX(1)' : 'scaleX(0)',
@@ -376,7 +376,7 @@ export const Navbar = () => {
       {/* Mobile Menu */}
       <div
         className={cn(
-          'bg-background fixed inset-0 top-16 z-50 flex flex-col transition-all duration-300 md:hidden',
+          'bg-background fixed inset-0 top-16 z-50 flex flex-col transition-all duration-300 lg:hidden',
           mobileMenuOpen
             ? 'pointer-events-auto opacity-100'
             : 'pointer-events-none opacity-0',
