@@ -98,7 +98,7 @@ export default function ClaimChartsPage() {
             type: 'bullets',
             image: '/stylized-features/chart-construction.png',
             items: [
-              'Zero-in on disputed terms and generate draft definitions',
+              'Zero in on disputed terms and generate draft definitions',
               'Ground each definition in intrinsic evidence from the claims, specification, and prosecution history',
               'Preserve consistency across drafts and exports',
               'Export Markman-ready charts',

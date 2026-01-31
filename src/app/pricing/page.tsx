@@ -52,7 +52,8 @@ export default function Pricing() {
         'Public-only mode is a feature that allows you to use &AI without storing or accessing any confidential information, and it is the default mode for all Core users. With public-only mode enabled, you are unable to upload any documents or provide any context or prompts for the models. This makes it impossible for you to store any confidential information with &AI.\n\n Pro and Enterprise customers can enable public-only mode by contacting support@tryandai.com.',
     },
     {
-      question: 'I have a question not answered yet. Who can I talk to?',
+      question:
+        "I have a question that isn't answered here. Who can I talk to?",
       answer:
         "We're here to help! Book a demo to speak with a member of our team directly, or reach out to support@tryandai.com.",
     },

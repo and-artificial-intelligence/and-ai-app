@@ -26,7 +26,7 @@ const productLinks = [
   },
   {
     name: 'Business Development',
-    href: '/product/patent-litigation-business-development',
+    href: '/product/business-development',
     description: 'Grow your patent practice',
   },
   {
@@ -150,10 +150,11 @@ export const Navbar = () => {
               <button
                 className={cn(
                   'text-element-high-em hover:text-element-mid-em flex items-center gap-1 text-sm font-medium transition-[color]',
-                  mounted &&
-                    pathname.startsWith('/product') &&
-                    !productsOpen &&
-                    'underline decoration-orange-500 decoration-1 underline-offset-[6px]',
+                  productsOpen
+                    ? 'no-underline'
+                    : mounted &&
+                        pathname.startsWith('/product') &&
+                        'underline decoration-orange-500 decoration-1 underline-offset-[6px]',
                 )}
                 onClick={() => setProductsOpen(!productsOpen)}
               >
@@ -177,13 +178,13 @@ export const Navbar = () => {
               </button>
               <div
                 className={cn(
-                  'absolute top-full left-0 mt-2 min-w-[320px] overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg transition-all duration-200',
+                  'absolute top-full left-0 z-50 mt-2 min-w-[320px] overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg transition-all duration-200',
                   productsOpen
                     ? 'pointer-events-auto translate-y-0 opacity-100'
                     : 'pointer-events-none -translate-y-2 opacity-0',
                 )}
               >
-                <div className="py-2">
+                <div className="bg-white py-2">
                   {productLinks.map((product) => (
                     <Link
                       key={product.href}
@@ -215,10 +216,11 @@ export const Navbar = () => {
               <button
                 className={cn(
                   'text-element-high-em hover:text-element-mid-em flex items-center gap-1 text-sm font-medium transition-[color]',
-                  mounted &&
-                    pathname.startsWith('/solutions') &&
-                    !solutionsOpen &&
-                    'underline decoration-orange-500 decoration-1 underline-offset-[6px]',
+                  solutionsOpen
+                    ? 'no-underline'
+                    : mounted &&
+                        pathname.startsWith('/solutions') &&
+                        'underline decoration-orange-500 decoration-1 underline-offset-[6px]',
                 )}
                 onClick={() => setSolutionsOpen(!solutionsOpen)}
               >
@@ -242,13 +244,13 @@ export const Navbar = () => {
               </button>
               <div
                 className={cn(
-                  'absolute top-full left-0 mt-2 min-w-[320px] overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg transition-all duration-200',
+                  'absolute top-full left-0 z-50 mt-2 min-w-[320px] overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg transition-all duration-200',
                   solutionsOpen
                     ? 'pointer-events-auto translate-y-0 opacity-100'
                     : 'pointer-events-none -translate-y-2 opacity-0',
                 )}
               >
-                <div className="py-2">
+                <div className="bg-white py-2">
                   {solutionsByType.map((solution) => (
                     <Link
                       key={solution.href}

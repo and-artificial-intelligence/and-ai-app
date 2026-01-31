@@ -38,7 +38,7 @@ export default function LawFirmsPage() {
         {
           question: 'Is &AI built for litigation-grade work product?',
           answer:
-            'Yes. &AI supports litigators crafting trial-ready and is designed for litigation workflows.',
+            'Yes. &AI supports litigators crafting trial-ready work product and is designed for litigation workflows.',
         },
         {
           question:

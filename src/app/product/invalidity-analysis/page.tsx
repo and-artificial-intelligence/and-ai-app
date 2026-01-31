@@ -99,7 +99,7 @@ export default function InvalidityAnalysisPage() {
             type: 'bullets',
             image: '/stylized-features/chart-construction.png',
             items: [
-              'Zero-in on disputed terms and generate draft definitions fast',
+              'Zero in on disputed terms and generate draft definitions fast',
               'Ground each definition in intrinsic evidence from the claims, specification, and prosecution history',
               'Keep constructions live as strategy evolves—so charts, analysis, and drafts stay consistent',
             ],

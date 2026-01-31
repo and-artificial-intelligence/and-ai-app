@@ -35,7 +35,7 @@ const breadcrumbs = [
   { name: 'Product', url: 'https://tryandai.com/product' },
   {
     name: 'Business Development',
-    url: 'https://tryandai.com/product/patent-litigation-business-development',
+    url: 'https://tryandai.com/product/business-development',
   },
 ];
 
@@ -67,13 +67,13 @@ const comparisonTable = {
   ],
 };
 
-export default function PatentLitigationBusinessDevelopmentPage() {
+export default function BusinessDevelopmentPage() {
   const schemas = [
     generateSoftwareApplicationSchema({
       name: 'Business Development for Patent Litigators',
       description:
         "Opportunities is &AI's real-time feed of patent litigation filings, personalized to you and your team with memory of your prior work and how you like to pitch.",
-      url: 'https://tryandai.com/product/patent-litigation-business-development',
+      url: 'https://tryandai.com/product/business-development',
     }),
     generateFAQSchema(faqs),
     generateBreadcrumbSchema(breadcrumbs),

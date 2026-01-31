@@ -69,7 +69,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     name: 'Business Development',
-    href: '/product/patent-litigation-business-development',
+    href: '/product/business-development',
     image: '/stylized-features/opportunities-feed.png',
     description: 'Grow your practice as both plaintiff and defense counsel.',
   },

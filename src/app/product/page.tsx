@@ -67,7 +67,7 @@ const faqs = [
     question: 'How does pricing work?',
     answer: (
       <>
-        We offer three options– Core, Pro, and Enterprise planes. Core and Pro
+        We offer three options– Core, Pro, and Enterprise plans. Core and Pro
         are a monthly seat cost, which includes a fixed number of credits, and
         you can always buy more credits as needed.{' '}
         <Link
@@ -106,7 +106,8 @@ export default function ProductOverviewPage() {
             <SubHeader brand={BrandColor.PRIMARY} title="Product" />
           </Link>
           <h1 className="text-element-high-em text-4xl md:text-5xl xl:text-6xl">
-            The AI workspace for{' '}
+            The AI workspace for
+            <br />
             <span className="font-martina italic">patent litigation</span>
           </h1>
           <p className="text-element-high-em mt-4 text-xl font-medium md:text-2xl">
