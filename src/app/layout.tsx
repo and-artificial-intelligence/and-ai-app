@@ -135,19 +135,19 @@ export default function RootLayout({
       <body>
         {/* Google Consent Mode v2 - Set default consent states BEFORE any Google tags */}
         <Script
-          id="google-consent-mode-default"
-          data-cookieconsent="ignore"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("consent","default",{ad_personalization:"denied",ad_storage:"denied",ad_user_data:"denied",analytics_storage:"denied",functionality_storage:"denied",personalization_storage:"denied",security_storage:"granted",wait_for_update:500});gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",false);`,
           }}
+          data-cookieconsent="ignore"
+          id="google-consent-mode-default"
+          strategy="beforeInteractive"
         />
         {/* Cookiebot - consent management */}
         <Script
+          data-blockingmode="auto"
+          data-cbid="20ab4c40-1b45-4e12-95f8-ded614dfc868"
           id="Cookiebot"
           src="https://consent.cookiebot.com/uc.js"
-          data-cbid="20ab4c40-1b45-4e12-95f8-ded614dfc868"
-          data-blockingmode="auto"
           strategy="beforeInteractive"
         />
         <Navbar />
