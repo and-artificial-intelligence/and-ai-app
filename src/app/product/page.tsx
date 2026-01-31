@@ -119,7 +119,7 @@ export default function ProductOverviewPage() {
               Patent litigators use &AI to generate new business and deliver
               winning outcomes. Search prior art, generate claim charts, and
               draft contentions—all in one workspace that keeps your team
-              aligned from pitch to trial
+              aligned from pitch to trial.
             </p>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
