@@ -76,8 +76,10 @@ export default function RootLayout({
     >
       <head>
         <SchemaScript schema={generateOrganizationSchema()} />
+        {/* Google Ads - blocked until marketing consent */}
         <Script
           async
+          data-cookieconsent="marketing"
           id="google-tag"
           src="https://www.googletagmanager.com/gtag/js?id=AW-17910305132"
           strategy="afterInteractive"
@@ -91,9 +93,11 @@ export default function RootLayout({
               gtag('config', 'AW-17910305132');
             `,
           }}
+          data-cookieconsent="marketing"
           id="google-tag-init"
           strategy="afterInteractive"
         />
+        {/* Apollo - blocked until marketing consent */}
         <Script
           dangerouslySetInnerHTML={{
             __html: `
@@ -111,19 +115,41 @@ export default function RootLayout({
               initApollo();
             `,
           }}
+          data-cookieconsent="marketing"
           id="apollo-tracker"
-          strategy="beforeInteractive"
-        />
-        <Script
-          async
-          data-pid="dSGoRhLw6OFI8UwR"
-          data-version="062024"
-          id="vtag-ai-js"
-          src="https://r2.leadsy.ai/tag.js"
           strategy="afterInteractive"
         />
+        {/* Leadsy - blocked until marketing consent (prod only) */}
+        {process.env.NODE_ENV === 'production' && (
+          <Script
+            async
+            data-cookieconsent="marketing"
+            data-pid="dSGoRhLw6OFI8UwR"
+            data-version="062024"
+            id="vtag-ai-js"
+            src="https://r2.leadsy.ai/tag.js"
+            strategy="afterInteractive"
+          />
+        )}
       </head>
       <body>
+        {/* Google Consent Mode v2 - Set default consent states BEFORE any Google tags */}
+        <Script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("consent","default",{ad_personalization:"denied",ad_storage:"denied",ad_user_data:"denied",analytics_storage:"denied",functionality_storage:"denied",personalization_storage:"denied",security_storage:"granted",wait_for_update:500});gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",false);`,
+          }}
+          data-cookieconsent="ignore"
+          id="google-consent-mode-default"
+          strategy="beforeInteractive"
+        />
+        {/* Cookiebot - consent management */}
+        <Script
+          data-blockingmode="auto"
+          data-cbid="20ab4c40-1b45-4e12-95f8-ded614dfc868"
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          strategy="beforeInteractive"
+        />
         <Navbar />
         <div className="relative h-full min-h-full pt-16 xl:pt-20">
           {children}
