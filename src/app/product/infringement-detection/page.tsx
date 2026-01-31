@@ -19,11 +19,6 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question: 'What is infringement mining?',
-    answer:
-      'Using scalable analysis across portfolios, products, and documentation to identify the highest-likelihood infringement targets before investing time in full evidence-of-use charting.',
-  },
-  {
     question: 'What product sources can &AI search?',
     answer:
       '&AI Search includes current and archival product listings plus specifications, manuals, videos, and teardowns.',
@@ -70,7 +65,35 @@ export default function InfringementDetectionPage() {
         h1="AI-Powered"
         h1Highlight="Infringement Analysis"
         relatedProducts={relatedProducts}
-        sections={[]}
+        sections={[
+          {
+            label: 'Product Search',
+            title: 'Search the full internet of product evidence',
+            description:
+              '&AI searches current and archival product sources so you can find what you need without hours of manual searching.',
+            type: 'bullets',
+            image: '/stylized-features/search-product.png',
+            items: [
+              'Datasheets, user manuals, and spec sheets',
+              'Teardown reports and component analyses',
+              'Product videos, demos, and marketing materials',
+              'Screenshots and archived product pages',
+            ],
+          },
+          {
+            label: 'Evidence-of-use charts',
+            title: 'From product evidence to litigation-ready EOU charts',
+            description:
+              'Every citation links back to its source—specs, screenshots, or video timestamps—so your charts are ready to use.',
+            type: 'bullets',
+            image: '/stylized-features/chart-claim.png',
+            items: [
+              'Map each limitation to pinpoint product evidence',
+              'Cite specs, figures, timestamps, and screenshots',
+              'Export in court-ready formats with firm branding',
+            ],
+          },
+        ]}
         subheading="Find infringers faster. Build stronger positions."
         valueProp={`Scan portfolios at scale, search the full internet of product documentation, and build litigation-grade evidence-of-use charts—all in one place.`}
       />

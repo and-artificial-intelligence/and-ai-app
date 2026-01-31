@@ -34,7 +34,7 @@ export default function InHousePage() {
   return (
     <SolutionsByTypePage
       badge="&AI for In-House"
-      description=" Whether you're responding to an assertion, evaluating a portfolio, or prepping for a deal, &AI gives in-house IP teams the search, charting, and drafting tools to build your position quickly—without sacrificing rigor."
+      description="Responding to an assertion, evaluating a portfolio, or prepping for a deal? &AI gives in-house IP teams the search, charting, and drafting tools to build your position quickly—without sacrificing rigor."
       faqs={[
         {
           question: 'How does the platform work for in-house teams?',

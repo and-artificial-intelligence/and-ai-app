@@ -21,12 +21,36 @@ const faqs = [
   {
     question: 'Does this replace a prior art search firm?',
     answer:
-      'Yes. &AI is built to let teams run searches internally with faster iteration, more sources, and outputs you can immediately analyze.',
+      'Yes. Teams use &AI to run comprehensive prior art searches in-house—often in a single afternoon. You get faster iteration, broader source coverage (patents, NPL, products, archived web), and results you can immediately chart or export.',
   },
   {
     question: 'What sources do you search?',
     answer:
       'Patents, non-patent literature, products, clinical trials, and archival web materials.',
+  },
+  {
+    question: 'Can I search using images or figures from a patent?',
+    answer:
+      'Yes. Select a figure from a patent and &AI will find similar prior art across patents—useful for mechanical or design-focused claims.',
+  },
+  {
+    question: 'What patent offices are included?',
+    answer: 'US, EP, JP, WO, KR, CN, GB, DE.',
+  },
+  {
+    question: 'What NPL sources do you include?',
+    answer:
+      'Anything available on the internet, including archived web pages via the Wayback Machine.',
+  },
+  {
+    question: 'How long does a typical search take?',
+    answer:
+      'Most users find strong candidate references within 30–60 minutes. Compare that to 1–3 weeks from an outside search firm.',
+  },
+  {
+    question: 'How much does this cost compared to a search firm?',
+    answer:
+      'Outside firms typically charge $5K–$15K per search. With &AI, search is iterative and depends on the size of the patent, the number of results requested, and other factors. Searches typically cost around a few hundred dollars worth of credits ($100-$300).',
   },
 ];
 
@@ -68,7 +92,8 @@ export default function PriorArtSearchPage() {
         sections={[
           {
             label: 'Patents',
-            title: 'Search 60M+ patent publications',
+            title:
+              'Search 60M+ patent publications without leaving your workspace',
             description:
               'Patent applications and publications across major jurisdictions—built to iterate fast and narrow down on key references.',
             type: 'bullets',
@@ -81,7 +106,7 @@ export default function PriorArtSearchPage() {
           },
           {
             label: 'Non-patent literature',
-            title: 'Find invalidating art in NPL',
+            title: 'Find the NPL your opponents will miss',
             description:
               'Research papers, standards, clinical trials, and more across the entire public internet.',
             type: 'bullets',
@@ -95,7 +120,7 @@ export default function PriorArtSearchPage() {
           },
           {
             label: 'Products',
-            title: 'Search product documentation',
+            title: "Surface product evidence others can't find",
             description:
               'Current and archival product listings, specs, manuals, videos, and teardowns.',
             type: 'bullets',
@@ -107,7 +132,7 @@ export default function PriorArtSearchPage() {
             ],
           },
           {
-            title: 'Replace prior art search firms without lowering the bar',
+            title: 'Search firm quality. In-house speed and control.',
             description:
               'Outside prior art search firms cost thousands and take days to weeks. &AI prior art search gives the control to the expert, allowing fast iterations and key results delivered at a fraction of the cost.',
             type: 'bullets',
@@ -122,7 +147,7 @@ export default function PriorArtSearchPage() {
           },
         ]}
         subheading="Skip the external search firm invoice—and the wait."
-        valueProp={`Search for invalidating prior art, across patents, non-patent literature (NPL), and product documentation across the internet in minutes. &AI enables multimodal searches optimized for what matters most—whether isolating specific limitations or reinforcing a §103 combination.`}
+        valueProp={`Find invalidating prior art across 60M+ patents, NPL, and product documentation—in minutes, not weeks. Search by specific limitations or images to build your §102 or §103 position faster.`}
       />
     </>
   );

@@ -32,7 +32,7 @@ const schemaFaqs = [
   {
     question: 'How does pricing work?',
     answer:
-      'We offer three options– Core, Pro, and Enterprise plans. Core and Pro are a monthly seat cost, which includes a fixed number of credits, and you can always buy more credits as needed. See more pricing details on our pricing page.',
+      'We offer Core, Pro, and Enterprise plans. Core and Pro are monthly per-seat subscriptions that include credits, with the option to purchase more as needed.',
   },
 ];
 
@@ -67,9 +67,9 @@ const faqs = [
     question: 'How does pricing work?',
     answer: (
       <>
-        We offer three options– Core, Pro, and Enterprise plans. Core and Pro
-        are a monthly seat cost, which includes a fixed number of credits, and
-        you can always buy more credits as needed.{' '}
+        We offer Core, Pro, and Enterprise plans. Core and Pro are monthly
+        per-seat subscriptions that include credits, with the option to purchase
+        more as needed.{' '}
         <Link
           className="text-orange-500 underline hover:text-orange-600"
           href="/pricing"
@@ -116,11 +116,10 @@ export default function ProductOverviewPage() {
           </p>
           <div className="text-element-mid-em mt-6 space-y-4 text-lg xl:text-xl">
             <p>
-              The &AI workspace helps patent litigators generate new business
-              and deliver winning outcomes through end-to-end litigation
-              workflows. From prior art search, claim charts, and contentions
-              drafting, &AI is the central repository for your team in business
-              development and active matters.
+              Patent litigators use &AI to generate new business and deliver
+              winning outcomes. Search prior art, generate claim charts, and
+              draft contentions—all in one workspace that keeps your team
+              aligned from pitch to trial
             </p>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">

@@ -38,6 +38,41 @@ const faqs = [
     answer:
       'Yes. Every citation requires approval before it shows up in any exported work product. There is absolutely no generated content included in any aspect of claim charts, from citations to your boilerplate language.',
   },
+  {
+    question: 'How accurate are the citations?',
+    answer:
+      "Every citation points to a specific passage, figure, or timestamp in the source document. You review and approve each one before it appears in any export. There's no AI-generated language, only exact quotes and references.",
+  },
+  {
+    question: 'Will these charts hold up in litigation?',
+    answer:
+      'Yes. &AI charts are used in active IPR and district court proceedings. The format matches what litigators file, and every citation is traceable to the original source.',
+  },
+  {
+    question: 'How long does it take to generate a chart?',
+    answer:
+      'A first-draft chart typically takes 5 to 15 minutes depending on claim complexity. Most teams complete a full review-and-refine cycle in under two hours, compared to days with manual charting.',
+  },
+  {
+    question: 'Can I customize the export format?',
+    answer:
+      'Yes. Choose from dozens of formatting options including page layouts, citation styles, header/footer text, and styling options. Save your settings so every chart matches your style.',
+  },
+  {
+    question: 'Can I chart claims against multiple references at once?',
+    answer:
+      'Yes. Build §103 combination charts that map elements across two, three, or more references with clear visual separation and motivation-to-combine sections.',
+  },
+  {
+    question: 'Can I import an existing claim chart to refine it?',
+    answer:
+      'Yes. Upload a Word document and &AI will make it available for review and refinement within your workspace.',
+  },
+  {
+    question: 'How is this different from doing it manually in Word?',
+    answer:
+      'Manual charting means copying claim text, hunting for citations, formatting tables, and maintaining consistency across dozens of elements. &AI automates the structure and citation linking so you can focus on the substance.',
+  },
 ];
 
 const breadcrumbs = [
@@ -79,9 +114,9 @@ export default function ClaimChartsPage() {
         sections={[
           {
             label: 'Claims and elements',
-            title: 'Limitation-by-limitation charts with citations',
+            title: 'Every element mapped. Every citation pinpointed.',
             description:
-              'Produce limitation-by-limitation claim charts with citations to prior art and product documentation. Charts are composed entirely of exact citations, so all you have to do is review, refine, and export.',
+              "Map each claim element to exact citations from prior art or product documentation. No AI-generated language in your exports—just the references you've reviewed and approved.",
             type: 'bullets',
             image: '/stylized-features/chart-claim.png',
             items: [
@@ -92,13 +127,13 @@ export default function ClaimChartsPage() {
           },
           {
             label: 'Claim construction',
-            title: 'Claim construction drives everything',
+            title: 'Get claim construction right—everything else follows.',
             description:
               'Claim construction drives everything—invalidity, infringement, and settlement posture. Build Markman-ready constructions with a clear evidentiary record.',
             type: 'bullets',
             image: '/stylized-features/chart-construction.png',
             items: [
-              'Zero in on disputed terms and generate draft definitions',
+              'Identify disputed terms and draft definitions grounded in the intrinsic record—claims, specification, and prosecution history.',
               'Ground each definition in intrinsic evidence from the claims, specification, and prosecution history',
               'Preserve consistency across drafts and exports',
               'Export Markman-ready charts',
@@ -112,9 +147,9 @@ export default function ClaimChartsPage() {
             bulletStyle: 'bullet',
             centered: true,
             items: [
-              'Anticipation (§102): one reference, fully mapped',
-              "Obviousness (§103): combination mapping that's easy to follow",
-              "Written support (§112): identify where the spec doesn't back the claims fully",
+              '§102 Anticipation: Single-reference charts with element-by-element mapping',
+              '§103 Obviousness: Multi-reference combinations with clear motivation narratives',
+              '§112 Written Description: Flag where the spec fails to support asserted scope',
             ],
           },
           {

@@ -106,8 +106,6 @@ export default function InvalidityAnalysisPage() {
           },
           {
             title: '§102. Single-reference theories with pinpoint support',
-            description:
-              "§102 turns on whether the claim is anticipated under the statute's novelty framework.",
             type: 'bullets',
             centered: true,
             background: 'light',
@@ -119,8 +117,6 @@ export default function InvalidityAnalysisPage() {
           {
             title:
               '§103. Combination suggestions and charts that evolve with strategy',
-            description:
-              '§103 is a non-obviousness inquiry—often requiring combinations, motivations, and clean mapping across multiple references.',
             type: 'bullets',
             centered: true,
             background: 'light',
@@ -132,8 +128,6 @@ export default function InvalidityAnalysisPage() {
           },
           {
             title: '§112. Surface vulnerabilities in the target patent',
-            description:
-              '§112(a) requires written description and enablement. When claim scope stretches beyond what the specification actually teaches, teams need a structured way to evaluate support.',
             type: 'bullets',
             centered: true,
             background: 'light',

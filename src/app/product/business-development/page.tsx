@@ -21,7 +21,7 @@ const faqs = [
   {
     question: 'How is Opportunities different from PACER or Docket Navigator?',
     answer:
-      'PACER provides access to federal court records, but it does not help you determine which matters are relevant or actionable. Opportunities adds BD-oriented enrichment—personalization, team-fit matching, and pitching context—so you can identify cases worth pursuing. Docket Navigator Current Awareness delivers broadly curated updates for a general audience. Opportunities is tailored to your team and workflow, prioritizing matters based on your fit and likelihood to pursue, not just what was filed.',
+      "PACER provides access to federal court records but doesn't help you determine which matters are relevant or actionable. Docket Navigator Current Awareness delivers broadly curated updates for a general audience, not tailored to your team's specific fit or workflow. Opportunities adds BD-oriented enrichment—personalization, team-fit matching, and pitching context—so you can identify and pursue the cases that actually matter to your practice.",
   },
   {
     question: "What does 'complaint-to-pitch deck' mean?",
@@ -94,7 +94,7 @@ export default function BusinessDevelopmentPage() {
             label: 'Opportunities',
             title: 'Your personalized feed of patent litigation filings',
             description:
-              'Traditional docket monitoring is broad by design—useful, but noisy. Opportunities filters that stream down to what is pitch-worthy for your team, based on your contacts and experience.',
+              'Traditional docket monitoring buries the signal in noise. Opportunities filters that stream down to what is pitch-worthy for your team, based on your contacts and experience.',
             type: 'bullets',
             centered: true,
             background: 'light',
@@ -108,7 +108,7 @@ export default function BusinessDevelopmentPage() {
             title:
               'Know about the right cases, minutes after they hit the docket',
             description:
-              'Enable alerts to notify you when a case meets your match threshold or a party you care about is named. No more waiting on a daily refresh.',
+              'Enable alerts to notify you when a case meets your match threshold or a party you care about is named. No more losing pitches because you saw it a day late.',
             type: 'bullets',
             centered: true,
             items: [
@@ -145,7 +145,7 @@ export default function BusinessDevelopmentPage() {
             ],
           },
         ]}
-        subheading="Find the right cases. Pitch first."
+        subheading="Find pitch-worthy cases within minutes of filing."
         valueProp="Opportunities is &AI's real-time feed of patent litigation filings, personalized to you and your team with memory of your prior work and how you like to pitch."
       />
     </>

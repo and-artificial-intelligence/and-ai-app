@@ -59,7 +59,7 @@ export const PRODUCTS: Product[] = [
     href: '/product/prior-art-search',
     image: '/stylized-features/search-patent.png',
     description:
-      'Discover 60M+ patents and the full internet of NPL and products.',
+      'Search 60M+ patents and the full internet of NPL and products—all in one place.',
   },
   {
     name: 'Claim Charts',
