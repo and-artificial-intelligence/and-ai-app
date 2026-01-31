@@ -218,15 +218,15 @@ export default function Home() {
             arguments, not organizing data.
           </p>
         </div>
-        <div className="px-4 md:px-8 lg:px-12">
-          <div className="border-gray-dark/5 relative aspect-[16/9] w-full rounded-xs border bg-gray-200">
-            <Image
-              fill
-              alt="Patent document analysis showing automated claim mapping and prior art organization"
-              className="object-contain object-center"
-              src="/built-for-patents-illustration.png"
-            />
-          </div>
+        <div className="border-gray-dark/5 mx-auto hidden w-full max-w-5xl rounded-xs border bg-gray-200 px-12 md:block lg:px-20">
+          <Image
+            alt="Patent document analysis showing automated claim mapping and prior art organization"
+            className="h-auto w-full"
+            height={0}
+            sizes="(max-width: 1024px) 100vw, 896px"
+            src="/built-for-patents-illustration.png"
+            width={0}
+          />
         </div>
       </section>
 

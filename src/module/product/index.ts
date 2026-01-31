@@ -3,6 +3,7 @@ export type {
   ContentSection,
   ContentSectionType,
   FAQ,
+  ImageColor,
   ProductPageProps,
   RelatedProduct,
 } from './components/product-page';

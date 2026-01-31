@@ -1,7 +1,12 @@
 import { createClient } from 'contentful';
 import type { Asset, Entry } from 'contentful';
 
-import type { BlogPost, BlogPostImage, BlogPostSkeleton } from './contentful.types';
+import type {
+  BlogPost,
+  BlogPostImage,
+  BlogPostSeo,
+  BlogPostSkeleton,
+} from './contentful.types';
 
 const space = process.env.CONTENTFUL_SPACE_ID;
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
@@ -120,6 +125,47 @@ const getAuthorFieldValue = (
   return undefined;
 };
 
+const normalizeSeo = (seoEntry: unknown): BlogPostSeo | null => {
+  if (!seoEntry || typeof seoEntry !== 'object') return null;
+  if (!('fields' in seoEntry)) return null;
+
+  const fields = (seoEntry as { fields: Record<string, unknown> }).fields;
+
+  const pageTitle =
+    typeof fields.pageTitle === 'string' ? fields.pageTitle : '';
+  if (!pageTitle) return null;
+
+  const pageDescription =
+    typeof fields.pageDescription === 'string' ? fields.pageDescription : null;
+  const canonicalUrl =
+    typeof fields.canonicalUrl === 'string' && fields.canonicalUrl
+      ? fields.canonicalUrl
+      : null;
+  const nofollow =
+    typeof fields.nofollow === 'boolean' ? fields.nofollow : false;
+  const noindex =
+    typeof fields.noindex === 'boolean' ? fields.noindex : false;
+
+  // Handle share images array
+  const shareImages: BlogPostImage[] = [];
+  const rawShareImages = fields.shareImages;
+  if (Array.isArray(rawShareImages)) {
+    for (const item of rawShareImages) {
+      const image = getAssetImage(asAsset(item));
+      if (image) shareImages.push(image);
+    }
+  }
+
+  return {
+    pageTitle,
+    pageDescription,
+    canonicalUrl,
+    nofollow,
+    noindex,
+    shareImages,
+  };
+};
+
 const normalizeBlogPost = (entry: Entry<BlogPostSkeleton>): BlogPost => {
   const fields = entry.fields as Record<string, unknown>;
   const featureImageFieldCandidates = [
@@ -144,11 +190,13 @@ const normalizeBlogPost = (entry: Entry<BlogPostSkeleton>): BlogPost => {
       getDateFieldValue(fields) ??
       entry.sys.updatedAt ??
       entry.sys.createdAt,
+    updatedAt: entry.sys.updatedAt,
     coverImage: getAssetImage(asAsset(fields.coverImage)),
     featureImage: getAssetImage(
       asAsset(featureImageField ? fields[featureImageField] : null),
     ),
     content: (fields.content as BlogPost['content']) ?? null,
+    seo: normalizeSeo(fields.seo),
   };
 };
 
