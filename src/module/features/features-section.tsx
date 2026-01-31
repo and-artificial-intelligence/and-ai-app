@@ -21,30 +21,6 @@ import {
 
 const features: ItemAndSliderProps[] = [
   {
-    tag: 'Opportunities',
-    tagColor: BrandColor.PRIMARY,
-    title: 'Discover opportunities worth pursuing.',
-    description:
-      'A personalized, real-time feed of new patent litigation—helping you find the right cases to pitch.',
-    items: [
-      {
-        icon: <SearchDocumentIcon />,
-        title: 'Real-time feed',
-        description:
-          'A real-time feed with pitch recommendations and configurable alerts and filters',
-        imageSrc: '/stylized-features/opportunities-feed.png',
-      },
-      {
-        icon: <SearchDocumentIcon />,
-        title: 'Personal and team recommendations',
-        description:
-          "The right cases, triaged to the right partner based on your team's prior experience",
-        imageSrc: '/stylized-features/opportunities-detail.png',
-      },
-    ],
-  },
-
-  {
     tag: 'Charts',
     tagColor: BrandColor.ACCENT_BLUE_DARK,
     title: 'Win cases faster with trial-ready analysis.',
@@ -141,6 +117,29 @@ const features: ItemAndSliderProps[] = [
       },
     ],
     singleImage: '/stylized-features/table.png',
+  },
+  {
+    tag: 'Pitch',
+    tagColor: BrandColor.ACCENT_BLUE_DARK,
+    title: 'Discover opportunities worth pursuing.',
+    description:
+      'A personalized, real-time feed of new patent litigation—helping you find the right cases to pitch.',
+    items: [
+      {
+        icon: <SearchDocumentIcon />,
+        title: 'Real-time feed',
+        description:
+          'A real-time feed with pitch recommendations and configurable alerts and filters',
+        imageSrc: '/stylized-features/opportunities-feed.png',
+      },
+      {
+        icon: <SearchDocumentIcon />,
+        title: 'Personal and team recommendations',
+        description:
+          "The right cases, triaged to the right partner based on your team's prior experience",
+        imageSrc: '/stylized-features/opportunities-detail.png',
+      },
+    ],
   },
 ];
 

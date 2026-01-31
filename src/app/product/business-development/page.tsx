@@ -65,6 +65,7 @@ const comparisonTable = {
       values: [false, 'Limited', true],
     },
   ],
+  inCardGroup: true,
 };
 
 export default function BusinessDevelopmentPage() {

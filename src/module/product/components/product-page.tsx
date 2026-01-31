@@ -51,6 +51,8 @@ export interface ContentSection {
   centered?: boolean; // Center the section instead of alternating left/right
   bulletStyle?: 'bullet' | 'check'; // For 'bullets' type: circle bullet or checkmark (default: check)
   dividerBelow?: boolean; // Add a horizontal line below the section
+  dividerAbove?: boolean; // Add a horizontal line above the section
+  cardGroup?: string; // Group sections with same cardGroup into a card on grid background
 }
 
 export interface ComparisonTable {
@@ -61,6 +63,7 @@ export interface ComparisonTable {
     feature: string;
     values: (string | boolean)[];
   }[];
+  inCardGroup?: boolean; // Wrap in card on grid background
 }
 
 export interface ProductPageProps {
@@ -154,94 +157,185 @@ export function ProductPage({
       </section>
 
       {/* Dynamic Content Sections - Alternating */}
-      {sections.map((section, sectionIndex) => (
-        <ContentSectionRenderer
-          key={sectionIndex}
-          index={sectionIndex}
-          section={section}
-        />
-      ))}
+      {(() => {
+        const elements: React.ReactNode[] = [];
+        let i = 0;
+        let globalIndex = 0;
+
+        while (i < sections.length) {
+          const section = sections[i];
+
+          // Check if this section starts a card group
+          if (section.cardGroup) {
+            const groupId = section.cardGroup;
+            const groupSections: { section: ContentSection; index: number }[] =
+              [];
+
+            // Collect all sections in this group
+            while (i < sections.length && sections[i].cardGroup === groupId) {
+              groupSections.push({ section: sections[i], index: globalIndex });
+              i++;
+              globalIndex++;
+            }
+
+            // Render the card group with grid background
+            elements.push(
+              <section
+                key={`card-group-${groupId}`}
+                className="relative py-16 md:py-20"
+              >
+                {/* Grid Background */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 z-0"
+                >
+                  <div className="relative h-full w-full [background-image:linear-gradient(to_right,rgba(0,0,0,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.06)_1px,transparent_1px)] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_5%,rgba(0,0,0,1)_95%,rgba(0,0,0,0)_100%)] [background-size:20px_20px] [background-position:0_0] [background-repeat:repeat] [mask-repeat:no-repeat] [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_5%,rgba(0,0,0,1)_95%,rgba(0,0,0,0)_100%)] [-webkit-mask-repeat:no-repeat]" />
+                </div>
+
+                {/* Card Container */}
+                <div className="relative z-10 mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
+                  <div className="bg-background-lighter rounded-xs border border-gray-300 shadow shadow-gray-400/10">
+                    {groupSections.map(({ section: groupSection, index }, gi) => (
+                      <ContentSectionRenderer
+                        key={index}
+                        inCard
+                        index={index}
+                        isFirstInCard={gi === 0}
+                        isLastInCard={gi === groupSections.length - 1}
+                        section={groupSection}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </section>,
+            );
+          } else {
+            // Render single section normally
+            elements.push(
+              <ContentSectionRenderer
+                key={globalIndex}
+                index={globalIndex}
+                section={section}
+              />,
+            );
+            i++;
+            globalIndex++;
+          }
+        }
+
+        return elements;
+      })()}
 
       {/* Comparison Table */}
       {comparisonTable && (
-        <section className="mx-auto hidden w-full px-4 py-16 md:block md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
-          <div className="mx-auto max-w-4xl">
-            {comparisonTable.title && (
-              <h2 className="font-martina text-element-high-em text-4.5xl mb-4 text-center xl:text-5xl">
-                {comparisonTable.title}
-              </h2>
-            )}
-            {comparisonTable.description && (
-              <p className="text-element-mid-em mb-12 text-center text-lg">
-                {comparisonTable.description}
-              </p>
-            )}
-            <div className={`overflow-x-auto ${!comparisonTable.description ? 'mt-8' : ''}`}>
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="border-b-2 border-gray-300">
-                    <th className="text-element-high-em px-4 py-4 text-left font-semibold">
-                      Feature
-                    </th>
-                    {comparisonTable.columns.map((col, idx) => (
-                      <th
-                        key={idx}
-                        className={`px-4 py-4 text-center font-semibold ${
-                          col.highlight
-                            ? 'bg-orange-50 text-orange-600'
-                            : 'text-element-high-em'
-                        }`}
-                      >
-                        {col.name}
+        <section
+          className={`relative hidden py-16 md:block md:py-20 xl:py-24 ${!comparisonTable.inCardGroup ? 'mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8' : ''}`}
+        >
+          {/* Grid Background (only when inCardGroup) */}
+          {comparisonTable.inCardGroup && (
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 z-0"
+            >
+              <div className="relative h-full w-full [background-image:linear-gradient(to_right,rgba(0,0,0,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.06)_1px,transparent_1px)] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_5%,rgba(0,0,0,1)_95%,rgba(0,0,0,0)_100%)] [background-size:20px_20px] [background-position:0_0] [background-repeat:repeat] [mask-repeat:no-repeat] [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_5%,rgba(0,0,0,1)_95%,rgba(0,0,0,0)_100%)] [-webkit-mask-repeat:no-repeat]" />
+            </div>
+          )}
+
+          <div
+            className={
+              comparisonTable.inCardGroup
+                ? 'relative z-10 mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8'
+                : ''
+            }
+          >
+            <div
+              className={
+                comparisonTable.inCardGroup
+                  ? 'bg-background-lighter rounded-xs border border-gray-300 px-6 py-12 shadow shadow-gray-400/10 md:px-16 md:py-16'
+                  : 'mx-auto max-w-4xl'
+              }
+            >
+              {comparisonTable.title && (
+                <h2 className="font-martina text-element-high-em text-4.5xl mb-4 text-center xl:text-5xl">
+                  {comparisonTable.title}
+                </h2>
+              )}
+              {comparisonTable.description && (
+                <p className="text-element-mid-em mb-12 text-center text-lg">
+                  {comparisonTable.description}
+                </p>
+              )}
+              <div
+                className={`overflow-x-auto ${!comparisonTable.description ? 'mt-8' : ''} ${comparisonTable.inCardGroup ? 'mx-auto max-w-4xl' : ''}`}
+              >
+                <table className="w-full border-collapse">
+                  <thead>
+                    <tr className="border-b-2 border-gray-300">
+                      <th className="text-element-high-em px-4 py-4 text-left font-semibold">
+                        Feature
                       </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {comparisonTable.rows.map((row, rowIdx) => (
-                    <tr
-                      key={rowIdx}
-                      className="border-b border-gray-200 last:border-b-0"
-                    >
-                      <td className="text-element-mid-em px-4 py-4">
-                        {row.feature}
-                      </td>
-                      {row.values.map((value, colIdx) => (
-                        <td
-                          key={colIdx}
-                          className={`px-4 py-4 text-center ${
-                            comparisonTable.columns[colIdx]?.highlight
-                              ? 'bg-orange-50/50'
-                              : ''
+                      {comparisonTable.columns.map((col, idx) => (
+                        <th
+                          key={idx}
+                          className={`px-4 py-4 text-center font-semibold ${
+                            col.highlight
+                              ? 'bg-orange-50 text-orange-600'
+                              : 'text-element-high-em'
                           }`}
                         >
-                          {typeof value === 'boolean' ? (
-                            value ? (
-                              <svg
-                                className="mx-auto h-5 w-5 text-green-600"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  d="M5 13l4 4L19 7"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
-                            ) : (
-                              <span className="text-gray-400">—</span>
-                            )
-                          ) : (
-                            <span className="text-element-mid-em">{value}</span>
-                          )}
-                        </td>
+                          {col.name}
+                        </th>
                       ))}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {comparisonTable.rows.map((row, rowIdx) => (
+                      <tr
+                        key={rowIdx}
+                        className="border-b border-gray-200 last:border-b-0"
+                      >
+                        <td className="text-element-mid-em px-4 py-4">
+                          {row.feature}
+                        </td>
+                        {row.values.map((value, colIdx) => (
+                          <td
+                            key={colIdx}
+                            className={`px-4 py-4 text-center ${
+                              comparisonTable.columns[colIdx]?.highlight
+                                ? 'bg-orange-50/50'
+                                : ''
+                            }`}
+                          >
+                            {typeof value === 'boolean' ? (
+                              value ? (
+                                <svg
+                                  className="mx-auto h-5 w-5 text-green-600"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth={2}
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M5 13l4 4L19 7"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                </svg>
+                              ) : (
+                                <span className="text-gray-400">—</span>
+                              )
+                            ) : (
+                              <span className="text-element-mid-em">
+                                {value}
+                              </span>
+                            )}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </section>
@@ -324,7 +418,7 @@ export function ProductPage({
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (
-        <section className="relative border-t border-gray-200 py-16">
+        <section className="relative py-16 md:py-20">
           {/* Grid Background */}
           <div
             aria-hidden="true"
@@ -334,20 +428,22 @@ export function ProductPage({
           </div>
 
           <div className="relative z-10 mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
-            <h3 className="text-element-mid-em mb-10 text-center text-sm font-medium tracking-wide uppercase">
-              Explore the platform
-            </h3>
-            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {relatedProducts.map((product) => (
-                <ProductCard
-                  key={product.href}
-                  description={product.description ?? ''}
-                  href={product.href}
-                  image={product.image ?? ''}
-                  name={product.name}
-                  variant="compact"
-                />
-              ))}
+            <div className="bg-background-lighter rounded-xs border border-gray-300 px-6 py-12 shadow shadow-gray-400/10 md:px-16 md:py-16">
+              <h3 className="text-element-mid-em mb-10 text-center text-sm font-medium tracking-wide uppercase">
+                Explore the platform
+              </h3>
+              <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {relatedProducts.map((product) => (
+                  <ProductCard
+                    key={product.href}
+                    description={product.description ?? ''}
+                    href={product.href}
+                    image={product.image ?? ''}
+                    name={product.name}
+                    variant="compact"
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -365,9 +461,15 @@ export function ProductPage({
 function ContentSectionRenderer({
   section,
   index,
+  inCard,
+  isFirstInCard,
+  isLastInCard,
 }: {
   section: ContentSection;
   index: number;
+  inCard?: boolean;
+  isFirstInCard?: boolean;
+  isLastInCard?: boolean;
 }) {
   const isEven = index % 2 === 0;
   const hasImage = !!section.image;
@@ -376,11 +478,13 @@ function ContentSectionRenderer({
       ? 'bg-background-lighter border-y border-gray-200'
       : '';
 
-  // Side-by-side layout when there's an image
-  if (hasImage) {
-    return (
-      <section className={`py-16 md:py-20 ${bgClass}`}>
-        <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
+  // When inside a card, render without the outer section wrapper
+  if (inCard) {
+    const cardPadding = `px-6 py-12 md:px-16 md:py-16 ${!isFirstInCard ? 'border-t border-dashed border-gray-300' : ''}`;
+
+    if (hasImage) {
+      return (
+        <div className={cardPadding}>
           <div
             className={`flex flex-col items-center gap-12 lg:flex-row lg:gap-16 ${
               isEven ? '' : 'lg:flex-row-reverse'
@@ -422,7 +526,99 @@ function ContentSectionRenderer({
             </div>
           </div>
         </div>
-      </section>
+      );
+    }
+
+    // Full-width layout inside card
+    const alignment = section.centered
+      ? 'mx-auto text-center'
+      : isEven
+        ? ''
+        : 'ml-auto';
+
+    return (
+      <div className={cardPadding}>
+        <div className={`max-w-4xl ${alignment}`}>
+          {section.label && (
+            <p className="text-element-mid-em mb-2 text-xs font-medium tracking-wide uppercase">
+              {section.label}
+            </p>
+          )}
+          <h2 className="text-element-high-em mb-4 text-2xl font-medium md:text-3xl">
+            {section.title}
+          </h2>
+          {section.subtitle && (
+            <h3 className="text-element-mid-em mb-4 text-lg font-medium">
+              {section.subtitle}
+            </h3>
+          )}
+          {section.description && (
+            <p
+              className={`text-element-mid-em mb-8 text-base leading-relaxed ${section.centered ? '' : 'max-w-2xl'}`}
+            >
+              {section.description}
+            </p>
+          )}
+          <SectionContent centered={section.centered} section={section} />
+        </div>
+      </div>
+    );
+  }
+
+  // Side-by-side layout when there's an image
+  if (hasImage) {
+    return (
+      <>
+        {section.dividerAbove && (
+          <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
+            <hr className="border-gray-300" />
+          </div>
+        )}
+        <section className={`py-16 md:py-20 ${bgClass}`}>
+          <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
+            <div
+              className={`flex flex-col items-center gap-12 lg:flex-row lg:gap-16 ${
+                isEven ? '' : 'lg:flex-row-reverse'
+              }`}
+            >
+              {/* Image */}
+              <div className="w-full lg:w-1/2">
+                <Image
+                  alt={section.title}
+                  className="h-auto w-full rounded-lg border border-gray-200"
+                  height={0}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  src={section.image!}
+                  style={{ width: '100%', height: 'auto' }}
+                  width={0}
+                />
+              </div>
+              {/* Content */}
+              <div className="w-full lg:w-1/2">
+                {section.label && (
+                  <p className="text-element-mid-em mb-2 text-xs font-medium tracking-wide uppercase">
+                    {section.label}
+                  </p>
+                )}
+                <h2 className="text-element-high-em mb-4 text-2xl font-medium md:text-3xl">
+                  {section.title}
+                </h2>
+                {section.subtitle && (
+                  <h3 className="text-element-mid-em mb-4 text-lg font-medium">
+                    {section.subtitle}
+                  </h3>
+                )}
+                {section.description && (
+                  <p className="text-element-mid-em mb-6 text-base leading-relaxed">
+                    {section.description}
+                  </p>
+                )}
+                <SectionContent section={section} />
+              </div>
+            </div>
+          </div>
+        </section>
+      </>
     );
   }
 
@@ -435,6 +631,11 @@ function ContentSectionRenderer({
 
   return (
     <>
+      {section.dividerAbove && (
+        <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
+          <hr className="border-gray-300" />
+        </div>
+      )}
       <section className={`py-16 md:py-20 ${bgClass}`}>
         <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
           <div className={`max-w-4xl ${alignment}`}>

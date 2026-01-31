@@ -98,6 +98,7 @@ export default function PriorArtSearchPage() {
               'Patent applications and publications across major jurisdictions—built to iterate fast and narrow down on key references.',
             type: 'bullets',
             image: '/stylized-features/search-patent.png',
+            cardGroup: 'main',
             items: [
               'US and international patents',
               'Applications and publications',
@@ -111,6 +112,7 @@ export default function PriorArtSearchPage() {
               'Research papers, standards, clinical trials, and more across the entire public internet.',
             type: 'bullets',
             image: '/stylized-features/search-npl.png',
+            cardGroup: 'main',
             items: [
               'Academic papers and journals',
               'Technical standards',
@@ -125,6 +127,7 @@ export default function PriorArtSearchPage() {
               'Current and archival product listings, specs, manuals, videos, and teardowns.',
             type: 'bullets',
             image: '/stylized-features/search-product.png',
+            cardGroup: 'main',
             items: [
               'Product specs and manuals',
               'Teardowns and technical docs',

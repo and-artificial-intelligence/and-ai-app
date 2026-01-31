@@ -119,6 +119,7 @@ export default function ClaimChartsPage() {
               "Map each claim element to exact citations from prior art or product documentation. No AI-generated language in your exports—just the references you've reviewed and approved.",
             type: 'bullets',
             image: '/stylized-features/chart-claim.png',
+            cardGroup: 'main',
             items: [
               'Limitation-by-limitation mapping',
               'Pinpoint citations to source material',
@@ -132,6 +133,7 @@ export default function ClaimChartsPage() {
               'Claim construction drives everything—invalidity, infringement, and settlement posture. Build Markman-ready constructions with a clear evidentiary record.',
             type: 'bullets',
             image: '/stylized-features/chart-construction.png',
+            cardGroup: 'main',
             items: [
               'Identify disputed terms and draft definitions grounded in the intrinsic record—claims, specification, and prosecution history.',
               'Ground each definition in intrinsic evidence from the claims, specification, and prosecution history',
@@ -146,6 +148,7 @@ export default function ClaimChartsPage() {
             type: 'bullets',
             bulletStyle: 'bullet',
             centered: true,
+            dividerAbove: true,
             items: [
               '§102 Anticipation: Single-reference charts with element-by-element mapping',
               '§103 Obviousness: Multi-reference combinations with clear motivation narratives',
@@ -160,6 +163,7 @@ export default function ClaimChartsPage() {
             type: 'bullets',
             bulletStyle: 'bullet',
             centered: true,
+            background: 'light',
             items: [
               'Specs, manuals, and datasheets',
               'Teardowns, photos, and screenshots',
