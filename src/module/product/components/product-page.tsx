@@ -8,6 +8,7 @@ import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 import { ProductCard } from '@/common/components/product-card';
 import { SubHeader } from '@/common/components/subheader';
+import { cn } from '@/common/functions/cn';
 import { BrandColor } from '@/common/types/common';
 
 import { CTASection } from '@/module/cta';
@@ -39,6 +40,8 @@ export type ContentSectionType =
   | 'feature-cards' // Cards with bold title + description
   | 'feature-list'; // Bold title + description as simple list (no boxes)
 
+export type ImageColor = 'gray' | 'blue' | 'purple' | 'orange';
+
 export interface ContentSection {
   label?: string; // Small uppercase label above title
   title: string;
@@ -47,6 +50,7 @@ export interface ContentSection {
   type: ContentSectionType;
   items: string[] | { title: string; description: string }[];
   image?: string; // Optional image for side-by-side layout
+  imageColor?: ImageColor; // Background color for styled image container (gray, blue, purple, orange)
   background?: 'default' | 'light'; // 'light' adds the gray background
   centered?: boolean; // Center the section instead of alternating left/right
   bulletStyle?: 'bullet' | 'check'; // For 'bullets' type: circle bullet or checkmark (default: check)
@@ -457,6 +461,72 @@ export function ProductPage({
   );
 }
 
+// Helper to get image container background and gradient classes
+function getImageColorClasses(color?: ImageColor) {
+  switch (color) {
+    case 'blue':
+      return {
+        bg: 'bg-feature-2/50',
+        gradient: 'to-feature-2',
+      };
+    case 'purple':
+      return {
+        bg: 'bg-feature-3/50',
+        gradient: 'to-feature-3',
+      };
+    case 'orange':
+      return {
+        bg: 'bg-[#f5e6d3]',
+        gradient: 'to-[#f5e6d3]',
+      };
+    case 'gray':
+    default:
+      return {
+        bg: 'bg-feature-1',
+        gradient: 'to-feature-1',
+      };
+  }
+}
+
+// Styled image container component matching features section style
+function StyledImage({
+  src,
+  alt,
+  color,
+}: {
+  src: string;
+  alt: string;
+  color?: ImageColor;
+}) {
+  const { bg, gradient } = getImageColorClasses(color);
+
+  return (
+    <div
+      className={cn(
+        'relative overflow-hidden rounded-sm border border-gray-200 pt-4 pl-4 md:pt-8 md:pl-8',
+        bg,
+      )}
+    >
+      <div className="relative h-[280px] w-full md:h-[400px]">
+        <Image
+          fill
+          alt={alt}
+          className="object-cover object-top-left"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          src={src}
+        />
+      </div>
+      {/* Gradient overlay */}
+      <div
+        className={cn(
+          'pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-100%',
+          gradient,
+        )}
+      />
+    </div>
+  );
+}
+
 // Render different section types with alternating alignment
 function ContentSectionRenderer({
   section,
@@ -492,14 +562,10 @@ function ContentSectionRenderer({
           >
             {/* Image */}
             <div className="w-full lg:w-1/2">
-              <Image
+              <StyledImage
                 alt={section.title}
-                className="h-auto w-full rounded-lg border border-gray-200"
-                height={0}
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                color={section.imageColor}
                 src={section.image!}
-                style={{ width: '100%', height: 'auto' }}
-                width={0}
               />
             </div>
             {/* Content */}
@@ -583,14 +649,10 @@ function ContentSectionRenderer({
             >
               {/* Image */}
               <div className="w-full lg:w-1/2">
-                <Image
+                <StyledImage
                   alt={section.title}
-                  className="h-auto w-full rounded-lg border border-gray-200"
-                  height={0}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  color={section.imageColor}
                   src={section.image!}
-                  style={{ width: '100%', height: 'auto' }}
-                  width={0}
                 />
               </div>
               {/* Content */}

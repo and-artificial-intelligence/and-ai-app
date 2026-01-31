@@ -73,6 +73,7 @@ export default function InfringementDetectionPage() {
               '&AI searches current and archival product sources so you can find what you need without hours of manual searching.',
             type: 'bullets',
             image: '/stylized-features/search-product.png',
+            imageColor: 'orange',
             cardGroup: 'main',
             items: [
               'Datasheets, user manuals, and spec sheets',
@@ -88,6 +89,7 @@ export default function InfringementDetectionPage() {
               'Every citation links back to its source—specs, screenshots, or video timestamps—so your charts are ready to use.',
             type: 'bullets',
             image: '/stylized-features/chart-claim.png',
+            imageColor: 'blue',
             cardGroup: 'main',
             items: [
               'Map each limitation to pinpoint product evidence',

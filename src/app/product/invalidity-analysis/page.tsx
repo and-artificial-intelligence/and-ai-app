@@ -83,6 +83,7 @@ export default function InvalidityAnalysisPage() {
               'Invalidity work is document- and citation-driven, and it evolves as the record develops and positions sharpen. &AI supports the core steps—reference review, limitation mapping, and theory development—so teams can revise charts and arguments efficiently without duplicating work.',
             type: 'bullets',
             image: '/stylized-features/chart-claim.png',
+            imageColor: 'blue',
             cardGroup: 'main',
             items: [
               'Source, compare, and organize the strongest prior arts',
@@ -99,6 +100,7 @@ export default function InvalidityAnalysisPage() {
               'Claim construction drives everything—invalidity, infringement, and settlement posture. Build Markman-ready constructions with a clear evidentiary record.',
             type: 'bullets',
             image: '/stylized-features/chart-construction.png',
+            imageColor: 'purple',
             cardGroup: 'main',
             items: [
               'Zero in on disputed terms and generate draft definitions fast',
