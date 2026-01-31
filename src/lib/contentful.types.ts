@@ -29,6 +29,7 @@ export type BlogPost = {
   description: string;
   author: string;
   date: string;
+  updatedAt: string;
   coverImage: BlogPostImage | null;
   featureImage: BlogPostImage | null;
   content: Document | null;

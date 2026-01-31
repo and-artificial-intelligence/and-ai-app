@@ -1,11 +1,10 @@
-import Script from 'next/script';
-
 interface SchemaScriptProps {
   schema: object | object[];
 }
 
 /**
- * Component to inject JSON-LD structured data into the page
+ * Component to inject JSON-LD structured data into the page.
+ * Uses a regular script tag to ensure schema is present in initial HTML for crawlers.
  */
 export function SchemaScript({ schema }: SchemaScriptProps) {
   const schemas = Array.isArray(schema) ? schema : [schema];
@@ -13,13 +12,12 @@ export function SchemaScript({ schema }: SchemaScriptProps) {
   return (
     <>
       {schemas.map((s, index) => (
-        <Script
+        <script
           key={index}
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(s),
           }}
           id={`schema-${index}`}
-          strategy="afterInteractive"
           type="application/ld+json"
         />
       ))}

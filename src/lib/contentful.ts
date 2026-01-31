@@ -144,6 +144,7 @@ const normalizeBlogPost = (entry: Entry<BlogPostSkeleton>): BlogPost => {
       getDateFieldValue(fields) ??
       entry.sys.updatedAt ??
       entry.sys.createdAt,
+    updatedAt: entry.sys.updatedAt,
     coverImage: getAssetImage(asAsset(fields.coverImage)),
     featureImage: getAssetImage(
       asAsset(featureImageField ? fields[featureImageField] : null),

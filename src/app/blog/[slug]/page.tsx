@@ -197,6 +197,7 @@ export default async function BlogPost({
     headline: post.title,
     description: post.subtitle || post.description,
     datePublished: post.date,
+    dateModified: post.updatedAt,
     author: post.author,
     image: post.featureImage?.url || post.coverImage?.url,
     url: `https://tryandai.com/blog/${slug}`,

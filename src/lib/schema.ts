@@ -123,13 +123,13 @@ export function generateArticleSchema(props: ArticleSchemaProps) {
     '@type': 'Article',
     headline: props.headline,
     description: props.description,
-    datePublished: props.datePublished,
-    ...(props.dateModified && { dateModified: props.dateModified }),
-    author: {
-      '@type': 'Organization',
-      name: '&AI',
-      url: 'https://tryandai.com',
-    },
+    datePublished: new Date(props.datePublished).toISOString(),
+    ...(props.dateModified && {
+      dateModified: new Date(props.dateModified).toISOString(),
+    }),
+    author: props.author
+      ? { '@type': 'Person', name: props.author }
+      : { '@type': 'Organization', name: '&AI', url: 'https://tryandai.com' },
     publisher: {
       '@type': 'Organization',
       name: '&AI',
