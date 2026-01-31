@@ -103,7 +103,7 @@ export default function BookDemo() {
             <h1 className="text-element-high-em text-5xl md:text-6xl xl:text-7xl">
               Book your <span className="font-martina italic">free trial</span>
             </h1>
-            
+
             <Tab size="responsive">
               <Tab.Button
                 className="!w-auto px-5"
@@ -158,7 +158,7 @@ export default function BookDemo() {
                 />
               </>
             )}
-            
+
             {viewMode === 'form' && (
               <div className="border-gray-dark/10 bg-background-lighter relative z-10 w-full max-w-2xl rounded-lg border p-6 shadow-sm md:p-8">
                 <form className="space-y-6" onSubmit={handleSubmit}>

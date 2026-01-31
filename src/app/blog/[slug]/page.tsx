@@ -7,13 +7,10 @@ import { notFound } from 'next/navigation';
 
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
-import {
-  generateArticleSchema,
-  generateBreadcrumbSchema,
-  JsonLd,
-} from '@/common/components/structured-data';
+import { SchemaScript } from '@/common/components/schema-script';
 
 import { getBlogPostBySlug, getBlogPostSlugs } from '@/lib/contentful';
+import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import { BackgroundArt } from '@/module/cta';
 
 export const revalidate = 60;
@@ -28,16 +25,16 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: 'Blog Post Not Found | &AI',
+      title: 'Article Not Found | &AI',
     };
   }
 
   const ogImage = post.featureImage?.url ?? post.coverImage?.url;
   const metaDescription =
-    post.subtitle || post.description || `Read "${post.title}" on the &AI blog.`;
+    post.subtitle || post.description || `Read "${post.title}" on &AI Insights.`;
 
   return {
-    title: `${post.title} | &AI Blog`,
+    title: `${post.title} | &AI Insights`,
     description: metaDescription,
     authors: [{ name: post.author }],
     openGraph: {
@@ -213,8 +210,7 @@ export default async function BlogPost({
 
   return (
     <main className="flex min-h-screen flex-col">
-      <JsonLd data={articleSchema} />
-      <JsonLd data={breadcrumbSchema} />
+      <SchemaScript schema={[articleSchema, breadcrumbSchema]} />
 
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[48rem] xl:px-8 xl:py-24">
         <div className="space-y-12">
@@ -236,7 +232,7 @@ export default async function BlogPost({
                   strokeLinejoin="round"
                 />
               </svg>
-              Back to blog
+              Back to insights
             </Link>
 
             {post.featureImage || post.coverImage ? (

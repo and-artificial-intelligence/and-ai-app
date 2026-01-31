@@ -63,7 +63,7 @@ export const ItemAndSlider = ({
   const toGradientColor =
     tag === 'Search'
       ? 'to-feature-1'
-      : tag === 'Charts'
+      : tag === 'Charts' || tag === 'Pitch'
         ? 'to-feature-2'
         : tag === 'Drafts'
           ? 'to-feature-3'
@@ -72,7 +72,7 @@ export const ItemAndSlider = ({
   const backgroundColor =
     tag === 'Search'
       ? 'bg-feature-1'
-      : tag === 'Charts'
+      : tag === 'Charts' || tag === 'Pitch'
         ? 'bg-feature-2/50'
         : tag === 'Drafts'
           ? 'bg-feature-3/50'

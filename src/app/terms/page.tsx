@@ -1,9 +1,7 @@
 import { Footer } from '@/common/components/footer';
-import {
-  generateBreadcrumbSchema,
-  JsonLd,
-} from '@/common/components/structured-data';
+import { SchemaScript } from '@/common/components/schema-script';
 
+import { generateBreadcrumbSchema } from '@/lib/schema';
 import { CTASection } from '@/module/cta';
 
 const termsBreadcrumb = [
@@ -14,7 +12,7 @@ const termsBreadcrumb = [
 export default function Terms() {
   return (
     <main className="flex min-h-screen flex-col">
-      <JsonLd data={generateBreadcrumbSchema(termsBreadcrumb)} />
+      <SchemaScript schema={generateBreadcrumbSchema(termsBreadcrumb)} />
 
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[48rem] xl:px-8 xl:py-24">
         <div className="space-y-12">

@@ -1,0 +1,1 @@
+export { SolutionsByTypePage } from './components';

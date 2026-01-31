@@ -2,16 +2,68 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Button } from '@/common/components/button';
 import { Links } from '@/common/constants/links';
 import { cn } from '@/common/functions/cn';
 
+const productLinks = [
+  {
+    name: 'Overview',
+    href: '/product',
+    description: 'AI workspace for patent litigation',
+  },
+  {
+    name: 'Prior Art Search',
+    href: '/product/prior-art-search',
+    description: 'Discover relevant prior art',
+  },
+  {
+    name: 'Claim Charts',
+    href: '/product/claim-charts',
+    description: 'Generate litigation-ready charts',
+  },
+  {
+    name: 'Business Development',
+    href: '/product/business-development',
+    description: 'Grow your patent practice',
+  },
+  {
+    name: 'Invalidity Analysis',
+    href: '/product/invalidity-analysis',
+    description: 'Build stronger invalidity arguments',
+  },
+  {
+    name: 'Infringement Detection',
+    href: '/product/infringement-detection',
+    description: 'Find evidence of use faster',
+  },
+];
+
+const solutionsByType = [
+  {
+    name: 'Law Firms',
+    href: '/solutions/law-firms',
+    description: 'From Am Law 100 to IP Boutiques',
+  },
+  {
+    name: 'In-House',
+    href: '/solutions/in-house',
+    description: 'Litigation prep, infringement mining, transactions',
+  },
+];
+
 export const Navbar = () => {
   const [hasIntersected, setHasIntersected] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+  const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
+  const productsRef = useRef<HTMLDivElement>(null);
+  const solutionsRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -49,6 +101,26 @@ export const Navbar = () => {
     };
   }, [mobileMenuOpen]);
 
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        productsRef.current &&
+        !productsRef.current.contains(event.target as Node)
+      ) {
+        setProductsOpen(false);
+      }
+      if (
+        solutionsRef.current &&
+        !solutionsRef.current.contains(event.target as Node)
+      ) {
+        setSolutionsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
     <nav className={cn('bg-background fixed top-0 right-0 left-0 z-[100]')}>
       <div
@@ -73,6 +145,138 @@ export const Navbar = () => {
             />
           </Link>
           <div className="hidden items-center gap-6 md:flex">
+            {/* Products Dropdown */}
+            <div ref={productsRef} className="relative">
+              <button
+                className={cn(
+                  'text-element-high-em hover:text-element-mid-em flex items-center gap-1 text-sm font-medium transition-[color]',
+                  productsOpen
+                    ? 'no-underline'
+                    : mounted &&
+                        pathname.startsWith('/product') &&
+                        'underline decoration-orange-500 decoration-1 underline-offset-[6px]',
+                )}
+                onClick={() => setProductsOpen(!productsOpen)}
+              >
+                Product
+                <svg
+                  className={cn(
+                    'h-3 w-3 transition-transform duration-200',
+                    productsOpen && 'rotate-180',
+                  )}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 9l-7 7-7-7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                  />
+                </svg>
+              </button>
+              <div
+                className={cn(
+                  'absolute top-full left-0 z-50 mt-2 min-w-[320px] overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg transition-all duration-200',
+                  productsOpen
+                    ? 'pointer-events-auto translate-y-0 opacity-100'
+                    : 'pointer-events-none -translate-y-2 opacity-0',
+                )}
+              >
+                <div className="bg-white py-2">
+                  {productLinks.map((product) => (
+                    <Link
+                      key={product.href}
+                      className={cn(
+                        'hover:bg-background-lighter block px-4 py-3 transition-colors',
+                        mounted &&
+                          pathname === product.href &&
+                          'bg-background-lighter',
+                      )}
+                      href={product.href}
+                      onClick={() => setProductsOpen(false)}
+                    >
+                      <span className="text-element-high-em block text-sm font-medium">
+                        {product.name}
+                      </span>
+                      <span className="text-element-mid-em block text-xs">
+                        {product.description}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+                {mounted && pathname.startsWith('/product') && (
+                  <div className="h-0.5 w-full bg-orange-500" />
+                )}
+              </div>
+            </div>
+            {/* Solutions Dropdown */}
+            <div ref={solutionsRef} className="relative">
+              <button
+                className={cn(
+                  'text-element-high-em hover:text-element-mid-em flex items-center gap-1 text-sm font-medium transition-[color]',
+                  solutionsOpen
+                    ? 'no-underline'
+                    : mounted &&
+                        pathname.startsWith('/solutions') &&
+                        'underline decoration-orange-500 decoration-1 underline-offset-[6px]',
+                )}
+                onClick={() => setSolutionsOpen(!solutionsOpen)}
+              >
+                Solutions
+                <svg
+                  className={cn(
+                    'h-3 w-3 transition-transform duration-200',
+                    solutionsOpen && 'rotate-180',
+                  )}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 9l-7 7-7-7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                  />
+                </svg>
+              </button>
+              <div
+                className={cn(
+                  'absolute top-full left-0 z-50 mt-2 min-w-[320px] overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg transition-all duration-200',
+                  solutionsOpen
+                    ? 'pointer-events-auto translate-y-0 opacity-100'
+                    : 'pointer-events-none -translate-y-2 opacity-0',
+                )}
+              >
+                <div className="bg-white py-2">
+                  {solutionsByType.map((solution) => (
+                    <Link
+                      key={solution.href}
+                      className={cn(
+                        'hover:bg-background-lighter block px-4 py-3 transition-colors',
+                        mounted &&
+                          pathname === solution.href &&
+                          'bg-background-lighter',
+                      )}
+                      href={solution.href}
+                      onClick={() => setSolutionsOpen(false)}
+                    >
+                      <span className="text-element-high-em block text-sm font-medium">
+                        {solution.name}
+                      </span>
+                      <span className="text-element-mid-em block text-xs">
+                        {solution.description}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+                {mounted && pathname.startsWith('/solutions') && (
+                  <div className="h-0.5 w-full bg-orange-500" />
+                )}
+              </div>
+            </div>
             <Link
               className={cn(
                 'text-element-high-em hover:text-element-mid-em text-sm font-medium transition-[color]',
@@ -93,7 +297,7 @@ export const Navbar = () => {
               )}
               href="/blog"
             >
-              Blog
+              Insights
             </Link>
             <Link
               className={cn(
@@ -180,6 +384,133 @@ export const Navbar = () => {
       >
         <div className="flex flex-col gap-8 p-6">
           <div className="flex flex-col gap-6">
+            {/* Mobile Products Accordion */}
+            <div>
+              <button
+                className={cn(
+                  'text-element-high-em hover:text-element-mid-em flex w-full items-center justify-between text-lg font-medium transition-[color]',
+                  mounted &&
+                    pathname.startsWith('/product') &&
+                    'underline decoration-orange-500 decoration-2 underline-offset-[6px]',
+                )}
+                onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+              >
+                Product
+                <svg
+                  className={cn(
+                    'h-4 w-4 transition-transform duration-200',
+                    mobileProductsOpen && 'rotate-180',
+                  )}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 9l-7 7-7-7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                  />
+                </svg>
+              </button>
+              <div
+                className={cn(
+                  'mt-3 flex flex-col gap-4 overflow-hidden pl-4 transition-all duration-300',
+                  mobileProductsOpen
+                    ? 'max-h-[600px] opacity-100'
+                    : 'max-h-0 opacity-0',
+                )}
+              >
+                {productLinks.map((product) => (
+                  <Link
+                    key={product.href}
+                    className={cn(
+                      'block transition-colors',
+                      mounted &&
+                        pathname === product.href &&
+                        'text-element-high-em',
+                    )}
+                    href={product.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <span
+                      className={cn(
+                        'text-element-mid-em hover:text-element-high-em block text-base transition-colors',
+                        mounted &&
+                          pathname === product.href &&
+                          'text-element-high-em',
+                      )}
+                    >
+                      {product.name}
+                    </span>
+                    <span className="text-element-low-em block text-sm">
+                      {product.description}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+            {/* Mobile Solutions Accordion */}
+            <div>
+              <button
+                className={cn(
+                  'text-element-high-em hover:text-element-mid-em flex w-full items-center justify-between text-lg font-medium transition-[color]',
+                  mounted &&
+                    pathname.startsWith('/solutions') &&
+                    'underline decoration-orange-500 decoration-2 underline-offset-[6px]',
+                )}
+                onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
+              >
+                Solutions
+                <svg
+                  className={cn(
+                    'h-4 w-4 transition-transform duration-200',
+                    mobileSolutionsOpen && 'rotate-180',
+                  )}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 9l-7 7-7-7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                  />
+                </svg>
+              </button>
+              <div
+                className={cn(
+                  'mt-3 flex flex-col gap-4 overflow-hidden pl-4 transition-all duration-300',
+                  mobileSolutionsOpen
+                    ? 'max-h-[400px] opacity-100'
+                    : 'max-h-0 opacity-0',
+                )}
+              >
+                {solutionsByType.map((solution) => (
+                  <Link
+                    key={solution.href}
+                    className="block"
+                    href={solution.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <span
+                      className={cn(
+                        'text-element-mid-em hover:text-element-high-em block text-base transition-colors',
+                        mounted &&
+                          pathname === solution.href &&
+                          'text-element-high-em',
+                      )}
+                    >
+                      {solution.name}
+                    </span>
+                    <span className="text-element-low-em block text-sm">
+                      {solution.description}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
             <Link
               className={cn(
                 'text-element-high-em hover:text-element-mid-em text-lg font-medium transition-[color]',
@@ -202,7 +533,7 @@ export const Navbar = () => {
               href="/blog"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Blog
+              Insights
             </Link>
             <Link
               className={cn(

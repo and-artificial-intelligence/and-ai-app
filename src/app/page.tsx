@@ -15,27 +15,22 @@ import {
   SvaIcon,
   YCombinatorIcon,
 } from '@/common/components/icon';
-import {
-  generateBreadcrumbSchema,
-  generateSoftwareApplicationSchema,
-  JsonLd,
-} from '@/common/components/structured-data';
+import { SchemaScript } from '@/common/components/schema-script';
 import { SubHeader } from '@/common/components/subheader';
 import { TypingAnimation } from '@/common/components/typing-animation';
 import { Links } from '@/common/constants/links';
 import { cn } from '@/common/functions/cn';
 import { BrandColor } from '@/common/types/common';
 
+import {
+  generateBreadcrumbSchema,
+  generateSoftwareApplicationSchema,
+} from '@/lib/schema';
 import { CTASection } from '@/module/cta';
 import { FeaturesSection } from '@/module/features';
 import { PrivacyCard, PrivacyCardProps } from '@/module/privacy';
 
 const homeBreadcrumb = [{ name: 'Home', url: 'https://tryandai.com' }];
-
-const pricingOffers = [
-  { name: 'Core', price: '375' },
-  { name: 'Pro', price: '625' },
-];
 
 export default function Home() {
   const typingTexts: string[] = [
@@ -70,8 +65,17 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col">
-      <JsonLd data={generateSoftwareApplicationSchema(pricingOffers)} />
-      <JsonLd data={generateBreadcrumbSchema(homeBreadcrumb)} />
+      <SchemaScript
+        schema={[
+          generateSoftwareApplicationSchema({
+            name: '&AI',
+            description:
+              '&AI delivers trial-ready work product for patent litigators — fast enough for pitches, strong enough for court.',
+            url: 'https://tryandai.com',
+          }),
+          generateBreadcrumbSchema(homeBreadcrumb),
+        ]}
+      />
 
       {/* HERO SECTION */}
       <section
@@ -82,7 +86,7 @@ export default function Home() {
         <div className="relative order-1 aspect-square w-32 rounded-2xl md:w-[34.8125rem] lg:order-2 xl:w-[36.375rem]">
           <Image
             fill
-            alt="landing-page-bg"
+            alt="AI-powered patent litigation workspace illustration"
             className="scale-110 object-contain"
             src="/Illustration-2.png"
           />
@@ -139,6 +143,8 @@ export default function Home() {
         </div>
       </section>
 
+      <FeaturesSection />
+
       {/* ANIMATED TEXT SECTION */}
       <section
         className="mx-auto px-4 py-16 md:px-6 md:pt-[120px] md:pb-24 xl:max-w-[80rem] xl:px-8 xl:py-24 xl:pt-40 xl:pb-[120px]"
@@ -171,8 +177,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <FeaturesSection />
 
       {/* WORKFLOW SECTION //TODO: replace video placeholder*/}
       {/* <section
@@ -218,7 +222,7 @@ export default function Home() {
           <div className="border-gray-dark/5 relative aspect-[16/9] w-full rounded-xs border bg-gray-200">
             <Image
               fill
-              alt="built-for-patents-illustration"
+              alt="Patent document analysis showing automated claim mapping and prior art organization"
               className="object-contain object-center"
               src="/built-for-patents-illustration.png"
             />

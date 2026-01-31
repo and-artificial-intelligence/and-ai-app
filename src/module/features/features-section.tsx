@@ -21,36 +21,6 @@ import {
 
 const features: ItemAndSliderProps[] = [
   {
-    tag: 'Search',
-    tagColor: BrandColor.PRIMARY,
-    title: 'Find what your opponents miss.',
-    description:
-      'Search patent documents, non-patent literature, and products, in real time, from all over the world.',
-    items: [
-      {
-        icon: <SearchDocumentIcon />,
-        title: 'Patents',
-        description:
-          'Patent applications and publications from major jurisdictions',
-        imageSrc: '/1.1.png',
-      },
-      {
-        icon: <FileCopyIcon />,
-        title: 'Non-patent literature',
-        description:
-          'Research papers, standards, clinical trials, and more across the internet',
-        imageSrc: '/1.2.png',
-      },
-      {
-        icon: <Ar3DIcon />,
-        title: 'Products',
-        description:
-          'Current and archival product listings, specifications, manuals, videos, and teardowns',
-        imageSrc: '/1.3.png',
-      },
-    ],
-  },
-  {
     tag: 'Charts',
     tagColor: BrandColor.ACCENT_BLUE_DARK,
     title: 'Win cases faster with trial-ready analysis.',
@@ -62,46 +32,76 @@ const features: ItemAndSliderProps[] = [
         title: 'Claims and elements',
         description:
           'Element-by-element claim charts with citations to prior art and product documentation',
-        imageSrc: '/2.1.png',
+        imageSrc: '/stylized-features/chart-claim.png',
       },
       {
         icon: <ListIcon />,
         title: 'Claim construction',
         description:
-          'Claim constructions generated from the as-filed application, prosecution history, related family, and more',
-        imageSrc: '/2.2.png',
+          'Claim constructions generated from the patent, prosecution history, and family',
+        imageSrc: '/stylized-features/chart-construction.png',
+      },
+    ],
+  },
+  {
+    tag: 'Search',
+    tagColor: BrandColor.PRIMARY,
+    title: 'Find what your opponents miss.',
+    description:
+      'Search patent documents, non-patent literature, and products, in real time, from all over the world.',
+    items: [
+      {
+        icon: <SearchDocumentIcon />,
+        title: 'Patents',
+        description:
+          'Patent applications and publications from major jurisdictions',
+        imageSrc: '/stylized-features/search-patent.png',
+      },
+      {
+        icon: <FileCopyIcon />,
+        title: 'Non-patent literature',
+        description:
+          'Research papers, standards, clinical trials, and more across the internet',
+        imageSrc: '/stylized-features/search-npl.png',
+      },
+      {
+        icon: <Ar3DIcon />,
+        title: 'Products',
+        description:
+          'Current and archival product listings, specifications, manuals, videos, and teardowns',
+        imageSrc: '/stylized-features/search-product.png',
       },
     ],
   },
   {
     tag: 'Drafts',
     tagColor: BrandColor.ACCENT_PURPLE,
-    title: 'Pitch more clients profitably.',
+    title: 'Draft winning arguments.',
     description:
-      'Draft invalidity contentions, expert reports, and pitch materials grounded in your case. Make unbillable work economical.',
+      'Draft invalidity contentions, expert reports, and pitch materials grounded in your case. Make unbillable work billable.',
     items: [
       {
         icon: <DocumentTextIcon />,
         title: 'Templates',
         description:
           'Pre-formatted templates with smart variables and generation blocks for flexible, on-demand drafting',
-        imageSrc: '/3.1.png',
+        imageSrc: '/stylized-features/draft-template.png',
       },
       {
         icon: <MessageIcon />,
         title: 'Editor',
         description:
           'Collaborative workspace where your team and AI refine documents together in real time',
-        imageSrc: '/3.2.png',
+        imageSrc: '/stylized-features/draft-memo.png',
       },
     ],
   },
   {
     tag: 'Tables',
     tagColor: BrandColor.PRIMARY,
-    title: 'Discover opportunities worth pursuing.',
+    title: 'Monetize your portfolio at scale.',
     description:
-      'Query thousands of documents simultaneously to identify litigation opportunities and infringement patterns.',
+      'Query thousands of documents simultaneously to identify infringement patterns and prioritize the products that deserve a full chart.',
     items: [
       {
         icon: <SearchDocumentIcon />,
@@ -116,7 +116,30 @@ const features: ItemAndSliderProps[] = [
           'Slice and filter tables using natural language or metadata to surface exactly what you need',
       },
     ],
-    singleImage: '/4.1.png',
+    singleImage: '/stylized-features/table.png',
+  },
+  {
+    tag: 'Pitch',
+    tagColor: BrandColor.ACCENT_BLUE_DARK,
+    title: 'Discover opportunities worth pursuing.',
+    description:
+      'A personalized, real-time feed of new patent litigation—helping you find the right cases to pitch.',
+    items: [
+      {
+        icon: <SearchDocumentIcon />,
+        title: 'Real-time feed',
+        description:
+          'A real-time feed with pitch recommendations and configurable alerts and filters',
+        imageSrc: '/stylized-features/opportunities-feed.png',
+      },
+      {
+        icon: <SearchDocumentIcon />,
+        title: 'Personal and team recommendations',
+        description:
+          "The right cases, triaged to the right partner based on your team's prior experience",
+        imageSrc: '/stylized-features/opportunities-detail.png',
+      },
+    ],
   },
 ];
 
@@ -183,7 +206,7 @@ export const FeaturesSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative mx-auto w-full px-4 py-12 md:px-6 md:py-16 xl:px-8"
+      className="relative mx-auto mt-20 w-full px-4 pt-12 pb-12 md:mt-28 md:px-6 md:pt-16 md:pb-16 xl:px-8"
       id="features"
     >
       <div

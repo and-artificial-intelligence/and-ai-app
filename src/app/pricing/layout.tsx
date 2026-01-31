@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
 
+import { SchemaScript } from '@/common/components/schema-script';
+
 import {
   generateBreadcrumbSchema,
-  generateFAQPageSchema,
+  generateFAQSchema,
   generateSoftwareApplicationSchema,
-  JsonLd,
-} from '@/common/components/structured-data';
+} from '@/lib/schema';
 
 export const metadata: Metadata = {
-  title: 'Pricing | &AI',
+  title: 'Pricing',
   description:
     'Choose the right plan for your patent litigation workflow. Core, Pro, and Enterprise pricing options available.',
 };
@@ -35,15 +36,10 @@ const faqItems = [
       'Public-only mode is a feature that allows you to use &AI without storing or accessing any confidential information, and it is the default mode for all Core users. With public-only mode enabled, you are unable to upload any documents or provide any context or prompts for the models. This makes it impossible for you to store any confidential information with &AI. Pro and Enterprise customers can enable public-only mode by contacting support@tryandai.com.',
   },
   {
-    question: 'I have a question not answered yet. Who can I talk to?',
+    question: "I have a question that isn't answered here. Who can I talk to?",
     answer:
       "We're here to help! Book a demo to speak with a member of our team directly, or reach out to support@tryandai.com.",
   },
-];
-
-const pricingOffers = [
-  { name: 'Core', price: '375' },
-  { name: 'Pro', price: '625' },
 ];
 
 const breadcrumbItems = [
@@ -58,9 +54,18 @@ export default function PricingLayout({
 }) {
   return (
     <>
-      <JsonLd data={generateFAQPageSchema(faqItems)} />
-      <JsonLd data={generateSoftwareApplicationSchema(pricingOffers)} />
-      <JsonLd data={generateBreadcrumbSchema(breadcrumbItems)} />
+      <SchemaScript
+        schema={[
+          generateFAQSchema(faqItems),
+          generateSoftwareApplicationSchema({
+            name: '&AI Pricing',
+            description:
+              'Choose the right plan for your patent litigation workflow. Core, Pro, and Enterprise pricing options available.',
+            url: 'https://tryandai.com/pricing',
+          }),
+          generateBreadcrumbSchema(breadcrumbItems),
+        ]}
+      />
       {children}
     </>
   );
