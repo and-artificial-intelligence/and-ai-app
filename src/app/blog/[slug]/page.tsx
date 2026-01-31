@@ -8,6 +8,7 @@ import { notFound } from 'next/navigation';
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 import { SchemaScript } from '@/common/components/schema-script';
+import { SITE_URL } from '@/common/constants';
 
 import { getBlogPostBySlug, getBlogPostSlugs } from '@/lib/contentful';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/schema';
@@ -29,26 +30,58 @@ export async function generateMetadata({
     };
   }
 
-  const ogImage = post.featureImage?.url ?? post.coverImage?.url;
+  const seo = post.seo;
+  const canonicalUrl = seo?.canonicalUrl || `${SITE_URL}/blog/${slug}`;
+
+  // Use SEO fields from Contentful if available, otherwise fall back to post fields
+  const metaTitle = seo?.pageTitle || `${post.title} | &AI Insights`;
   const metaDescription =
-    post.subtitle || post.description || `Read "${post.title}" on &AI Insights.`;
+    seo?.pageDescription ||
+    post.subtitle ||
+    post.description ||
+    `Read "${post.title}" on &AI Insights.`;
+
+  // Use SEO share images if available, otherwise use feature/cover image
+  const ogImage =
+    seo?.shareImages?.[0]?.url ||
+    post.featureImage?.url ||
+    post.coverImage?.url;
+  const ogImageWidth =
+    seo?.shareImages?.[0]?.width ||
+    post.featureImage?.width ||
+    post.coverImage?.width ||
+    1200;
+  const ogImageHeight =
+    seo?.shareImages?.[0]?.height ||
+    post.featureImage?.height ||
+    post.coverImage?.height ||
+    630;
 
   return {
-    title: `${post.title} | &AI Insights`,
+    title: metaTitle,
     description: metaDescription,
     authors: [{ name: post.author }],
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    robots: {
+      index: !seo?.noindex,
+      follow: !seo?.nofollow,
+    },
     openGraph: {
-      title: post.title,
+      title: metaTitle,
       description: metaDescription,
       type: 'article',
       publishedTime: post.date,
+      modifiedTime: post.updatedAt,
       authors: [post.author],
+      url: canonicalUrl,
       ...(ogImage && {
         images: [
           {
             url: ogImage,
-            width: post.featureImage?.width ?? post.coverImage?.width ?? 1200,
-            height: post.featureImage?.height ?? post.coverImage?.height ?? 630,
+            width: ogImageWidth,
+            height: ogImageHeight,
             alt: post.title,
           },
         ],
@@ -56,7 +89,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
+      title: metaTitle,
       description: metaDescription,
       ...(ogImage && { images: [ogImage] }),
     },
@@ -193,20 +226,29 @@ export default async function BlogPost({
   const post = await getBlogPostBySlug(slug);
   if (!post) notFound();
 
+  const schemaDescription =
+    post.seo?.pageDescription || post.subtitle || post.description;
+  const schemaImage =
+    post.seo?.shareImages?.[0]?.url ||
+    post.featureImage?.url ||
+    post.coverImage?.url;
+  const canonicalUrl =
+    post.seo?.canonicalUrl || `${SITE_URL}/blog/${slug}`;
+
   const articleSchema = generateArticleSchema({
     headline: post.title,
-    description: post.subtitle || post.description,
+    description: schemaDescription,
     datePublished: post.date,
     dateModified: post.updatedAt,
     author: post.author,
-    image: post.featureImage?.url || post.coverImage?.url,
-    url: `https://tryandai.com/blog/${slug}`,
+    image: schemaImage,
+    url: canonicalUrl,
   });
 
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', url: 'https://tryandai.com' },
-    { name: 'Blog', url: 'https://tryandai.com/blog' },
-    { name: post.title, url: `https://tryandai.com/blog/${slug}` },
+    { name: 'Home', url: SITE_URL },
+    { name: 'Insights', url: `${SITE_URL}/blog` },
+    { name: post.title, url: canonicalUrl },
   ]);
 
   return (

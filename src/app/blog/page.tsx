@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Footer } from '@/common/components/footer';
 import { SchemaScript } from '@/common/components/schema-script';
 import { SubHeader } from '@/common/components/subheader';
+import { SITE_URL } from '@/common/constants';
 import { BrandColor } from '@/common/types/common';
 
 import { getBlogPosts } from '@/lib/contentful';
@@ -14,19 +15,27 @@ import { CTASection } from '@/module/cta';
 export const revalidate = 0;
 
 const blogBreadcrumb = [
-  { name: 'Home', url: 'https://tryandai.com' },
-  { name: 'Insights', url: 'https://tryandai.com/blog' },
+  { name: 'Home', url: SITE_URL },
+  { name: 'Insights', url: `${SITE_URL}/blog` },
 ];
 
 export const metadata: Metadata = {
   title: 'Insights | &AI',
   description:
     'Stay up to date with the latest news, insights, and updates from &AI — the AI workspace for patent litigation.',
+  alternates: {
+    canonical: `${SITE_URL}/blog`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: 'Insights | &AI',
     description:
       'Stay up to date with the latest news, insights, and updates from &AI — the AI workspace for patent litigation.',
     type: 'website',
+    url: `${SITE_URL}/blog`,
   },
   twitter: {
     card: 'summary_large_image',

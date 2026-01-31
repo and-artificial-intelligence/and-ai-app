@@ -1,3 +1,5 @@
+export const SITE_URL = 'https://tryandai.com';
+
 export enum Links {
   Privacy = 'https://tryandai.com/privacy',
   Terms = 'https://tryandai.com/terms',
