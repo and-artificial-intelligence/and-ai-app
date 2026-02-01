@@ -71,7 +71,7 @@ export default function Home() {
           generateSoftwareApplicationSchema({
             name: '&AI',
             description:
-              '&AI is a platform for patent litigators to craft trial-ready work product — fast enough for pitches, strong enough for court.',
+              '&AI is a platform for patent litigators to craft trial-ready work product—fast enough for pitches, strong enough for court.',
             url: 'https://tryandai.com',
           }),
           generateBreadcrumbSchema(homeBreadcrumb),
@@ -109,7 +109,7 @@ export default function Home() {
                   )}
                 >
                   &AI is a platform for patent litigators to craft trial-ready
-                  work product — fast enough for pitches, strong enough for
+                  work product—fast enough for pitches, strong enough for
                   court.
                 </p>
                 <p
@@ -119,7 +119,7 @@ export default function Home() {
                   )}
                 >
                   &AI is a platform for patent litigators to craft trial-ready
-                  work product — fast enough for pitches, strong enough for
+                  work product—fast enough for pitches, strong enough for
                   court.
                 </p>
               </div>

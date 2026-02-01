@@ -334,7 +334,7 @@ export default async function BlogPost({
               </h2>
               <p className="text-element-high-em max-w-[20.5625rem] text-center md:max-w-[30rem] xl:max-w-[35rem] xl:text-lg">
                 &AI is a platform for patent litigators to craft trial-ready
-                work product — fast enough for pitches, strong enough for court.
+                work product—fast enough for pitches, strong enough for court.
               </p>
             </div>
             <Button href="/book-demo">Free trial</Button>

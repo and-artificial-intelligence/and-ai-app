@@ -111,7 +111,7 @@ const AdvisorCard = ({ advisor }: { advisor: Advisor }) => (
 export const AdvisoryBoardSection = ({
   showHeader = true,
   headerTitle = 'Guided by the best in patent law',
-  leadingCopy = 'Leading voices in patent litigation and strategy — who know what it takes to win.',
+  leadingCopy = 'Leading voices in patent litigation and strategy—who know what it takes to win.',
 }: AdvisoryBoardSectionProps) => {
   const [sliderRef, slider] = useBlazeSlider({
     all: {
@@ -161,14 +161,14 @@ export const AdvisoryBoardSection = ({
       )}
 
       {/* Desktop: Grid layout */}
-      <div className="hidden lg:grid lg:grid-cols-5 lg:gap-8">
+      <div className="hidden pt-2 lg:grid lg:grid-cols-5 lg:gap-8">
         {advisors.map((advisor) => (
           <AdvisorCard key={advisor.name} advisor={advisor} />
         ))}
       </div>
 
       {/* Mobile/Tablet: Horizontal slider */}
-      <div ref={sliderRef} className="blaze-slider lg:hidden">
+      <div ref={sliderRef} className="blaze-slider pt-2 lg:hidden">
         <div className="blaze-container">
           <div className="blaze-track-container">
             <div className="blaze-track">

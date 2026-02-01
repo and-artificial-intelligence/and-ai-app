@@ -22,7 +22,7 @@ export const CTASection = ({ showPricing = false }: CTASectionProps) => (
           </h2>
           <p className="text-element-high-em max-w-[24rem] text-center md:max-w-[35rem] xl:max-w-[40rem] xl:text-lg">
             &AI is a platform for patent litigators to craft trial-ready work
-            product — fast enough for pitches, strong enough for court.
+            product—fast enough for pitches, strong enough for court.
           </p>
         </div>
         <div className="flex flex-col items-center gap-3 sm:flex-row">

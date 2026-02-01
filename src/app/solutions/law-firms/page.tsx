@@ -49,7 +49,7 @@ export default function LawFirmsPage() {
         {
           question: 'How does &AI handle security for legal work?',
           answer:
-            '&AI has enterprise-grade security and compliance built for law — including zero-data retention policies with model providers, SSO/RBAC, encryption in transit/at rest, and public-only mode.',
+            '&AI has enterprise-grade security and compliance built for law—including zero-data retention policies with model providers, SSO/RBAC, encryption in transit/at rest, and public-only mode.',
         },
       ]}
       h1="From Am Law 100 to IP"
