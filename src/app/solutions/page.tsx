@@ -5,6 +5,7 @@ import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
+
 import { CTASection } from '@/module/cta';
 
 export const metadata: Metadata = {
@@ -17,12 +18,14 @@ const solutionsByType = [
   {
     name: 'Law Firms',
     href: '/solutions/law-firms',
-    description: 'From Am Law 100 to IP Boutiques—slash write-offs, capture billables, and deliver faster results.',
+    description:
+      'From Am Law 100 to IP Boutiques—slash write-offs, capture billables, and deliver faster results.',
   },
   {
     name: 'In-House',
     href: '/solutions/in-house',
-    description: 'Faster compliance, better counsel selection. Litigation prep, infringement mining, and transaction support.',
+    description:
+      'Faster compliance, better counsel selection. Litigation prep, infringement mining, and transaction support.',
   },
 ];
 
@@ -38,7 +41,8 @@ export default function SolutionsPage() {
             <span className="font-martina italic">every team</span>
           </h1>
           <p className="text-element-mid-em mt-6 text-lg xl:text-xl">
-            Whether you&apos;re at a law firm or in-house—&AI has solutions designed for your workflows.
+            Whether you&apos;re at a law firm or in-house—&AI has solutions
+            designed for your workflows.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button href="/book-demo">Book demo</Button>
@@ -50,7 +54,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* By Type Section */}
-      <section className="border-y border-gray-200 bg-background-lighter py-16 md:py-20">
+      <section className="bg-background-lighter border-y border-gray-200 py-16 md:py-20">
         <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
           <h2 className="text-element-high-em mb-4 text-2xl font-medium md:text-3xl">
             By Type

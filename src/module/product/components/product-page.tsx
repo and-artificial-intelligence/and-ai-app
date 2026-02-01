@@ -203,9 +203,9 @@ export function ProductPage({
                       <ContentSectionRenderer
                         key={index}
                         inCard
+                        _isLastInCard={gi === groupSections.length - 1}
                         index={index}
                         isFirstInCard={gi === 0}
-                        isLastInCard={gi === groupSections.length - 1}
                         section={groupSection}
                       />
                     ))}
@@ -533,13 +533,13 @@ function ContentSectionRenderer({
   index,
   inCard,
   isFirstInCard,
-  isLastInCard,
+  _isLastInCard,
 }: {
   section: ContentSection;
   index: number;
   inCard?: boolean;
   isFirstInCard?: boolean;
-  isLastInCard?: boolean;
+  _isLastInCard?: boolean;
 }) {
   const isEven = index % 2 === 0;
   const hasImage = !!section.image;

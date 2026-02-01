@@ -22,7 +22,7 @@ const blogBreadcrumb = [
 export const metadata: Metadata = {
   title: 'Insights | &AI',
   description:
-    'Stay up to date with the latest news, insights, and updates from &AI — the AI workspace for patent litigation.',
+    'Stay up to date with the latest news, insights, and updates from &AI—the AI workspace for patent litigation.',
   alternates: {
     canonical: `${SITE_URL}/blog`,
   },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Insights | &AI',
     description:
-      'Stay up to date with the latest news, insights, and updates from &AI — the AI workspace for patent litigation.',
+      'Stay up to date with the latest news, insights, and updates from &AI—the AI workspace for patent litigation.',
     type: 'website',
     url: `${SITE_URL}/blog`,
   },
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Insights | &AI',
     description:
-      'Stay up to date with the latest news, insights, and updates from &AI — the AI workspace for patent litigation.',
+      'Stay up to date with the latest news, insights, and updates from &AI—the AI workspace for patent litigation.',
   },
 };
 

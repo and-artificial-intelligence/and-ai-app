@@ -65,15 +65,14 @@ export default function RequestSampleChart() {
         <div className="flex flex-col gap-16 lg:flex-row lg:gap-20 xl:gap-24">
           <div className="space-y-6 lg:max-w-lg lg:pt-8">
             <div className="space-y-4">
-              <SubHeader brand={BrandColor.PRIMARY} title="Evaluate us" />
+              <SubHeader brand={BrandColor.PRIMARY} title="Evaluate" />
               <h1 className="text-element-high-em text-5xl md:text-6xl xl:text-7xl">
                 Request a sample{' '}
                 <span className="font-martina italic">claim chart</span>
               </h1>
             </div>
             <p className="text-element-mid-em text-base leading-relaxed md:text-lg">
-              See how &AI can help you build claim charts faster and more
-              accurately. We&apos;ll email you a first-draft for your team to
+              We&apos;ll email you a first-pass claim chart for your team to
               evaluate.
             </p>
             <div className="border-gray-dark/10 bg-background-lighter space-y-2 rounded-lg border p-4 md:p-5">
@@ -169,7 +168,7 @@ export default function RequestSampleChart() {
                     className="text-element-high-em placeholder:text-element-low-em border-gray-dark/20 focus:border-gray-dark/40 bg-background-lighter h-11 w-full rounded-md border px-4 text-sm transition-colors focus:outline-none"
                     id="targetPatent"
                     name="targetPatent"
-                    placeholder="E.g., US10,123,456 or attach PDF"
+                    placeholder="E.g., US10123456"
                     type="text"
                     value={formData.targetPatent}
                     onChange={handleChange}

@@ -16,12 +16,13 @@ export const PrivacyCard = ({
 }: PrivacyCardProps) => {
   return (
     <div className="flex flex-col gap-6 lg:max-w-[544px] xl:max-w-[560px]">
-      <div className="border-gray-dark/5 relative grid h-[320px] w-full place-content-center rounded-sm border bg-gray-200">
+      <div className="border-gray-dark/5 relative flex h-[320px] w-full items-center justify-center rounded-sm border bg-gray-200 p-8">
         <Image
-          fill
           alt={title}
-          className="h-[80%]! w-auto place-self-center object-contain"
+          className="h-full w-auto object-contain"
+          height={256}
           src={imageSrc}
+          width={256}
         />
       </div>
       <div className="space-y-2">
