@@ -34,6 +34,7 @@ const faqItems = [
     question: 'How much does the Opportunities add-on cost?',
     answer:
       'Opportunities is available as an add-on to any &AI plan for $175/month per user. Include additional attorneys in match analysis—without a full seat—for $50/month each.',
+  },
   {
     question: 'How does public-only mode work?',
     answer:
