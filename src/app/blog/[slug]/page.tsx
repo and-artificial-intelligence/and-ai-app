@@ -132,7 +132,7 @@ const renderRichText = (document: Document) =>
         </h5>
       ),
       [BLOCKS.HEADING_6]: (_, children) => (
-        <h6 className="text-element-high-em mt-3 text-sm font-medium uppercase tracking-wide">
+        <h6 className="text-element-high-em mt-3 text-sm font-medium tracking-wide uppercase">
           {children}
         </h6>
       ),
@@ -232,8 +232,7 @@ export default async function BlogPost({
     post.seo?.shareImages?.[0]?.url ||
     post.featureImage?.url ||
     post.coverImage?.url;
-  const canonicalUrl =
-    post.seo?.canonicalUrl || `${SITE_URL}/blog/${slug}`;
+  const canonicalUrl = post.seo?.canonicalUrl || `${SITE_URL}/blog/${slug}`;
 
   const articleSchema = generateArticleSchema({
     headline: post.title,
@@ -283,7 +282,9 @@ export default async function BlogPost({
                 <Image
                   fill
                   alt={
-                    post.featureImage?.title ?? post.coverImage?.title ?? post.title
+                    post.featureImage?.title ??
+                    post.coverImage?.title ??
+                    post.title
                   }
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 48rem"
@@ -332,8 +333,8 @@ export default async function BlogPost({
                 <span className="font-martina italic">patent expertise</span>
               </h2>
               <p className="text-element-high-em max-w-[20.5625rem] text-center md:max-w-[30rem] xl:max-w-[35rem] xl:text-lg">
-                &AI delivers trial-ready work product for patent litigators —
-                fast enough for pitches, strong enough for court.
+                &AI is a platform for patent litigators to craft trial-ready
+                work product — fast enough for pitches, strong enough for court.
               </p>
             </div>
             <Button href="/book-demo">Free trial</Button>

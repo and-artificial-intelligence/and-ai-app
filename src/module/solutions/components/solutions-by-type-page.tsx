@@ -85,7 +85,13 @@ export function SolutionsByTypePage({
     <main className="flex min-h-screen flex-col">
       {/* Hero Section */}
       <section className="mx-auto w-full px-4 py-16 md:px-6 md:py-20 xl:max-w-[80rem] xl:px-8 xl:py-24">
-        <div className={heroImage ? 'flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16' : ''}>
+        <div
+          className={
+            heroImage
+              ? 'flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16'
+              : ''
+          }
+        >
           <div className={heroImage ? 'lg:w-1/2' : 'max-w-4xl'}>
             <Link className="mb-6 flex w-fit" href="/solutions">
               <SubHeader brand={BrandColor.PRIMARY} title={badge} />
@@ -131,11 +137,14 @@ export function SolutionsByTypePage({
 
       {/* Value Props Section */}
       {valueProps && valueProps.length > 0 && (
-        <section className="border-y border-gray-200 bg-background-lighter py-16 md:py-20">
+        <section className="bg-background-lighter border-y border-gray-200 py-16 md:py-20">
           <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
             <div className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16">
               {valueProps.map((prop, index) => (
-                <div key={index} className="w-full max-w-[280px] text-center sm:w-auto">
+                <div
+                  key={index}
+                  className="w-full max-w-[280px] text-center sm:w-auto"
+                >
                   <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-orange-100">
                     <ValuePropIcon type={prop.icon} />
                   </div>
@@ -166,7 +175,9 @@ export function SolutionsByTypePage({
                 </p>
               )}
             </div>
-            <div className={`mx-auto grid gap-6 md:grid-cols-2 ${useCases.length > 4 ? 'max-w-5xl lg:grid-cols-3' : 'max-w-4xl'}`}>
+            <div
+              className={`mx-auto grid gap-6 md:grid-cols-2 ${useCases.length > 4 ? 'max-w-5xl lg:grid-cols-3' : 'max-w-4xl'}`}
+            >
               {useCases.map((useCase) => (
                 <Link
                   key={useCase.href}
@@ -204,7 +215,7 @@ export function SolutionsByTypePage({
 
       {/* Testimonial Section */}
       {testimonial && (
-        <section className="border-y border-gray-200 bg-background-lighter py-16 md:py-20">
+        <section className="bg-background-lighter border-y border-gray-200 py-16 md:py-20">
           <div className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
             <div className="mx-auto max-w-3xl text-center">
               <blockquote className="text-element-high-em text-xl font-medium md:text-2xl">
@@ -257,9 +268,7 @@ export function SolutionsByTypePage({
                     onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
                   >
                     <span className="text-lg font-medium">{faq.question}</span>
-                    <span
-                      className="mt-1 flex size-6 shrink-0 items-center justify-center transition-transform duration-200"
-                    >
+                    <span className="mt-1 flex size-6 shrink-0 items-center justify-center transition-transform duration-200">
                       {openFAQ === index ? (
                         <svg
                           className="size-6"
@@ -320,36 +329,90 @@ export function SolutionsByTypePage({
   );
 }
 
-function ValuePropIcon({ type }: { type?: 'speed' | 'quality' | 'scale' | 'savings' }) {
+function ValuePropIcon({
+  type,
+}: {
+  type?: 'speed' | 'quality' | 'scale' | 'savings';
+}) {
   switch (type) {
     case 'speed':
       return (
-        <svg className="h-6 w-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+        <svg
+          className="h-6 w-6 text-orange-600"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M13 10V3L4 14h7v7l9-11h-7z"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+          />
         </svg>
       );
     case 'quality':
       return (
-        <svg className="h-6 w-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+        <svg
+          className="h-6 w-6 text-orange-600"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+          />
         </svg>
       );
     case 'scale':
       return (
-        <svg className="h-6 w-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+        <svg
+          className="h-6 w-6 text-orange-600"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+          />
         </svg>
       );
     case 'savings':
       return (
-        <svg className="h-6 w-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+        <svg
+          className="h-6 w-6 text-orange-600"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+          />
         </svg>
       );
     default:
       return (
-        <svg className="h-6 w-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+        <svg
+          className="h-6 w-6 text-orange-600"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M5 13l4 4L19 7"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+          />
         </svg>
       );
   }

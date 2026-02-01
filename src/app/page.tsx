@@ -26,6 +26,7 @@ import {
   generateBreadcrumbSchema,
   generateSoftwareApplicationSchema,
 } from '@/lib/schema';
+import { AdvisoryBoardSection } from '@/module/advisory-board';
 import { CTASection } from '@/module/cta';
 import { FeaturesSection } from '@/module/features';
 import { PrivacyCard, PrivacyCardProps } from '@/module/privacy';
@@ -70,7 +71,7 @@ export default function Home() {
           generateSoftwareApplicationSchema({
             name: '&AI',
             description:
-              '&AI delivers trial-ready work product for patent litigators — fast enough for pitches, strong enough for court.',
+              '&AI is a platform for patent litigators to craft trial-ready work product — fast enough for pitches, strong enough for court.',
             url: 'https://tryandai.com',
           }),
           generateBreadcrumbSchema(homeBreadcrumb),
@@ -107,8 +108,9 @@ export default function Home() {
                     'text-element-mid-em text-center text-base md:max-w-[560px] lg:max-w-[22rem] lg:text-left xl:max-w-[26rem] xl:text-lg',
                   )}
                 >
-                  &AI delivers trial-ready work product for patent litigators —
-                  fast enough for pitches, strong enough for court.
+                  &AI is a platform for patent litigators to craft trial-ready
+                  work product — fast enough for pitches, strong enough for
+                  court.
                 </p>
                 <p
                   className={cn(
@@ -116,8 +118,9 @@ export default function Home() {
                     'text-element-mid-em text-center text-base md:max-w-[560px] lg:max-w-[22rem] lg:text-left xl:max-w-[26rem] xl:text-lg',
                   )}
                 >
-                  &AI delivers trial-ready work product for patent litigators —
-                  fast enough for pitches, strong enough for court.
+                  &AI is a platform for patent litigators to craft trial-ready
+                  work product — fast enough for pitches, strong enough for
+                  court.
                 </p>
               </div>
               <div className="flex items-center justify-center gap-3 lg:justify-start">
@@ -142,6 +145,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <AdvisoryBoardSection />
 
       <FeaturesSection />
 
@@ -218,13 +223,13 @@ export default function Home() {
             arguments, not organizing data.
           </p>
         </div>
-        <div className="border-gray-dark/5 mx-auto hidden w-full max-w-5xl rounded-xs border bg-gray-200 px-12 md:block lg:px-20">
+        <div className="border-gray-dark/5 mx-auto w-full max-w-5xl rounded-sm border bg-gray-200 px-4 md:px-12">
           <Image
-            alt="Patent document analysis showing automated claim mapping and prior art organization"
+            alt="Patent family tree showing related patents and their relationships"
             className="h-auto w-full"
             height={0}
             sizes="(max-width: 1024px) 100vw, 896px"
-            src="/built-for-patents-illustration.png"
+            src="/patent-family-tree.png"
             width={0}
           />
         </div>
