@@ -27,6 +27,12 @@ const solutionsByType = [
     description:
       'Faster compliance, better counsel selection. Litigation prep, infringement mining, and transaction support.',
   },
+  {
+    name: 'Litigation Funds',
+    href: '/solutions/litigation-funds',
+    description:
+      'Source and underwrite patent cases faster.',
+  },
 ];
 
 export default function SolutionsPage() {
