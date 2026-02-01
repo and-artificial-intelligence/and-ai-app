@@ -78,7 +78,7 @@ const features: ItemAndSliderProps[] = [
     tagColor: BrandColor.ACCENT_PURPLE,
     title: 'Draft winning arguments.',
     description:
-      'Draft invalidity contentions, expert reports, and pitch materials grounded in your case. Make unbillable work billable.',
+      'Draft invalidity contentions, expert reports, and pitch materials grounded in your case.',
     items: [
       {
         icon: <DocumentTextIcon />,
