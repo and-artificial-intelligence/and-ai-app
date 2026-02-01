@@ -146,8 +146,8 @@ export default function ProductOverviewPage() {
         />
         <div className="relative mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {PRODUCTS.map((product) => (
-              <ProductCard key={product.href} {...product} />
+            {PRODUCTS.map((product, index) => (
+              <ProductCard key={product.href} index={index} {...product} />
             ))}
           </div>
         </div>
