@@ -34,7 +34,7 @@ export default function Pricing() {
     {
       question: 'What counts as a credit?',
       answer:
-        'Every time you use an AI action on &AI — for example, when you search for prior art, build a claim chart, or interact with Andy — you use credits. Each action consumes credits based on the operation type, configurations, and amount of content processed.',
+        'Every time you use an AI action on &AI—for example, when you search for prior art, build a claim chart, or interact with Andy—you use credits. Each action consumes credits based on the operation type, configurations, and amount of content processed.',
     },
     {
       question: 'How can I get started?',

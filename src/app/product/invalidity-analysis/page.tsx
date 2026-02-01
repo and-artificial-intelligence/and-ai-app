@@ -8,7 +8,6 @@ import {
   generateFAQSchema,
   generateSoftwareApplicationSchema,
 } from '@/lib/schema';
-
 import { ProductPage } from '@/module/product';
 
 export const metadata: Metadata = {

@@ -299,17 +299,6 @@ export const Navbar = () => {
             >
               Insights
             </Link>
-            <Link
-              className={cn(
-                'text-element-high-em hover:text-element-mid-em text-sm font-medium transition-[color]',
-                mounted &&
-                  pathname === '/company' &&
-                  'underline decoration-orange-500 decoration-1 underline-offset-[6px]',
-              )}
-              href="/company"
-            >
-              Company
-            </Link>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -534,18 +523,6 @@ export const Navbar = () => {
               onClick={() => setMobileMenuOpen(false)}
             >
               Insights
-            </Link>
-            <Link
-              className={cn(
-                'text-element-high-em hover:text-element-mid-em text-lg font-medium transition-[color]',
-                mounted &&
-                  pathname === '/company' &&
-                  'underline decoration-orange-500 decoration-2 underline-offset-[6px]',
-              )}
-              href="/company"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Company
             </Link>
           </div>
 

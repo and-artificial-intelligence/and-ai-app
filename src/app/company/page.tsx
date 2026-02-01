@@ -7,6 +7,7 @@ import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
 
 import { generateBreadcrumbSchema, generatePersonSchema } from '@/lib/schema';
+import { AdvisoryBoardSection } from '@/module/advisory-board';
 
 export const metadata: Metadata = {
   title: 'Company',
@@ -14,58 +15,47 @@ export const metadata: Metadata = {
     'Meet the team behind &AI. Founded by MIT engineers building the AI workspace for patent litigation.',
 };
 
-interface Advisor {
-  name: string;
-  title: string;
-  firm: string;
-  imageSrc: string;
-}
-
 const companyBreadcrumb = [
   { name: 'Home', url: 'https://tryandai.com' },
   { name: 'Company', url: 'https://tryandai.com/company' },
 ];
 
-const advisors: Advisor[] = [
+// Schema data for SEO
+const advisorSchemaData = [
   {
     name: 'Peter Magic',
-    title: 'Managing Partner, San Francisco',
-    firm: 'Desmarais LLP',
-    imageSrc: '/advisor-1.jpeg',
+    jobTitle: 'Managing Partner, SF',
+    worksFor: 'Desmarais LLP',
+    image: 'https://tryandai.com/advisory-processed/peter-desmarais.png',
   },
   {
     name: 'Charles Calkins',
-    title: 'Partner',
-    firm: 'Kilpatrick Townsend',
-    imageSrc: '/advisor-4.jpeg',
+    jobTitle: 'Partner',
+    worksFor: 'Kilpatrick Townsend',
+    image: 'https://tryandai.com/advisory-processed/charles-kts.png',
   },
   {
     name: 'Tigran Guledjian',
-    title: 'IP Litigation Co-Chair',
-    firm: 'Quinn Emanuel',
-    imageSrc: '/advisor-2.jpeg',
+    jobTitle: 'IP Litigation Co-Chair',
+    worksFor: 'Quinn Emanuel',
+    image: 'https://tryandai.com/advisory-processed/tigran-quinn.png',
   },
   {
     name: 'Ybet Villacorta',
-    title: 'Of Counsel',
-    firm: 'Foley & Lardner',
-    imageSrc: '/advisor-3.jpg',
+    jobTitle: 'Of Counsel',
+    worksFor: 'Foley & Lardner',
+    image: 'https://tryandai.com/advisory-processed/ybet-foley.png',
   },
   {
     name: 'Josef Schenker',
-    title: 'Partner',
-    firm: 'Gish PLLC',
-    imageSrc: '/josef.jpg',
+    jobTitle: 'Partner',
+    worksFor: 'Gish PLLC',
+    image: 'https://tryandai.com/advisory-processed/josef-gish.png',
   },
 ];
 
-const advisorSchemas = advisors.map((advisor) =>
-  generatePersonSchema({
-    name: advisor.name,
-    jobTitle: advisor.title,
-    worksFor: advisor.firm,
-    image: `https://tryandai.com${advisor.imageSrc}`,
-  }),
+const advisorSchemas = advisorSchemaData.map((advisor) =>
+  generatePersonSchema(advisor),
 );
 
 export default function About() {
@@ -112,60 +102,22 @@ export default function About() {
             </div>
           </div>
 
-          <div className="relative h-[20rem] w-full rounded-lg md:h-[28rem] lg:w-[40%] xl:h-[32rem]">
+          <div className="relative w-full lg:w-[45%]">
             <Image
-              fill
-              alt="Company"
-              className="rounded-lg object-cover object-top"
-              src="/founders.jpg"
+              alt="Company founders"
+              className="h-auto w-full"
+              height={0}
+              sizes="(max-width: 1024px) 100vw, 500px"
+              src="/founders.png"
+              width={0}
             />
           </div>
         </div>
       </section>
 
-      <section className="relative mx-auto w-full px-4 py-12 md:px-6 md:py-16 xl:px-8">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-0"
-        >
-          <div className="relative h-full w-full [background-image:linear-gradient(to_right,rgba(0,0,0,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.06)_1px,transparent_1px)] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_2%,rgba(0,0,0,1)_98%,rgba(0,0,0,0)_100%)] [background-size:20px_20px,20px_20px] [background-position:0_0,0_0] [background-repeat:repeat,repeat] [mask-mode:alpha] [mask-repeat:no-repeat] [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_2%,rgba(0,0,0,1)_98%,rgba(0,0,0,0)_100%)] [-webkit-mask-repeat:no-repeat]" />
-        </div>
-        <div className="bg-background-lighter shadow-gray-dark/10 relative z-10 mx-auto w-full rounded-xs border border-gray-300 shadow xl:max-w-[1376px]">
-          <div className="flex items-center justify-between px-6 pt-6 md:px-16 md:pt-10 lg:px-6 xl:px-20">
-            <p className="font-mono text-sm font-medium text-gray-500">
-              ADVISORY BOARD
-            </p>
-            <p className="font-mono text-sm font-medium text-gray-500">
-              5 MEMBERS
-            </p>
-            <p className="hidden font-mono text-sm font-medium text-gray-500 md:block">
-              US 6,237,565 B1
-            </p>
-          </div>
-
-          <div className="grid gap-8 px-6 py-12 md:grid-cols-2 md:px-16 md:py-16 lg:grid-cols-5 lg:px-6 xl:px-20">
-            {advisors.map((advisor, index) => (
-              <div key={index} className="flex flex-col gap-4">
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-gray-200">
-                  <Image
-                    fill
-                    alt={advisor.name}
-                    className="object-cover"
-                    src={advisor.imageSrc}
-                  />
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-element-high-em text-lg font-medium">
-                    {advisor.name}
-                  </h3>
-                  <p className="text-element-mid-em text-sm">{advisor.title}</p>
-                  <p className="text-element-mid-em text-sm">{advisor.firm}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <div className="pb-16 md:pb-20 xl:pb-24">
+        <AdvisoryBoardSection />
+      </div>
 
       <Footer />
     </main>

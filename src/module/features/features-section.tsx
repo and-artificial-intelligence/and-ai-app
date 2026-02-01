@@ -78,7 +78,7 @@ const features: ItemAndSliderProps[] = [
     tagColor: BrandColor.ACCENT_PURPLE,
     title: 'Draft winning arguments.',
     description:
-      'Draft invalidity contentions, expert reports, and pitch materials grounded in your case. Make unbillable work billable.',
+      'Draft invalidity contentions, expert reports, and pitch materials grounded in your case.',
     items: [
       {
         icon: <DocumentTextIcon />,
@@ -233,13 +233,13 @@ export const FeaturesSection = () => {
             US 6,237,565 B1
           </p>
         </div>
-        {/* Tabs */}
+        {/* Tabs - hidden on mobile */}
         <div
           className={cn(
-            'z-[98] mx-auto w-fit transition-all duration-500 ease-out',
+            'z-[98] mx-auto hidden w-fit transition-all duration-500 ease-out md:block',
             tabsVisible
-              ? 'fixed top-20 left-1/2 -translate-x-1/2 translate-y-0 opacity-100 xl:top-24'
-              : 'pointer-events-none fixed top-20 left-1/2 -translate-x-1/2 -translate-y-2 opacity-0 xl:top-24',
+              ? 'md:fixed md:top-20 md:left-1/2 md:-translate-x-1/2 md:translate-y-0 md:opacity-100 xl:top-24'
+              : 'pointer-events-none md:fixed md:top-20 md:left-1/2 md:-translate-x-1/2 md:-translate-y-2 md:opacity-0 xl:top-24',
           )}
         >
           <Tab size="responsive">

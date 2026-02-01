@@ -11,6 +11,12 @@ export const Footer = () => {
       <div className="flex items-center gap-8">
         <a
           className="text-element-mid-em hover:text-element-high-em cursor-pointer text-sm font-medium hover:underline"
+          href="/company"
+        >
+          About
+        </a>
+        <a
+          className="text-element-mid-em hover:text-element-high-em cursor-pointer text-sm font-medium hover:underline"
           href="/privacy"
         >
           Privacy
