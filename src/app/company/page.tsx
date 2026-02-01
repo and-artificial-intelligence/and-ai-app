@@ -107,9 +107,9 @@ export default function About() {
               alt="Company founders"
               className="h-auto w-full"
               height={0}
+              sizes="(max-width: 1024px) 100vw, 500px"
               src="/founders.png"
               width={0}
-              sizes="(max-width: 1024px) 100vw, 500px"
             />
           </div>
         </div>
