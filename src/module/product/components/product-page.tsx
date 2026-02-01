@@ -432,22 +432,18 @@ export function ProductPage({
           </div>
 
           <div className="relative z-10 mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-8">
-            <div className="bg-background-lighter rounded-xs border border-gray-300 px-6 py-12 shadow shadow-gray-400/10 md:px-16 md:py-16">
-              <h3 className="text-element-mid-em mb-10 text-center text-sm font-medium tracking-wide uppercase">
-                Explore the platform
-              </h3>
-              <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {relatedProducts.map((product) => (
-                  <ProductCard
-                    key={product.href}
-                    description={product.description ?? ''}
-                    href={product.href}
-                    image={product.image ?? ''}
-                    name={product.name}
-                    variant="compact"
-                  />
-                ))}
-              </div>
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedProducts.map((product, index) => (
+                <ProductCard
+                  key={product.href}
+                  description={product.description ?? ''}
+                  href={product.href}
+                  image={product.image ?? ''}
+                  index={index}
+                  name={product.name}
+                  variant="compact"
+                />
+              ))}
             </div>
           </div>
         </section>
