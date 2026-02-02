@@ -47,6 +47,11 @@ export default function Pricing() {
         'We offer a monthly subscription model with credits that can be used for AI actions. Credits are pre-purchased and not refundable or transferable. Payments are processed through Stripe.\n\nFor Enterprise customers, we offer a custom pricing model based on your needs.',
     },
     {
+      question: 'How much does the Opportunities add-on cost?',
+      answer:
+        'Opportunities is available as an add-on to any &AI plan for $175/month per user. Include additional attorneys in match analysis—without a full seat—for $50/month each.',
+    },
+    {
       question: 'How does public-only mode work?',
       answer:
         'Public-only mode is a feature that allows you to use &AI without storing or accessing any confidential information, and it is the default mode for all Core users. With public-only mode enabled, you are unable to upload any documents or provide any context or prompts for the models. This makes it impossible for you to store any confidential information with &AI.\n\n Pro and Enterprise customers can enable public-only mode by contacting support@tryandai.com.',
@@ -250,6 +255,29 @@ export default function Pricing() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Opportunities Add-on Banner */}
+          <div className="bg-background-lighter border-gray-dark/10 relative z-10 mt-8 rounded-lg border p-6 shadow-sm md:p-8">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <div>
+                <h3 className="text-element-high-em text-lg font-medium">
+                  Business Development Add-on
+                </h3>
+                <p className="text-element-mid-em mt-1 text-sm">
+                  Add Opportunities to any plan for $175/month per seat. Add
+                  teammates to match analysis for $50/month each—no separate
+                  seat required.
+                </p>
+              </div>
+              <Button
+                className="shrink-0"
+                href="/product/business-development"
+                variant="secondary"
+              >
+                Learn more
+              </Button>
+            </div>
           </div>
         </div>
       </section>

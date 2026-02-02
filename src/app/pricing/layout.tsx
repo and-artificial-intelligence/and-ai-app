@@ -31,6 +31,11 @@ const faqItems = [
       'We offer a monthly subscription model with credits that can be used for AI actions. Credits are pre-purchased and not refundable or transferable. Payments are processed through Stripe. For Enterprise customers, we offer a custom pricing model based on your needs.',
   },
   {
+    question: 'How much does the Opportunities add-on cost?',
+    answer:
+      'Opportunities is available as an add-on to any &AI plan for $175/month per user. Include additional attorneys in match analysis—without a full seat—for $50/month each.',
+  },
+  {
     question: 'How does public-only mode work?',
     answer:
       'Public-only mode is a feature that allows you to use &AI without storing or accessing any confidential information, and it is the default mode for all Core users. With public-only mode enabled, you are unable to upload any documents or provide any context or prompts for the models. This makes it impossible for you to store any confidential information with &AI. Pro and Enterprise customers can enable public-only mode by contacting support@tryandai.com.',

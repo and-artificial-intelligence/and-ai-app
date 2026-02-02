@@ -27,6 +27,11 @@ const faqs = [
     answer:
       'A single workflow that turns a newly filed complaint into a draft pitch package with your chosen depth and formatting—letter, memo, or deck.',
   },
+  {
+    question: 'How much does Opportunities cost?',
+    answer:
+      'Opportunities is available as an add-on to any &AI plan for $175/month per user. Include additional attorneys in match analysis—without a full seat—for $50/month each.',
+  },
 ];
 
 const breadcrumbs = [

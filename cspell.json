@@ -51,7 +51,9 @@
     "Teardowns",
     "Wayback",
     "checkmarks",
-    "ctfassets"
+    "ctfassets",
+    "workstreams",
+    "dealflow"
   ],
   "ignorePaths": [
     "node_modules",

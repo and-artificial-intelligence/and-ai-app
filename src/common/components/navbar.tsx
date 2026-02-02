@@ -52,6 +52,11 @@ const solutionsByType = [
     href: '/solutions/in-house',
     description: 'Litigation prep, infringement mining, transactions',
   },
+  {
+    name: 'Litigation Funds',
+    href: '/solutions/litigation-funds',
+    description: 'Source and underwrite patent cases faster',
+  },
 ];
 
 export const Navbar = () => {
