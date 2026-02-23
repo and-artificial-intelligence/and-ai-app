@@ -13,6 +13,30 @@ import { generateOrganizationSchema } from '@/lib/schema';
 
 import 'blaze-slider/dist/blaze.css';
 
+const googleTagInitScript = `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-17910305132');
+`;
+
+const apolloTrackerScript = `
+  function initApollo(){
+    var n=Math.random().toString(36).substring(7),
+        o=document.createElement("script");
+    o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n;
+    o.async=true;
+    o.defer=true;
+    o.onload=function(){
+      window.trackingFunctions.onLoad({appId:"69672cf689c8f4001579b4f0"})
+    };
+    document.head.appendChild(o);
+  }
+  initApollo();
+`;
+
+const googleConsentDefaultsScript = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("consent","default",{ad_personalization:"denied",ad_storage:"denied",ad_user_data:"denied",analytics_storage:"denied",functionality_storage:"denied",personalization_storage:"denied",security_storage:"granted",wait_for_update:500});gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",false);`;
+
 export const metadata: Metadata = {
   title: {
     default: '&AI | Scale your patent expertise',
@@ -85,40 +109,20 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         <Script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-17910305132');
-            `,
-          }}
           data-cookieconsent="marketing"
           id="google-tag-init"
           strategy="afterInteractive"
-        />
+        >
+          {googleTagInitScript}
+        </Script>
         {/* Apollo - blocked until marketing consent */}
         <Script
-          dangerouslySetInnerHTML={{
-            __html: `
-              function initApollo(){
-                var n=Math.random().toString(36).substring(7),
-                    o=document.createElement("script");
-                o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n;
-                o.async=true;
-                o.defer=true;
-                o.onload=function(){
-                  window.trackingFunctions.onLoad({appId:"69672cf689c8f4001579b4f0"})
-                };
-                document.head.appendChild(o);
-              }
-              initApollo();
-            `,
-          }}
           data-cookieconsent="marketing"
           id="apollo-tracker"
           strategy="afterInteractive"
-        />
+        >
+          {apolloTrackerScript}
+        </Script>
         {/* Leadsy - blocked until marketing consent (prod only) */}
         {process.env.NODE_ENV === 'production' && (
           <Script
@@ -135,13 +139,12 @@ export default function RootLayout({
       <body>
         {/* Google Consent Mode v2 - Set default consent states BEFORE any Google tags */}
         <Script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("consent","default",{ad_personalization:"denied",ad_storage:"denied",ad_user_data:"denied",analytics_storage:"denied",functionality_storage:"denied",personalization_storage:"denied",security_storage:"granted",wait_for_update:500});gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",false);`,
-          }}
           data-cookieconsent="ignore"
           id="google-consent-mode-default"
           strategy="beforeInteractive"
-        />
+        >
+          {googleConsentDefaultsScript}
+        </Script>
         {/* Cookiebot - consent management */}
         <Script
           data-blockingmode="auto"
