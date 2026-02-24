@@ -21,7 +21,7 @@ export const CTASection = ({ showPricing = false }: CTASectionProps) => (
             <span className="font-martina italic">patent expertise</span>
           </h2>
           <p className="text-element-high-em max-w-[24rem] text-center md:max-w-[35rem] xl:max-w-[40rem] xl:text-lg">
-            &AI is a platform for patent litigators to craft trial-ready work
+            &AI is the platform where patent litigators craft trial-ready work
             product—fast enough for pitches, strong enough for court.
           </p>
         </div>

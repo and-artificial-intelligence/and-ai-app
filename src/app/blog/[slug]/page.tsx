@@ -333,7 +333,7 @@ export default async function BlogPost({
                 <span className="font-martina italic">patent expertise</span>
               </h2>
               <p className="text-element-high-em max-w-[20.5625rem] text-center md:max-w-[30rem] xl:max-w-[35rem] xl:text-lg">
-                &AI is a platform for patent litigators to craft trial-ready
+                &AI is the platform where patent litigators craft trial-ready
                 work product—fast enough for pitches, strong enough for court.
               </p>
             </div>

@@ -71,7 +71,7 @@ export default function Home() {
           generateSoftwareApplicationSchema({
             name: '&AI',
             description:
-              '&AI is a platform for patent litigators to craft trial-ready work product—fast enough for pitches, strong enough for court.',
+              '&AI is the platform where patent litigators craft trial-ready work product—fast enough for pitches, strong enough for court.',
             url: 'https://tryandai.com',
           }),
           generateBreadcrumbSchema(homeBreadcrumb),
@@ -108,9 +108,8 @@ export default function Home() {
                     'text-element-mid-em text-center text-base md:max-w-[560px] lg:max-w-[22rem] lg:text-left xl:max-w-[26rem] xl:text-lg',
                   )}
                 >
-                  &AI is a platform for patent litigators to craft trial-ready
-                  work product—fast enough for pitches, strong enough for
-                  court.
+                  &AI is the platform where patent litigators craft trial-ready
+                  work product—fast enough for pitches, strong enough for court.
                 </p>
                 <p
                   className={cn(
@@ -118,9 +117,8 @@ export default function Home() {
                     'text-element-mid-em text-center text-base md:max-w-[560px] lg:max-w-[22rem] lg:text-left xl:max-w-[26rem] xl:text-lg',
                   )}
                 >
-                  &AI is a platform for patent litigators to craft trial-ready
-                  work product—fast enough for pitches, strong enough for
-                  court.
+                  &AI is the platform where patent litigators craft trial-ready
+                  work product—fast enough for pitches, strong enough for court.
                 </p>
               </div>
               <div className="flex items-center justify-center gap-3 lg:justify-start">
