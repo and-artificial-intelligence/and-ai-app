@@ -287,8 +287,8 @@ export default function Pricing() {
                 </span>
               </div>
               <Link
-                href="/product/business-development"
                 className="text-element-mid-em hover:text-element-high-em relative z-10 shrink-0 text-sm font-medium underline transition-colors md:text-base"
+                href="/product/business-development"
               >
                 Learn more
               </Link>

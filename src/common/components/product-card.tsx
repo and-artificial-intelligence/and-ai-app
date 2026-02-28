@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { cn } from '@/common/functions/cn';
 import type { Product } from '@/common/constants/products';
+import { cn } from '@/common/functions/cn';
 
 // Product-specific colors (matching feature section colors)
 const productColors: Record<string, { bg: string; gradient: string }> = {
