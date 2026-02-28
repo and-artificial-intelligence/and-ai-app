@@ -27,6 +27,11 @@ const faqs = [
     answer:
       'A single workflow that turns a newly filed complaint into a draft pitch package with your chosen depth and formatting—letter, memo, or deck.',
   },
+  {
+    question: 'How is Opportunities priced?',
+    answer:
+      'Opportunities is an add-on to Core, Pro, or Enterprise plans. Pricing is $175 per monthly user and $50 per monthly non-user attorney. See our Pricing page for full details on plans and the add-on.',
+  },
 ];
 
 const breadcrumbs = [
@@ -96,11 +101,27 @@ export default function BusinessDevelopmentPage() {
             description:
               'Traditional docket monitoring buries the signal in noise. Opportunities filters that stream down to what is pitch-worthy for your team, based on your contacts and experience.',
             type: 'bullets',
-            centered: true,
-            background: 'light',
+            image: '/stylized-features/opportunities-feed.png',
+            imageColor: 'blue',
+            cardGroup: 'main',
             items: [
               'Exclude case types you do not pitch',
               'Set party allowlists and denylists',
+            ],
+          },
+          {
+            label: 'Team Matching',
+            title: "Who should pitch? We'll tell you.",
+            description:
+              'For every opportunity, &AI evaluates fit against the bios and prior experience of your entire team.',
+            type: 'bullets',
+            image: '/stylized-features/opportunities-detail.png',
+            imageColor: 'blue',
+            cardGroup: 'main',
+            items: [
+              'Technical fit',
+              'Venue and forum fit',
+              'Client and history fit',
             ],
           },
           {
@@ -110,6 +131,7 @@ export default function BusinessDevelopmentPage() {
             description:
               'Enable alerts to notify you when a case meets your match threshold or a party you care about is named. No more losing pitches because you saw it a day late.',
             type: 'bullets',
+            bulletStyle: 'bullet',
             centered: true,
             items: [
               'Real-time alerts on matching cases',
@@ -118,25 +140,12 @@ export default function BusinessDevelopmentPage() {
             ],
           },
           {
-            label: 'Team Matching',
-            title: "Who should pitch? We'll tell you.",
-            description:
-              'For every opportunity, &AI evaluates fit against the bios and prior experience of your entire team.',
-            type: 'bullets',
-            centered: true,
-            background: 'light',
-            items: [
-              'Technical fit',
-              'Venue and forum fit',
-              'Client and history fit',
-            ],
-          },
-          {
             label: 'Pitch cases fast',
             title: 'Turn a complaint into a pitch in minutes',
             description:
               'When you decide a case is worth reaching out, or you have received a request for a pitch, build an entire deck or outbound letter at the click of a button.',
             type: 'bullets',
+            bulletStyle: 'bullet',
             centered: true,
             items: [
               'Less admin work, faster outbound',

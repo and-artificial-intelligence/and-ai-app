@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { useState } from 'react';
 
 import { Button } from '@/common/components/button';
@@ -49,7 +50,7 @@ export default function Pricing() {
     {
       question: 'How does public-only mode work?',
       answer:
-        'Public-only mode is a feature that allows you to use &AI without storing or accessing any confidential information, and it is the default mode for all Core users. With public-only mode enabled, you are unable to upload any documents or provide any context or prompts for the models. This makes it impossible for you to store any confidential information with &AI.\n\n Pro and Enterprise customers can enable public-only mode by contacting support@tryandai.com.',
+        'Public-only mode is a feature that allows you to use &AI without storing or accessing any confidential information. It is optional for Core users. With public-only mode enabled, you are unable to upload any documents or provide any context or prompts for the models. This makes it impossible for you to store any confidential information with &AI.\n\nPro and Enterprise customers can enable public-only mode by contacting support@tryandai.com.',
     },
     {
       question:
@@ -70,12 +71,12 @@ export default function Pricing() {
       yearlyCreditPrice: '$0.20',
       description: '',
       features: [
-        'Limited, public-only access to &AI',
-        'Patent, NPL, and product search',
-        'Prosecution, previous IPRs, and global family',
+        'Patent search',
         'Claim construction',
         'Invalidity and evidence-of-use charts',
-        'Default draft and pitch templates',
+        'Prosecution history',
+        'Global family',
+
         'Exports to Word, PowerPoint, and Excel',
       ],
     },
@@ -89,13 +90,13 @@ export default function Pricing() {
       yearlyCreditPrice: '$0.20',
       description: '',
       features: [
-        'Unrestricted access to &AI',
+        'Product, NPL, and trials search',
+        'Chart review',
+        'Portfolio tables and pipelines',
         'Andy, the AI patent assistant',
-        'Portfolio and document tables',
-        'Document uploads',
-        'Custom prompt libraries',
-        'Custom draft and table templates',
-        'Instructions and annotations',
+        'Document drafts',
+        'Pitch decks',
+        'Custom prompt and template libraries',
       ],
     },
     {
@@ -250,6 +251,48 @@ export default function Pricing() {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="relative z-10 mt-6 md:mt-8">
+            <div className="bg-background-lighter border-gray-dark/10 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 rounded-lg border p-6 md:gap-x-4 md:p-8">
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 md:gap-x-4">
+                <h2 className="text-element-mid-em text-base font-medium md:text-lg">
+                  Opportunities add-on
+                </h2>
+                <span className="text-element-mid-em text-sm">·</span>
+                <span className="text-element-high-em text-base md:text-lg">
+                  <span className="font-medium">
+                    {billingPeriod === 'monthly' ? '$175' : '$1,680'}
+                  </span>
+                  <span className="text-element-mid-em text-sm">
+                    {' '}
+                    /
+                    {billingPeriod === 'monthly'
+                      ? ' monthly user'
+                      : ' annual user'}
+                  </span>
+                </span>
+                <span className="text-element-mid-em text-sm">·</span>
+                <span className="text-element-high-em text-base md:text-lg">
+                  <span className="font-medium">
+                    {billingPeriod === 'monthly' ? '$50' : '$480'}
+                  </span>
+                  <span className="text-element-mid-em text-sm">
+                    {' '}
+                    /
+                    {billingPeriod === 'monthly'
+                      ? ' monthly non-user attorney'
+                      : ' annual non-user attorney'}
+                  </span>
+                </span>
+              </div>
+              <Link
+                href="/product/business-development"
+                className="text-element-mid-em hover:text-element-high-em relative z-10 shrink-0 text-sm font-medium underline transition-colors md:text-base"
+              >
+                Learn more
+              </Link>
+            </div>
           </div>
         </div>
       </section>
