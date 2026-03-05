@@ -184,6 +184,21 @@ const renderRichText = (document: Document) =>
           );
         }
 
+        if (contentType.startsWith('video/')) {
+          return (
+            <div className="relative my-8 w-full overflow-hidden rounded-lg">
+              <video
+                controls
+                playsInline
+                className="w-full"
+                preload="metadata"
+              >
+                <source src={url} type={contentType} />
+              </video>
+            </div>
+          );
+        }
+
         return (
           <a
             className="text-element-high-em my-4 inline-flex items-center gap-2 underline"
