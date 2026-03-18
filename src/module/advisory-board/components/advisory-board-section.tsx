@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { memo, RefObject, useEffect, useState } from 'react';
 
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
@@ -108,6 +108,30 @@ const AdvisorCard = ({ advisor }: { advisor: Advisor }) => (
   </Link>
 );
 
+const AdvisorySlider = memo(
+  ({
+    sliderRootRef,
+  }: {
+    sliderRootRef: RefObject<HTMLDivElement | null>;
+  }) => (
+    <div ref={sliderRootRef} className="blaze-slider pt-2 lg:hidden">
+      <div className="blaze-container">
+        <div className="blaze-track-container">
+          <div className="blaze-track">
+            {advisors.map((advisor) => (
+              <div key={advisor.name} className="px-1">
+                <AdvisorCard advisor={advisor} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+);
+
+AdvisorySlider.displayName = 'AdvisorySlider';
+
 export const AdvisoryBoardSection = ({
   showHeader = true,
   headerTitle = 'Guided by the best in patent law',
@@ -168,18 +192,8 @@ export const AdvisoryBoardSection = ({
       </div>
 
       {/* Mobile/Tablet: Horizontal slider */}
-      <div ref={sliderRef} className="blaze-slider pt-2 lg:hidden">
-        <div className="blaze-container">
-          <div className="blaze-track-container">
-            <div className="blaze-track">
-              {advisors.map((advisor) => (
-                <div key={advisor.name} className="px-1">
-                  <AdvisorCard advisor={advisor} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+      <div className="lg:hidden">
+        <AdvisorySlider sliderRootRef={sliderRef} />
 
         {/* Pagination dots */}
         <div className="mt-6 flex justify-center gap-2">

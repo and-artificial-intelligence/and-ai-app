@@ -1,4 +1,6 @@
 import {
+  ButtonHTMLAttributes,
+  CSSProperties,
   HTMLAttributes,
   ReactNode,
   createContext,
@@ -8,94 +10,42 @@ import {
   useState,
   useCallback,
 } from 'react';
-import { tv, type VariantProps } from 'tailwind-variants';
 
 import { cn } from '@/common/functions/cn';
 
-const tabVariants = tv({
-  slots: {
-    base: [
-      'p-1',
-      'rounded-full',
-      'border',
-      'border-gray-dark/5',
-      'bg-gray-200',
-      'inline-flex',
-      'items-center',
-      'gap-1',
-      'relative',
-    ],
-    tabButton: [
-      'rounded-full',
-      'font-medium',
-      'text-text-em-high',
-      'transition-colors',
-      'duration-200',
-      'whitespace-nowrap',
-      'flex',
-      'items-center',
-      'justify-center',
-      'relative',
-      'z-10',
-      'cursor-pointer',
-    ],
-    indicator: [
-      'absolute',
-      'rounded-full',
-      'bg-gray-50',
-      'border',
-      'border-gray-dark/10',
-      'box-border',
-      'transition-all',
-      'duration-300',
-      'ease-out',
-      'z-0',
-    ],
-  },
-  variants: {
-    size: {
-      sm: {
-        base: ['h-9'],
-        tabButton: ['py-1', 'px-3', 'text-sm', 'w-20', 'h-7'],
-      },
-      md: {
-        base: ['h-11'],
-        tabButton: ['py-2', 'px-3', 'text-base', 'w-30', 'h-9'],
-      },
-      responsive: {
-        base: ['h-9', 'md:h-11'],
-        tabButton: [
-          'py-1',
-          'px-3',
-          'text-sm',
-          'w-24',
-          'h-7',
-          'md:py-2',
-          'md:px-3',
-          'md:text-base',
-          'md:w-32',
-          'md:h-9',
-        ],
-      },
-    },
-  },
-  defaultVariants: {
-    size: 'md',
-  },
-});
+type TabSize = 'sm' | 'md' | 'responsive';
+
+const baseClassName =
+  'inline-flex items-center gap-1 rounded-full border border-gray-dark/5 bg-gray-200 p-1 relative';
+const indicatorClassName =
+  'absolute z-0 box-border rounded-full border border-gray-dark/10 bg-gray-50 transition-all duration-300 ease-out';
+const tabButtonClassName =
+  'relative z-10 flex cursor-pointer items-center justify-center whitespace-nowrap rounded-full font-medium text-text-em-high transition-colors duration-200';
+
+const rootSizeClassNames: Record<TabSize, string> = {
+  sm: 'h-9',
+  md: 'h-11',
+  responsive: 'h-9 md:h-11',
+};
+
+const buttonSizeClassNames: Record<TabSize, string> = {
+  sm: 'h-7 w-20 px-3 py-1 text-sm',
+  md: 'h-9 w-30 px-3 py-2 text-base',
+  responsive: 'h-7 w-24 px-3 py-1 text-sm md:h-9 md:w-32 md:px-3 md:py-2 md:text-base',
+};
 
 type TabContextValue = {
-  size: VariantProps<typeof tabVariants>['size'];
+  size: TabSize;
   registerActive: (el: HTMLButtonElement | null) => void;
 };
 
 const TabContext = createContext<TabContextValue | null>(null);
 
 export interface TabRootProps
-  extends VariantProps<typeof tabVariants>,
-    HTMLAttributes<HTMLDivElement> {
+  extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
+  size?: TabSize;
 }
 
 export const TabRoot = ({
@@ -104,10 +54,10 @@ export const TabRoot = ({
   children,
   ...props
 }: TabRootProps) => {
-  const { base, indicator } = tabVariants({ size });
+  const resolvedSize = size ?? 'md';
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [indicatorStyle, setIndicatorStyle] = useState<
-    Pick<React.CSSProperties, 'left' | 'top' | 'width' | 'height'>
+    Pick<CSSProperties, 'left' | 'top' | 'width' | 'height'>
   >({ left: 0, top: 0, width: 0, height: 0 });
 
   const registerActive = useCallback((el: HTMLButtonElement | null) => {
@@ -145,13 +95,13 @@ export const TabRoot = ({
   }, []);
 
   return (
-    <TabContext.Provider value={{ size, registerActive }}>
+    <TabContext.Provider value={{ size: resolvedSize, registerActive }}>
       <div
         ref={containerRef}
-        className={base({ className: cn(className) })}
+        className={cn(baseClassName, rootSizeClassNames[resolvedSize], className)}
         {...props}
       >
-        <div className={indicator()} style={indicatorStyle} />
+        <div className={indicatorClassName} style={indicatorStyle} />
         {children}
       </div>
     </TabContext.Provider>
@@ -159,11 +109,11 @@ export const TabRoot = ({
 };
 
 export interface TabButtonProps
-  extends VariantProps<typeof tabVariants>,
-    HTMLAttributes<HTMLButtonElement> {
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   children: ReactNode;
   isActive?: boolean;
+  size?: TabSize;
 }
 
 export const TabButton = ({
@@ -173,10 +123,10 @@ export const TabButton = ({
   children,
   ...props
 }: TabButtonProps) => {
-  const { tabButton } = tabVariants({ size });
   const ctx = useContext(TabContext);
   const registerActive = ctx?.registerActive;
   const ref = useRef<HTMLButtonElement | null>(null);
+  const resolvedSize = size ?? ctx?.size ?? 'md';
 
   useEffect(() => {
     if (isActive) {
@@ -187,7 +137,11 @@ export const TabButton = ({
   return (
     <button
       ref={ref}
-      className={tabButton({ className })}
+      className={cn(
+        tabButtonClassName,
+        buttonSizeClassNames[resolvedSize],
+        className,
+      )}
       data-tab-active={isActive ? 'true' : 'false'}
       {...props}
     >

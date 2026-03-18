@@ -36,6 +36,7 @@ const apolloTrackerScript = `
 `;
 
 const googleConsentDefaultsScript = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("consent","default",{ad_personalization:"denied",ad_storage:"denied",ad_user_data:"denied",analytics_storage:"denied",functionality_storage:"denied",personalization_storage:"denied",security_storage:"granted",wait_for_update:500});gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",false);`;
+const isProduction = process.env.NODE_ENV === 'production';
 
 export const metadata: Metadata = {
   title: {
@@ -99,60 +100,66 @@ export default function RootLayout({
       lang="en"
     >
       <head>
-        <SchemaScript schema={generateOrganizationSchema()} />
-        {/* Google Ads - blocked until marketing consent */}
-        <Script
-          async
-          data-cookieconsent="marketing"
-          id="google-tag"
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17910305132"
-          strategy="afterInteractive"
-        />
-        <Script
-          data-cookieconsent="marketing"
-          id="google-tag-init"
-          strategy="afterInteractive"
-        >
-          {googleTagInitScript}
-        </Script>
-        {/* Apollo - blocked until marketing consent */}
-        <Script
-          data-cookieconsent="marketing"
-          id="apollo-tracker"
-          strategy="afterInteractive"
-        >
-          {apolloTrackerScript}
-        </Script>
-        {/* Leadsy - blocked until marketing consent (prod only) */}
-        {process.env.NODE_ENV === 'production' && (
-          <Script
-            async
-            data-cookieconsent="marketing"
-            data-pid="dSGoRhLw6OFI8UwR"
-            data-version="062024"
-            id="vtag-ai-js"
-            src="https://r2.leadsy.ai/tag.js"
-            strategy="afterInteractive"
-          />
+        {isProduction && (
+          <>
+            {/* Google Ads - blocked until marketing consent */}
+            <Script
+              async
+              data-cookieconsent="marketing"
+              id="google-tag"
+              src="https://www.googletagmanager.com/gtag/js?id=AW-17910305132"
+              strategy="afterInteractive"
+            />
+            <Script
+              data-cookieconsent="marketing"
+              id="google-tag-init"
+              strategy="afterInteractive"
+            >
+              {googleTagInitScript}
+            </Script>
+            {/* Apollo - blocked until marketing consent */}
+            <Script
+              data-cookieconsent="marketing"
+              id="apollo-tracker"
+              strategy="afterInteractive"
+            >
+              {apolloTrackerScript}
+            </Script>
+            {/* Leadsy - blocked until marketing consent */}
+            <Script
+              async
+              data-cookieconsent="marketing"
+              data-pid="dSGoRhLw6OFI8UwR"
+              data-version="062024"
+              id="vtag-ai-js"
+              src="https://r2.leadsy.ai/tag.js"
+              strategy="afterInteractive"
+            />
+          </>
         )}
       </head>
       <body>
-        {/* Google Consent Mode v2 - Set default consent states BEFORE any Google tags */}
-        <Script
-          data-cookieconsent="ignore"
-          id="google-consent-mode-default"
-          strategy="beforeInteractive"
-        >
-          {googleConsentDefaultsScript}
-        </Script>
-        {/* Cookiebot - consent management */}
-        <Script
-          data-blockingmode="auto"
-          data-cbid="20ab4c40-1b45-4e12-95f8-ded614dfc868"
-          id="Cookiebot"
-          src="https://consent.cookiebot.com/uc.js"
-          strategy="beforeInteractive"
-        />
+        {isProduction && (
+          <>
+            {/* Google Consent Mode v2 - Set default consent states BEFORE any Google tags */}
+            <Script
+              data-cookieconsent="ignore"
+              id="google-consent-mode-default"
+              strategy="beforeInteractive"
+            >
+              {googleConsentDefaultsScript}
+            </Script>
+            {/* Cookiebot - consent management */}
+            <Script
+              data-blockingmode="auto"
+              data-cbid="20ab4c40-1b45-4e12-95f8-ded614dfc868"
+              id="Cookiebot"
+              src="https://consent.cookiebot.com/uc.js"
+              strategy="beforeInteractive"
+            />
+          </>
+        )}
+        <SchemaScript schema={generateOrganizationSchema()} />
         <Navbar />
         <div className="relative h-full min-h-full pt-16 xl:pt-20">
           {children}

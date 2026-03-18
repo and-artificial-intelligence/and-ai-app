@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { ReactElement, useEffect, useState } from 'react';
+import { memo, ReactElement, RefObject, useEffect, useState } from 'react';
 
 import { SubHeader } from '@/common/components/subheader';
 import { cn } from '@/common/functions/cn';
@@ -21,6 +21,86 @@ export interface ItemAndSliderProps {
   }[];
   singleImage?: string;
 }
+
+interface FeatureImageSliderProps {
+  sliderRootRef: RefObject<HTMLDivElement | null>;
+  tag: string;
+  items: ItemAndSliderProps['items'];
+  singleImage?: string;
+  isTagTables: boolean;
+  backgroundColor: string;
+  toGradientColor: string;
+  sliderBrandColorBackground: string;
+}
+
+const FeatureImageSlider = memo(
+  ({
+    sliderRootRef,
+    tag,
+    items,
+    singleImage,
+    isTagTables,
+    backgroundColor,
+    toGradientColor,
+    sliderBrandColorBackground,
+  }: FeatureImageSliderProps) => (
+    <div ref={sliderRootRef} className="blaze-slider w-full">
+      <div
+        className={cn(
+          'blaze-container border-gray-dark/10 rounded-sm border pt-4 pl-4 md:pt-8 md:pl-8',
+          backgroundColor,
+        )}
+      >
+        <div className="blaze-track-container">
+          <div className="blaze-track">
+            {isTagTables ? (
+              <div className="relative grid h-[360px] w-full place-content-center md:h-[560px]">
+                <Image
+                  fill
+                  alt={`Feature ${tag}`}
+                  className="object-cover object-top-left"
+                  src={singleImage ?? ''}
+                />
+              </div>
+            ) : (
+              items.map((item, index) => (
+                <div
+                  key={item.title}
+                  className="relative grid h-[360px] w-full place-content-center md:h-[560px]"
+                >
+                  <Image
+                    fill
+                    alt={`Feature ${tag}-${index + 1}`}
+                    className="object-cover object-top-left"
+                    src={item.imageSrc ?? ''}
+                  />
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+
+        <div
+          className={cn(
+            'pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-100%',
+            toGradientColor,
+          )}
+        />
+        {!isTagTables && (
+          <div
+            className={cn(
+              'blaze-pagination absolute bottom-4 left-1/2 -translate-x-1/2',
+              '[&_button]:cursor-pointer [&_button]:bg-gray-300',
+              sliderBrandColorBackground,
+            )}
+          />
+        )}
+      </div>
+    </div>
+  ),
+);
+
+FeatureImageSlider.displayName = 'FeatureImageSlider';
 
 export const ItemAndSlider = ({
   tag,
@@ -152,61 +232,16 @@ export const ItemAndSlider = ({
         </div>
       </div>
 
-      <div ref={ref} className="blaze-slider w-full">
-        <div
-          className={cn(
-            'blaze-container border-gray-dark/10 rounded-sm border pt-4 pl-4 md:pt-8 md:pl-8',
-            backgroundColor,
-          )}
-        >
-          <div className="blaze-track-container">
-            <div className="blaze-track">
-              {isTagTables ? (
-                <div className="relative grid h-[360px] w-full place-content-center md:h-[560px]">
-                  <Image
-                    fill
-                    alt={`Feature ${tag}`}
-                    className="object-cover object-top-left"
-                    src={singleImage ?? ''}
-                  />
-                </div>
-              ) : (
-                items.map((item, i) => (
-                  <div
-                    key={i}
-                    className="relative grid h-[360px] w-full place-content-center md:h-[560px]"
-                  >
-                    <Image
-                      fill
-                      alt={`Feature ${tag}-${i + 1}`}
-                      className="object-cover object-top-left"
-                      src={item.imageSrc ?? ''}
-                    />
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-
-          {/* linear gradient */}
-          <div
-            className={cn(
-              'pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-100%',
-              toGradientColor,
-            )}
-          />
-          {/* pagination */}
-          {!isTagTables && (
-            <div
-              className={cn(
-                'blaze-pagination absolute bottom-4 left-1/2 -translate-x-1/2',
-                '[&_button]:cursor-pointer [&_button]:bg-gray-300',
-                sliderBrandColorBackground,
-              )}
-            />
-          )}
-        </div>
-      </div>
+      <FeatureImageSlider
+        backgroundColor={backgroundColor}
+        isTagTables={isTagTables}
+        items={items}
+        singleImage={singleImage}
+        sliderBrandColorBackground={sliderBrandColorBackground}
+        sliderRootRef={ref}
+        tag={tag}
+        toGradientColor={toGradientColor}
+      />
     </div>
   );
 };
