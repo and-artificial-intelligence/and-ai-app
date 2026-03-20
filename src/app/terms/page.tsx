@@ -1,3 +1,5 @@
+/* cspell:ignore Autopay Chargebacks chargeback */
+
 import { Footer } from '@/common/components/footer';
 import { SchemaScript } from '@/common/components/schema-script';
 
@@ -66,6 +68,14 @@ export default function Terms() {
                 AGE.
               </p>
               <p>
+                If you access or use our Services on behalf of a law firm,
+                company, university, investment fund, or other entity, you
+                represent and warrant that you have the authority to bind that
+                entity to these Terms, and &quot;you&quot; and &quot;your&quot;
+                as used in these Terms will include both you individually and
+                that entity.
+              </p>
+              <p>
                 These terms may have changed since your last visit. We reserve
                 the right to revise these Terms in our sole discretion at any
                 time and without prior notice to you other than by posting the
@@ -130,6 +140,38 @@ export default function Terms() {
                 a reasonable period.
               </p>
               <h3 className="text-element-high-em font-semibold">
+                Eligibility; Account Approval
+              </h3>
+              <p>
+                The Services are intended solely for verified patent
+                practitioners and other approved professional users and
+                organizations, including law firms, in-house counsel,
+                investment funds, universities, and other participants in the
+                patent and intellectual property ecosystem.
+              </p>
+              <p>
+                We may require you to provide information sufficient for us to
+                verify your identity, professional role, organizational
+                affiliation, intended use of the Services, billing eligibility,
+                and compliance with these Terms. We may use automated tools,
+                including artificial intelligence or
+                large-language-model-assisted screening, together with manual
+                review, for account approval, fraud prevention, risk
+                assessment, and eligibility verification.
+              </p>
+              <p>
+                We may approve, deny, suspend, or revoke any Account or access
+                request in our sole discretion, including if: (i) we are unable
+                to verify the information you provide; (ii) you do not satisfy
+                our eligibility criteria; (iii) you are located in, or seek to
+                use a payment method from, a jurisdiction we do not support;
+                (iv) you are employed by, affiliated with, or acting on behalf
+                of a current or prospective competitor of &AI; or (v) we
+                determine that the Account presents legal, regulatory, security,
+                fraud, reputational, competitive, credit, or other business
+                risk.
+              </p>
+              <h3 className="text-element-high-em font-semibold">
                 Acknowledgement for You to Receive Communications
               </h3>
               <p>
@@ -160,32 +202,143 @@ export default function Terms() {
               <h3 className="text-element-high-em font-semibold">Fees</h3>
               <p>
                 By using our Services, you agree to pay the applicable
-                subscription and other fees (the &quot;Fees&quot;) as set forth
-                in the Fee Schedule posted on our Website, which is incorporated
-                herein by reference, or that are otherwise agreed between you
-                and us in a separate order form or related document.
+                subscription, usage-based, overage, invoiced, and other fees
+                (collectively, the &quot;Fees&quot;) as set forth in the fee
+                schedule posted on our Website, which is incorporated herein by
+                reference, or that are otherwise agreed between you and us in a
+                separate order form or related document. Unless otherwise
+                expressly stated by us in writing, all Fees are stated and
+                payable in U.S. dollars.
+              </p>
+              <p>
+                You are responsible for all sales, use, value-added, excise,
+                and other similar taxes, duties, or governmental charges
+                associated with your purchase or use of the Services, other
+                than taxes based on our net income.
               </p>
               <h3 className="text-element-high-em font-semibold">Billing</h3>
               <p>
                 &AI uses Stripe Connect service operated by Stripe, Inc.
                 (&quot;Stripe&quot;) to bill you through an online account, as
                 applicable, in lieu of directly processing your credit card
-                information. By using the Stripe payment processing services,
-                you acknowledge that you agree to the Stripe Connected Account
-                Agreement available at
-                https://stripe.com/us/connect-account/legal and you agree to the
-                collection, use and disclosure practices by Stripe set forth in
-                Stripe Privacy Policy, available at
-                https://stripe.com/us/privacy. You also agree that we may change
-                the third party payment service and move your information to
-                other service providers that encrypt your information using
-                transport layer security (TLS) or comparable security
-                technology.
+                information.
+              </p>
+              <p>
+                By using the Stripe payment processing services, you
+                acknowledge that you agree to the Stripe Connected Account
+                Agreement available at{' '}
+                <a
+                  className="underline"
+                  href="https://stripe.com/us/connect-account/legal"
+                >
+                  https://stripe.com/us/connect-account/legal
+                </a>{' '}
+                and you agree to the collection, use and disclosure practices
+                by Stripe set forth in Stripe Privacy Policy, available at{' '}
+                <a className="underline" href="https://stripe.com/us/privacy">
+                  https://stripe.com/us/privacy
+                </a>.
+              </p>
+              <p>
+                You also agree that we may change the third party payment
+                service and move your information to other service providers
+                that encrypt your information using transport layer security
+                (TLS) or comparable security technology.
+              </p>
+              <p>
+                By providing a payment method in connection with your Account,
+                you authorize us and our payment processors to: (i) store your
+                payment credentials; (ii) verify your payment method, including
+                by placing temporary authorization holds or nominal charges;
+                (iii) charge your payment method on a recurring and/or
+                off-session basis for all Fees, taxes, overages, invoices
+                generated under your Account, and any other amounts due under
+                these Terms; and (iv) use account updater or similar services
+                made available by card networks or payment processors to obtain
+                updated card details where available.
+              </p>
+              <p>
+                At this time, paid Accounts require a valid payment method
+                associated with a billing address located in the United States.
+                We may decline, reverse, suspend, or cancel any transaction or
+                Account that does not satisfy this requirement.
+              </p>
+              <h3 className="text-element-high-em font-semibold">
+                Automatic Renewal
+              </h3>
+              <p>
+                Unless otherwise expressly stated on the applicable signup
+                page, pricing page, order form, or plan terms, each paid
+                subscription automatically renews for successive terms of the
+                same duration as the initial subscription term unless you cancel
+                before the renewal date. By purchasing a paid subscription, you
+                authorize us to automatically charge the payment method on file
+                at the beginning of each renewal term for the then-applicable
+                Fees and taxes unless and until you cancel in accordance with
+                these Terms.
+              </p>
+              <h3 className="text-element-high-em font-semibold">
+                Trials; Credits; Automatic Conversion to Paid Plan
+              </h3>
+              <p>
+                We may offer free or discounted trial access to the Services.
+                Unless otherwise expressly stated on the applicable signup page,
+                order page, or promotional terms, any trial will end on the
+                earlier of: (i) the expiration of the stated trial period; or
+                (ii) the depletion or use of all trial credits made available
+                with the trial.
+              </p>
+              <p>
+                Trial credits, if any, are promotional, non-transferable,
+                non-refundable, have no cash value, and expire when the trial
+                ends unless we expressly state otherwise.
+              </p>
+              <p>
+                UNLESS YOU CANCEL BEFORE THE EARLIER OF THE END OF THE TRIAL
+                PERIOD OR THE DEPLETION OF ALL TRIAL CREDITS, YOUR SUBSCRIPTION
+                WILL AUTOMATICALLY CONVERT TO THE THEN-CURRENT PRO PLAN, AND
+                YOU AUTHORIZE US TO CHARGE THE PAYMENT METHOD ON FILE FOR THE
+                APPLICABLE FEES AND TAXES BEGINNING IMMEDIATELY UPON SUCH
+                CONVERSION.
+              </p>
+              <h3 className="text-element-high-em font-semibold">
+                Invoices; Autopay
+              </h3>
+              <p>
+                If your Account is billed by invoice, you authorize us to
+                automatically charge the payment method on file for the full
+                amount of each invoice when that invoice is generated or
+                otherwise becomes due, unless we expressly agree with you in
+                writing to different payment terms.
+              </p>
+              <h3 className="text-element-high-em font-semibold">
+                Failed Payments; Chargebacks; Suspension
+              </h3>
+              <p>
+                If any charge is declined, returned unpaid, reversed,
+                disputed, or subject to chargeback, or if we are otherwise
+                unable to collect any amount due, you authorize us to retry the
+                payment method on file. We may also suspend or downgrade your
+                access to the Services, disable additional usage, revoke unused
+                credits, withhold access to paid features, and/or terminate
+                your Account until all overdue amounts are paid in full.
+                Failure to complete payment may result in immediate suspension
+                or shutdown of your Account.
+              </p>
+              <p>
+                You remain responsible for all unpaid amounts accrued through
+                the date of suspension or termination, together with any taxes
+                and any collection costs or expenses recoverable by us under
+                applicable law.
               </p>
               <h3 className="text-element-high-em font-semibold">Refunds</h3>
               <p>
-                Other than as may be expressly set forth on our Website, all
-                Fees are non-refundable once paid.
+                Except as required by applicable law or as may be expressly set
+                forth on our Website, all Fees are non-refundable once paid,
+                including after automatic renewal or automatic conversion from a
+                trial to a paid plan. We do not provide refunds or credits for
+                partial subscription periods, partial use of the Services,
+                unused credits, or prepaid Fees.
               </p>
             </section>
 
@@ -208,22 +361,41 @@ export default function Terms() {
               </h3>
               <p>
                 We may terminate your access to our Services, in our sole
-                discretion, for any reason and at any time. If you have provided
-                us with your email address, we will endeavor to provide
-                electronic notice to you at such email address. You agree that
-                we are not liable to you or any third party for any termination
-                of your access to our Services.
+                discretion, for any reason and at any time. Without limiting
+                the foregoing, we may suspend or terminate your access to our
+                Services for nonpayment, failed payment authorization,
+                chargeback activity, failed or incomplete verification,
+                ineligibility, suspected fraud, misuse of the Services, legal
+                or regulatory risk, security risk, or if we determine that you
+                are a competitor of &AI or are acting on behalf of a competitor
+                of &AI. If you have provided us with your email address, we
+                will endeavor to provide electronic notice to you at such email
+                address. You agree that we are not liable to you or any third
+                party for any termination of your access to our Services.
               </p>
               <h3 className="text-element-high-em font-semibold">
                 Termination by You
               </h3>
               <p>
-                You may terminate these Terms at any time by ceasing to use our
-                Services and, if applicable, by closing your Account. We may
-                provide instructions on our Platform for how to close your
-                Account and may update such instructions from time to time.
-                Please follow such instructions if you would like to close your
-                Account.
+                You may cancel your subscription at any time by using the
+                cancellation functionality in your Account or billing settings,
+                or by following the cancellation instructions that we make
+                available on the Platform from time to time. If you enrolled in
+                an automatically renewing subscription online, we will provide a
+                means for you to cancel online.
+              </p>
+              <p>
+                Unless otherwise expressly stated by us in writing,
+                cancellation will stop future renewals and future charges only,
+                and will not entitle you to a refund of Fees already paid. If
+                applicable, your access to paid features will continue through
+                the end of the then-current paid billing period unless we
+                suspend or terminate your Account earlier under these Terms.
+              </p>
+              <p>
+                Closing your Account or canceling your subscription does not
+                relieve you of any obligation to pay amounts that accrued
+                before the effective date of cancellation or termination.
               </p>
               <h3 className="text-element-high-em font-semibold">
                 Survival of Terms
@@ -258,8 +430,10 @@ export default function Terms() {
                 Without limiting the foregoing, we grant you a perpetual,
                 worldwide, royalty-free right and license to use any Output
                 generated by or for you through the &AI Platform based upon your
-                queries, solely for your internal business purposes and not for
-                resale to any third party.
+                queries, solely for your internal business purposes, including
+                the provision of professional services to your clients, and not
+                for resale as a standalone product or service competitive with
+                the Services.
               </p>
               <h4 className="text-element-high-em font-semibold">
                 Our Content
@@ -270,11 +444,12 @@ export default function Terms() {
                 non-exclusive, non-sublicensable, revocable license to access
                 and use any other content, including text, audio, video, images
                 or other content (collectively, &quot;Content&quot;) that we
-                make available through our Services, solely for your personal
-                and non-commercial use, and subject to any restrictions on
-                certain types of content set forth in these Terms. You
-                understand that the Content that is posted on our Services is
-                used by you at your own risk.
+                make available through our Services, solely for your internal
+                business use in connection with your lawful use of the
+                Services, and subject to any restrictions on certain types of
+                content set forth in these Terms. You understand that the
+                Content that is posted on our Services is used by you at your
+                own risk.
               </p>
               <h4 className="text-element-high-em font-semibold">
                 Changes to Content
@@ -338,9 +513,9 @@ export default function Terms() {
                 us, we grant to you a limited, personal, non-exclusive,
                 non-transferable, non-sublicensable, revocable license to
                 install and use any application we may offer on a compatible
-                mobile device for your personal, non-commercial purposes and use
-                of the &AI Platform, in each case, solely in the manner enabled
-                by us.
+                mobile device for your internal business purposes and use of
+                the &AI Platform, in each case, solely in the manner enabled by
+                us.
               </p>
               <h4 className="text-element-high-em font-semibold">
                 Limitations; Revocation
@@ -835,7 +1010,7 @@ export default function Terms() {
                 12. Contact Us For Additional Information
               </h2>
               <p>
-                If you have any questions about these Terms, please Book a Demo
+                If you have any questions about these Terms, please contact us
                 at support@tryandai.com.
               </p>
             </section>

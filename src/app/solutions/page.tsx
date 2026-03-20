@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 import { SubHeader } from '@/common/components/subheader';
+import { Links } from '@/common/constants/links';
 import { BrandColor } from '@/common/types/common';
 
 import { CTASection } from '@/module/cta';
@@ -45,9 +46,9 @@ export default function SolutionsPage() {
             designed for your workflows.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href="/book-demo">Book demo</Button>
-            <Button href="/pricing" variant="secondary">
-              See pricing
+            <Button href="/book-demo">Book a demo</Button>
+            <Button href={Links.SignUp} variant="secondary">
+              Free trial
             </Button>
           </div>
         </div>
@@ -98,7 +99,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* CTA Section */}
-      <CTASection showPricing />
+      <CTASection />
 
       <Footer />
     </main>

@@ -1,12 +1,9 @@
 import { Button } from '@/common/components/button';
+import { Links } from '@/common/constants/links';
 
 import { BackgroundArt } from './background-art';
 
-interface CTASectionProps {
-  showPricing?: boolean;
-}
-
-export const CTASection = ({ showPricing = false }: CTASectionProps) => (
+export const CTASection = () => (
   <section
     className="mx-auto w-full px-4 md:px-6 xl:max-w-[80rem] xl:px-0"
     id="cta"
@@ -26,12 +23,10 @@ export const CTASection = ({ showPricing = false }: CTASectionProps) => (
           </p>
         </div>
         <div className="flex flex-col items-center gap-3 sm:flex-row">
-          <Button href="/book-demo">Free trial</Button>
-          {showPricing && (
-            <Button href="/pricing" variant="secondary">
-              See pricing
-            </Button>
-          )}
+          <Button href="/book-demo">Book a demo</Button>
+          <Button href={Links.SignUp} variant="secondary">
+            Free trial
+          </Button>
         </div>
       </div>
     </div>

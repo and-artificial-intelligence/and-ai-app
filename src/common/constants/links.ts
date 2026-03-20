@@ -7,5 +7,6 @@ export enum Links {
   Security = 'https://tryandai.com/security',
   Compliance = 'https://trust.oneleet.com/andai?tab=compliance',
   Contact = 'https://tryandai.com/contact',
+  SignUp = 'https://auth.tryandai.com/en/signup',
   LogIn = 'https://platform.tryandai.com/signin',
 }
