@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { SchemaScript } from '@/common/components/schema-script';
+import { Links } from '@/common/constants/links';
 import { getProductsByName } from '@/common/constants/products';
 
 import {
@@ -105,9 +106,13 @@ export default function ClaimChartsPage() {
         faqs={faqs}
         h1="Litigation-Ready"
         h1Highlight="Claim Charts"
+        primaryCta={{
+          label: 'Free trial',
+          href: Links.SignUp,
+        }}
         relatedProducts={relatedProducts}
         secondaryCta={{
-          label: 'Request a free sample chart',
+          label: 'Request sample chart',
           href: '/request-sample-chart',
         }}
         sections={[

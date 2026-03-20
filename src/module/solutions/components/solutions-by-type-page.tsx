@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 import { SubHeader } from '@/common/components/subheader';
+import { Links } from '@/common/constants/links';
 import { BrandColor } from '@/common/types/common';
 
 import { CTASection } from '@/module/cta';
@@ -77,8 +78,8 @@ export function SolutionsByTypePage({
   useCases,
   testimonial,
   faqs,
-  primaryCta = { label: 'Book demo', href: '/book-demo' },
-  secondaryCta = { label: 'See pricing', href: '/pricing' },
+  primaryCta = { label: 'Book a demo', href: '/book-demo' },
+  secondaryCta = { label: 'Free trial', href: Links.SignUp },
 }: SolutionsByTypePageProps) {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
 
@@ -323,7 +324,7 @@ export function SolutionsByTypePage({
       )}
 
       {/* CTA Section */}
-      <CTASection showPricing />
+      <CTASection />
 
       <Footer />
     </main>

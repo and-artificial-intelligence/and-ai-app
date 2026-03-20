@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 import { SubHeader } from '@/common/components/subheader';
+import { Links } from '@/common/constants/links';
 import Tab from '@/common/components/tab';
 import { BrandColor } from '@/common/types/common';
 
@@ -213,8 +214,12 @@ export default function Pricing() {
                   </p>
                 </div>
 
-                <Button fullWidth className="mb-6" href="/book-demo">
-                  Free trial
+                <Button
+                  fullWidth
+                  className="mb-6"
+                  href={tier.name === 'Enterprise' ? '/book-demo' : Links.SignUp}
+                >
+                  {tier.name === 'Enterprise' ? 'Contact us' : 'Free trial'}
                 </Button>
 
                 <div className="border-gray-dark/10 flex-1 space-y-3 border-t pt-6">

@@ -1,3 +1,5 @@
+/* cspell:ignore preauthorize */
+
 import { Footer } from '@/common/components/footer';
 import { SchemaScript } from '@/common/components/schema-script';
 
@@ -56,6 +58,29 @@ export default function Privacy() {
                 If you create an account to use our Services, we will collect
                 information from you related to maintaining your account. This
                 may include your name, email address, and password.
+              </p>
+              <p>
+                <strong>
+                  Account application, verification, and billing information.
+                </strong>{' '}
+                If you apply for or use a self-serve Account, we may collect
+                additional information related to your application,
+                eligibility, and billing. This may include your company or
+                organization name, job title, professional role,
+                organizational affiliation, business contact information,
+                business or billing address, payment-related information
+                submitted through our payment processors, transaction and
+                invoice information, trial and credit usage information, and
+                information you provide or that we generate in connection with
+                account verification, fraud prevention, billing eligibility,
+                and account approval.
+              </p>
+              <p>
+                We may also receive information about you from third parties
+                that help us operate the Services, such as payment processors,
+                identity or professional verification providers, fraud
+                prevention and security providers, analytics providers,
+                artificial intelligence providers, and other service providers.
               </p>
               <p>
                 <strong>
@@ -165,9 +190,42 @@ export default function Privacy() {
                 </li>
                 <li>Comply with legal and/or regulatory requirements;</li>
                 <li>Aggregate and deidentify information;</li>
-                <li>Create new products and services; and</li>
+                <li>Create new products and services;</li>
+                <li>Create, administer, and secure self-serve Accounts;</li>
+                <li>
+                  Verify your identity, organizational affiliation,
+                  professional role, and eligibility to access the Services;
+                </li>
+                <li>
+                  Evaluate applications for fraud, abuse, security, legal,
+                  reputational, competitive, credit, or other business risk;
+                </li>
+                <li>
+                  Determine billing eligibility, including whether a payment
+                  method satisfies our geographic or billing-address
+                  requirements;
+                </li>
+                <li>
+                  Verify and preauthorize payment methods, process
+                  transactions, generate invoices, automatically collect
+                  amounts due, and prevent failed or fraudulent transactions;
+                </li>
+                <li>
+                  Administer trials, promotional credits, usage limits, and
+                  plan conversions;
+                </li>
+                <li>
+                  Enforce our Terms, eligibility rules, and other policies;
+                </li>
                 <li>Manage our business.</li>
               </ul>
+              <p>
+                We may use automated tools, including artificial intelligence
+                systems, to assist with account approval, fraud prevention,
+                abuse prevention, billing eligibility review, and operational
+                decision-making. Depending on the circumstances, those tools
+                may be used alone or together with human review.
+              </p>
               <p>
                 We may link information gathered through our Services with
                 information that we collect in other contexts. But in that
@@ -188,16 +246,19 @@ export default function Privacy() {
               <p>
                 <strong>Third-party service providers.</strong> &AI uses
                 third-party service providers that perform services on our
-                behalf, including web-hosting companies, payment service
-                providers, artificial intelligence engine providers, customer
-                support services and analytics providers. These service
-                providers may collect and/or use your information, including
-                information that identifies you personally, to assist us in
-                achieving the purposes discussed above. We may share your
-                information with other third parties when necessary to fulfill
-                your requests for Services; to complete a transaction that you
-                initiate; to meet the terms of any agreement that you have with
-                us; or to manage our business.
+                behalf, including web-hosting companies, cloud infrastructure
+                providers, payment processors, billing and invoicing providers,
+                identity or professional verification providers, fraud
+                prevention and security providers, artificial intelligence and
+                machine learning providers, customer support providers,
+                communications providers, and analytics providers. These
+                service providers may collect, receive, use, or otherwise
+                process your information on our behalf to help us operate the
+                Services, review and approve Accounts, verify eligibility,
+                detect and prevent fraud or abuse, process payments, generate
+                invoices, collect amounts due, provide customer support,
+                improve the Services, and achieve the other purposes described
+                in this Policy.
               </p>
               <p>
                 <strong>Analytics.</strong> We may partner with certain third
@@ -313,6 +374,16 @@ export default function Privacy() {
                 Request.&quot;
               </p>
               <p>
+                We may use automated tools, including artificial intelligence
+                systems, to assist with account eligibility review, fraud and
+                abuse prevention, billing eligibility checks, and similar
+                operational decisions. In some cases, an application or account
+                may be escalated for additional human review. If you believe an
+                eligibility or access decision was made in error, you may
+                contact us at support@tryandai.com to request review, subject
+                to applicable law.
+              </p>
+              <p>
                 Prior to complying with your request, we will first verify your
                 identity by comparing the information you provide with the
                 information we have on file for you. You may authorize an agent
@@ -366,6 +437,16 @@ export default function Privacy() {
                 required or permitted by law. We do not retain personal
                 information longer than is necessary for us to achieve the
                 purposes for which we collected it.
+              </p>
+              <p>
+                We may retain records relating to account applications,
+                eligibility and verification reviews, payment method
+                verification, transaction history, invoices, trial and credit
+                usage, fraud and abuse prevention, security events, and related
+                communications for as long as reasonably necessary to provide
+                the Services, process payments, comply with legal obligations,
+                resolve disputes, enforce our agreements, and protect the
+                Services and our business.
               </p>
             </div>
 

@@ -8,6 +8,7 @@ import { Footer } from '@/common/components/footer';
 import { ProductCard } from '@/common/components/product-card';
 import { SchemaScript } from '@/common/components/schema-script';
 import { SubHeader } from '@/common/components/subheader';
+import { Links } from '@/common/constants/links';
 import { PRODUCTS } from '@/common/constants/products';
 import { BrandColor } from '@/common/types/common';
 
@@ -123,9 +124,9 @@ export default function ProductOverviewPage() {
             </p>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href="/book-demo">Book demo</Button>
-            <Button href="/pricing" variant="secondary">
-              See pricing
+            <Button href="/book-demo">Book a demo</Button>
+            <Button href={Links.SignUp} variant="secondary">
+              Free trial
             </Button>
           </div>
         </div>
@@ -231,7 +232,7 @@ export default function ProductOverviewPage() {
       )}
 
       {/* CTA Section */}
-      <CTASection showPricing />
+      <CTASection />
 
       <Footer />
     </main>

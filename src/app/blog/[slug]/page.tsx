@@ -9,6 +9,7 @@ import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 import { SchemaScript } from '@/common/components/schema-script';
 import { SITE_URL } from '@/common/constants';
+import { Links } from '@/common/constants/links';
 
 import { getBlogPostBySlug, getBlogPostSlugs } from '@/lib/contentful';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/schema';
@@ -352,7 +353,7 @@ export default async function BlogPost({
                 work product—fast enough for pitches, strong enough for court.
               </p>
             </div>
-            <Button href="/book-demo">Free trial</Button>
+            <Button href={Links.SignUp}>Free trial</Button>
           </div>
         </div>
       </section>
