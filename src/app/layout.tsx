@@ -5,6 +5,7 @@ import Script from 'next/script';
 import '@/common/styles/main.css';
 
 import { Navbar } from '@/common/components/navbar';
+import { PostHogProvider } from '@/common/components/posthog-provider';
 import { SchemaScript } from '@/common/components/schema-script';
 import { geist, martina, mono } from '@/common/fonts';
 import { cn } from '@/common/functions/cn';
@@ -160,10 +161,12 @@ export default function RootLayout({
           </>
         )}
         <SchemaScript schema={generateOrganizationSchema()} />
-        <Navbar />
-        <div className="relative h-full min-h-full pt-16 xl:pt-20">
-          {children}
-        </div>
+        <PostHogProvider>
+          <Navbar />
+          <div className="relative h-full min-h-full pt-16 xl:pt-20">
+            {children}
+          </div>
+        </PostHogProvider>
         <Analytics />
       </body>
     </html>

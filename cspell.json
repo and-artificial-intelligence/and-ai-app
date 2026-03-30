@@ -51,7 +51,10 @@
     "Teardowns",
     "Wayback",
     "checkmarks",
-    "ctfassets"
+    "ctfassets",
+    "posthog",
+    "pageleave",
+    "pageview"
   ],
   "ignorePaths": [
     "node_modules",
