@@ -10,6 +10,10 @@ import { BrandColor } from '@/common/types/common';
 import { useBlazeSlider } from '@/tools/blaze-slider/useBlazeSlider';
 
 const DESKTOP_CARD_MIN_WIDTH = 176;
+const MOBILE_SLIDER_LAYOUT_CLASS =
+  '[--slides-to-show:1.2] [--slide-gap:16px] min-[480px]:[--slides-to-show:2.2] min-[480px]:[--slide-gap:20px] md:[--slides-to-show:3.2] md:[--slide-gap:24px]';
+const DESKTOP_SLIDER_LAYOUT_CLASS =
+  '[--slides-to-show:3.2] [--slide-gap:20px] min-[1200px]:[--slides-to-show:4.25] min-[1200px]:[--slide-gap:24px] min-[1440px]:[--slides-to-show:5.1]';
 
 export interface Advisor {
   name: string;
@@ -294,7 +298,7 @@ export const AdvisoryBoardSection = ({
         {showDesktopCarousel ? (
           <>
             <AdvisorySlider
-              className="hidden lg:block"
+              className={`hidden lg:block ${DESKTOP_SLIDER_LAYOUT_CLASS}`}
               sliderRootRef={desktopSliderRef}
             />
 
@@ -322,7 +326,10 @@ export const AdvisoryBoardSection = ({
 
       {/* Mobile/Tablet: Horizontal slider */}
       <div className="lg:hidden">
-        <AdvisorySlider className="lg:hidden" sliderRootRef={mobileSliderRef} />
+        <AdvisorySlider
+          className={`lg:hidden ${MOBILE_SLIDER_LAYOUT_CLASS}`}
+          sliderRootRef={mobileSliderRef}
+        />
 
         <div className="mt-6 flex justify-center gap-4">
           <CarouselControl
