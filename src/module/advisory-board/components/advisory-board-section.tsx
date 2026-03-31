@@ -91,7 +91,7 @@ const advisors: Advisor[] = [
     bioUrl: 'https://www.vorys.com/mueller',
   },
   {
-    name: 'Scott M. Flanz',
+    name: 'Scott Flanz',
     title: 'Principal',
     firm: 'Fish & Richardson',
     imageSrc: '/advisory-processed/scott-fish.png',

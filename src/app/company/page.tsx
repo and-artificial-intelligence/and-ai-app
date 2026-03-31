@@ -65,7 +65,7 @@ const advisorSchemaData = [
     image: 'https://tryandai.com/advisory-processed/jason-vorys.png',
   },
   {
-    name: 'Scott M. Flanz',
+    name: 'Scott Flanz',
     jobTitle: 'Principal',
     worksFor: 'Fish & Richardson',
     image: 'https://tryandai.com/advisory-processed/scott-fish.png',
