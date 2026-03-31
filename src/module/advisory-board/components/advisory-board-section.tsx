@@ -2,18 +2,15 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { memo, RefObject, useEffect, useRef, useState } from 'react';
+import { memo, RefObject, useEffect, useRef } from 'react';
 
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
 
 import { useBlazeSlider } from '@/tools/blaze-slider/useBlazeSlider';
 
-const DESKTOP_CARD_MIN_WIDTH = 176;
-const MOBILE_SLIDER_LAYOUT_CLASS =
-  '[--slides-to-show:1.2] [--slide-gap:16px] min-[480px]:[--slides-to-show:2.2] min-[480px]:[--slide-gap:20px] md:[--slides-to-show:3.2] md:[--slide-gap:24px]';
-const DESKTOP_SLIDER_LAYOUT_CLASS =
-  '[--slides-to-show:3.2] [--slide-gap:20px] min-[1200px]:[--slides-to-show:4.25] min-[1200px]:[--slide-gap:24px] min-[1440px]:[--slides-to-show:5.1]';
+const ADVISORY_SLIDER_LAYOUT_CLASS =
+  '[--slides-to-show:1.2] [--slide-gap:16px] min-[480px]:[--slides-to-show:2.2] min-[480px]:[--slide-gap:20px] md:[--slides-to-show:3.2] md:[--slide-gap:24px] min-[880px]:[--slides-to-show:4.1] min-[1100px]:[--slides-to-show:5.1] min-[1400px]:[--slides-to-show:6]';
 
 export interface Advisor {
   name: string;
@@ -114,7 +111,7 @@ const CarouselControl = ({
 }) => (
   <button
     aria-label={label}
-    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/8 bg-[#232329] text-white transition-colors duration-200 hover:bg-[#2d2d35]"
+    className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#31343b] bg-[#232329] text-white transition-colors duration-200 hover:bg-[#2d2d35]"
     onClick={onClick}
     type="button"
   >
@@ -194,10 +191,8 @@ export const AdvisoryBoardSection = ({
   headerTitle = 'Guided by the best in patent law',
   leadingCopy = 'Leading voices in patent litigation and strategy—who know what it takes to win.',
 }: AdvisoryBoardSectionProps) => {
-  const desktopMeasureRef = useRef<HTMLDivElement | null>(null);
-  const [showDesktopCarousel, setShowDesktopCarousel] = useState(false);
-
-  const [mobileSliderRef, mobileSlider] = useBlazeSlider({
+  const controlsRef = useRef<HTMLDivElement | null>(null);
+  const [advisorySliderRef, advisorySlider] = useBlazeSlider({
     all: {
       slidesToShow: 1.2,
       slideGap: '16px',
@@ -212,67 +207,54 @@ export const AdvisoryBoardSection = ({
       slidesToShow: 3.2,
       slideGap: '24px',
     },
-  });
-
-  const [desktopSliderRef, desktopSlider] = useBlazeSlider({
-    all: {
-      slidesToShow: 3.2,
-      slideGap: '20px',
-      loop: false,
-      enableAutoplay: false,
+    '(min-width: 880px)': {
+      slidesToShow: 4.1,
     },
-    '(min-width: 1200px)': {
-      slidesToShow: 4.25,
-      slideGap: '24px',
-    },
-    '(min-width: 1440px)': {
+    '(min-width: 1100px)': {
       slidesToShow: 5.1,
-      slideGap: '24px',
+    },
+    '(min-width: 1400px)': {
+      slidesToShow: 6,
     },
   });
 
   useEffect(() => {
-    const measureTarget = desktopMeasureRef.current;
-    if (!measureTarget) return;
+    const controls = controlsRef.current;
+    if (!controls) return;
 
-    const updateDesktopMode = () => {
-      const gap = window.innerWidth >= 1280 ? 24 : 20;
-      const requiredWidth =
-        advisors.length * DESKTOP_CARD_MIN_WIDTH + (advisors.length - 1) * gap;
+    const updateShowControls = () => {
+      const slidesToShow =
+        window.innerWidth >= 1400
+          ? 6
+          : window.innerWidth >= 1100
+            ? 5.1
+            : window.innerWidth >= 880
+              ? 4.1
+              : window.innerWidth >= 768
+                ? 3.2
+                : window.innerWidth >= 480
+                  ? 2.2
+                  : 1.2;
 
-      setShowDesktopCarousel(measureTarget.clientWidth < requiredWidth);
+      controls.classList.toggle('hidden', advisors.length <= slidesToShow);
     };
 
-    updateDesktopMode();
-
-    const resizeObserver = new ResizeObserver(updateDesktopMode);
-    resizeObserver.observe(measureTarget);
+    updateShowControls();
+    window.addEventListener('resize', updateShowControls);
 
     return () => {
-      resizeObserver.disconnect();
+      window.removeEventListener('resize', updateShowControls);
     };
   }, []);
 
-  const goToPreviousMobileSlide = () => {
-    const slider = mobileSlider.current;
+  const goToPreviousSlide = () => {
+    const slider = advisorySlider.current;
     if (!slider) return;
     slider.prev(1);
   };
 
-  const goToNextMobileSlide = () => {
-    const slider = mobileSlider.current;
-    if (!slider) return;
-    slider.next(1);
-  };
-
-  const goToPreviousDesktopSlide = () => {
-    const slider = desktopSlider.current;
-    if (!slider) return;
-    slider.prev(1);
-  };
-
-  const goToNextDesktopSlide = () => {
-    const slider = desktopSlider.current;
+  const goToNextSlide = () => {
+    const slider = advisorySlider.current;
     if (!slider) return;
     slider.next(1);
   };
@@ -294,55 +276,22 @@ export const AdvisoryBoardSection = ({
         </div>
       )}
 
-      <div ref={desktopMeasureRef} className="hidden lg:block">
-        {showDesktopCarousel ? (
-          <>
-            <AdvisorySlider
-              className={`hidden lg:block ${DESKTOP_SLIDER_LAYOUT_CLASS}`}
-              sliderRootRef={desktopSliderRef}
-            />
+      <AdvisorySlider
+        className={ADVISORY_SLIDER_LAYOUT_CLASS}
+        sliderRootRef={advisorySliderRef}
+      />
 
-            <div className="mt-8 flex justify-center gap-4">
-              <CarouselControl
-                direction="left"
-                label="Previous advisors"
-                onClick={goToPreviousDesktopSlide}
-              />
-              <CarouselControl
-                direction="right"
-                label="Next advisors"
-                onClick={goToNextDesktopSlide}
-              />
-            </div>
-          </>
-        ) : (
-          <div className="grid pt-2 lg:grid-cols-6 lg:gap-5 xl:gap-6">
-            {advisors.map((advisor) => (
-              <AdvisorCard key={advisor.name} advisor={advisor} />
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* Mobile/Tablet: Horizontal slider */}
-      <div className="lg:hidden">
-        <AdvisorySlider
-          className={`lg:hidden ${MOBILE_SLIDER_LAYOUT_CLASS}`}
-          sliderRootRef={mobileSliderRef}
+      <div ref={controlsRef} className="mt-6 flex justify-center gap-4 md:mt-8">
+        <CarouselControl
+          direction="left"
+          label="Previous advisors"
+          onClick={goToPreviousSlide}
         />
-
-        <div className="mt-6 flex justify-center gap-4">
-          <CarouselControl
-            direction="left"
-            label="Previous advisors"
-            onClick={goToPreviousMobileSlide}
-          />
-          <CarouselControl
-            direction="right"
-            label="Next advisors"
-            onClick={goToNextMobileSlide}
-          />
-        </div>
+        <CarouselControl
+          direction="right"
+          label="Next advisors"
+          onClick={goToNextSlide}
+        />
       </div>
     </section>
   );
