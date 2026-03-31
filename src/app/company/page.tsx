@@ -35,6 +35,12 @@ const advisorSchemaData = [
     image: 'https://tryandai.com/advisory-processed/charles-kts.png',
   },
   {
+    name: 'Ben Herbert',
+    jobTitle: 'Partner',
+    worksFor: 'Procopio',
+    image: 'https://tryandai.com/advisory-processed/ben-procopio.png',
+  },
+  {
     name: 'Tigran Guledjian',
     jobTitle: 'IP Litigation Co-Chair',
     worksFor: 'Quinn Emanuel',
