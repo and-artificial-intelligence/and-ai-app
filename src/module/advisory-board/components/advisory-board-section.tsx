@@ -90,6 +90,14 @@ const advisors: Advisor[] = [
     logoSrc: '/advisory-logos/vorys.png',
     bioUrl: 'https://www.vorys.com/mueller',
   },
+  {
+    name: 'Scott M. Flanz',
+    title: 'Principal',
+    firm: 'Fish & Richardson',
+    imageSrc: '/advisory-processed/scott-fish.png',
+    logoSrc: '/advisory-logos/fish.png',
+    bioUrl: 'https://www.fr.com/team/scott-m-flanz/',
+  },
 ];
 
 interface AdvisoryBoardSectionProps {
