@@ -2,12 +2,15 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { memo, RefObject, useEffect, useState } from 'react';
+import { memo, RefObject, useEffect, useRef } from 'react';
 
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
 
 import { useBlazeSlider } from '@/tools/blaze-slider/useBlazeSlider';
+
+const ADVISORY_SLIDER_LAYOUT_CLASS =
+  '[--slides-to-show:1.2] [--slide-gap:16px] min-[480px]:[--slides-to-show:2.2] min-[480px]:[--slide-gap:20px] md:[--slides-to-show:3.2] md:[--slide-gap:24px] min-[880px]:[--slides-to-show:4.1] min-[1100px]:[--slides-to-show:5.1] min-[1400px]:[--slides-to-show:6]';
 
 export interface Advisor {
   name: string;
@@ -59,6 +62,14 @@ const advisors: Advisor[] = [
     logoSrc: '/advisory-logos/gish.png',
     bioUrl: 'https://www.gishpllc.com/team-member/josef-schenker/',
   },
+  {
+    name: 'Jason Mueller',
+    title: 'Partner',
+    firm: 'Vorys',
+    imageSrc: '/advisory-processed/jason-vorys.png',
+    logoSrc: '/advisory-logos/vorys.png',
+    bioUrl: 'https://www.vorys.com/mueller',
+  },
 ];
 
 interface AdvisoryBoardSectionProps {
@@ -66,6 +77,47 @@ interface AdvisoryBoardSectionProps {
   headerTitle?: string;
   leadingCopy?: string;
 }
+
+const CarouselArrow = ({ direction }: { direction: 'left' | 'right' }) => (
+  <svg
+    aria-hidden="true"
+    className="h-4 w-4"
+    fill="none"
+    viewBox="0 0 16 16"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d={
+        direction === 'left'
+          ? 'M9.5 3.5L5 8l4.5 4.5'
+          : 'M6.5 3.5L11 8l-4.5 4.5'
+      }
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.75"
+    />
+  </svg>
+);
+
+const CarouselControl = ({
+  direction,
+  label,
+  onClick,
+}: {
+  direction: 'left' | 'right';
+  label: string;
+  onClick: () => void;
+}) => (
+  <button
+    aria-label={label}
+    className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#31343b] bg-[#232329] text-white transition-colors duration-200 hover:bg-[#2d2d35]"
+    onClick={onClick}
+    type="button"
+  >
+    <CarouselArrow direction={direction} />
+  </button>
+);
 
 const AdvisorCard = ({ advisor }: { advisor: Advisor }) => (
   <Link
@@ -111,10 +163,12 @@ const AdvisorCard = ({ advisor }: { advisor: Advisor }) => (
 const AdvisorySlider = memo(
   ({
     sliderRootRef,
+    className = '',
   }: {
     sliderRootRef: RefObject<HTMLDivElement | null>;
+    className?: string;
   }) => (
-    <div ref={sliderRootRef} className="blaze-slider pt-2 lg:hidden">
+    <div ref={sliderRootRef} className={`blaze-slider pt-2 ${className}`}>
       <div className="blaze-container">
         <div className="blaze-track-container">
           <div className="blaze-track">
@@ -137,7 +191,8 @@ export const AdvisoryBoardSection = ({
   headerTitle = 'Guided by the best in patent law',
   leadingCopy = 'Leading voices in patent litigation and strategy—who know what it takes to win.',
 }: AdvisoryBoardSectionProps) => {
-  const [sliderRef, slider] = useBlazeSlider({
+  const controlsRef = useRef<HTMLDivElement | null>(null);
+  const [advisorySliderRef, advisorySlider] = useBlazeSlider({
     all: {
       slidesToShow: 1.2,
       slideGap: '16px',
@@ -152,20 +207,57 @@ export const AdvisoryBoardSection = ({
       slidesToShow: 3.2,
       slideGap: '24px',
     },
+    '(min-width: 880px)': {
+      slidesToShow: 4.1,
+    },
+    '(min-width: 1100px)': {
+      slidesToShow: 5.1,
+    },
+    '(min-width: 1400px)': {
+      slidesToShow: 6,
+    },
   });
 
-  const [activeIndex, setActiveIndex] = useState(0);
-
   useEffect(() => {
-    const s = slider.current;
-    if (!s) return;
-    const unsubscribe = s.onSlide((pageIndex) => {
-      setActiveIndex(pageIndex);
-    });
-    return () => {
-      if (typeof unsubscribe === 'function') unsubscribe();
+    const controls = controlsRef.current;
+    if (!controls) return;
+
+    const updateShowControls = () => {
+      const slidesToShow =
+        window.innerWidth >= 1400
+          ? 6
+          : window.innerWidth >= 1100
+            ? 5.1
+            : window.innerWidth >= 880
+              ? 4.1
+              : window.innerWidth >= 768
+                ? 3.2
+                : window.innerWidth >= 480
+                  ? 2.2
+                  : 1.2;
+
+      controls.classList.toggle('hidden', advisors.length <= slidesToShow);
     };
-  }, [slider]);
+
+    updateShowControls();
+    window.addEventListener('resize', updateShowControls);
+
+    return () => {
+      window.removeEventListener('resize', updateShowControls);
+    };
+  }, []);
+
+  const goToPreviousSlide = () => {
+    const slider = advisorySlider.current;
+    if (!slider) return;
+    slider.prev(1);
+  };
+
+  const goToNextSlide = () => {
+    const slider = advisorySlider.current;
+    if (!slider) return;
+    slider.next(1);
+  };
 
   return (
     <section className="mx-auto w-full px-4 pt-16 pb-0 md:px-6 md:pt-20 md:pb-0 xl:max-w-[80rem] xl:px-8 xl:pt-24 xl:pb-0">
@@ -184,38 +276,22 @@ export const AdvisoryBoardSection = ({
         </div>
       )}
 
-      {/* Desktop: Grid layout */}
-      <div className="hidden pt-2 lg:grid lg:grid-cols-5 lg:gap-8">
-        {advisors.map((advisor) => (
-          <AdvisorCard key={advisor.name} advisor={advisor} />
-        ))}
-      </div>
+      <AdvisorySlider
+        className={ADVISORY_SLIDER_LAYOUT_CLASS}
+        sliderRootRef={advisorySliderRef}
+      />
 
-      {/* Mobile/Tablet: Horizontal slider */}
-      <div className="lg:hidden">
-        <AdvisorySlider sliderRootRef={sliderRef} />
-
-        {/* Pagination dots */}
-        <div className="mt-6 flex justify-center gap-2">
-          {advisors.map((_, index) => (
-            <button
-              key={index}
-              aria-label={`Go to slide ${index + 1}`}
-              className={`h-2 w-2 rounded-full transition-colors ${
-                index === activeIndex
-                  ? 'bg-brand-primary'
-                  : 'bg-gray-300 hover:bg-gray-400'
-              }`}
-              onClick={() => {
-                const s = slider.current;
-                if (!s) return;
-                const delta = index - s.stateIndex;
-                if (delta > 0) s.next(delta);
-                else if (delta < 0) s.prev(-delta);
-              }}
-            />
-          ))}
-        </div>
+      <div ref={controlsRef} className="mt-6 flex justify-center gap-4 md:mt-8">
+        <CarouselControl
+          direction="left"
+          label="Previous advisors"
+          onClick={goToPreviousSlide}
+        />
+        <CarouselControl
+          direction="right"
+          label="Next advisors"
+          onClick={goToNextSlide}
+        />
       </div>
     </section>
   );

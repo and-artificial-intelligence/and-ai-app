@@ -52,6 +52,12 @@ const advisorSchemaData = [
     worksFor: 'Gish PLLC',
     image: 'https://tryandai.com/advisory-processed/josef-gish.png',
   },
+  {
+    name: 'Jason Mueller',
+    jobTitle: 'Partner',
+    worksFor: 'Vorys',
+    image: 'https://tryandai.com/advisory-processed/jason-vorys.png',
+  },
 ];
 
 const advisorSchemas = advisorSchemaData.map((advisor) =>
