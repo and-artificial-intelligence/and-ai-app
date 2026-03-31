@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { memo, RefObject, useEffect, useRef } from 'react';
+import { memo, RefObject, useEffect, useState } from 'react';
 
 import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
@@ -10,7 +10,19 @@ import { BrandColor } from '@/common/types/common';
 import { useBlazeSlider } from '@/tools/blaze-slider/useBlazeSlider';
 
 const ADVISORY_SLIDER_LAYOUT_CLASS =
-  '[--slides-to-show:1.2] [--slide-gap:16px] min-[480px]:[--slides-to-show:2.2] min-[480px]:[--slide-gap:20px] md:[--slides-to-show:3.2] md:[--slide-gap:24px] min-[880px]:[--slides-to-show:4.1] min-[1100px]:[--slides-to-show:5.1] min-[1400px]:[--slides-to-show:6]';
+  '[--slides-to-show:1] [--slide-gap:16px] min-[480px]:[--slides-to-show:2] min-[480px]:[--slide-gap:20px] md:[--slides-to-show:3] md:[--slide-gap:24px] min-[880px]:[--slides-to-show:4] min-[1100px]:[--slides-to-show:5]';
+const AUTO_SCROLL_INTERVAL_MS = 2000;
+
+const getVisibleAdvisors = (windowWidth: number) =>
+  windowWidth >= 1100
+    ? 5
+    : windowWidth >= 880
+      ? 4
+      : windowWidth >= 768
+        ? 3
+        : windowWidth >= 480
+          ? 2
+          : 1;
 
 export interface Advisor {
   name: string;
@@ -37,6 +49,14 @@ const advisors: Advisor[] = [
     imageSrc: '/advisory-processed/charles-kts.png',
     logoSrc: '/advisory-logos/kilpatrick.png',
     bioUrl: 'https://ktslaw.com/en/People/C/CalkinsCharlesW',
+  },
+  {
+    name: 'Ben Herbert',
+    title: 'Partner',
+    firm: 'Procopio',
+    imageSrc: '/advisory-processed/ben-procopio.png',
+    logoSrc: '/advisory-logos/procopio.png',
+    bioUrl: 'https://www.procopio.com/people/benjamin-herbert',
   },
   {
     name: 'Tigran Guledjian',
@@ -112,8 +132,8 @@ const CarouselControl = ({
   <button
     aria-label={label}
     className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#31343b] bg-[#232329] text-white transition-colors duration-200 hover:bg-[#2d2d35]"
-    onClick={onClick}
     type="button"
+    onClick={onClick}
   >
     <CarouselArrow direction={direction} />
   </button>
@@ -121,7 +141,7 @@ const CarouselControl = ({
 
 const AdvisorCard = ({ advisor }: { advisor: Advisor }) => (
   <Link
-    className="group flex flex-col items-center transition-transform duration-300 hover:-translate-y-2"
+    className="group mx-auto flex w-full max-w-[17rem] flex-col items-center transition-transform duration-300 hover:-translate-y-2 min-[480px]:max-w-none"
     href={advisor.bioUrl}
     rel="noopener noreferrer"
     target="_blank"
@@ -191,61 +211,55 @@ export const AdvisoryBoardSection = ({
   headerTitle = 'Guided by the best in patent law',
   leadingCopy = 'Leading voices in patent litigation and strategy—who know what it takes to win.',
 }: AdvisoryBoardSectionProps) => {
-  const controlsRef = useRef<HTMLDivElement | null>(null);
+  const [showControls, setShowControls] = useState(false);
   const [advisorySliderRef, advisorySlider] = useBlazeSlider({
     all: {
-      slidesToShow: 1.2,
+      slidesToShow: 1,
       slideGap: '16px',
-      loop: false,
+      loop: true,
       enableAutoplay: false,
+      transitionDuration: 600,
     },
     '(min-width: 480px)': {
-      slidesToShow: 2.2,
+      slidesToShow: 2,
       slideGap: '20px',
     },
     '(min-width: 768px)': {
-      slidesToShow: 3.2,
+      slidesToShow: 3,
       slideGap: '24px',
     },
     '(min-width: 880px)': {
-      slidesToShow: 4.1,
+      slidesToShow: 4,
     },
     '(min-width: 1100px)': {
-      slidesToShow: 5.1,
-    },
-    '(min-width: 1400px)': {
-      slidesToShow: 6,
+      slidesToShow: 5,
     },
   });
 
   useEffect(() => {
-    const controls = controlsRef.current;
-    if (!controls) return;
-
-    const updateShowControls = () => {
-      const slidesToShow =
-        window.innerWidth >= 1400
-          ? 6
-          : window.innerWidth >= 1100
-            ? 5.1
-            : window.innerWidth >= 880
-              ? 4.1
-              : window.innerWidth >= 768
-                ? 3.2
-                : window.innerWidth >= 480
-                  ? 2.2
-                  : 1.2;
-
-      controls.classList.toggle('hidden', advisors.length <= slidesToShow);
+    const updateOverflowState = () => {
+      setShowControls(advisors.length > getVisibleAdvisors(window.innerWidth));
     };
 
-    updateShowControls();
-    window.addEventListener('resize', updateShowControls);
+    updateOverflowState();
+    window.addEventListener('resize', updateOverflowState);
 
     return () => {
-      window.removeEventListener('resize', updateShowControls);
+      window.removeEventListener('resize', updateOverflowState);
     };
   }, []);
+
+  useEffect(() => {
+    if (!showControls) return;
+
+    const intervalId = window.setInterval(() => {
+      advisorySlider.current?.next(1);
+    }, AUTO_SCROLL_INTERVAL_MS);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, [advisorySlider, showControls]);
 
   const goToPreviousSlide = () => {
     const slider = advisorySlider.current;
@@ -281,18 +295,20 @@ export const AdvisoryBoardSection = ({
         sliderRootRef={advisorySliderRef}
       />
 
-      <div ref={controlsRef} className="mt-6 flex justify-center gap-4 md:mt-8">
-        <CarouselControl
-          direction="left"
-          label="Previous advisors"
-          onClick={goToPreviousSlide}
-        />
-        <CarouselControl
-          direction="right"
-          label="Next advisors"
-          onClick={goToNextSlide}
-        />
-      </div>
+      {showControls && (
+        <div className="mt-6 flex justify-center gap-4 md:mt-8">
+          <CarouselControl
+            direction="left"
+            label="Previous advisors"
+            onClick={goToPreviousSlide}
+          />
+          <CarouselControl
+            direction="right"
+            label="Next advisors"
+            onClick={goToNextSlide}
+          />
+        </div>
+      )}
     </section>
   );
 };
