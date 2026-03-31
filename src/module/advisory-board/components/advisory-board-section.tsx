@@ -90,6 +90,14 @@ const advisors: Advisor[] = [
     logoSrc: '/advisory-logos/vorys.png',
     bioUrl: 'https://www.vorys.com/mueller',
   },
+  {
+    name: 'Peter Mastroianni',
+    title: 'Discovery Counsel',
+    firm: 'Reichman Jorgensen Lehman Feldberg LLP',
+    imageSrc: '/advisory-processed/peter-rjlf.png',
+    logoSrc: '/advisory-logos/rjlf.png',
+    bioUrl: 'https://www.reichmanjorgensen.com/peter-mastroianni',
+  },
 ];
 
 interface AdvisoryBoardSectionProps {
