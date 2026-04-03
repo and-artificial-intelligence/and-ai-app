@@ -18,7 +18,7 @@ type TabSize = 'sm' | 'md' | 'responsive';
 const baseClassName =
   'inline-flex items-center gap-1 rounded-full border border-gray-dark/5 bg-gray-200 p-1 relative';
 const indicatorClassName =
-  'absolute z-0 box-border rounded-full border border-gray-dark/10 bg-gray-50 transition-all duration-300 ease-out';
+  'pointer-events-none absolute z-0 box-border rounded-full border border-gray-dark/10 bg-gray-50 transition-all duration-300 ease-out';
 const tabButtonClassName =
   'relative z-10 flex cursor-pointer items-center justify-center whitespace-nowrap rounded-full font-medium text-text-em-high transition-colors duration-200';
 
