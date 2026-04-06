@@ -7,7 +7,10 @@ import { SubHeader } from '@/common/components/subheader';
 import { BrandColor } from '@/common/types/common';
 
 import { generateBreadcrumbSchema, generatePersonSchema } from '@/lib/schema';
-import { AdvisoryBoardSection } from '@/module/advisory-board';
+import {
+  AdvisoryBoardSection,
+  advisorSchemaData,
+} from '@/module/advisory-board';
 
 export const metadata: Metadata = {
   title: 'Company',
@@ -18,52 +21,6 @@ export const metadata: Metadata = {
 const companyBreadcrumb = [
   { name: 'Home', url: 'https://tryandai.com' },
   { name: 'Company', url: 'https://tryandai.com/company' },
-];
-
-// Schema data for SEO
-const advisorSchemaData = [
-  {
-    name: 'Peter Magic',
-    jobTitle: 'Managing Partner, SF',
-    worksFor: 'Desmarais LLP',
-    image: 'https://tryandai.com/advisory-processed/peter-desmarais.png',
-  },
-  {
-    name: 'Charles Calkins',
-    jobTitle: 'Partner',
-    worksFor: 'Kilpatrick Townsend',
-    image: 'https://tryandai.com/advisory-processed/charles-kts.png',
-  },
-  {
-    name: 'Ben Herbert',
-    jobTitle: 'Partner',
-    worksFor: 'Procopio',
-    image: 'https://tryandai.com/advisory-processed/ben-procopio.png',
-  },
-  {
-    name: 'Tigran Guledjian',
-    jobTitle: 'IP Litigation Co-Chair',
-    worksFor: 'Quinn Emanuel',
-    image: 'https://tryandai.com/advisory-processed/tigran-quinn.png',
-  },
-  {
-    name: 'Ybet Villacorta',
-    jobTitle: 'Of Counsel',
-    worksFor: 'Foley & Lardner',
-    image: 'https://tryandai.com/advisory-processed/ybet-foley.png',
-  },
-  {
-    name: 'Josef Schenker',
-    jobTitle: 'Partner',
-    worksFor: 'Gish PLLC',
-    image: 'https://tryandai.com/advisory-processed/josef-gish.png',
-  },
-  {
-    name: 'Jason Mueller',
-    jobTitle: 'Partner',
-    worksFor: 'Vorys',
-    image: 'https://tryandai.com/advisory-processed/jason-vorys.png',
-  },
 ];
 
 const advisorSchemas = advisorSchemaData.map((advisor) =>
