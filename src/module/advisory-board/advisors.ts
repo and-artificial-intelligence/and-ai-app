@@ -76,6 +76,14 @@ export const advisors: Advisor[] = [
     logoSrc: '/advisory-logos/foley.png',
     bioUrl: 'https://www.foley.com/people/villacorta-gilberto-m/',
   },
+  {
+    name: 'Peter Mastroianni',
+    title: 'Discovery Counsel',
+    firm: 'Reichman Jorgensen Lehman Feldberg LLP',
+    imageSrc: '/advisory-processed/peter-rjlf.png',
+    logoSrc: '/advisory-logos/rjlf.png',
+    bioUrl: 'https://www.reichmanjorgensen.com/peter-mastroianni',
+  },
 ];
 
 export const advisorSchemaData: PersonSchemaProps[] = advisors.map((advisor) => ({
