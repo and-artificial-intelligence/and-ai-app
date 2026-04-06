@@ -24,7 +24,6 @@ const getVisibleAdvisors = (windowWidth: number) =>
         : windowWidth >= 480
           ? 2
           : 1;
-
 interface AdvisoryBoardSectionProps {
   showHeader?: boolean;
   headerTitle?: string;

@@ -22,7 +22,6 @@ const companyBreadcrumb = [
   { name: 'Home', url: 'https://tryandai.com' },
   { name: 'Company', url: 'https://tryandai.com/company' },
 ];
-
 const advisorSchemas = advisorSchemaData.map((advisor) =>
   generatePersonSchema(advisor),
 );
