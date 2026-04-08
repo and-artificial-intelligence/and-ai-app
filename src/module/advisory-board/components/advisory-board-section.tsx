@@ -74,7 +74,7 @@ const CarouselControl = ({
 
 const AdvisorCard = ({ advisor }: { advisor: Advisor }) => (
   <Link
-    className="group mx-auto flex w-full max-w-[17rem] flex-col items-center transition-transform duration-300 hover:-translate-y-2 min-[480px]:max-w-none"
+    className="group mx-auto flex w-full max-w-[17rem] flex-col items-center min-[480px]:max-w-none"
     href={advisor.bioUrl}
     rel="noopener noreferrer"
     target="_blank"
