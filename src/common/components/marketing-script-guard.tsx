@@ -2,12 +2,18 @@
 
 import { useEffect } from 'react';
 
-// cspell:ignore aplo evnt trovo
+// cspell:ignore aplo cookiebot evnt trovo
 const MARKETING_SCRIPT_SOURCES = [
   'leadsy.ai',
   'apollo.io',
   'aplo-evnt.com',
   'tag.trovo-tag.com',
+  'cookiebot.com',
+] as const;
+
+const KNOWN_MARKETING_ERROR_MESSAGES = [
+  // Cookiebot throws this on preview domains that are not allowlisted.
+  'not authorized to show the cookie banner',
 ] as const;
 
 function stringifyValue(value: unknown): string {
@@ -36,7 +42,10 @@ function matchesMarketingSource(...values: unknown[]): boolean {
     .filter(Boolean)
     .join('\n');
 
-  return MARKETING_SCRIPT_SOURCES.some((source) => haystack.includes(source));
+  return (
+    MARKETING_SCRIPT_SOURCES.some((source) => haystack.includes(source)) ||
+    KNOWN_MARKETING_ERROR_MESSAGES.some((message) => haystack.includes(message))
+  );
 }
 
 function getEventTargetSource(target: EventTarget | null): string {
