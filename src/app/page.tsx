@@ -103,7 +103,7 @@ export default function Home() {
 
       {/* HERO SECTION */}
       <section
-        className="flex flex-col items-center gap-3 px-4 pt-6 md:gap-16 md:px-6 md:pt-24 lg:mx-auto lg:flex-row lg:items-end lg:pt-14 xl:px-8 xl:pt-10"
+        className="mx-auto flex w-full flex-col items-center gap-3 px-4 pt-6 md:gap-16 md:px-6 md:pt-24 lg:flex-row lg:items-end lg:pt-14 xl:max-w-[80rem] xl:px-8 xl:pt-10"
         id="hero"
       >
         {/* LANDING IMAGE */}
@@ -111,7 +111,7 @@ export default function Home() {
           <Image
             fill
             alt="AI-powered patent litigation workspace illustration"
-            className="scale-110 object-contain"
+            className="object-contain"
             src="/Illustration-2.png"
           />
         </div>
