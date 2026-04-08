@@ -40,7 +40,7 @@ const apolloTrackerScript = `
 `;
 
 const googleConsentDefaultsScript = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("consent","default",{ad_personalization:"denied",ad_storage:"denied",ad_user_data:"denied",analytics_storage:"denied",functionality_storage:"denied",personalization_storage:"denied",security_storage:"granted",wait_for_update:500});gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",false);`;
-const isProduction = process.env.NODE_ENV === 'production';
+const shouldLoadMarketingScripts = process.env.VERCEL_ENV === 'production';
 const leadsyPid = process.env.NEXT_PUBLIC_LEADSY_PID;
 
 export const metadata: Metadata = {
@@ -105,7 +105,7 @@ export default function RootLayout({
       lang="en"
     >
       <head>
-        {isProduction && (
+        {shouldLoadMarketingScripts && (
           <>
             {/* Google Ads - blocked until marketing consent */}
             <Script
@@ -145,7 +145,7 @@ export default function RootLayout({
         )}
       </head>
       <body>
-        {isProduction && (
+        {shouldLoadMarketingScripts && (
           <>
             <MarketingScriptGuard />
             {/* Google Consent Mode v2 - Set default consent states BEFORE any Google tags */}
