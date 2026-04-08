@@ -57,6 +57,7 @@ const FeatureImageSlider = memo(
               <div className="relative grid h-[360px] w-full place-content-center md:h-[560px]">
                 <Image
                   fill
+                  loading="eager"
                   alt={`Feature ${tag}`}
                   className="object-cover object-top-left"
                   src={singleImage ?? ''}
@@ -70,6 +71,7 @@ const FeatureImageSlider = memo(
                 >
                   <Image
                     fill
+                    loading="eager"
                     alt={`Feature ${tag}-${index + 1}`}
                     className="object-cover object-top-left"
                     src={item.imageSrc ?? ''}
