@@ -33,6 +33,29 @@ import { PrivacyCard, PrivacyCardProps } from '@/module/privacy';
 
 const homeBreadcrumb = [{ name: 'Home', url: 'https://tryandai.com' }];
 
+const investors = [
+  {
+    name: 'First Round',
+    href: 'https://www.firstround.com/',
+    logo: <FirstRoundIcon className="block" />,
+  },
+  {
+    name: 'Y Combinator',
+    href: 'https://www.ycombinator.com/',
+    logo: <YCombinatorIcon className="block" />,
+  },
+  {
+    name: 'BoxGroup',
+    href: 'https://www.boxgroup.com/',
+    logo: <BoxGroupIcon className="block" />,
+  },
+  {
+    name: 'SV Angel',
+    href: 'https://svangel.com/',
+    logo: <SvaIcon className="block" />,
+  },
+] as const;
+
 export default function Home() {
   const typingTexts: string[] = [
     'Hey Andy, how is "pivot access" used in the prosecution history?',
@@ -136,10 +159,22 @@ export default function Home() {
                 BACKED BY WORLD-CLASS INVESTORS
               </p>
               <div className="flex items-center gap-8">
-                <FirstRoundIcon className="text-element-mid-em" />
-                <YCombinatorIcon className="text-element-mid-em" />
-                <BoxGroupIcon className="text-element-mid-em" />
-                <SvaIcon className="text-element-mid-em" />
+                {investors.map((investor) => (
+                  <a
+                    key={investor.name}
+                    aria-label={`Visit ${investor.name}`}
+                    className={cn(
+                      'text-element-mid-em inline-flex rounded-sm transition-colors duration-300 ease-out',
+                      'hover:text-element-high-em',
+                      'focus-visible:text-element-high-em focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950/10 focus-visible:ring-offset-2',
+                    )}
+                    href={investor.href}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {investor.logo}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
