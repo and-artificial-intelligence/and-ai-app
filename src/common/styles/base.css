@@ -22,4 +22,8 @@
       100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom)
     );
   }
+
+  body {
+    overflow-x: hidden;
+  }
 }
