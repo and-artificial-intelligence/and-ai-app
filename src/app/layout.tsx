@@ -4,6 +4,7 @@ import Script from 'next/script';
 
 import '@/common/styles/main.css';
 
+import { MarketingScriptGuard } from '@/common/components/marketing-script-guard';
 import { Navbar } from '@/common/components/navbar';
 import { PostHogProvider } from '@/common/components/posthog-provider';
 import { SchemaScript } from '@/common/components/schema-script';
@@ -29,7 +30,9 @@ const apolloTrackerScript = `
     o.async=true;
     o.defer=true;
     o.onload=function(){
-      window.trackingFunctions.onLoad({appId:"69672cf689c8f4001579b4f0"})
+      if (window.trackingFunctions && typeof window.trackingFunctions.onLoad === "function") {
+        window.trackingFunctions.onLoad({appId:"69672cf689c8f4001579b4f0"});
+      }
     };
     document.head.appendChild(o);
   }
@@ -37,7 +40,8 @@ const apolloTrackerScript = `
 `;
 
 const googleConsentDefaultsScript = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("consent","default",{ad_personalization:"denied",ad_storage:"denied",ad_user_data:"denied",analytics_storage:"denied",functionality_storage:"denied",personalization_storage:"denied",security_storage:"granted",wait_for_update:500});gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",false);`;
-const isProduction = process.env.NODE_ENV === 'production';
+const shouldLoadMarketingScripts = process.env.VERCEL_ENV === 'production';
+const leadsyPid = process.env.NEXT_PUBLIC_LEADSY_PID;
 
 export const metadata: Metadata = {
   title: {
@@ -101,7 +105,7 @@ export default function RootLayout({
       lang="en"
     >
       <head>
-        {isProduction && (
+        {shouldLoadMarketingScripts && (
           <>
             {/* Google Ads - blocked until marketing consent */}
             <Script
@@ -122,26 +126,28 @@ export default function RootLayout({
             <Script
               data-cookieconsent="marketing"
               id="apollo-tracker"
-              strategy="afterInteractive"
+              strategy="lazyOnload"
             >
               {apolloTrackerScript}
             </Script>
-            {/* Leadsy - blocked until marketing consent */}
-            <Script
-              async
-              data-cookieconsent="marketing"
-              data-pid="dSGoRhLw6OFI8UwR"
-              data-version="062024"
-              id="vtag-ai-js"
-              src="https://r2.leadsy.ai/tag.js"
-              strategy="afterInteractive"
-            />
+            {leadsyPid && (
+              <Script
+                async
+                data-cookieconsent="marketing"
+                data-pid={leadsyPid}
+                data-version="062024"
+                id="vtag-ai-js"
+                src="https://r2.leadsy.ai/tag.js"
+                strategy="lazyOnload"
+              />
+            )}
           </>
         )}
       </head>
       <body>
-        {isProduction && (
+        {shouldLoadMarketingScripts && (
           <>
+            <MarketingScriptGuard />
             {/* Google Consent Mode v2 - Set default consent states BEFORE any Google tags */}
             <Script
               data-cookieconsent="ignore"
