@@ -2,13 +2,23 @@
 
 import { useEffect } from 'react';
 
-// cspell:ignore aplo cookiebot evnt trovo
-const MARKETING_SCRIPT_SOURCES = [
+// cspell:ignore aplo cookiebot doubleclick evnt googleadservices googlesyndication googletagmanager trovo
+const MARKETING_SCRIPT_IDENTIFIERS = [
   'leadsy.ai',
   'apollo.io',
   'aplo-evnt.com',
   'tag.trovo-tag.com',
   'cookiebot.com',
+  'googletagmanager.com',
+  'google-analytics.com',
+  'googleadservices.com',
+  'googlesyndication.com',
+  'doubleclick.net',
+  'google-tag',
+  'google-tag-init',
+  'apollo-tracker',
+  'vtag-ai-js',
+  'data-cookieconsent=marketing',
 ] as const;
 
 const KNOWN_MARKETING_ERROR_MESSAGES = [
@@ -43,23 +53,31 @@ function matchesMarketingSource(...values: unknown[]): boolean {
     .join('\n');
 
   return (
-    MARKETING_SCRIPT_SOURCES.some((source) => haystack.includes(source)) ||
+    MARKETING_SCRIPT_IDENTIFIERS.some((source) => haystack.includes(source)) ||
     KNOWN_MARKETING_ERROR_MESSAGES.some((message) => haystack.includes(message))
   );
 }
 
-function getEventTargetSource(target: EventTarget | null): string {
-  if (target instanceof HTMLScriptElement) {
-    return target.src;
+function getEventTargetDetails(target: EventTarget | null): string[] {
+  if (!(target instanceof HTMLScriptElement)) {
+    return [];
   }
 
-  return '';
+  // Script element metadata is more stable than browser error text when ad
+  // blockers or consent tools block third-party marketing tags.
+  return [
+    target.src,
+    target.id,
+    target.dataset.cookieconsent
+      ? `data-cookieconsent=${target.dataset.cookieconsent}`
+      : '',
+  ].filter(Boolean);
 }
 
 export function MarketingScriptGuard() {
   useEffect(() => {
     const handleError = (event: ErrorEvent) => {
-      const errorSource = getEventTargetSource(event.target);
+      const errorTargetDetails = getEventTargetDetails(event.target);
       const errorStack =
         event.error instanceof Error ? event.error.stack : event.error;
 
@@ -67,7 +85,7 @@ export function MarketingScriptGuard() {
         !matchesMarketingSource(
           event.message,
           event.filename,
-          errorSource,
+          ...errorTargetDetails,
           errorStack,
         )
       ) {
