@@ -1,5 +1,3 @@
-/* cspell:ignore preauthorize */
-
 import { Footer } from '@/common/components/footer';
 import { SchemaScript } from '@/common/components/schema-script';
 
@@ -23,7 +21,7 @@ export default function Privacy() {
               Privacy <span className="font-martina italic">policy</span>
             </h1>
             <p className="text-element-mid-em text-sm">
-              Effective date: October 21, 2025
+              Effective date: April 9, 2026
             </p>
           </div>
 
@@ -74,13 +72,6 @@ export default function Privacy() {
                 information you provide or that we generate in connection with
                 account verification, fraud prevention, billing eligibility,
                 and account approval.
-              </p>
-              <p>
-                We may also receive information about you from third parties
-                that help us operate the Services, such as payment processors,
-                identity or professional verification providers, fraud
-                prevention and security providers, analytics providers,
-                artificial intelligence providers, and other service providers.
               </p>
               <p>
                 <strong>
@@ -191,41 +182,11 @@ export default function Privacy() {
                 <li>Comply with legal and/or regulatory requirements;</li>
                 <li>Aggregate and deidentify information;</li>
                 <li>Create new products and services;</li>
-                <li>Create, administer, and secure self-serve Accounts;</li>
                 <li>
-                  Verify your identity, organizational affiliation,
-                  professional role, and eligibility to access the Services;
-                </li>
-                <li>
-                  Evaluate applications for fraud, abuse, security, legal,
-                  reputational, competitive, credit, or other business risk;
-                </li>
-                <li>
-                  Determine billing eligibility, including whether a payment
-                  method satisfies our geographic or billing-address
-                  requirements;
-                </li>
-                <li>
-                  Verify and preauthorize payment methods, process
-                  transactions, generate invoices, automatically collect
-                  amounts due, and prevent failed or fraudulent transactions;
-                </li>
-                <li>
-                  Administer trials, promotional credits, usage limits, and
-                  plan conversions;
-                </li>
-                <li>
-                  Enforce our Terms, eligibility rules, and other policies;
+                  Create, administer, and secure self-serve Accounts; and
                 </li>
                 <li>Manage our business.</li>
               </ul>
-              <p>
-                We may use automated tools, including artificial intelligence
-                systems, to assist with account approval, fraud prevention,
-                abuse prevention, billing eligibility review, and operational
-                decision-making. Depending on the circumstances, those tools
-                may be used alone or together with human review.
-              </p>
               <p>
                 We may link information gathered through our Services with
                 information that we collect in other contexts. But in that
@@ -246,19 +207,16 @@ export default function Privacy() {
               <p>
                 <strong>Third-party service providers.</strong> &AI uses
                 third-party service providers that perform services on our
-                behalf, including web-hosting companies, cloud infrastructure
-                providers, payment processors, billing and invoicing providers,
-                identity or professional verification providers, fraud
-                prevention and security providers, artificial intelligence and
-                machine learning providers, customer support providers,
-                communications providers, and analytics providers. These
-                service providers may collect, receive, use, or otherwise
-                process your information on our behalf to help us operate the
-                Services, review and approve Accounts, verify eligibility,
-                detect and prevent fraud or abuse, process payments, generate
-                invoices, collect amounts due, provide customer support,
-                improve the Services, and achieve the other purposes described
-                in this Policy.
+                behalf, including web-hosting companies, payment service
+                providers, artificial intelligence engine providers, customer
+                support services and analytics providers. These service
+                providers may collect and/or use your information, including
+                information that identifies you personally, to assist us in
+                achieving the purposes discussed above. We may share your
+                information with other third parties when necessary to fulfill
+                your requests for Services; to complete a transaction that you
+                initiate; to meet the terms of any agreement that you have with
+                us; or to manage our business.
               </p>
               <p>
                 <strong>Analytics.</strong> We may partner with certain third
@@ -427,16 +385,6 @@ export default function Privacy() {
                 required or permitted by law. We do not retain personal
                 information longer than is necessary for us to achieve the
                 purposes for which we collected it.
-              </p>
-              <p>
-                We may retain records relating to account applications,
-                eligibility and verification reviews, payment method
-                verification, transaction history, invoices, trial and credit
-                usage, fraud and abuse prevention, security events, and related
-                communications for as long as reasonably necessary to provide
-                the Services, process payments, comply with legal obligations,
-                resolve disputes, enforce our agreements, and protect the
-                Services and our business.
               </p>
             </div>
 
