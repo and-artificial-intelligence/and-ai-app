@@ -374,16 +374,6 @@ export default function Privacy() {
                 Request.&quot;
               </p>
               <p>
-                We may use automated tools, including artificial intelligence
-                systems, to assist with account eligibility review, fraud and
-                abuse prevention, billing eligibility checks, and similar
-                operational decisions. In some cases, an application or account
-                may be escalated for additional human review. If you believe an
-                eligibility or access decision was made in error, you may
-                contact us at support@tryandai.com to request review, subject
-                to applicable law.
-              </p>
-              <p>
                 Prior to complying with your request, we will first verify your
                 identity by comparing the information you provide with the
                 information we have on file for you. You may authorize an agent
