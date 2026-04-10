@@ -107,7 +107,7 @@ export default function Home() {
         id="hero"
       >
         {/* LANDING IMAGE */}
-        <div className="relative order-1 aspect-square w-32 rounded-2xl md:w-[34.8125rem] lg:order-2 xl:w-[36.375rem]">
+        <div className="relative order-1 aspect-square w-32 overflow-hidden rounded-2xl md:w-[34.8125rem] lg:order-2 xl:w-[36.375rem]">
           <Image
             fill
             alt="AI-powered patent litigation workspace illustration"
