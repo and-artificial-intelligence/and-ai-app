@@ -7,6 +7,7 @@ import { Footer } from '@/common/components/footer';
 import { ProductCard } from '@/common/components/product-card';
 import { SchemaScript } from '@/common/components/schema-script';
 import { SubHeader } from '@/common/components/subheader';
+import { Links } from '@/common/constants/links';
 import { TrialDemoCtaPair } from '@/common/components/trial-demo-cta-pair';
 import { PRODUCTS } from '@/common/constants/products';
 import { BrandColor } from '@/common/types/common';
@@ -27,7 +28,7 @@ const schemaFaqs = [
   {
     question: 'Do you offer a free trial?',
     answer:
-      'Yes. We offer free credits to try the &AI platform so you can evaluate the quality of our product before making any commitment. Book a demo to get started.',
+      'Yes. Sign up today to get started with a 7-day free trial, or book a demo if you would like a walkthrough from our team.',
   },
   {
     question: 'How does pricing work?',
@@ -51,15 +52,21 @@ const faqs = [
     question: 'Do you offer a free trial?',
     answer: (
       <>
-        Yes. We offer free credits to try the &AI platform so you can evaluate
-        the quality of our product before making any commitment.{' '}
+        Yes.{' '}
+        <Link
+          className="text-orange-500 underline hover:text-orange-600"
+          href={Links.SignUp}
+        >
+          Sign up today
+        </Link>{' '}
+        to get started with a 7-day free trial, or{' '}
         <Link
           className="text-orange-500 underline hover:text-orange-600"
           href="/book-demo"
         >
-          Book a demo
+          book a demo
         </Link>{' '}
-        to get started.
+        if you would like a walkthrough from our team.
       </>
     ),
   },

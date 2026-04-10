@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
@@ -13,7 +13,7 @@ type BillingPeriod = 'monthly' | 'yearly';
 
 interface FAQItem {
   question: string;
-  answer: string;
+  answer: ReactNode;
 }
 
 interface PricingTier {
@@ -35,13 +35,47 @@ export default function Pricing() {
   const faqItems: FAQItem[] = [
     {
       question: 'How can I get started?',
-      answer:
-        'Sign up today to get started with a 7-day free trial, or book a demo if you would like a walkthrough from our team.',
+      answer: (
+        <>
+          <Link
+            className="text-orange-500 underline hover:text-orange-600"
+            href={Links.SignUp}
+          >
+            Sign up today
+          </Link>{' '}
+          to get started with a 7-day free trial, or{' '}
+          <Link
+            className="text-orange-500 underline hover:text-orange-600"
+            href="/book-demo"
+          >
+            book a demo
+          </Link>{' '}
+          if you would like a walkthrough from our team.
+        </>
+      ),
     },
     {
       question: 'Can I try it for free?',
-      answer:
-        'Yes. You can sign up today and start a 7-day free trial. If you would prefer a walkthrough first, you can also book a demo.',
+      answer: (
+        <>
+          Yes. You can{' '}
+          <Link
+            className="text-orange-500 underline hover:text-orange-600"
+            href={Links.SignUp}
+          >
+            sign up today
+          </Link>{' '}
+          and start a 7-day free trial. If you would prefer a walkthrough first,
+          you can also{' '}
+          <Link
+            className="text-orange-500 underline hover:text-orange-600"
+            href="/book-demo"
+          >
+            book a demo
+          </Link>
+          .
+        </>
+      ),
     },
     {
       question: 'How does billing work?',
@@ -56,7 +90,7 @@ export default function Pricing() {
     {
       question: 'How does public-only mode work?',
       answer:
-        'Public-only mode is a feature that allows you to use &AI without storing or accessing any confidential information. With public-only mode enabled, you are unable to upload any documents or provide any context or prompts for the models. This makes it impossible for you to store any confidential information with &AI.\n\nPro and Enterprise customers can enable public-only mode by contacting support@tryandai.com.',
+        'Public-only mode is a feature that allows you to use &AI without storing or accessing any confidential information. With public-only mode enabled, you are unable to upload any documents or provide any context or prompts for the models. This makes it impossible for you to store any confidential information with &AI.',
     },
     {
       question:
@@ -374,11 +408,15 @@ export default function Pricing() {
                   }}
                 >
                   <div className="text-element-mid-em pb-6 text-base">
-                    {item.answer.split('\n\n').map((paragraph, i) => (
-                      <p key={i} className={i > 0 ? 'mt-4' : ''}>
-                        {paragraph}
-                      </p>
-                    ))}
+                    {typeof item.answer === 'string' ? (
+                      item.answer.split('\n\n').map((paragraph, i) => (
+                        <p key={i} className={i > 0 ? 'mt-4' : ''}>
+                          {paragraph}
+                        </p>
+                      ))
+                    ) : (
+                      <p>{item.answer}</p>
+                    )}
                   </div>
                 </div>
               </div>
