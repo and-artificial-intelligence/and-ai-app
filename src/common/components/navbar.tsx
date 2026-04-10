@@ -302,6 +302,14 @@ export const Navbar = () => {
           </div>
         </div>
         <div className="flex items-center gap-3">
+          <Button
+            className="hidden lg:flex"
+            href="/book-demo"
+            size="sm"
+            variant="secondary"
+          >
+            Contact
+          </Button>
           <Link
             className="text-element-high-em hover:text-element-mid-em hidden px-5 text-sm font-medium transition-colors lg:block"
             href={Links.LogIn}
