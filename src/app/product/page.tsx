@@ -3,12 +3,11 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 import { ProductCard } from '@/common/components/product-card';
 import { SchemaScript } from '@/common/components/schema-script';
 import { SubHeader } from '@/common/components/subheader';
-import { Links } from '@/common/constants/links';
+import { TrialDemoCtaPair } from '@/common/components/trial-demo-cta-pair';
 import { PRODUCTS } from '@/common/constants/products';
 import { BrandColor } from '@/common/types/common';
 
@@ -123,12 +122,7 @@ export default function ProductOverviewPage() {
               aligned from pitch to trial.
             </p>
           </div>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href="/book-demo">Book a demo</Button>
-            <Button href={Links.SignUp} variant="secondary">
-              Free trial
-            </Button>
-          </div>
+          <TrialDemoCtaPair className="mt-8" />
         </div>
       </section>
 

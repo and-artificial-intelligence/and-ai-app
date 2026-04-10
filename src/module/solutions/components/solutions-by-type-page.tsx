@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 import { SubHeader } from '@/common/components/subheader';
-import { Links } from '@/common/constants/links';
+import { TrialDemoCtaPair } from '@/common/components/trial-demo-cta-pair';
 import { BrandColor } from '@/common/types/common';
 
 import { CTASection } from '@/module/cta';
@@ -78,8 +78,8 @@ export function SolutionsByTypePage({
   useCases,
   testimonial,
   faqs,
-  primaryCta = { label: 'Book a demo', href: '/book-demo' },
-  secondaryCta = { label: 'Free trial', href: Links.SignUp },
+  primaryCta,
+  secondaryCta,
 }: SolutionsByTypePageProps) {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
 
@@ -114,12 +114,20 @@ export function SolutionsByTypePage({
             <p className="text-element-mid-em mt-6 text-lg xl:text-xl">
               {description}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href={primaryCta.href}>{primaryCta.label}</Button>
-              <Button href={secondaryCta.href} variant="secondary">
-                {secondaryCta.label}
-              </Button>
-            </div>
+            {primaryCta || secondaryCta ? (
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                {primaryCta && (
+                  <Button href={primaryCta.href}>{primaryCta.label}</Button>
+                )}
+                {secondaryCta && (
+                  <Button href={secondaryCta.href} variant="secondary">
+                    {secondaryCta.label}
+                  </Button>
+                )}
+              </div>
+            ) : (
+              <TrialDemoCtaPair className="mt-8" />
+            )}
           </div>
           {heroImage && (
             <div className="lg:w-1/2">

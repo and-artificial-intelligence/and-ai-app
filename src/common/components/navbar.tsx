@@ -306,7 +306,7 @@ export const Navbar = () => {
             className="hidden lg:flex"
             href="/book-demo"
             size="sm"
-            variant="secondary"
+            variant="tertiary"
           >
             Contact
           </Button>
@@ -314,12 +314,12 @@ export const Navbar = () => {
             className="hidden lg:flex"
             href={Links.LogIn}
             size="sm"
-            variant="secondary"
+            variant="tertiary"
           >
             Log in
           </Button>
           <div className="hidden lg:block">
-            <Button href={Links.SignUp}>Sign up</Button>
+            <Button href={Links.SignUp}>Start now</Button>
           </div>
           {/* Hamburger Menu Button */}
           <button
@@ -547,7 +547,7 @@ export const Navbar = () => {
               href={Links.SignUp}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Sign up
+              Start now
             </Button>
           </div>
         </div>

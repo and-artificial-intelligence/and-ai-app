@@ -17,6 +17,7 @@ import {
 } from '@/common/components/icon';
 import { SchemaScript } from '@/common/components/schema-script';
 import { SubHeader } from '@/common/components/subheader';
+import { TrialDemoCtaPair } from '@/common/components/trial-demo-cta-pair';
 import { TypingAnimation } from '@/common/components/typing-animation';
 import { Links } from '@/common/constants/links';
 import { cn } from '@/common/functions/cn';
@@ -146,12 +147,7 @@ export default function Home() {
                   court.
                 </p>
               </div>
-              <div className="flex items-center justify-center gap-3 lg:justify-start">
-                <Button href="/book-demo">Book a demo</Button>
-                <Button href={Links.SignUp} variant="secondary">
-                  Free trial
-                </Button>
-              </div>
+              <TrialDemoCtaPair className="items-center justify-center lg:justify-start" />
             </div>
 
             <div className="flex flex-col items-center justify-center gap-6 md:flex-row md:gap-10 lg:flex-col lg:items-start lg:justify-start lg:gap-6 xl:flex-row xl:gap-10">
