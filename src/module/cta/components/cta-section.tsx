@@ -1,5 +1,4 @@
-import { Button } from '@/common/components/button';
-import { Links } from '@/common/constants/links';
+import { TrialDemoCtaPair } from '@/common/components/trial-demo-cta-pair';
 
 import { BackgroundArt } from './background-art';
 
@@ -22,12 +21,7 @@ export const CTASection = () => (
             product—fast enough for pitches, strong enough for court.
           </p>
         </div>
-        <div className="flex flex-col items-center gap-3 sm:flex-row">
-          <Button href="/book-demo">Book a demo</Button>
-          <Button href={Links.SignUp} variant="secondary">
-            Free trial
-          </Button>
-        </div>
+        <TrialDemoCtaPair className="items-center" />
       </div>
     </div>
   </section>

@@ -8,7 +8,7 @@ import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 import { ProductCard } from '@/common/components/product-card';
 import { SubHeader } from '@/common/components/subheader';
-import { Links } from '@/common/constants/links';
+import { TrialDemoCtaPair } from '@/common/components/trial-demo-cta-pair';
 import { cn } from '@/common/functions/cn';
 import { BrandColor } from '@/common/types/common';
 
@@ -105,8 +105,8 @@ export function ProductPage({
   h1Highlight,
   subheading,
   valueProp,
-  primaryCta = { label: 'Book a demo', href: '/book-demo' },
-  secondaryCta = { label: 'Free trial', href: Links.SignUp },
+  primaryCta,
+  secondaryCta,
   sections,
   comparisonTable,
   faqs,
@@ -152,12 +152,18 @@ export function ProductPage({
               <p key={index}>{paragraph}</p>
             ))}
           </div>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href={primaryCta.href}>{primaryCta.label}</Button>
-            <Button href={secondaryCta.href} variant="secondary">
-              {secondaryCta.label}
-            </Button>
-          </div>
+          {primaryCta || secondaryCta ? (
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              {primaryCta && <Button href={primaryCta.href}>{primaryCta.label}</Button>}
+              {secondaryCta && (
+                <Button href={secondaryCta.href} variant="secondary">
+                  {secondaryCta.label}
+                </Button>
+              )}
+            </div>
+          ) : (
+            <TrialDemoCtaPair className="mt-8" />
+          )}
         </div>
       </section>
 
