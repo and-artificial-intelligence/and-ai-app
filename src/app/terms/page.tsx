@@ -261,10 +261,10 @@ export default function Terms() {
                 Use of Name (Self-Serve Accounts)
               </h3>
               <p>
-                If you create or use a self-serve Account on behalf of a business
-                or other organization, you grant us the right to reference you as
-                a customer and use your logo, terminable at any time by notice to
-                support@tryandai.com.
+                If you create or use a self-serve Account on behalf of a
+                business or other organization, you grant us the right to
+                reference you as a customer and use your logo, terminable at any
+                time by notice to support@tryandai.com.
               </p>
               <h3 className="text-element-high-em font-semibold">Refunds</h3>
               <p>
