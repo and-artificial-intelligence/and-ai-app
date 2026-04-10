@@ -26,7 +26,7 @@ const faqItems = [
       'Sign up today to get started with a 7-day free trial, or book a demo if you would like a walkthrough from our team.',
   },
   {
-    question: 'Can I try it for free?',
+    question: 'Can I try &AI for free?',
     answer:
       'Yes. You can sign up today and start a 7-day free trial. If you would prefer a walkthrough first, you can also book a demo.',
   },

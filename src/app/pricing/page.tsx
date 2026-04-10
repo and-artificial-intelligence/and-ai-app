@@ -55,7 +55,7 @@ export default function Pricing() {
       ),
     },
     {
-      question: 'Can I try it for free?',
+      question: 'Can I try &AI for free?',
       answer: (
         <>
           Yes. You can{' '}
