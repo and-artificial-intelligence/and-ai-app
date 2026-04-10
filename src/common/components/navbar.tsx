@@ -310,12 +310,14 @@ export const Navbar = () => {
           >
             Contact
           </Button>
-          <Link
-            className="text-element-high-em hover:text-element-mid-em hidden px-5 text-sm font-medium transition-colors lg:block"
+          <Button
+            className="hidden lg:flex"
             href={Links.LogIn}
+            size="sm"
+            variant="secondary"
           >
             Log in
-          </Link>
+          </Button>
           <div className="hidden lg:block">
             <Button href={Links.SignUp}>Sign up</Button>
           </div>
