@@ -23,7 +23,12 @@ const faqItems = [
   {
     question: 'How can I get started?',
     answer:
-      "Book a demo through our contact form or email support@tryandai.com and we'll walk you through the platform and answer any questions you have.",
+      'Sign up today to get started with a 7-day free trial, or book a demo if you would like a walkthrough from our team.',
+  },
+  {
+    question: 'Can I try it for free?',
+    answer:
+      'Yes. You can sign up today and start a 7-day free trial. If you would prefer a walkthrough first, you can also book a demo.',
   },
   {
     question: 'How does billing work?',
