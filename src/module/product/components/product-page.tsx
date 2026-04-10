@@ -8,6 +8,7 @@ import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
 import { ProductCard } from '@/common/components/product-card';
 import { SubHeader } from '@/common/components/subheader';
+import { Links } from '@/common/constants/links';
 import { cn } from '@/common/functions/cn';
 import { BrandColor } from '@/common/types/common';
 
@@ -104,8 +105,8 @@ export function ProductPage({
   h1Highlight,
   subheading,
   valueProp,
-  primaryCta = { label: 'Book demo', href: '/book-demo' },
-  secondaryCta = { label: 'See pricing', href: '/pricing' },
+  primaryCta = { label: 'Book a demo', href: '/book-demo' },
+  secondaryCta = { label: 'Free trial', href: Links.SignUp },
   sections,
   comparisonTable,
   faqs,
@@ -450,7 +451,7 @@ export function ProductPage({
       )}
 
       {/* CTA Section */}
-      <CTASection showPricing />
+      <CTASection />
 
       <Footer />
     </main>

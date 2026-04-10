@@ -21,7 +21,7 @@ export default function Terms() {
               Terms of <span className="font-martina italic">service</span>
             </h1>
             <p className="text-element-mid-em text-sm">
-              Effective date: October 21, 2025
+              Effective date: April 9, 2026
             </p>
           </div>
 
@@ -130,6 +130,31 @@ export default function Terms() {
                 a reasonable period.
               </p>
               <h3 className="text-element-high-em font-semibold">
+                Self-Serve Account Eligibility and Approval
+              </h3>
+              <p>
+                Self-serve Accounts on the &AI Platform are available to
+                verified patent practitioners and other approved professional
+                users and organizations, including law firms, in-house counsel,
+                investment funds, universities, and other participants in the
+                patent and intellectual property ecosystem.
+              </p>
+              <p>
+                If you apply for a self-serve Account, we may require you to
+                provide information sufficient for us to verify your identity,
+                professional role, organizational affiliation, and intended use
+                of the Services.
+              </p>
+              <p>
+                We may approve, deny, suspend, or revoke any self-serve Account
+                in our sole discretion, including if: (i) we are unable to
+                verify the information you provide; (ii) you do not satisfy our
+                eligibility criteria; (iii) you are employed by, affiliated
+                with, or acting on behalf of a competitor of &AI; or (iv) we
+                determine that the Account presents legal, regulatory, security,
+                fraud, or other business risk.
+              </p>
+              <h3 className="text-element-high-em font-semibold">
                 Acknowledgement for You to Receive Communications
               </h3>
               <p>
@@ -170,17 +195,76 @@ export default function Terms() {
                 &AI uses Stripe Connect service operated by Stripe, Inc.
                 (&quot;Stripe&quot;) to bill you through an online account, as
                 applicable, in lieu of directly processing your credit card
-                information. By using the Stripe payment processing services,
-                you acknowledge that you agree to the Stripe Connected Account
-                Agreement available at
-                https://stripe.com/us/connect-account/legal and you agree to the
-                collection, use and disclosure practices by Stripe set forth in
-                Stripe Privacy Policy, available at
-                https://stripe.com/us/privacy. You also agree that we may change
-                the third party payment service and move your information to
-                other service providers that encrypt your information using
-                transport layer security (TLS) or comparable security
-                technology.
+                information.
+              </p>
+              <p>
+                By using the Stripe payment processing services, you acknowledge
+                that you agree to the Stripe Connected Account Agreement
+                available at{' '}
+                <a
+                  className="underline"
+                  href="https://stripe.com/us/connect-account/legal"
+                >
+                  https://stripe.com/us/connect-account/legal
+                </a>{' '}
+                and you agree to the collection, use and disclosure practices by
+                Stripe set forth in Stripe Privacy Policy, available at{' '}
+                <a className="underline" href="https://stripe.com/us/privacy">
+                  https://stripe.com/us/privacy
+                </a>
+                .
+              </p>
+              <p>
+                You also agree that we may change the third party payment
+                service and move your information to other service providers
+                that encrypt your information using transport layer security
+                (TLS) or comparable security technology.
+              </p>
+              <h3 className="text-element-high-em font-semibold">
+                Automatic Renewal (Self-Serve Accounts)
+              </h3>
+              <p>
+                If you purchase a self-serve subscription, your subscription
+                will automatically renew for successive terms of the same
+                duration as the initial subscription term unless you cancel
+                before the renewal date. By purchasing a self-serve
+                subscription, you authorize us to automatically charge the
+                payment method on file at the beginning of each renewal term for
+                the then-applicable Fees unless and until you cancel in
+                accordance with these Terms.
+              </p>
+              <h3 className="text-element-high-em font-semibold">
+                Trials; Credits (Self-Serve Accounts)
+              </h3>
+              <p>
+                We may offer trial access to the Services for self-serve
+                Accounts. Unless otherwise expressly stated on the applicable
+                signup page, each trial includes 500 credits and ends on the
+                earlier of: (i) seven (7) days after the trial begins; or (ii)
+                the depletion of all trial credits.
+              </p>
+              <p>
+                A valid payment method on file is required to activate a
+                self-serve trial.
+              </p>
+              <p>
+                Trial credits are promotional, non-transferable, non-refundable,
+                have no cash value, and do not roll over to a paid plan. Any
+                unused trial credits are forfeited when the trial ends.
+              </p>
+              <p>
+                When a trial ends, you may subscribe to a paid plan to continue
+                using the Services. If you do not subscribe, your Account will
+                be canceled and you will no longer have access to the Services.
+              </p>
+              <h3 className="text-element-high-em font-semibold">
+                Use of Name (Self-Serve Accounts)
+              </h3>
+              <p>
+                If you create or use a self-serve Account on behalf of a
+                business or other organization, you grant us the right to
+                reference you as a customer and use your logo, terminable at any
+                time by notice to support@tryandai.com.
               </p>
               <h3 className="text-element-high-em font-semibold">Refunds</h3>
               <p>
@@ -835,7 +919,7 @@ export default function Terms() {
                 12. Contact Us For Additional Information
               </h2>
               <p>
-                If you have any questions about these Terms, please Book a Demo
+                If you have any questions about these Terms, please contact us
                 at support@tryandai.com.
               </p>
             </section>

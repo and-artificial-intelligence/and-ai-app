@@ -302,19 +302,24 @@ export const Navbar = () => {
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <Link
-            className="text-element-high-em hover:text-element-mid-em hidden px-5 text-sm font-medium transition-colors lg:block"
+          <Button
+            className="hidden lg:flex"
+            href="/book-demo"
+            size="sm"
+            variant="secondary"
+          >
+            Contact
+          </Button>
+          <Button
+            className="hidden lg:flex"
             href={Links.LogIn}
+            size="sm"
+            variant="secondary"
           >
             Log in
-          </Link>
+          </Button>
           <div className="hidden lg:block">
-            <Button href="/request-sample-chart" variant="secondary">
-              Request sample chart
-            </Button>
-          </div>
-          <div className="hidden lg:block">
-            <Button href="/book-demo">Free trial</Button>
+            <Button href={Links.SignUp}>Sign up</Button>
           </div>
           {/* Hamburger Menu Button */}
           <button
@@ -539,18 +544,10 @@ export const Navbar = () => {
           <div className="flex flex-col gap-3 pt-2">
             <Button
               className="w-full"
-              href="/request-sample-chart"
-              variant="secondary"
+              href={Links.SignUp}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Request sample chart
-            </Button>
-            <Button
-              className="w-full"
-              href="/book-demo"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Free trial
+              Sign up
             </Button>
           </div>
         </div>

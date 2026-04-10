@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { SchemaScript } from '@/common/components/schema-script';
+import { Links } from '@/common/constants/links';
 import { getProductsByName } from '@/common/constants/products';
 
 import {
@@ -69,10 +70,14 @@ export default function InvalidityAnalysisPage() {
         faqs={faqs}
         h1="Patent"
         h1Highlight="Invalidity Analysis"
+        primaryCta={{
+          label: 'Free trial',
+          href: Links.SignUp,
+        }}
         relatedProducts={relatedProducts}
         secondaryCta={{
-          label: 'See Prior Art Search',
-          href: '/product/prior-art-search',
+          label: 'Request sample chart',
+          href: '/request-sample-chart',
         }}
         sections={[
           {

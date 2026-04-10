@@ -21,7 +21,7 @@ export default function Privacy() {
               Privacy <span className="font-martina italic">policy</span>
             </h1>
             <p className="text-element-mid-em text-sm">
-              Effective date: October 21, 2025
+              Effective date: April 9, 2026
             </p>
           </div>
 
@@ -56,6 +56,22 @@ export default function Privacy() {
                 If you create an account to use our Services, we will collect
                 information from you related to maintaining your account. This
                 may include your name, email address, and password.
+              </p>
+              <p>
+                <strong>
+                  Account application, verification, and billing information.
+                </strong>{' '}
+                If you apply for or use a self-serve Account, we may collect
+                additional information related to your application,
+                eligibility, and billing. This may include your company or
+                organization name, job title, professional role,
+                organizational affiliation, business contact information,
+                business or billing address, payment-related information
+                submitted through our payment processors, transaction and
+                invoice information, trial and credit usage information, and
+                information you provide or that we generate in connection with
+                account verification, fraud prevention, billing eligibility,
+                and account approval.
               </p>
               <p>
                 <strong>
@@ -165,7 +181,10 @@ export default function Privacy() {
                 </li>
                 <li>Comply with legal and/or regulatory requirements;</li>
                 <li>Aggregate and deidentify information;</li>
-                <li>Create new products and services; and</li>
+                <li>Create new products and services;</li>
+                <li>
+                  Create, administer, and secure self-serve Accounts; and
+                </li>
                 <li>Manage our business.</li>
               </ul>
               <p>
