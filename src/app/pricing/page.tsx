@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 
 import { Button } from '@/common/components/button';
 import { Footer } from '@/common/components/footer';
@@ -13,7 +13,7 @@ type BillingPeriod = 'monthly' | 'yearly';
 
 interface FAQItem {
   question: string;
-  answer: string;
+  answer: ReactNode;
 }
 
 interface PricingTier {
@@ -34,14 +34,48 @@ export default function Pricing() {
 
   const faqItems: FAQItem[] = [
     {
-      question: 'What counts as a credit?',
-      answer:
-        'Every time you use an AI action on &AI—for example, when you search for prior art, build a claim chart, or interact with Andy—you use credits. Each action consumes credits based on the operation type, configurations, and amount of content processed.',
+      question: 'How can I get started?',
+      answer: (
+        <>
+          <Link
+            className="text-orange-500 underline hover:text-orange-600"
+            href={Links.SignUp}
+          >
+            Sign up today
+          </Link>{' '}
+          to get started with a 7-day free trial, or{' '}
+          <Link
+            className="text-orange-500 underline hover:text-orange-600"
+            href="/book-demo"
+          >
+            book a demo
+          </Link>{' '}
+          if you would like a walkthrough from our team.
+        </>
+      ),
     },
     {
-      question: 'How can I get started?',
-      answer:
-        "Book a demo through our contact form or email support@tryandai.com and we'll walk you through the platform and answer any questions you have.",
+      question: 'Can I try &AI for free?',
+      answer: (
+        <>
+          Yes. You can{' '}
+          <Link
+            className="text-orange-500 underline hover:text-orange-600"
+            href={Links.SignUp}
+          >
+            sign up today
+          </Link>{' '}
+          and start a 7-day free trial. If you would prefer a walkthrough first,
+          you can also{' '}
+          <Link
+            className="text-orange-500 underline hover:text-orange-600"
+            href="/book-demo"
+          >
+            book a demo
+          </Link>
+          .
+        </>
+      ),
     },
     {
       question: 'How does billing work?',
@@ -49,9 +83,14 @@ export default function Pricing() {
         'We offer a monthly subscription model with credits that can be used for AI actions. Credits are pre-purchased and not refundable or transferable. Payments are processed through Stripe.\n\nFor Enterprise customers, we offer a custom pricing model based on your needs.',
     },
     {
+      question: 'What counts as a credit?',
+      answer:
+        'Every time you use an AI action on &AI—for example, when you search for prior art, build a claim chart, or interact with Andy—you use credits. Each action consumes credits based on the operation type, configurations, and amount of content processed.',
+    },
+    {
       question: 'How does public-only mode work?',
       answer:
-        'Public-only mode is a feature that allows you to use &AI without storing or accessing any confidential information. It is optional for Core users. With public-only mode enabled, you are unable to upload any documents or provide any context or prompts for the models. This makes it impossible for you to store any confidential information with &AI.\n\nPro and Enterprise customers can enable public-only mode by contacting support@tryandai.com.',
+        'Public-only mode is a feature that allows you to use &AI without storing or accessing any confidential information. With public-only mode enabled, you are unable to upload any documents or provide any context or prompts for the models. This makes it impossible for you to store any confidential information with &AI.',
     },
     {
       question:
@@ -217,7 +256,9 @@ export default function Pricing() {
                 <Button
                   fullWidth
                   className="mb-6"
-                  href={tier.name === 'Enterprise' ? '/book-demo' : Links.SignUp}
+                  href={
+                    tier.name === 'Enterprise' ? '/book-demo' : Links.SignUp
+                  }
                 >
                   {tier.name === 'Enterprise' ? 'Contact us' : 'Free trial'}
                 </Button>
@@ -367,11 +408,15 @@ export default function Pricing() {
                   }}
                 >
                   <div className="text-element-mid-em pb-6 text-base">
-                    {item.answer.split('\n\n').map((paragraph, i) => (
-                      <p key={i} className={i > 0 ? 'mt-4' : ''}>
-                        {paragraph}
-                      </p>
-                    ))}
+                    {typeof item.answer === 'string' ? (
+                      item.answer.split('\n\n').map((paragraph, i) => (
+                        <p key={i} className={i > 0 ? 'mt-4' : ''}>
+                          {paragraph}
+                        </p>
+                      ))
+                    ) : (
+                      <p>{item.answer}</p>
+                    )}
                   </div>
                 </div>
               </div>
