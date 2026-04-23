@@ -302,22 +302,16 @@ export const Navbar = () => {
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <Button
-            className="hidden lg:flex"
-            href="/book-demo"
-            size="sm"
-            variant="tertiary"
-          >
-            Contact
-          </Button>
-          <Button
-            className="hidden lg:flex"
-            href={Links.LogIn}
-            size="sm"
-            variant="tertiary"
-          >
-            Log in
-          </Button>
+          <div className="hidden lg:block">
+            <Button href="/book-demo" size="sm" variant="tertiary">
+              Contact
+            </Button>
+          </div>
+          <div className="hidden lg:block">
+            <Button href={Links.LogIn} size="sm" variant="tertiary">
+              Log in
+            </Button>
+          </div>
           <div className="hidden lg:block">
             <Button href={Links.SignUp}>Start now</Button>
           </div>
