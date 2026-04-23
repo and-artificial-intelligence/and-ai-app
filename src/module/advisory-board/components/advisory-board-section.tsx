@@ -12,7 +12,6 @@ import { useBlazeSlider } from '@/tools/blaze-slider/useBlazeSlider';
 
 const ADVISORY_SLIDER_LAYOUT_CLASS =
   '[--slides-to-show:1] [--slide-gap:16px] min-[480px]:[--slides-to-show:2] min-[480px]:[--slide-gap:20px] md:[--slides-to-show:3] md:[--slide-gap:24px] min-[880px]:[--slides-to-show:4] min-[1100px]:[--slides-to-show:5]';
-const AUTO_SCROLL_INTERVAL_MS = 2000;
 
 const getVisibleAdvisors = (windowWidth: number) =>
   windowWidth >= 1100
@@ -149,7 +148,7 @@ export const AdvisoryBoardSection = ({
     all: {
       slidesToShow: 1,
       slideGap: '16px',
-      loop: true,
+      loop: false,
       enableAutoplay: false,
       transitionDuration: 600,
     },
@@ -181,18 +180,6 @@ export const AdvisoryBoardSection = ({
       window.removeEventListener('resize', updateOverflowState);
     };
   }, []);
-
-  useEffect(() => {
-    if (!showControls) return;
-
-    const intervalId = window.setInterval(() => {
-      advisorySlider.current?.next(1);
-    }, AUTO_SCROLL_INTERVAL_MS);
-
-    return () => {
-      window.clearInterval(intervalId);
-    };
-  }, [advisorySlider, showControls]);
 
   const goToPreviousSlide = () => {
     const slider = advisorySlider.current;
