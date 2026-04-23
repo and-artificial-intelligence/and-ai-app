@@ -364,12 +364,19 @@ export default function BookDemo() {
                     className="relative w-full"
                     style={{ minWidth: '320px', height: '700px' }}
                   >
+                    {/* Intentionally omit the `calendly-inline-widget` class.
+                        That class triggers widget.js's own auto-init on load
+                        — it would both (a) race our imperative
+                        `initInlineWidget` call (double-mounting the iframe)
+                        and (b) throw `Cannot read properties of null (reading
+                        'split')` whenever `data-url` is missing, polluting
+                        error tracking. We drive the widget entirely through
+                        `initInlineWidget({ parentElement })` below. */}
                     <div
                       ref={setInlineRef}
                       aria-busy={widgetState === 'loading'}
                       aria-label="Scheduling calendar"
-                      className="calendly-inline-widget absolute inset-0"
-                      data-url={CALENDLY_INLINE_URL}
+                      className="absolute inset-0"
                     />
                     {widgetState === 'loading' && <CalendlySkeleton />}
                   </div>
@@ -508,18 +515,15 @@ function CalendlyFallback({
 }) {
   return (
     <div className="border-gray-dark/10 bg-background-lighter relative mx-auto w-full max-w-2xl rounded-lg border p-6 shadow-sm md:p-8">
-      <h2 className="text-element-high-em mb-2 text-2xl">
-        Scheduler failed to load
-      </h2>
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-        {/* Promote the form CTA: if Calendly assets failed to load, the form
-            is the most reliable recovery path for the user. */}
-        <Button onClick={onSwitchToForm}>Send us a message instead</Button>
+      <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
         {!hideExternalLink && (
-          <Button external href={CALENDLY_FALLBACK_URL} variant="secondary">
+          <Button external href={CALENDLY_FALLBACK_URL}>
             Open scheduler in new tab
           </Button>
         )}
+        <Button variant="secondary" onClick={onSwitchToForm}>
+          Send us a message instead
+        </Button>
       </div>
     </div>
   );
