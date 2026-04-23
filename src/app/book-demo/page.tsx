@@ -167,11 +167,16 @@ export default function BookDemo() {
     if (widgetInitializedRef.current) return;
     const el = inlineWidgetRef.current;
     if (!el || !window.Calendly?.initInlineWidget) return;
-    el.innerHTML = '';
-    window.Calendly.initInlineWidget({
-      url: CALENDLY_INLINE_URL,
-      parentElement: el,
-    });
+    // Calendly's widget.js runs an auto-scan of `.calendly-inline-widget`
+    // elements on load and initializes them via their `data-url`. On the
+    // first mount that scan has already produced an iframe for us; avoid
+    // double-injecting on top of it.
+    if (!el.querySelector('iframe')) {
+      window.Calendly.initInlineWidget({
+        url: CALENDLY_INLINE_URL,
+        parentElement: el,
+      });
+    }
     widgetInitializedRef.current = true;
     // Flip to `ready` here (not in the load effect) so a synchronous init from
     // the ref callback removes the skeleton in the same commit, avoiding a
@@ -364,6 +369,7 @@ export default function BookDemo() {
                       aria-busy={widgetState === 'loading'}
                       aria-label="Scheduling calendar"
                       className="calendly-inline-widget absolute inset-0"
+                      data-url={CALENDLY_INLINE_URL}
                     />
                     {widgetState === 'loading' && <CalendlySkeleton />}
                   </div>
@@ -505,12 +511,6 @@ function CalendlyFallback({
       <h2 className="text-element-high-em mb-2 text-2xl">
         Scheduler failed to load
       </h2>
-      <p className="text-element-medium-em text-sm">
-        The scheduling calendar was blocked by a browser extension, strict
-        privacy setting, or network filter. Send us a quick message and
-        we&apos;ll reach out to schedule
-        {hideExternalLink ? '.' : ', or open the scheduler directly in a new tab.'}
-      </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row">
         {/* Promote the form CTA: if Calendly assets failed to load, the form
             is the most reliable recovery path for the user. */}
