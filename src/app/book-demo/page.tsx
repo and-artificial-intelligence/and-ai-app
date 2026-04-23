@@ -501,7 +501,7 @@ function CalendlyFallback({
   onSwitchToForm: () => void;
 }) {
   return (
-    <div className="border-gray-dark/10 bg-background-lighter relative w-full max-w-2xl rounded-lg border p-6 shadow-sm md:p-8">
+    <div className="border-gray-dark/10 bg-background-lighter relative mx-auto w-full max-w-2xl rounded-lg border p-6 shadow-sm md:p-8">
       <h2 className="text-element-high-em mb-2 text-2xl">
         Scheduler failed to load
       </h2>
