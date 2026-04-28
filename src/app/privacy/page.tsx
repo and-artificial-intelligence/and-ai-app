@@ -1,3 +1,4 @@
+import { CookieDeclaration } from '@/common/components/cookie-declaration';
 import { Footer } from '@/common/components/footer';
 import { SchemaScript } from '@/common/components/schema-script';
 
@@ -10,6 +11,10 @@ const privacyBreadcrumb = [
 ];
 
 export default function Privacy() {
+  // Cookiebot's `cd.js` is only authorized for production hostnames listed in
+  // its dashboard. Mirror the gating used for the consent banner in
+  // `src/app/layout.tsx` so dev/preview don't 4xx on `cd.js`.
+  const cookieDeclarationEnabled = process.env.VERCEL_ENV === 'production';
   return (
     <main className="flex min-h-screen flex-col">
       <SchemaScript schema={generateBreadcrumbSchema(privacyBreadcrumb)} />
@@ -116,8 +121,14 @@ export default function Privacy() {
                 to indicate when a cookie is being set, allowing you to decide
                 whether to accept it. You can also delete cookies from your
                 computer. However, if you choose to block or delete cookies,
-                certain features of the Site may not operate correctly.
+                certain features of the Site may not operate correctly. The
+                list below — generated and maintained by Cookiebot, our consent
+                management provider — itemizes the cookies and similar
+                technologies currently set on the Site, grouped by purpose,
+                along with each cookie&apos;s provider, purpose, and
+                expiration.
               </p>
+              <CookieDeclaration enabled={cookieDeclarationEnabled} />
               <p>
                 <strong>Web beacons.</strong> The Site or the emails that you
                 receive from &AI may use an application known as a &quot;web
