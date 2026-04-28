@@ -9,6 +9,7 @@ import {
 } from 'react';
 
 import { Button } from '@/common/components/button';
+import { subscribeToConsent } from '@/common/components/cookiebot-consent';
 import { Footer } from '@/common/components/footer';
 import { SubHeader } from '@/common/components/subheader';
 import Tab from '@/common/components/tab';
@@ -55,6 +56,7 @@ type FailureReason =
   | 'network_error'
   | 'missing_api'
   | 'ssr'
+  | 'consent_denied'
   | 'unknown';
 
 const KNOWN_FAILURE_REASONS: ReadonlySet<FailureReason> = new Set([
@@ -62,6 +64,7 @@ const KNOWN_FAILURE_REASONS: ReadonlySet<FailureReason> = new Set([
   'network_error',
   'missing_api',
   'ssr',
+  'consent_denied',
   'unknown',
 ]);
 
@@ -88,6 +91,9 @@ function ensureCalendlyCss() {
   link.rel = 'stylesheet';
   link.href = CALENDLY_CSS_SRC;
   link.dataset.calendlyCss = 'true';
+  // Cookiebot autoblock honors `data-cookieconsent` on stylesheets too —
+  // hold the asset back until the user grants statistics consent.
+  link.dataset.cookieconsent = 'statistics';
   document.head.appendChild(link);
 }
 
@@ -109,6 +115,11 @@ function ensureCalendlyScript(): Promise<void> {
     script.src = CALENDLY_SCRIPT_SRC;
     script.async = true;
     script.dataset.calendlyScript = 'true';
+    // Tag the script for Cookiebot autoblock: until the user grants
+    // statistics consent, Cookiebot rewrites the type to `text/plain` so the
+    // browser refuses to execute it. Our timeout below trips the fallback
+    // UI (CalendlyFallback) when that happens.
+    script.dataset.cookieconsent = 'statistics';
 
     let settled = false;
     const finish = (action: () => void) => {
@@ -223,6 +234,26 @@ export default function BookDemo() {
       cancelled = true;
     };
   }, [initInlineWidget]);
+
+  // If Cookiebot is loaded and the user explicitly declines statistics
+  // consent, Calendly's script will be held back by autoblock and our
+  // 8-second timeout would eventually trip the fallback. Listen for the
+  // decline directly so we can show the fallback immediately instead of
+  // making the user stare at a skeleton.
+  useEffect(() => {
+    return subscribeToConsent('statistics', (granted) => {
+      const cookiebot = window.Cookiebot;
+      if (!cookiebot?.hasResponse) return;
+      if (granted) return;
+      if (widgetInitializedRef.current) return;
+      setFailureReason('consent_denied');
+      setWidgetState('failed');
+      capture('calendly_widget_failed', {
+        reason: 'consent_denied',
+        location: 'inline',
+      });
+    });
+  }, []);
 
   const handlePopup = () => {
     if (window.Calendly?.initPopupWidget) {

@@ -57,7 +57,10 @@
     "ctfassets",
     "posthog",
     "pageleave",
-    "pageview"
+    "pageview",
+    "autoblock",
+    "autoblocking",
+    "reinit"
   ],
   "ignorePaths": [
     "node_modules",
