@@ -1,3 +1,4 @@
+import { CookieDeclaration } from '@/common/components/cookie-declaration';
 import { Footer } from '@/common/components/footer';
 import { SchemaScript } from '@/common/components/schema-script';
 
@@ -10,6 +11,10 @@ const privacyBreadcrumb = [
 ];
 
 export default function Privacy() {
+  // Cookiebot's `cd.js` is only authorized for production hostnames listed in
+  // its dashboard. Mirror the gating used for the consent banner in
+  // `src/app/layout.tsx` so dev/preview don't 4xx on `cd.js`.
+  const cookieDeclarationEnabled = process.env.VERCEL_ENV === 'production';
   return (
     <main className="flex min-h-screen flex-col">
       <SchemaScript schema={generateBreadcrumbSchema(privacyBreadcrumb)} />
@@ -116,7 +121,10 @@ export default function Privacy() {
                 to indicate when a cookie is being set, allowing you to decide
                 whether to accept it. You can also delete cookies from your
                 computer. However, if you choose to block or delete cookies,
-                certain features of the Site may not operate correctly.
+                certain features of the Site may not operate correctly. For an
+                itemized list of the cookies we and our partners set on the
+                Site — including each cookie&apos;s provider, purpose, and
+                expiration — see Section 12 (Cookie Declaration) below.
               </p>
               <p>
                 <strong>Web beacons.</strong> The Site or the emails that you
@@ -440,6 +448,20 @@ export default function Privacy() {
                 Should you have any questions or concerns about this Policy, you
                 can contact us at support@tryandai.com.
               </p>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-element-high-em text-2xl font-medium">
+                12. Cookie Declaration
+              </h2>
+              <p>
+                The list below is generated and maintained by Cookiebot, our
+                consent management provider. It reflects the cookies and
+                similar technologies currently set on the Site, grouped by
+                purpose. You can update your consent at any time using the
+                cookie preferences link in our footer.
+              </p>
+              <CookieDeclaration enabled={cookieDeclarationEnabled} />
             </div>
           </div>
         </div>
