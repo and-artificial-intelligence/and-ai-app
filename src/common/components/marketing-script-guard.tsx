@@ -2,13 +2,14 @@
 
 import { useEffect } from 'react';
 
-// cspell:ignore aplo cookiebot doubleclick evnt googleadservices googlesyndication googletagmanager trovo
+// cspell:ignore aplo calendly cookiebot doubleclick evnt googleadservices googlesyndication googletagmanager trovo
 const MARKETING_SCRIPT_IDENTIFIERS = [
   'leadsy.ai',
   'apollo.io',
   'aplo-evnt.com',
   'tag.trovo-tag.com',
   'cookiebot.com',
+  'calendly.com',
   'googletagmanager.com',
   'google-analytics.com',
   'googleadservices.com',
@@ -19,6 +20,7 @@ const MARKETING_SCRIPT_IDENTIFIERS = [
   'apollo-tracker',
   'vtag-ai-js',
   'data-cookieconsent=marketing',
+  'data-cookieconsent=statistics',
 ] as const;
 
 const KNOWN_MARKETING_ERROR_MESSAGES = [
